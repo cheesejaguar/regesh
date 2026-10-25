@@ -1,0 +1,14 @@
+{
+  "recorded_before_any_software_task_inference": "2026-10-25T16:21:52.476157+00:00",
+  "reason": "Unrelated throughput probe58completiontokens/15.66seconds; bound CPU study without changing task families, code checks or per-trial ceilings. No held-out performance inspected.",
+  "software_trials": 24,
+  "software_calls": 48,
+  "software_max_completion_tokens": 24576,
+  "psych_calls": 36,
+  "psych_max_completion_tokens": 4608,
+  "model": "Qwen2.5-Coder1.5BInstructQ4_K_M",
+  "config_sha256": "6dcb5d8ebc9beea98c65c45090562efe0fc16a6345b2a6225e05ffb00b324cba",
+  "larger_config": "configs/software_experiment.json",
+  "total_experiment_call_ceiling": 84,
+  "runtime_smoke_calls": 1
+}
