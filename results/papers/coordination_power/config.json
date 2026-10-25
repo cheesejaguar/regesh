@@ -1,0 +1,482 @@
+{
+  "schema_version": 1,
+  "paper": "Danescu-Niculescu-Mizil, Lee, Pang & Kleinberg (2012). Echoes of power: Language effects and power differences in social interaction. WWW 2012.",
+  "paper_url": "https://arxiv.org/abs/1112.3670",
+  "experiment": "Independent reproduction of the Supreme Court results (Sections 3.2, 5.2, 5.3; Figures 4-5; Chief Justice contrast) on the public ConvoKit supreme-corpus 2004-2006 term files, using the existing regesh.bonding.synchrony measure with an authored non-LIWC lexicon. Directions and significance are comparable with the paper; absolute coordination levels are not.",
+  "search_date": "2026-10-25",
+  "data": {
+    "name": "ConvoKit supreme-corpus (term files 2004, 2005, 2006)",
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/supreme-corpus/",
+    "documentation": "https://convokit.cornell.edu/documentation/supreme.html",
+    "documentation_sha256_2026_10_25": "ef09bbe5fdfc1eeb0a01f5551f102ac8e65e3e91bcbeeba5f37005d42112d38f",
+    "location": "outside git; --cache directory (default .cache/convokit/supreme)",
+    "license_note": "Public ConvoKit distribution of public-domain oral-argument transcripts (Oyez) with SCDB votes; not redistributed here. No utterance text is written to results."
+  },
+  "inputs": {
+    "supreme-2004.zip": {
+      "bytes": 8620569,
+      "sha256": "f856375d3337da327a82c217adcf4c6dc054c91dc04d1d093c346fad55bbc4a0",
+      "used": true,
+      "members_used": [
+        "supreme-2004/utterances.jsonl",
+        "supreme-2004/speakers.json",
+        "supreme-2004/conversations.json"
+      ]
+    },
+    "supreme-2005.zip": {
+      "bytes": 9369609,
+      "sha256": "af2ac33504fb79ffa860f12a4ab0e9be56cd37180a571fc54b25bf742696b193",
+      "used": true,
+      "members_used": [
+        "supreme-2005/utterances.jsonl",
+        "supreme-2005/speakers.json",
+        "supreme-2005/conversations.json"
+      ]
+    },
+    "supreme-2006.zip": {
+      "bytes": 7970646,
+      "sha256": "914cbf97a59112048e214495c7bf572ad2ae868228ec8b241b0c728959631c11",
+      "used": true,
+      "members_used": [
+        "supreme-2006/utterances.jsonl",
+        "supreme-2006/speakers.json",
+        "supreme-2006/conversations.json"
+      ]
+    },
+    "cases.jsonl": {
+      "bytes": 13337468,
+      "sha256": "c6d4ec1a59e0e7dc06cee0f14386d316edcddf84e49ab88188e3f7cec826fb69",
+      "used": "cross-check of votes_side and advocate sides against conversations.json only"
+    },
+    "scdb_vote_info.tsv": {
+      "bytes": 7955530,
+      "sha256": "41feaaba7c3f768e96e64f19a0578a93e0ef185e4ef57a7c0be8576499e11253",
+      "used": false,
+      "note": "present in the cache and checksummed; favorability comes from conversation meta votes_side, so the SCDB table is not read"
+    }
+  },
+  "terms": [
+    2004,
+    2005,
+    2006
+  ],
+  "case_set_source": {
+    "url": "https://raw.githubusercontent.com/CornellNLP/ConvoKit/master/examples/coordination/examples.ipynb",
+    "sha256": "9783bbef94a539140db08ffbd356a56820e49542a1b9ee24fe66deaa3697c3d2",
+    "bytes": 173311,
+    "fetched": "2026-10-25",
+    "repository_master_head_at_fetch": "91a1df0143668d8e0017f932f97ac878e53b91fa",
+    "file_commit": "not obtainable: GitHub API access to CornellNLP/ConvoKit is disabled in this session; the master HEAD above pins the fetched content",
+    "notebook_warning": "The notebook states that its code and data are not identical with the ones originally used in the paper.",
+    "convokit_coordination_py_sha256": "2a1175277c8347979600d6ecee08f5a452ddf6e1f01801631f85a1708bd80909",
+    "convokit_coordination_score_py_sha256": "01ac65c411c9eba684a61e613b61be854c81a5dbeb082d80b2b794ba7181b36f",
+    "convokit_code_role": "read only to determine the threshold and aggregation semantics; ConvoKit is not installed or executed"
+  },
+  "case_ids": [
+    "02-1472",
+    "02-1672",
+    "03-10198",
+    "03-1039",
+    "03-1116",
+    "03-1160",
+    "03-1164",
+    "03-1230",
+    "03-1237",
+    "03-1238",
+    "03-1293",
+    "03-1388",
+    "03-1395",
+    "03-1407",
+    "03-1423",
+    "03-1454",
+    "03-1488",
+    "03-1500",
+    "03-1566",
+    "03-1601",
+    "03-1693",
+    "03-1696",
+    "03-184",
+    "03-287",
+    "03-388",
+    "03-407",
+    "03-409",
+    "03-633",
+    "03-636",
+    "03-710",
+    "03-725",
+    "03-750",
+    "03-814",
+    "03-855",
+    "03-8661",
+    "03-878",
+    "03-892",
+    "03-9046",
+    "03-9168",
+    "03-923",
+    "03-931",
+    "03-932",
+    "03-9560",
+    "03-9627",
+    "03-9659",
+    "03-9685",
+    "03-9877",
+    "04-1034",
+    "04-10566",
+    "04-1067",
+    "04-1084",
+    "04-1131",
+    "04-1140",
+    "04-1144",
+    "04-1152",
+    "04-1170",
+    "04-1170b",
+    "04-1186",
+    "04-1203",
+    "04-1244",
+    "04-1264",
+    "04-1324",
+    "04-1327",
+    "04-1329",
+    "04-1332",
+    "04-1350",
+    "04-1360",
+    "04-1360b",
+    "04-1371",
+    "04-1376",
+    "04-1414",
+    "04-1477",
+    "04-1495",
+    "04-1506",
+    "04-1527",
+    "04-1528",
+    "04-1544",
+    "04-1581",
+    "04-1618",
+    "04-163",
+    "04-169",
+    "04-1704",
+    "04-1739",
+    "04-277",
+    "04-278",
+    "04-340",
+    "04-368",
+    "04-37",
+    "04-373",
+    "04-433",
+    "04-473",
+    "04-473b",
+    "04-480",
+    "04-495",
+    "04-514",
+    "04-52",
+    "04-5286",
+    "04-5293",
+    "04-5462",
+    "04-563",
+    "04-5928",
+    "04-593",
+    "04-597",
+    "04-603",
+    "04-607",
+    "04-623",
+    "04-631",
+    "04-637",
+    "04-6432",
+    "04-6964",
+    "04-698",
+    "04-70",
+    "04-712",
+    "04-721",
+    "04-759",
+    "04-805",
+    "04-848",
+    "04-881",
+    "04-885",
+    "04-8990",
+    "04-905",
+    "04-928",
+    "04-944",
+    "04-9728",
+    "04-980",
+    "05-1056",
+    "05-1074",
+    "05-1120",
+    "05-1126",
+    "05-11284",
+    "05-11304",
+    "05-1157",
+    "05-1240",
+    "05-1256",
+    "05-1272",
+    "05-128",
+    "05-130",
+    "05-1342",
+    "05-1345",
+    "05-1382",
+    "05-1429",
+    "05-1508",
+    "05-1541",
+    "05-1575",
+    "05-1589",
+    "05-1629",
+    "05-1631",
+    "05-18",
+    "05-184",
+    "05-200",
+    "05-204",
+    "05-259",
+    "05-260",
+    "05-352",
+    "05-380",
+    "05-381",
+    "05-409",
+    "05-416",
+    "05-465",
+    "05-493",
+    "05-502",
+    "05-5224",
+    "05-547",
+    "05-5705",
+    "05-593",
+    "05-595",
+    "05-5966",
+    "05-5992",
+    "05-608",
+    "05-6551",
+    "05-669",
+    "05-705",
+    "05-7053",
+    "05-7058",
+    "05-746",
+    "05-785",
+    "05-83",
+    "05-848",
+    "05-85",
+    "05-8794",
+    "05-8820",
+    "05-908",
+    "05-915",
+    "05-9222",
+    "05-9264",
+    "05-983",
+    "05-996",
+    "05-998",
+    "06-102",
+    "06-116",
+    "06-157",
+    "06-219",
+    "06-278",
+    "06-313",
+    "06-480",
+    "06-484",
+    "06-5247",
+    "06-5306",
+    "06-5618",
+    "06-5754",
+    "06-593",
+    "06-84",
+    "105original",
+    "128orig"
+  ],
+  "case_id_matching": "aliased",
+  "case_id_aliases": {
+    "128orig": "128-orig",
+    "105original": "105-orig",
+    "04-1170b": "04-1170",
+    "04-1360b": "04-1360",
+    "04-473b": "04-473"
+  },
+  "case_id_filter": "a conversation (argument session) is selected when its meta case_id without the 'YYYY_' prefix is in the alias-resolved set; the notebook filters utterances by u.meta['case_id'][5:] in case_ids without aliases (run as the sensitivity exact_notebook_case_ids)",
+  "entity": "(speaker id, case id), following footnote 14; several argument sessions of one case share one entity",
+  "exchange": "u2 with u2.reply_to == u1.id in the same conversation; distinct speakers; both texts non-empty; both speaker types in {J, A} (speakers.json type); speaker types differ (J->J and A->A replies are not status exchanges and are excluded)",
+  "speaker_types": {
+    "J": "Justice",
+    "A": "advocate: lawyer or amicus, counted as lawyer for status analyses as in Section 3.2",
+    "U": "unknown or inaudible speaker: dropped"
+  },
+  "chief_justice_ids": [
+    "j__william_h_rehnquist",
+    "j__john_g_roberts_jr"
+  ],
+  "chief_justice_note": "Rehnquist was Chief Justice through the 2004 term (died 3 September 2005); Roberts from 29 September 2005 (2005 and 2006 terms). The run records in which term files each id appears.",
+  "markers": [
+    "ppron",
+    "ipron",
+    "article",
+    "conj",
+    "prep",
+    "auxverb",
+    "adverb",
+    "quant"
+  ],
+  "marker_labels": {
+    "ppron": "Pers. pron.",
+    "ipron": "Indef. pron.",
+    "article": "Article",
+    "conj": "Conjunction",
+    "prep": "Preposition",
+    "auxverb": "Aux. verb",
+    "adverb": "Adverb",
+    "quant": "Quantifier"
+  },
+  "lexicon": "regesh.bonding.synchrony.LEXICON: authored open English function-word list; NOT the LIWC dictionary (451 lexemes) used by the paper. Absolute coordination levels are therefore not comparable with Figures 4-5; directions and significance are compared.",
+  "thresholds": {
+    "primary": {
+      "name": "convokit_wikipedia_example_7_7",
+      "target_min_marker_utterances": 7,
+      "speaker_min_marker_utterances": 7,
+      "min_exchanges": 1,
+      "semantics": "ConvoKit Coordination._scores_over_utterances: C^m(b, A) is defined only when at least target_thresh utterances of the targets in S_{A,b} exhibit m and at least speaker_thresh replies of b exhibit m. These are counts of marker-exhibiting utterances, pooled over the target group, not plain utterance counts. Values 7/7 are the notebook's Wikipedia example; the paper does not state thresholds."
+    },
+    "sensitivities": {
+      "notebook_supreme_3_3": {
+        "target_min_marker_utterances": 3,
+        "speaker_min_marker_utterances": 3,
+        "min_exchanges": 1,
+        "note": "the notebook's Supreme Court Figure 5(a) call uses target_thresh=3, speaker_thresh=3; its Figure 5(b) call uses target_thresh=6 with default speaker_thresh=0"
+      },
+      "eq1_only_min_7_exchanges": {
+        "target_min_marker_utterances": 1,
+        "speaker_min_marker_utterances": 0,
+        "min_exchanges": 7,
+        "note": "plain Eq. (1): defined whenever the target exhibits m at least once, entity needs at least 7 exchanges"
+      }
+    }
+  },
+  "favorability": {
+    "lawyer_side": "conversation meta advocates[speaker]['side']: 0 respondent, 1 petitioner; 2 amicus (supported side not recorded) and 3 unknown -> undefined",
+    "justice_side": "conversation meta votes_side[justice]: 1 voted for petitioner, 0 for respondent; -1 unknown -> undefined",
+    "rule": "favorable iff lawyer side == justice vote; exchanges with an undefined side are excluded from F5 (the notebook's selectors treat any inequality, including -1, as unfavorable; no -1 occurs in the selected sessions)",
+    "unit_primary": "entity level: a lawyer entity toward the favorable or the unfavorable subset of Justices in its case (Eq. 2 over the filtered exchange set), and a Justice entity toward the lawyers it is favorable or unfavorable to; this mirrors the notebook's target_utterance_selector / speaker_utterance_selector",
+    "unit_sensitivity": "pair level: (speaker, target, case) pairs; motivated by the Figure 5 legend counts (913 and 888 entities exceed the 535 lawyer entities of Figure 4), so the paper's unit for Figure 5 is ambiguous"
+  },
+  "statistics": {
+    "primary": "Welch two-sample t-test across entities, two-sided, hypothesised direction higher - lower",
+    "secondary": [
+      "Student's independent t-test (the paper's caption says 'independent t-test')",
+      "paired t-test on entities present in both groups (fine status, F5a, F5b)",
+      "bootstrap percentile 95% interval of the difference of group means, resampling entities independently within each group"
+    ],
+    "p_value_engine": "scipy.stats.t when importable, else a normal approximation; the engine used is recorded in summary.json",
+    "alpha": 0.05,
+    "bootstrap_samples": 10000,
+    "seed": 20261025,
+    "multiplicity": "none, matching the paper's uncorrected per-marker stars; the number of significant markers is reported descriptively"
+  },
+  "scale": "coordination reported as percent (x100) as in the paper's figures",
+  "published": {
+    "data": {
+      "exchanges": 50389,
+      "cases": 204,
+      "justices": 11,
+      "lawyers": 311,
+      "lawyers_in_one_case_fraction": 0.73,
+      "max_cases_per_lawyer": 15
+    },
+    "claims": {
+      "F4_lawyers_coordinate_more_than_justices": {
+        "text": "significantly more coordination from lawyers to Justices than vice versa (Figure 4)",
+        "stars": {
+          "aggregated_1": "***",
+          "aggregated_2": "***",
+          "aggregated_3": "***",
+          "quant": "**",
+          "adverb": "*",
+          "conj": "",
+          "article": "*",
+          "ppron": "***",
+          "ipron": "***",
+          "prep": "***",
+          "auxverb": "***"
+        },
+        "entities": {
+          "lawyers_to_justices": [
+            500,
+            535
+          ],
+          "justices_to_lawyers": [
+            815,
+            1307
+          ]
+        }
+      },
+      "fine_status_chief_over_associates": {
+        "text": "lawyers coordinate significantly more toward the Chief Justice than toward the Associate Justices (p<0.01); aggregate not specified",
+        "stars": {}
+      },
+      "F5a_lawyers_to_unfavorable_over_favorable": {
+        "text": "lawyers coordinate more toward unfavorable Justices than toward favorable Justices (Figure 5a)",
+        "stars": {
+          "aggregated_1": "*",
+          "aggregated_2": "***",
+          "aggregated_3": "***",
+          "quant": "*",
+          "adverb": "*",
+          "ppron": "**",
+          "ipron": "*",
+          "article": "*",
+          "prep": "**",
+          "conj": "",
+          "auxverb": ""
+        },
+        "entities": {
+          "target_unfavorable": [
+            302,
+            913
+          ],
+          "target_favorable": [
+            135,
+            644
+          ]
+        }
+      },
+      "F5b_favorable_justices_over_unfavorable": {
+        "text": "unfavorable Justices coordinate less toward lawyers than favorable Justices do (Figure 5b)",
+        "stars": {
+          "aggregated_1": "*",
+          "aggregated_2": "**",
+          "aggregated_3": "",
+          "quant": "",
+          "adverb": "**",
+          "conj": "",
+          "article": "",
+          "ppron": "",
+          "ipron": "",
+          "prep": "",
+          "auxverb": ""
+        },
+        "entities": {
+          "speaker_unfavorable": [
+            346,
+            888
+          ],
+          "speaker_favorable": [
+            197,
+            641
+          ]
+        }
+      }
+    },
+    "star_legend": "independent t-test: * p<0.05, ** p<0.01, *** p<0.001; figure values are percentages and are not printed in the text"
+  },
+  "declared_ambiguities": [
+    "Lexicon: the paper used eight LIWC categories (451 lexemes); regesh.bonding.synchrony.LEXICON is an authored open list. Absolute levels differ; only directions and significance are compared.",
+    "Case set: the notebook's 204 ids include five that do not match ConvoKit case ids literally ('128orig', '105original' are original-jurisdiction cases stored as 128-orig and 105-orig; '04-1170b', '04-1360b', '04-473b' are second argument sessions of cases already in the set). Primary uses the alias map above (204 sessions, 201 ConvoKit case ids); the literal notebook filter (199 case ids, 202 sessions) is a sensitivity.",
+    "Thresholds: the paper does not state minimum-data rules. Primary adopts ConvoKit's semantics with the notebook's Wikipedia values 7/7 (marker-exhibiting utterance counts, not plain utterance counts); the notebook's Supreme Court values (3/3) and a plain Eq. (1) rule with at least 7 exchanges are sensitivities.",
+    "Exchanges: immediate replies via reply_to within one session; unknown/inaudible speakers and same-type (J->J, A->A) replies are excluded. The paper's 50,389 exchanges may include such replies; counts are reported by type.",
+    "Entities: (speaker, case) per footnote 14; two sessions of one case are merged into one entity.",
+    "Amici and unknown-side advocates count as lawyers for status claims (Section 3.2) and have undefined favorability, so they do not enter F5.",
+    "Favorability unit for Figure 5 is not stated; entity level (as the notebook) is primary and the pair level is a sensitivity.",
+    "Test: the paper says independent t-test without a variance assumption; Welch is primary, Student's is reported, plus bootstrap intervals and paired sensitivities.",
+    "Chief Justice identity is taken from speaker ids per term, not from corpus metadata (which has none)."
+  ],
+  "outputs": [
+    "summary.json",
+    "manifest.json",
+    "config.json",
+    "runner.py",
+    "report.md",
+    "entities.jsonl.gz (per-entity sufficient statistics and coordination values; no utterance text)"
+  ],
+  "command": "python -m regesh.reproductions.coordination_power --cache .cache/convokit/supreme --output results-new/coordination-power"
+}
