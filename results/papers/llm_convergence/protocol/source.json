@@ -1,0 +1,16 @@
+{
+  "format": "ParlAI JSON lines mirror",
+  "member": "train.json",
+  "archive": "parlai/dailydialog.tar.gz",
+  "train_json_sha256": "8142b924bc9e382c54f172b0a8fddf5698f2c9d47479219ed11b6463aedab0b8",
+  "archive_sha256": "c3adb09bd715b9fa5cd1ac41613b7de61eb5afbe477826a6146abefef573e6bb",
+  "split": "train",
+  "dialogues": 11118,
+  "items": 200,
+  "items_sha256": "56f10e219d98259827469624eed7b5d265022ede788ce1ae861147997a95db47",
+  "cut_points": {
+    "2": 70,
+    "3": 86,
+    "4": 44
+  }
+}
