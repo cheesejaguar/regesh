@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "source_path": "results/core/histories.jsonl.gz",
+  "source_sha256": "0f6f896eef28f33962c5dd90152c8c58c420a50a3312bdd0e6e16be5f1e00735",
+  "source_code_sha256": "5a676117a4daea3df3308c2628c9a4fe94e993441494348ac1cd91e34de82374",
+  "scope": "core deterministic trajectories; no model/participant calls"
+}

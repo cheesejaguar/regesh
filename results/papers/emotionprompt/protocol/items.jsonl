@@ -1,0 +1,32 @@
+{"id": "first_word_letter:89", "task": "first_word_letter", "source_id": "89", "instruction": "Extract the first letter of the input word.", "input": "symbolism", "gold": "s"}
+{"id": "first_word_letter:16", "task": "first_word_letter", "source_id": "16", "instruction": "Extract the first letter of the input word.", "input": "ball", "gold": "b"}
+{"id": "first_word_letter:33", "task": "first_word_letter", "source_id": "33", "instruction": "Extract the first letter of the input word.", "input": "mountain", "gold": "m"}
+{"id": "first_word_letter:3", "task": "first_word_letter", "source_id": "3", "instruction": "Extract the first letter of the input word.", "input": "point", "gold": "p"}
+{"id": "first_word_letter:87", "task": "first_word_letter", "source_id": "87", "instruction": "Extract the first letter of the input word.", "input": "geography", "gold": "g"}
+{"id": "first_word_letter:94", "task": "first_word_letter", "source_id": "94", "instruction": "Extract the first letter of the input word.", "input": "diversion", "gold": "d"}
+{"id": "first_word_letter:40", "task": "first_word_letter", "source_id": "40", "instruction": "Extract the first letter of the input word.", "input": "boundary", "gold": "b"}
+{"id": "first_word_letter:19", "task": "first_word_letter", "source_id": "19", "instruction": "Extract the first letter of the input word.", "input": "culture", "gold": "c"}
+{"id": "second_word_letter:37", "task": "second_word_letter", "source_id": "37", "instruction": "Extract the second letter of the input word.", "input": "credit", "gold": "r"}
+{"id": "second_word_letter:87", "task": "second_word_letter", "source_id": "87", "instruction": "Extract the second letter of the input word.", "input": "geography", "gold": "e"}
+{"id": "second_word_letter:83", "task": "second_word_letter", "source_id": "83", "instruction": "Extract the second letter of the input word.", "input": "leisure", "gold": "e"}
+{"id": "second_word_letter:74", "task": "second_word_letter", "source_id": "74", "instruction": "Extract the second letter of the input word.", "input": "vector", "gold": "e"}
+{"id": "second_word_letter:96", "task": "second_word_letter", "source_id": "96", "instruction": "Extract the second letter of the input word.", "input": "rhetoric", "gold": "h"}
+{"id": "second_word_letter:64", "task": "second_word_letter", "source_id": "64", "instruction": "Extract the second letter of the input word.", "input": "timing", "gold": "i"}
+{"id": "second_word_letter:3", "task": "second_word_letter", "source_id": "3", "instruction": "Extract the second letter of the input word.", "input": "point", "gold": "o"}
+{"id": "second_word_letter:16", "task": "second_word_letter", "source_id": "16", "instruction": "Extract the second letter of the input word.", "input": "ball", "gold": "a"}
+{"id": "sum:3", "task": "sum", "source_id": "3", "instruction": "Sum the two given numbers.", "input": "1 20", "gold": "21"}
+{"id": "sum:59", "task": "sum", "source_id": "59", "instruction": "Sum the two given numbers.", "input": "33 97", "gold": "130"}
+{"id": "sum:31", "task": "sum", "source_id": "31", "instruction": "Sum the two given numbers.", "input": "12 34", "gold": "46"}
+{"id": "sum:95", "task": "sum", "source_id": "95", "instruction": "Sum the two given numbers.", "input": "76 95", "gold": "171"}
+{"id": "sum:90", "task": "sum", "source_id": "90", "instruction": "Sum the two given numbers.", "input": "65 77", "gold": "142"}
+{"id": "sum:26", "task": "sum", "source_id": "26", "instruction": "Sum the two given numbers.", "input": "8 42", "gold": "50"}
+{"id": "sum:89", "task": "sum", "source_id": "89", "instruction": "Sum the two given numbers.", "input": "62 96", "gold": "158"}
+{"id": "sum:72", "task": "sum", "source_id": "72", "instruction": "Sum the two given numbers.", "input": "50 72", "gold": "122"}
+{"id": "diff:70", "task": "diff", "source_id": "70", "instruction": "Subtract the second number from the first.", "input": "138 48", "gold": "90"}
+{"id": "diff:72", "task": "diff", "source_id": "72", "instruction": "Subtract the second number from the first.", "input": "122 50", "gold": "72"}
+{"id": "diff:41", "task": "diff", "source_id": "41", "instruction": "Subtract the second number from the first.", "input": "72 16", "gold": "56"}
+{"id": "diff:25", "task": "diff", "source_id": "25", "instruction": "Subtract the second number from the first.", "input": "82 7", "gold": "75"}
+{"id": "diff:57", "task": "diff", "source_id": "57", "instruction": "Subtract the second number from the first.", "input": "93 33", "gold": "60"}
+{"id": "diff:52", "task": "diff", "source_id": "52", "instruction": "Subtract the second number from the first.", "input": "56 28", "gold": "28"}
+{"id": "diff:27", "task": "diff", "source_id": "27", "instruction": "Subtract the second number from the first.", "input": "62 9", "gold": "53"}
+{"id": "diff:36", "task": "diff", "source_id": "36", "instruction": "Subtract the second number from the first.", "input": "62 14", "gold": "48"}

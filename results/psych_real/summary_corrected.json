@@ -1,0 +1,174 @@
+{
+  "attempts": 36,
+  "accuracy": 0.0,
+  "balanced_accuracy": 0.0,
+  "macro_f1": 0.0,
+  "answer_coverage": 0.0,
+  "abstentions": 0,
+  "invalid_or_failed": 36,
+  "selective_accuracy": null,
+  "selective_risk": null,
+  "probability_coverage": 0.0,
+  "multiclass_brier": null,
+  "log_loss": null,
+  "expected_calibration_error": null,
+  "calibration_bins": [],
+  "argmax_expected_calibration_error": null,
+  "argmax_calibration_bins": [],
+  "answer_argmax_disagreement_rate": null,
+  "argmax_accuracy": null,
+  "chance_accuracy": 0.20833333333333337,
+  "selective_risk_curve": [
+    {
+      "threshold": 0.0,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.0,
+      "risk": null
+    }
+  ],
+  "accuracy_ci95": [
+    0.0,
+    0.0
+  ],
+  "independent_clusters": 12,
+  "uncertainty_method": "percentile bootstrap of whole pair/id clusters; exploratory, no multiplicity adjustment",
+  "per_dataset": {
+    "EmoBench-EA": {
+      "attempts": 18,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "EmoBench-EU": {
+      "attempts": 18,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    }
+  },
+  "per_category": {
+    "Personal-Others": {
+      "attempts": 6,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "Personal-Self": {
+      "attempts": 3,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "Social-Others": {
+      "attempts": 3,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "Social-Self": {
+      "attempts": 6,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "complex_emotions": {
+      "attempts": 6,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "emotional_cues": {
+      "attempts": 3,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "personal_beliefs_and_experiences": {
+      "attempts": 6,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "perspective_taking": {
+      "attempts": 3,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    }
+  },
+  "worst_category_accuracy": 0.0,
+  "paired_robustness": {
+    "permuted": {
+      "pairs": 12,
+      "complete_pair_coverage": 0.0,
+      "semantic_answer_invariance": null,
+      "joint_accuracy": 0.0
+    },
+    "persona": {
+      "pairs": 12,
+      "complete_pair_coverage": 0.0,
+      "semantic_answer_invariance": null,
+      "joint_accuracy": 0.0
+    }
+  },
+  "interpretation": "Scores externally keyed answers and observable reliability, not emotional experience or clinical/personality traits.",
+  "model_calls": 36,
+  "elapsed_seconds": 1749.1077012079998,
+  "completion_token_ceiling": 4608,
+  "mode": "live",
+  "macro_f1_label_universe": "gold labels union valid non-abstained predicted labels",
+  "balanced_accuracy_label_universe": "gold-supported labels",
+  "scoring_correction": {
+    "type": "metric-definition correction after independent code review; no new model calls",
+    "original_macro_f1_universe": "gold-supported labels only",
+    "corrected_macro_f1_universe": "gold labels union valid non-abstained predicted labels",
+    "balanced_accuracy_universe": "gold-supported labels, unchanged",
+    "primary_summary_preserved": "summary.json",
+    "original_summary_sha256": "8a7459ea137908698afaeb68ebc539e5a79e002730151383c99eb806a730d4f9",
+    "raw_responses_sha256": "cc580d515db29f870e96efe22a16bf5ce5775e4988812bc999ac5b90bc258940",
+    "original_scorer_sha256": "580d18b873e3f8ea18a76226e0727007b7a2a2cd1427e165f828930c0d6e1bf1",
+    "corrected_scorer_sha256": "8851f88ce85a91027bd4a4c9ef5da71d1fc0d5d33848ab612149048b59c1c257",
+    "unchanged_metric_assertions": [
+      "attempts",
+      "accuracy",
+      "balanced_accuracy",
+      "answer_coverage",
+      "probability_coverage",
+      "multiclass_brier",
+      "log_loss",
+      "expected_calibration_error",
+      "argmax_expected_calibration_error",
+      "accuracy_ci95"
+    ],
+    "run_specific_effect": "All36responses invalid under strict schema, so macroF1 remains0 in either definition; knowledge cannot be inferred."
+  }
+}

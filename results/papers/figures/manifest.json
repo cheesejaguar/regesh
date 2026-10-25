@@ -1,0 +1,13 @@
+{
+  "source_sha256": {
+    "homeostatic/summary.json": "e126a08b7e36eef1e5a235bc6f65810497f3c0168f704fe7138b7ea47275184d",
+    "happiness/summary.json": "10deeabe7ca3990235086abb030cc77526fdc370663c2d9cb5949d3de4feb6d2",
+    "chain_emotion/summary.json": "54432313580407077581df92e68ce10c327cb0d6c373419263fdc81b31a99335",
+    "emotionprompt/live/summary.json": "fff5d76aa1402593f3fca019c9582217edf033b78a2062824ed10061102729e1",
+    "homeostatic/cohort_published_inverse_beta_moments.npz": "e2d330b13ce7bfb358e7173c26ddf46fc776f430d68717f13601ae18e6525f11",
+    "homeostatic/cohort_no_learning_moments.npz": "2eb0603b555802f6c455b497f8179549fd6697ec121ab0c2c0684004e703641b",
+    "homeostatic/cohort_beta_temperature_sensitivity_moments.npz": "eaad8659677ef8010f9b36e4dddbc16a1c8ac31781085e29265e4fd4c119a309"
+  },
+  "plotter_sha256": "66f89a39164fbe615c144de40ae0c529b5696e911e7cbc35494fbb616ebdf13f",
+  "note": "No pooled score; panel B conditions also differ in published exploration/learning settings. Panel C reuses original observations; panel D changes model and task scope."
+}

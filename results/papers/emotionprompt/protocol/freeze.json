@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "frozen_utc": "2026-10-25T20:32:04.430859+00:00",
+  "note": "Frozen before inspection of any live response;64call livejob has just started. Protocol,source,anditemsunchanged.",
+  "source_sha256": "f13f66ee00d733128c1a77de287eedcd19a03ce883448e30d027a72e7319b0cc",
+  "config_sha256": "fc025002068c326296b340277bca84e26c2d51d70e0198723ea9a6f24e930531",
+  "items_sha256": "a4bbd3bac65de4ad195da1a5c9da7a57b08903985b0a7fdf882b80c3c9f4de36",
+  "test_result": "6unit tests pass;9normalizationedgecasesmatchpinned originalevaluate.py",
+  "paper_status": "Peer-reviewed ICML2024(PMLRv235),not2023same-titlepreprint",
+  "extra_stimulus_length_control": "Notincluded;explicitlimitation"
+}

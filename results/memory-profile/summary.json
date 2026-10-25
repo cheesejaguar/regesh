@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "python": "3.12.14",
+  "counts": [
+    25,
+    100,
+    250
+  ],
+  "repeats": 2,
+  "backends": [
+    "snapshot",
+    "python",
+    "rust"
+  ],
+  "workloads": [
+    "append",
+    "clocked"
+  ],
+  "all_histories_identical": true,
+  "measurements": {
+    "append": {
+      "25": {
+        "snapshot": {
+          "write_seconds": 0.10665012250001382,
+          "snapshot_seconds": 0.002170561000014004,
+          "streaming_audit_seconds": 0.032337044499968215,
+          "database_bytes": 1191936.0,
+          "peak_rss_kib": 17792.0
+        },
+        "python": {
+          "write_seconds": 0.12232214149997844,
+          "snapshot_seconds": 0.001806683500035433,
+          "streaming_audit_seconds": 0.031555563000040365,
+          "database_bytes": 290816.0,
+          "peak_rss_kib": 16768.0
+        },
+        "rust": {
+          "write_seconds": 0.18195942199997717,
+          "snapshot_seconds": 0.0017330870000478171,
+          "streaming_audit_seconds": 0.05091522499998291,
+          "database_bytes": 290816.0,
+          "peak_rss_kib": 18144.0
+        }
+      },
+      "100": {
+        "snapshot": {
+          "write_seconds": 1.1866464905000385,
+          "snapshot_seconds": 0.007430523999971683,
+          "streaming_audit_seconds": 0.36639839249994566,
+          "database_bytes": 15720448.0,
+          "peak_rss_kib": 22436.0
+        },
+        "python": {
+          "write_seconds": 1.6126661884999294,
+          "snapshot_seconds": 0.0077884225000275364,
+          "streaming_audit_seconds": 0.552096113999994,
+          "database_bytes": 1097728.0,
+          "peak_rss_kib": 20250.0
+        },
+        "rust": {
+          "write_seconds": 2.1354556149999553,
+          "snapshot_seconds": 0.00780816950003782,
+          "streaming_audit_seconds": 1.24146190350001,
+          "database_bytes": 1097728.0,
+          "peak_rss_kib": 23702.0
+        }
+      },
+      "250": {
+        "snapshot": {
+          "write_seconds": 19.88734870950003,
+          "snapshot_seconds": 0.017826580999951602,
+          "streaming_audit_seconds": 3.59051248749995,
+          "database_bytes": 94457856.0,
+          "peak_rss_kib": 29064.0
+        },
+        "python": {
+          "write_seconds": 9.756981259999975,
+          "snapshot_seconds": 0.017608906999953433,
+          "streaming_audit_seconds": 4.147908708999978,
+          "database_bytes": 2727936.0,
+          "peak_rss_kib": 26920.0
+        },
+        "rust": {
+          "write_seconds": 8.810105055999998,
+          "snapshot_seconds": 0.014433320999955868,
+          "streaming_audit_seconds": 3.2360967780000465,
+          "database_bytes": 2727936.0,
+          "peak_rss_kib": 33968.0
+        }
+      }
+    },
+    "clocked": {
+      "25": {
+        "snapshot": {
+          "write_seconds": 0.1398482390000595,
+          "snapshot_seconds": 0.0027530359999445864,
+          "streaming_audit_seconds": 0.05836976500000901,
+          "database_bytes": 2207744.0,
+          "peak_rss_kib": 18752.0
+        },
+        "python": {
+          "write_seconds": 0.3021025295000186,
+          "snapshot_seconds": 0.001736474000040289,
+          "streaming_audit_seconds": 0.11264469050001935,
+          "database_bytes": 352256.0,
+          "peak_rss_kib": 16786.0
+        },
+        "rust": {
+          "write_seconds": 0.3111668770000051,
+          "snapshot_seconds": 0.00564373899999282,
+          "streaming_audit_seconds": 0.11339685750004946,
+          "database_bytes": 352256.0,
+          "peak_rss_kib": 18140.0
+        }
+      },
+      "100": {
+        "snapshot": {
+          "write_seconds": 1.9794718105000584,
+          "snapshot_seconds": 0.006305855000050542,
+          "streaming_audit_seconds": 0.8738890944999866,
+          "database_bytes": 30859264.0,
+          "peak_rss_kib": 22244.0
+        },
+        "python": {
+          "write_seconds": 2.3471614145000217,
+          "snapshot_seconds": 0.007021109499987688,
+          "streaming_audit_seconds": 1.1187700634999942,
+          "database_bytes": 1765376.0,
+          "peak_rss_kib": 21088.0
+        },
+        "rust": {
+          "write_seconds": 2.4186201439999877,
+          "snapshot_seconds": 0.006504536000022654,
+          "streaming_audit_seconds": 0.969194590499967,
+          "database_bytes": 1765376.0,
+          "peak_rss_kib": 24224.0
+        }
+      },
+      "250": {
+        "snapshot": {
+          "write_seconds": 22.177749894999977,
+          "snapshot_seconds": 0.03428480549996493,
+          "streaming_audit_seconds": 5.663207331000081,
+          "database_bytes": 187699200.0,
+          "peak_rss_kib": 28796.0
+        },
+        "python": {
+          "write_seconds": 19.993787327499945,
+          "snapshot_seconds": 0.025349547999951483,
+          "streaming_audit_seconds": 9.777477018999946,
+          "database_bytes": 6406144.0,
+          "peak_rss_kib": 27434.0
+        },
+        "rust": {
+          "write_seconds": 23.09774380099998,
+          "snapshot_seconds": 0.10274489450000601,
+          "streaming_audit_seconds": 10.015859546499996,
+          "database_bytes": 6406144.0,
+          "peak_rss_kib": 34486.0
+        }
+      }
+    }
+  },
+  "scope": "SQLite journal representation and optional Rust JSON-diff kernel; no agent capability improvement claim"
+}

@@ -1,0 +1,13 @@
+[package]
+name = "regesh-memory"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Lossless state-delta kernel for Regesh's compact research journal"
+
+[lib]
+name = "regesh_memory"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+serde_json = { version = "1.0", features = ["float_roundtrip", "arbitrary_precision"] }

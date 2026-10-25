@@ -1,0 +1,5 @@
+{
+  "change": "Render actual task/seed counts instead of hardcoded four seeds",
+  "numeric_results_unchanged": true,
+  "original_retained": "report_original.md"
+}

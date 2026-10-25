@@ -1,0 +1,13 @@
+test_agents_have_independent_q_tables_and_saved_replay (tests.test_homeostatic_reproduction.HomeostaticReproductionTests.test_agents_have_independent_q_tables_and_saved_replay) ... ok
+test_discounted_reward_identity_includes_terminal_correction (tests.test_homeostatic_reproduction.HomeostaticReproductionTests.test_discounted_reward_identity_includes_terminal_correction) ... ok
+test_no_learning_is_actual_random_walk (tests.test_homeostatic_reproduction.HomeostaticReproductionTests.test_no_learning_is_actual_random_walk) ... ok
+test_no_reflecting_or_clipping_boundary (tests.test_homeostatic_reproduction.HomeostaticReproductionTests.test_no_reflecting_or_clipping_boundary) ... ok
+test_original_drive_definition_and_reward (tests.test_homeostatic_reproduction.HomeostaticReproductionTests.test_original_drive_definition_and_reward) ... ok
+test_q_update_includes_future_value (tests.test_homeostatic_reproduction.HomeostaticReproductionTests.test_q_update_includes_future_value) ... ok
+test_recorded_config_hash_and_manifest_close_over_raw_measurements (tests.test_homeostatic_reproduction.HomeostaticReproductionTests.test_recorded_config_hash_and_manifest_close_over_raw_measurements) ... ok
+test_softmax_convention_explicit_and_stable (tests.test_homeostatic_reproduction.HomeostaticReproductionTests.test_softmax_convention_explicit_and_stable) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.225s
+
+OK

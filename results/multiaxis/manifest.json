@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "definitions_frozen_utc": "2026-10-25T16:29:00Z",
+  "analysis_executed_utc": "2026-10-25T17:00:53.749762+00:00",
+  "source_sha256": "3c29ca1a8a750575b6027fbcfcc573ebff3a64cb80647108d3c5535fefc523d6",
+  "input_sha256": {
+    "results/software_real/config.json": "97d39298aeaf3ca252ade9ef4c9d806e76620d5711d707ed4c333e57886f996d",
+    "results/software_real/summary.json": "9a9dd40c4f47dda2f10748b58cfde0095100d9330cf57f5632f17a0330fef26c",
+    "results/software_real/results.jsonl": "9932814464837d796d707fd0915c6b88356ca54ad0cc865d3bf1d1c2b898409a",
+    "results/software_real/traces.jsonl": "fa5a6b0427b83b4c7c2eb0ea7ec1236e1907907ff1fb0581333956806901702a",
+    "results/psych_real/config.json": "ef9555f292b7dfee703fe6f2d898338ed90794bbdaab63a23ac6d7ae088f30fd",
+    "results/psych_real/summary.json": "8a7459ea137908698afaeb68ebc539e5a79e002730151383c99eb806a730d4f9",
+    "results/psych_real/responses.jsonl": "cc580d515db29f870e96efe22a16bf5ce5775e4988812bc999ac5b90bc258940"
+  },
+  "model_calls": 0,
+  "supplemental_only": true,
+  "psych_scorer_sha256": "8851f88ce85a91027bd4a4c9ef5da71d1fc0d5d33848ab612149048b59c1c257",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "bootstrap_seed": 9041,
+  "bootstrap_samples": 2000
+}

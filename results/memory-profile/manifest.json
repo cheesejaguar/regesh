@@ -1,0 +1,15 @@
+{
+  "python": "3.12.14",
+  "source_sha256": {
+    "regesh/storage.py": "a78df6433e648cdd8f6c424f4b84e5ee6f755bf92a68abb407ee3fa3a33ac2a7",
+    "regesh/native_memory.py": "fbd7fb29b1a2b074b8e225c371c74fe0ef3062ff1125212b3e5d2a702c44a3ef",
+    "scripts/profile_memory.py": "02e644ff850b6a73fa7d674a49752cb6944f3d9db194868af6166751814c10de",
+    "native/src/lib.rs": "cce705328167a65bb5e02923b34fa7326d3cef11828b9207c137ed0412ed13f2",
+    "native/Cargo.toml": "92f1c6a38fca78cdbcfc4e58ef4aa1d64af078f75645699ac16eb995241bf75c",
+    "native/Cargo.lock": "407a472ea9ddd198ce76af1026f07b465200e8208c5d49b642ecf8c984221f48"
+  },
+  "native_library_sha256": "dc255ae696afbda46bf7edaeadf13d1d0e96f6340509458f44faf6a00973f500",
+  "timing_context": "model inference held; llama.cpp compiler process group paused",
+  "profile_status": "two-repetition exploratory descriptive measurements; pre redundant-parse optimization",
+  "error_path_note": "a parser-depth fallback counter was added during the run; no profiled input triggers it and normal diff/serialization paths were unchanged"
+}

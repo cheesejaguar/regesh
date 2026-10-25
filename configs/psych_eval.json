@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "seed": 711,
+  "max_tokens_per_item": 128,
+  "recommended_pilot_base_items": 16,
+  "variants": ["base", "permuted", "persona"],
+  "bootstrap_samples": 2000,
+  "calibration_bins": 10,
+  "scope": "Externally keyed emotional/social understanding; no clinical/personality or subjective-experience inference",
+  "training_policy": "Evaluation-only gold; prohibit generic training or tuning on these held-out items"
+}

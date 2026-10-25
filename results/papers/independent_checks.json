@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "mode": "record-only; zero simulation/model/network calls",
+  "artifact_hashes_verified": {
+    "homeostatic": 105,
+    "happiness": 5,
+    "emotionprompt": 6
+  },
+  "homeostatic": [
+    {
+      "condition": "published_inverse_beta",
+      "independent_agents": 100000,
+      "executed_actions": 150000000,
+      "maximum_absolute_ever": 86,
+      "final_mean_absolute": 5.41912
+    },
+    {
+      "condition": "no_learning",
+      "independent_agents": 100000,
+      "executed_actions": 150000000,
+      "maximum_absolute_ever": 192,
+      "final_mean_absolute": 39.79792
+    },
+    {
+      "condition": "beta_temperature_sensitivity",
+      "independent_agents": 100000,
+      "executed_actions": 150000000,
+      "maximum_absolute_ever": 46,
+      "final_mean_absolute": 4e-05
+    }
+  ],
+  "happiness": [
+    {
+      "setting": "stationary_spread",
+      "condition": "objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4396.972953528454,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "stationary_spread",
+      "condition": "fixed_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4301.376988438326,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "stationary_spread",
+      "condition": "dynamic_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4705.470415390067,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "stationary_spread",
+      "condition": "ucb",
+      "rounds": 2000,
+      "objective_reward_mean": 4820.97199391964,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "stationary_spread",
+      "condition": "optimistic_objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4301.376988438326,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4787.99910637961,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "fixed_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4794.501674549957,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "dynamic_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4795.423222072806,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "ucb",
+      "rounds": 2000,
+      "objective_reward_mean": 4720.616854987917,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "optimistic_objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4794.501674549957,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "sudden_change",
+      "condition": "objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4195.780627034762,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "sudden_change",
+      "condition": "fixed_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4566.6004993338665,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "sudden_change",
+      "condition": "ucb",
+      "rounds": 2000,
+      "objective_reward_mean": 4536.928202690862,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "sudden_change",
+      "condition": "optimistic_objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4566.6004993338665,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "constant_change",
+      "condition": "objective",
+      "rounds": 2000,
+      "objective_reward_mean": 32536.11164298723,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "constant_change",
+      "condition": "fixed_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 31523.209230981425,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "constant_change",
+      "condition": "dynamic_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 35119.038857455336,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "constant_change",
+      "condition": "ucb",
+      "rounds": 2000,
+      "objective_reward_mean": 25261.06470977386,
+      "action_disagreements_with_fixed": 0.0
+    },
+    {
+      "setting": "constant_change",
+      "condition": "optimistic_objective",
+      "rounds": 2000,
+      "objective_reward_mean": 31523.209230981425,
+      "action_disagreements_with_fixed": 0.0
+    }
+  ],
+  "chain_emotion": {
+    "source_files_verified": 3,
+    "steu_items": 42,
+    "complete_liwc_rows": 73,
+    "user_rows": 90,
+    "participants": 30,
+    "checks": "Original score counts and all six LIWC condition means/SD agree; statistical inference separately reviewed."
+  },
+  "emotionprompt": {
+    "baseline": {
+      "n": 32,
+      "correct": 19,
+      "strict": 19
+    },
+    "emotionprompt_EP02": {
+      "n": 32,
+      "correct": 22,
+      "strict": 22
+    }
+  }
+}

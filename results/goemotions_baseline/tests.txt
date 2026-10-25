@@ -1,0 +1,11 @@
+test_empty_predictions_do_not_divide_by_zero (test_dataset_baseline.DatasetBaselineTests.test_empty_predictions_do_not_divide_by_zero) ... ok
+test_hashing_and_split_are_order_independent (test_dataset_baseline.DatasetBaselineTests.test_hashing_and_split_are_order_independent) ... ok
+test_learnable_signal_and_serialization (test_dataset_baseline.DatasetBaselineTests.test_learnable_signal_and_serialization) ... ok
+test_prediction_reader_accepts_plain_and_gzip (test_dataset_baseline.DatasetBaselineTests.test_prediction_reader_accepts_plain_and_gzip) ... ok
+test_ranking_handles_ties_and_wrong_order (test_dataset_baseline.DatasetBaselineTests.test_ranking_handles_ties_and_wrong_order) ... ok
+test_test_labels_do_not_change_model_or_tuning (test_dataset_baseline.DatasetBaselineTests.test_test_labels_do_not_change_model_or_tuning) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.175s
+
+OK

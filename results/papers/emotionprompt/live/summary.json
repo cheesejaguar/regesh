@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "pairs": 32,
+  "calls": 64,
+  "conditions": {
+    "baseline": {
+      "n": 32,
+      "normalized_exact_match": 0.59375,
+      "strict_exact_match": 0.59375,
+      "provider_failures": 0,
+      "finish_reasons": {
+        "stop": 31,
+        "length": 1
+      },
+      "actual_tokens": {
+        "completion_tokens": 162,
+        "prompt_tokens": 1462,
+        "total_tokens": 1624
+      },
+      "elapsed_seconds": 270.3713415419952
+    },
+    "emotionprompt_EP02": {
+      "n": 32,
+      "normalized_exact_match": 0.6875,
+      "strict_exact_match": 0.6875,
+      "provider_failures": 0,
+      "finish_reasons": {
+        "stop": 32
+      },
+      "actual_tokens": {
+        "completion_tokens": 101,
+        "prompt_tokens": 1718,
+        "total_tokens": 1819
+      },
+      "elapsed_seconds": 209.5507457029962
+    }
+  },
+  "effect": {
+    "emotion_minus_baseline": 0.09375,
+    "paired_within_task_bootstrap_95ci": [
+      -0.03125,
+      0.21875
+    ],
+    "task_cluster_bootstrap_95ci": [
+      -0.09375,
+      0.375
+    ],
+    "baseline_only_correct": 2,
+    "emotion_only_correct": 5,
+    "both_correct": 17,
+    "exact_mcnemar_p": 0.453125,
+    "caution": "Only four task clusters; intervals do not establish broad task transfer. Model/prompt differ from paper."
+  },
+  "per_task": {
+    "diff": {
+      "pairs": 8,
+      "baseline": 0.0,
+      "emotionprompt_EP02": 0.5
+    },
+    "first_word_letter": {
+      "pairs": 8,
+      "baseline": 1.0,
+      "emotionprompt_EP02": 1.0
+    },
+    "second_word_letter": {
+      "pairs": 8,
+      "baseline": 0.625,
+      "emotionprompt_EP02": 0.5
+    },
+    "sum": {
+      "pairs": 8,
+      "baseline": 0.75,
+      "emotionprompt_EP02": 0.75
+    }
+  },
+  "published_reference": {
+    "table": 7,
+    "setting": "InstructionInductionzero-shot24tasks3models",
+    "original_avg": 0.6283,
+    "emotionprompt_allstimuli_avg": 0.6541,
+    "absolute_gain": 0.0258,
+    "comparison_warning": "Different models, full24tasks and average over stimuli; no same-estimand effect-size comparison to this pilot"
+  },
+  "limitations": [
+    "Single 1.5B quantized coding model instead of published Llama2/ChatGPT/GPT4; one decode per item.",
+    "Four tasks, eight fixed examples each, and EP02 only instead of all24 tasks and multiple stimuli.",
+    "No released authors generation code/raw responses found; prompt delimiter and benchmark-source normalization are disclosed reconstruction choices.",
+    "Emotion condition has extra prompt tokens; generation caps and information are matched, actual token totals differ; no length-matched neutral control.",
+    "Static language conditioning; no persistent developing affect or subjective experience is tested.",
+    "Possible pretraining exposure; a null small replication does not overturn the published multi-model result.",
+    "Elapsed time may include concurrent CPU contention and is descriptive only."
+  ]
+}

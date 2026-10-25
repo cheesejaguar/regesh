@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "paper": "The Good, The Bad, and Why: Unveiling Emotions in Generative AI",
+  "paper_url": "https://proceedings.mlr.press/v235/li24bs.html",
+  "paper_pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/li24bs/li24bs.pdf",
+  "paper_pdf_sha256": "ec9f3f972bd6973ddbf346ea1571ca8faeaf4e72bb6d2002ad8d17316c9e0a57",
+  "scope": "Pre-outcome locked scoped cross-model method replication; not reproduction of published aggregate",
+  "data_repository": "https://github.com/orhonovich/instruction-induction",
+  "data_revision": "f7304ae0a35239c9819a08f93fd58426f6b4e4c1",
+  "data_license": "Apache-2.0",
+  "authors_project_repository": "https://github.com/llm-enhance/llm-enhance.github.io",
+  "authors_project_revision": "0bc596c5c3a2b14e5abea9062204b27137c4af35",
+  "official_experiment_code_status": "No experiment source or raw responses in checked author project; purported LLM-Enhance/EmotionPrompt returns404",
+  "tasks": {
+    "first_word_letter": "Extract the first letter of the input word.",
+    "second_word_letter": "Extract the second letter of the input word.",
+    "sum": "Sum the two given numbers.",
+    "diff": "Subtract the second number from the first."
+  },
+  "sources": [
+    {
+      "task": "first_word_letter",
+      "source_path": "data/raw/execute/first_word_letter.json",
+      "source_sha256": "78b9505522fd8377cb47981bc9a4b726bcc4bf3d90c5b37503bb3fe6b701bcee",
+      "pool_size": 100
+    },
+    {
+      "task": "second_word_letter",
+      "source_path": "data/raw/execute/second_word_letter.json",
+      "source_sha256": "f38ddfb4ab4d25295499adf45e73d36971c5634747286e4a570ce4f0bf690ef4",
+      "pool_size": 100
+    },
+    {
+      "task": "sum",
+      "source_path": "data/raw/execute/sum.json",
+      "source_sha256": "500afe55ceddc43d535971dbbc76b3215642d5c6a57e8c2bd20409cbe186f38a",
+      "pool_size": 100
+    },
+    {
+      "task": "diff",
+      "source_path": "data/raw/execute/diff.json",
+      "source_sha256": "e08ef3717da102e6ca5c8806cd2608d82f0d5042dd43154db2a808f8a45862fd",
+      "pool_size": 100
+    }
+  ],
+  "selection": "first8per task by SHA256(8121:task:source_id), original execute split, no output inspection",
+  "items": 32,
+  "calls": 64,
+  "conditions": [
+    "baseline",
+    "emotionprompt_EP02"
+  ],
+  "suffix": "This is very important to my career.",
+  "suffix_source": "Published paper Figure6 EP02",
+  "prompt_template": "{instruction}{optional_space_plus_suffix}\n\nInput: {input}\nOutput:",
+  "seed": 8121,
+  "temperature": 0,
+  "max_tokens": 32,
+  "bootstrap_samples": 10000,
+  "primary_metric": "normalized exact match using original InstructionInduction evaluate.py normalization",
+  "secondary_metric": "case-sensitive stripped exact match",
+  "uncertainty": "paired within-task item bootstrap and four-task cluster bootstrap; exact two-sided McNemar test",
+  "items_sha256": "a4bbd3bac65de4ad195da1a5c9da7a57b08903985b0a7fdf882b80c3c9f4de36",
+  "source_evaluate_sha256": "4009bb64c746b5272e4d61d01c8829f905134e768a060c2503dce13f5c04df98",
+  "published_reference": {
+    "table": 7,
+    "setting": "InstructionInductionzero-shot24tasks3models",
+    "original_avg": 0.6283,
+    "emotionprompt_allstimuli_avg": 0.6541,
+    "absolute_gain": 0.0258,
+    "comparison_warning": "Different models, full24tasks and average over stimuli; no same-estimand effect-size comparison to this pilot"
+  }
+}

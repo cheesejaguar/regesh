@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "run_complete": true,
+  "audited_calls": 64,
+  "pairs": 32,
+  "model_calls": 0,
+  "network_calls": 0,
+  "upstream_metric_sha256": "4009bb64c746b5272e4d61d01c8829f905134e768a060c2503dce13f5c04df98",
+  "all_recorded_scores_match_unmodified_original_evaluator": true,
+  "all_prompts_seeds_budgets_and_token_totals_match": true,
+  "condition_correct_counts": {
+    "baseline": 19,
+    "emotionprompt_EP02": 22
+  },
+  "exact_mcnemar_p": 0.453125,
+  "source_sha256": "64b7411b0174549314fe39d75e1599911c847f1fedfb8edf1ae2d5f3123bcdd5"
+}

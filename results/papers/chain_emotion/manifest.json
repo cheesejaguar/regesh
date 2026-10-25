@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "search_date": "2026-10-25",
+  "paper": "https://doi.org/10.1371/journal.pone.0301033",
+  "osf": "https://doi.org/10.17605/OSF.IO/QPT6Z",
+  "sources": {
+    "experiment_1_STEU.csv": {
+      "url": "https://osf.io/download/hqb8v/",
+      "bytes": 16445,
+      "sha256": "10cde1bbc7c562ac468a791fb609df6d63c2b0c491c6a5c536a144d807663e48"
+    },
+    "experiment_2_LIWC_Output.csv": {
+      "url": "https://osf.io/download/bxy73/",
+      "bytes": 56872,
+      "sha256": "b9ff2c3b143142c798d904459ff32d7e23e9abb72b812f321a67e972267ac4ee"
+    },
+    "experiment_3_user_study.csv": {
+      "url": "https://osf.io/download/d8szt/",
+      "bytes": 4827,
+      "sha256": "3af212b07a3ddd6a659e650ac8dc8e434cc9fdb434c7a7897ab4f63066d32a5f"
+    }
+  },
+  "source_license": "Article CC-BY; OSF node_license=null on 2026-10-25. Raw source CSVs cached outside Git; no claim of unrestricted dataset redistribution.",
+  "source_paths": {
+    "experiment_1_STEU.csv": "/workspace/scratch/paper_sources/chain_of_emotion/experiment_1_STEU.csv",
+    "experiment_2_LIWC_Output.csv": "/workspace/scratch/paper_sources/chain_of_emotion/experiment_2_LIWC_Output.csv",
+    "experiment_3_user_study.csv": "/workspace/scratch/paper_sources/chain_of_emotion/experiment_3_user_study.csv"
+  },
+  "source_code_sha256": "477723b57e54825e39faab4137cfe676f8b2e778589a6454952f68c821886ae9",
+  "seed": 20261025,
+  "bootstrap_samples": 10000,
+  "elapsed_analysis_seconds": 7.913617420999799,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "model_calls": 0,
+  "new_participants": 0,
+  "selection": "Existing paper selected for public raw data and relevance. Analyses are exploratory, not preregistered; early raw previews informed discrepancy checks.",
+  "scope": [
+    "Table1 STEU score reproduction",
+    "Table2 released LIWC score analysis",
+    "Table3 user rating reanalysis"
+  ],
+  "unreproduced": [
+    "Fresh GPT-3.5 outputs",
+    "New human user study",
+    "LIWC dictionary application",
+    "Experiment3 LIWC/Table4: corresponding raw scores not released in the three-file node"
+  ],
+  "summary_sha256": "54432313580407077581df92e68ce10c327cb0d6c373419263fdc81b31a99335",
+  "artifacts": {
+    "summary.json": "54432313580407077581df92e68ce10c327cb0d6c373419263fdc81b31a99335",
+    "runner.py": "477723b57e54825e39faab4137cfe676f8b2e778589a6454952f68c821886ae9",
+    "config.json": "c9ce15f4ff52a57d9c2b4308d4da36a1ec90ec0b7536a219c11cfbd9b09e9fb9",
+    "report.md": "28d5a570ec825a4f5a1ea0bae68541aa5d38c59b63776900a97108514d3995cb"
+  }
+}

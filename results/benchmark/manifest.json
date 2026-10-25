@@ -1,0 +1,11 @@
+{
+  "numpy": "2.3.5",
+  "python": "3.12.14",
+  "schema_version": 1,
+  "source_sha256": {
+    "benchmark.py": "0dc900c89725fd13bd9049f4a181fb3149202e85ff89660e488a812bf8d5c361",
+    "learning.py": "df276a18b07979250d4f9330c075a35b7726ec6d81a585cc5292ae0a5ac8f428"
+  },
+  "started_utc": "2026-10-25T08:14:34.012101+00:00",
+  "study_status": "exploratory_corrected_v1"
+}

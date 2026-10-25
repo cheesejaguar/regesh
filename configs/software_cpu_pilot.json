@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "study_status": "prospective_cpu_pilot_v1",
+  "tasks": [
+    "lru",
+    "ttl",
+    "batching",
+    "dedup",
+    "toposort",
+    "rolling"
+  ],
+  "seeds": [
+    910,
+    911
+  ],
+  "conditions": [
+    "hybrid",
+    "ordinary_adaptive"
+  ],
+  "attempts": 2,
+  "max_tokens": 512,
+  "generation_temperature": 0.6,
+  "max_source_characters": 24000,
+  "case_cpu_seconds": 3,
+  "case_wall_seconds": 5,
+  "case_memory_mib": 128,
+  "line_event_limit": 150000,
+  "bootstrap_samples": 2000,
+  "bootstrap_seed": 6211,
+  "weights_frozen": true,
+  "held_out_scope": "new executable task families; pretrained-model contamination unknown",
+  "runtime_budget_note": "Two generation seeds per each of six tasks chosen after unrelated throughput probe and before any held-out task generation. Four-seed larger protocol retained separately."
+}

@@ -1,0 +1,4 @@
+{
+  "all_reference_measurements_and_trajectories_identical": true,
+  "scope": "compact storage/replay preserves numerical reference behavior"
+}

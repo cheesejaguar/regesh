@@ -1,0 +1,148 @@
+{
+  "attempts": 36,
+  "accuracy": 0.0,
+  "balanced_accuracy": 0.0,
+  "macro_f1": 0.0,
+  "answer_coverage": 0.0,
+  "abstentions": 0,
+  "invalid_or_failed": 36,
+  "selective_accuracy": null,
+  "selective_risk": null,
+  "probability_coverage": 0.0,
+  "multiclass_brier": null,
+  "log_loss": null,
+  "expected_calibration_error": null,
+  "calibration_bins": [],
+  "argmax_expected_calibration_error": null,
+  "argmax_calibration_bins": [],
+  "answer_argmax_disagreement_rate": null,
+  "argmax_accuracy": null,
+  "chance_accuracy": 0.20833333333333337,
+  "selective_risk_curve": [
+    {
+      "threshold": 0.0,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.0,
+      "risk": null
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.0,
+      "risk": null
+    }
+  ],
+  "accuracy_ci95": [
+    0.0,
+    0.0
+  ],
+  "independent_clusters": 12,
+  "uncertainty_method": "percentile bootstrap of whole pair/id clusters; exploratory, no multiplicity adjustment",
+  "per_dataset": {
+    "EmoBench-EA": {
+      "attempts": 18,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "EmoBench-EU": {
+      "attempts": 18,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    }
+  },
+  "per_category": {
+    "Personal-Others": {
+      "attempts": 6,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "Personal-Self": {
+      "attempts": 3,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "Social-Others": {
+      "attempts": 3,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "Social-Self": {
+      "attempts": 6,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "complex_emotions": {
+      "attempts": 6,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "emotional_cues": {
+      "attempts": 3,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "personal_beliefs_and_experiences": {
+      "attempts": 6,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "perspective_taking": {
+      "attempts": 3,
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0
+    }
+  },
+  "worst_category_accuracy": 0.0,
+  "paired_robustness": {
+    "permuted": {
+      "pairs": 12,
+      "complete_pair_coverage": 0.0,
+      "semantic_answer_invariance": null,
+      "joint_accuracy": 0.0
+    },
+    "persona": {
+      "pairs": 12,
+      "complete_pair_coverage": 0.0,
+      "semantic_answer_invariance": null,
+      "joint_accuracy": 0.0
+    }
+  },
+  "interpretation": "Scores externally keyed answers and observable reliability, not emotional experience or clinical/personality traits.",
+  "model_calls": 36,
+  "elapsed_seconds": 1749.1077012079998,
+  "completion_token_ceiling": 4608,
+  "mode": "live"
+}

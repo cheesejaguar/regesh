@@ -1,0 +1,2765 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Regesh inspector</title>
+<style>body{font:15px system-ui;max-width:1000px;margin:2em auto;padding:0 1em;color:#172333}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f4f6;padding:1em}details{border-bottom:1px solid #ccd;padding:.7em}textarea{width:95%;min-height:5em}button{padding:.5em 1em}svg{width:100%;border:1px solid #ddd}label{display:block;margin-top:1em}</style></head><body>
+<h1>Regesh · demo</h1>
+<p>Functional affect research. Blue: valence; orange: arousal. X: journal order. Y: state value (−1 to 1). No claim of subjective experience.</p>
+<svg viewBox="0 0 740 200" role="img" aria-label="Mood trajectory"><line x1="0" x2="740" y1="100" y2="100" stroke="#ccc"/><polyline fill="none" stroke="#1455aa" stroke-width="2" points="20.00,100.00 97.78,106.38 175.56,106.38 253.33,106.38 331.11,100.21 408.89,100.21 486.67,99.56 564.44,99.60 642.22,99.60 720.00,99.60"/><polyline fill="none" stroke="#ba5100" stroke-width="2" points="20.00,100.00 97.78,90.68 175.56,90.68 253.33,90.68 331.11,88.33 408.89,88.33 486.67,89.72 564.44,90.54 642.22,90.54 720.00,90.54"/></svg>
+<h2>Current state and cognitive controls</h2><pre>{
+  &quot;time&quot;: 2.0,
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.1261164354075902,
+    &quot;valence&quot;: 0.0053707566093471265
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.05607365638114116,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.8180000000000001,
+    &quot;resources&quot;: 0.9700000000000001,
+    &quot;uncertainty&quot;: 0.4337600000000001
+  },
+  &quot;controls&quot;: {
+    &quot;exploration&quot;: 0.5980514113028041,
+    &quot;verification&quot;: 0.4881837306222771,
+    &quot;retrieval_bias&quot;: 0.0053707566093471265,
+    &quot;learning_rate&quot;: 0.153881821184,
+    &quot;planning_horizon&quot;: 7,
+    &quot;available_resources&quot;: 0.9700000000000001,
+    &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+    &quot;reason&quot;: {
+      &quot;mood&quot;: {
+        &quot;arousal&quot;: 0.1261164354075902,
+        &quot;valence&quot;: 0.0053707566093471265
+      },
+      &quot;uncertainty&quot;: 0.4337600000000001,
+      &quot;control&quot;: 0.9
+    }
+  }
+}</pre>
+<p><a href="/api/state">Full state JSON</a> · <a href="/api/trace">Journal JSON</a> · <a href="/api/snapshot">Snapshot JSON</a></p>
+<h2>Research interventions</h2><p>Interventions are journaled separately from observed evidence. Fork before changing state to compare trajectories.</p>
+<label>Fork or replay target agent ID <input id="target" value="comparison"></label>
+<button onclick="send('fork',{agent_id:document.getElementById('target').value})">Fork current snapshot</button>
+<label>Replay through journal sequence (blank = latest) <input id="through" type="number" min="0"></label>
+<button onclick="send('replay',{agent_id:document.getElementById('target').value,through:document.getElementById('through').value===''?null:Number(document.getElementById('through').value)})">Replay to target</button>
+<label>State changes (JSON)<textarea id="changes">{"mood":{"valence":0.4}}</textarea></label>
+<label>Intervention reason <input id="reason" value="controlled comparison"></label>
+<button onclick="send('intervene',{changes:JSON.parse(document.getElementById('changes').value),reason:document.getElementById('reason').value})">Apply intervention</button>
+<label>Advance simulation time <input id="dt" type="number" min="0" value="5"></label>
+<button onclick="send('advance',{dt:Number(document.getElementById('dt').value)})">Advance</button>
+<pre id="result"></pre><h2>Causal journal</h2><details><summary>0 · init · simulation time 0.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  }
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [],
+  &quot;affect&quot;: {},
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: 0.0,
+    &quot;precision&quot;: 0.5
+  },
+  &quot;events&quot;: {},
+  &quot;expectations&quot;: {},
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {},
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.0,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.9,
+    &quot;resources&quot;: 1.0,
+    &quot;uncertainty&quot;: 0.5
+  },
+  &quot;last_appraisal&quot;: null,
+  &quot;memory&quot;: {},
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.0,
+    &quot;valence&quot;: 0.0
+  },
+  &quot;outcomes&quot;: {},
+  &quot;relationships&quot;: {},
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 0.0
+}</pre></details><details><summary>1 · observe · simulation time 0.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.3,
+    &quot;expected_quality&quot;: 0.0,
+    &quot;gain&quot;: -0.8,
+    &quot;goal_relevance&quot;: 0.8,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-setback&quot;
+    ],
+    &quot;surprise&quot;: 0.4,
+    &quot;uncertainty&quot;: 0.7
+  },
+  &quot;event&quot;: {
+    &quot;actor&quot;: &quot;reviewer&quot;,
+    &quot;causal_links&quot;: [],
+    &quot;confidence&quot;: 1.0,
+    &quot;data&quot;: {
+      &quot;control&quot;: 0.3,
+      &quot;goal_delta&quot;: {
+        &quot;quality&quot;: -0.8
+      },
+      &quot;quality&quot;: -0.8,
+      &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+      &quot;uncertainty&quot;: 0.7
+    },
+    &quot;id&quot;: &quot;demo-setback&quot;,
+    &quot;kind&quot;: &quot;occurrence&quot;,
+    &quot;schema_version&quot;: 1,
+    &quot;source&quot;: &quot;executable-check&quot;,
+    &quot;target&quot;: &quot;candidate-A&quot;,
+    &quot;task&quot;: &quot;design&quot;,
+    &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+  }
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [],
+  &quot;affect&quot;: {
+    &quot;demo-setback&quot;: {
+      &quot;curiosity&quot;: 0.12,
+      &quot;satisfaction&quot;: 0.0,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.7084,
+      &quot;time&quot;: 0.0
+    }
+  },
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: 0.0,
+    &quot;precision&quot;: 0.5
+  },
+  &quot;events&quot;: {
+    &quot;demo-setback&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: -0.8
+        },
+        &quot;quality&quot;: -0.8,
+        &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+        &quot;uncertainty&quot;: 0.7
+      },
+      &quot;id&quot;: &quot;demo-setback&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+    }
+  },
+  &quot;expectations&quot;: {},
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {
+    &quot;design:candidate-A:-0.8&quot;: 1.0
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.0,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.9,
+    &quot;resources&quot;: 1.0,
+    &quot;uncertainty&quot;: 0.54
+  },
+  &quot;last_appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.3,
+    &quot;expected_quality&quot;: 0.0,
+    &quot;gain&quot;: -0.8,
+    &quot;goal_relevance&quot;: 0.8,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-setback&quot;
+    ],
+    &quot;surprise&quot;: 0.4,
+    &quot;uncertainty&quot;: 0.7
+  },
+  &quot;memory&quot;: {
+    &quot;demo-setback&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.12,
+        &quot;satisfaction&quot;: 0.0,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.7084,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 1.2000000000000002,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.3,
+            &quot;expected_quality&quot;: 0.0,
+            &quot;gain&quot;: -0.8,
+            &quot;goal_relevance&quot;: 0.8,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;
+            ],
+            &quot;surprise&quot;: 0.4,
+            &quot;uncertainty&quot;: 0.7
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: -0.8
+          },
+          &quot;quality&quot;: -0.8,
+          &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+          &quot;uncertainty&quot;: 0.7
+        },
+        &quot;id&quot;: &quot;demo-setback&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+      },
+      &quot;outcome&quot;: null,
+      &quot;retrievals&quot;: 0
+    }
+  },
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.12426,
+    &quot;valence&quot;: -0.085008
+  },
+  &quot;outcomes&quot;: {},
+  &quot;relationships&quot;: {
+    &quot;reviewer&quot;: {
+      &quot;affiliation&quot;: 0.0,
+      &quot;authority&quot;: 0.0,
+      &quot;correct&quot;: 1.0,
+      &quot;familiarity&quot;: 0.05,
+      &quot;incorrect&quot;: 1.0,
+      &quot;reliability&quot;: 0.5
+    }
+  },
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 0.0
+}</pre></details><details><summary>2 · act · simulation time 0.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;action&quot;: &quot;verify&quot;,
+  &quot;control&quot;: {
+    &quot;available_resources&quot;: 0.92,
+    &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+    &quot;exploration&quot;: 0.34749759999999996,
+    &quot;learning_rate&quot;: 0.176,
+    &quot;planning_horizon&quot;: 4,
+    &quot;reason&quot;: {
+      &quot;control&quot;: 0.3,
+      &quot;mood&quot;: {
+        &quot;arousal&quot;: 0.12426,
+        &quot;valence&quot;: -0.085008
+      },
+      &quot;uncertainty&quot;: 0.54
+    },
+    &quot;retrieval_bias&quot;: -0.085008,
+    &quot;verification&quot;: 0.518278
+  },
+  &quot;cost&quot;: 0.08,
+  &quot;reason&quot;: {
+    &quot;event_id&quot;: &quot;demo-setback&quot;,
+    &quot;purpose&quot;: &quot;check resource measurement&quot;
+  },
+  &quot;time&quot;: 0.0
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [
+    {
+      &quot;action&quot;: &quot;verify&quot;,
+      &quot;control&quot;: {
+        &quot;available_resources&quot;: 0.92,
+        &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+        &quot;exploration&quot;: 0.34749759999999996,
+        &quot;learning_rate&quot;: 0.176,
+        &quot;planning_horizon&quot;: 4,
+        &quot;reason&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;mood&quot;: {
+            &quot;arousal&quot;: 0.12426,
+            &quot;valence&quot;: -0.085008
+          },
+          &quot;uncertainty&quot;: 0.54
+        },
+        &quot;retrieval_bias&quot;: -0.085008,
+        &quot;verification&quot;: 0.518278
+      },
+      &quot;cost&quot;: 0.08,
+      &quot;reason&quot;: {
+        &quot;event_id&quot;: &quot;demo-setback&quot;,
+        &quot;purpose&quot;: &quot;check resource measurement&quot;
+      },
+      &quot;time&quot;: 0.0
+    }
+  ],
+  &quot;affect&quot;: {
+    &quot;demo-setback&quot;: {
+      &quot;curiosity&quot;: 0.12,
+      &quot;satisfaction&quot;: 0.0,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.7084,
+      &quot;time&quot;: 0.0
+    }
+  },
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: 0.0,
+    &quot;precision&quot;: 0.5
+  },
+  &quot;events&quot;: {
+    &quot;demo-setback&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: -0.8
+        },
+        &quot;quality&quot;: -0.8,
+        &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+        &quot;uncertainty&quot;: 0.7
+      },
+      &quot;id&quot;: &quot;demo-setback&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+    }
+  },
+  &quot;expectations&quot;: {},
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {
+    &quot;design:candidate-A:-0.8&quot;: 1.0
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.07200000000000001,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.9,
+    &quot;resources&quot;: 0.92,
+    &quot;uncertainty&quot;: 0.54
+  },
+  &quot;last_appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.3,
+    &quot;expected_quality&quot;: 0.0,
+    &quot;gain&quot;: -0.8,
+    &quot;goal_relevance&quot;: 0.8,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-setback&quot;
+    ],
+    &quot;surprise&quot;: 0.4,
+    &quot;uncertainty&quot;: 0.7
+  },
+  &quot;memory&quot;: {
+    &quot;demo-setback&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.12,
+        &quot;satisfaction&quot;: 0.0,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.7084,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 1.2000000000000002,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.3,
+            &quot;expected_quality&quot;: 0.0,
+            &quot;gain&quot;: -0.8,
+            &quot;goal_relevance&quot;: 0.8,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;
+            ],
+            &quot;surprise&quot;: 0.4,
+            &quot;uncertainty&quot;: 0.7
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: -0.8
+          },
+          &quot;quality&quot;: -0.8,
+          &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+          &quot;uncertainty&quot;: 0.7
+        },
+        &quot;id&quot;: &quot;demo-setback&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+      },
+      &quot;outcome&quot;: null,
+      &quot;retrievals&quot;: 0
+    }
+  },
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.12426,
+    &quot;valence&quot;: -0.085008
+  },
+  &quot;outcomes&quot;: {},
+  &quot;relationships&quot;: {
+    &quot;reviewer&quot;: {
+      &quot;affiliation&quot;: 0.0,
+      &quot;authority&quot;: 0.0,
+      &quot;correct&quot;: 1.0,
+      &quot;familiarity&quot;: 0.05,
+      &quot;incorrect&quot;: 1.0,
+      &quot;reliability&quot;: 0.5
+    }
+  },
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 0.0
+}</pre></details><details><summary>3 · record_outcome · simulation time 0.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;outcome&quot;: {
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.3,
+    &quot;event_id&quot;: &quot;demo-setback&quot;,
+    &quot;id&quot;: &quot;demo-setback:outcome&quot;,
+    &quot;partner_correct&quot;: true,
+    &quot;prediction_error&quot;: -0.8,
+    &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+    &quot;quality&quot;: -0.8
+  }
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [
+    {
+      &quot;action&quot;: &quot;verify&quot;,
+      &quot;control&quot;: {
+        &quot;available_resources&quot;: 0.92,
+        &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+        &quot;exploration&quot;: 0.34749759999999996,
+        &quot;learning_rate&quot;: 0.176,
+        &quot;planning_horizon&quot;: 4,
+        &quot;reason&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;mood&quot;: {
+            &quot;arousal&quot;: 0.12426,
+            &quot;valence&quot;: -0.085008
+          },
+          &quot;uncertainty&quot;: 0.54
+        },
+        &quot;retrieval_bias&quot;: -0.085008,
+        &quot;verification&quot;: 0.518278
+      },
+      &quot;cost&quot;: 0.08,
+      &quot;reason&quot;: {
+        &quot;event_id&quot;: &quot;demo-setback&quot;,
+        &quot;purpose&quot;: &quot;check resource measurement&quot;
+      },
+      &quot;time&quot;: 0.0
+    }
+  ],
+  &quot;affect&quot;: {
+    &quot;demo-setback&quot;: {
+      &quot;curiosity&quot;: 0.12,
+      &quot;satisfaction&quot;: 0.0,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.7084,
+      &quot;time&quot;: 0.0
+    }
+  },
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: -0.008,
+    &quot;precision&quot;: 0.498
+  },
+  &quot;events&quot;: {
+    &quot;demo-setback&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: -0.8
+        },
+        &quot;quality&quot;: -0.8,
+        &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+        &quot;uncertainty&quot;: 0.7
+      },
+      &quot;id&quot;: &quot;demo-setback&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+    }
+  },
+  &quot;expectations&quot;: {
+    &quot;design&quot;: {
+      &quot;control&quot;: 0.4648,
+      &quot;mean&quot;: -0.1408,
+      &quot;n&quot;: 1
+    }
+  },
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {
+    &quot;design:candidate-A:-0.8&quot;: 1.0
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.07200000000000001,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.8200000000000001,
+    &quot;resources&quot;: 0.92,
+    &quot;uncertainty&quot;: 0.526
+  },
+  &quot;last_appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.3,
+    &quot;expected_quality&quot;: 0.0,
+    &quot;gain&quot;: -0.8,
+    &quot;goal_relevance&quot;: 0.8,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-setback&quot;
+    ],
+    &quot;surprise&quot;: 0.4,
+    &quot;uncertainty&quot;: 0.7
+  },
+  &quot;memory&quot;: {
+    &quot;demo-setback&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.12,
+        &quot;satisfaction&quot;: 0.0,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.7084,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 1.2000000000000002,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.3,
+            &quot;expected_quality&quot;: 0.0,
+            &quot;gain&quot;: -0.8,
+            &quot;goal_relevance&quot;: 0.8,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;
+            ],
+            &quot;surprise&quot;: 0.4,
+            &quot;uncertainty&quot;: 0.7
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: -0.8
+          },
+          &quot;quality&quot;: -0.8,
+          &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+          &quot;uncertainty&quot;: 0.7
+        },
+        &quot;id&quot;: &quot;demo-setback&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    }
+  },
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.12426,
+    &quot;valence&quot;: -0.085008
+  },
+  &quot;outcomes&quot;: {
+    &quot;demo-setback:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.3,
+      &quot;event_id&quot;: &quot;demo-setback&quot;,
+      &quot;id&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;partner_correct&quot;: true,
+      &quot;prediction_error&quot;: -0.8,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: -0.8
+    }
+  },
+  &quot;relationships&quot;: {
+    &quot;reviewer&quot;: {
+      &quot;affiliation&quot;: 0.0,
+      &quot;authority&quot;: 0.0,
+      &quot;correct&quot;: 2.0,
+      &quot;familiarity&quot;: 0.05,
+      &quot;incorrect&quot;: 1.0,
+      &quot;reliability&quot;: 0.6666666666666666
+    }
+  },
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 0.0
+}</pre></details><details><summary>4 · observe · simulation time 0.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.9,
+    &quot;expected_quality&quot;: -0.1408,
+    &quot;gain&quot;: 0.6,
+    &quot;goal_relevance&quot;: 0.6,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-correction&quot;
+    ],
+    &quot;surprise&quot;: 0.3704,
+    &quot;uncertainty&quot;: 0.1
+  },
+  &quot;event&quot;: {
+    &quot;actor&quot;: &quot;reviewer&quot;,
+    &quot;causal_links&quot;: [
+      &quot;demo-setback&quot;
+    ],
+    &quot;confidence&quot;: 1.0,
+    &quot;data&quot;: {
+      &quot;control&quot;: 0.9,
+      &quot;goal_delta&quot;: {
+        &quot;quality&quot;: 0.6
+      },
+      &quot;quality&quot;: 0.6,
+      &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+      &quot;uncertainty&quot;: 0.1
+    },
+    &quot;id&quot;: &quot;demo-correction&quot;,
+    &quot;kind&quot;: &quot;occurrence&quot;,
+    &quot;schema_version&quot;: 1,
+    &quot;source&quot;: &quot;executable-check&quot;,
+    &quot;target&quot;: &quot;candidate-A&quot;,
+    &quot;task&quot;: &quot;design&quot;,
+    &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+  }
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [
+    {
+      &quot;action&quot;: &quot;verify&quot;,
+      &quot;control&quot;: {
+        &quot;available_resources&quot;: 0.92,
+        &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+        &quot;exploration&quot;: 0.34749759999999996,
+        &quot;learning_rate&quot;: 0.176,
+        &quot;planning_horizon&quot;: 4,
+        &quot;reason&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;mood&quot;: {
+            &quot;arousal&quot;: 0.12426,
+            &quot;valence&quot;: -0.085008
+          },
+          &quot;uncertainty&quot;: 0.54
+        },
+        &quot;retrieval_bias&quot;: -0.085008,
+        &quot;verification&quot;: 0.518278
+      },
+      &quot;cost&quot;: 0.08,
+      &quot;reason&quot;: {
+        &quot;event_id&quot;: &quot;demo-setback&quot;,
+        &quot;purpose&quot;: &quot;check resource measurement&quot;
+      },
+      &quot;time&quot;: 0.0
+    }
+  ],
+  &quot;affect&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;curiosity&quot;: 0.33336,
+      &quot;satisfaction&quot;: 0.6,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;curiosity&quot;: 0.12,
+      &quot;satisfaction&quot;: 0.0,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.7084,
+      &quot;time&quot;: 0.0
+    }
+  },
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: -0.008,
+    &quot;precision&quot;: 0.498
+  },
+  &quot;events&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [
+        &quot;demo-setback&quot;
+      ],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.9,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: 0.6
+        },
+        &quot;quality&quot;: 0.6,
+        &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+        &quot;uncertainty&quot;: 0.1
+      },
+      &quot;id&quot;: &quot;demo-correction&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+    },
+    &quot;demo-setback&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: -0.8
+        },
+        &quot;quality&quot;: -0.8,
+        &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+        &quot;uncertainty&quot;: 0.7
+      },
+      &quot;id&quot;: &quot;demo-setback&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+    }
+  },
+  &quot;expectations&quot;: {
+    &quot;design&quot;: {
+      &quot;control&quot;: 0.4648,
+      &quot;mean&quot;: -0.1408,
+      &quot;n&quot;: 1
+    }
+  },
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {
+    &quot;design:candidate-A:-0.8&quot;: 1.0,
+    &quot;design:candidate-A:0.6&quot;: 1.0
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.07200000000000001,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.8200000000000001,
+    &quot;resources&quot;: 0.92,
+    &quot;uncertainty&quot;: 0.4408000000000001
+  },
+  &quot;last_appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.9,
+    &quot;expected_quality&quot;: -0.1408,
+    &quot;gain&quot;: 0.6,
+    &quot;goal_relevance&quot;: 0.6,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-correction&quot;
+    ],
+    &quot;surprise&quot;: 0.3704,
+    &quot;uncertainty&quot;: 0.1
+  },
+  &quot;memory&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.33336,
+        &quot;satisfaction&quot;: 0.6,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.0,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 0.9703999999999999,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.1408,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3704,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [
+          &quot;demo-setback&quot;
+        ],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.9,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: 0.6
+          },
+          &quot;quality&quot;: 0.6,
+          &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+          &quot;uncertainty&quot;: 0.1
+        },
+        &quot;id&quot;: &quot;demo-correction&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+      },
+      &quot;outcome&quot;: null,
+      &quot;retrievals&quot;: 0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.12,
+        &quot;satisfaction&quot;: 0.0,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.7084,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 1.2000000000000002,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.3,
+            &quot;expected_quality&quot;: 0.0,
+            &quot;gain&quot;: -0.8,
+            &quot;goal_relevance&quot;: 0.8,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;
+            ],
+            &quot;surprise&quot;: 0.4,
+            &quot;uncertainty&quot;: 0.7
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: -0.8
+          },
+          &quot;quality&quot;: -0.8,
+          &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+          &quot;uncertainty&quot;: 0.7
+        },
+        &quot;id&quot;: &quot;demo-setback&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    }
+  },
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.15562499999999999,
+    &quot;valence&quot;: -0.0028070400000000106
+  },
+  &quot;outcomes&quot;: {
+    &quot;demo-setback:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.3,
+      &quot;event_id&quot;: &quot;demo-setback&quot;,
+      &quot;id&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;partner_correct&quot;: true,
+      &quot;prediction_error&quot;: -0.8,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: -0.8
+    }
+  },
+  &quot;relationships&quot;: {
+    &quot;reviewer&quot;: {
+      &quot;affiliation&quot;: 0.0,
+      &quot;authority&quot;: 0.0,
+      &quot;correct&quot;: 2.0,
+      &quot;familiarity&quot;: 0.1,
+      &quot;incorrect&quot;: 1.0,
+      &quot;reliability&quot;: 0.6666666666666666
+    }
+  },
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 0.0
+}</pre></details><details><summary>5 · record_outcome · simulation time 0.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;outcome&quot;: {
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.9,
+    &quot;event_id&quot;: &quot;demo-correction&quot;,
+    &quot;id&quot;: &quot;demo-correction:outcome&quot;,
+    &quot;partner_correct&quot;: null,
+    &quot;prediction_error&quot;: 0.7408,
+    &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+    &quot;quality&quot;: 0.6
+  }
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [
+    {
+      &quot;action&quot;: &quot;verify&quot;,
+      &quot;control&quot;: {
+        &quot;available_resources&quot;: 0.92,
+        &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+        &quot;exploration&quot;: 0.34749759999999996,
+        &quot;learning_rate&quot;: 0.176,
+        &quot;planning_horizon&quot;: 4,
+        &quot;reason&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;mood&quot;: {
+            &quot;arousal&quot;: 0.12426,
+            &quot;valence&quot;: -0.085008
+          },
+          &quot;uncertainty&quot;: 0.54
+        },
+        &quot;retrieval_bias&quot;: -0.085008,
+        &quot;verification&quot;: 0.518278
+      },
+      &quot;cost&quot;: 0.08,
+      &quot;reason&quot;: {
+        &quot;event_id&quot;: &quot;demo-setback&quot;,
+        &quot;purpose&quot;: &quot;check resource measurement&quot;
+      },
+      &quot;time&quot;: 0.0
+    }
+  ],
+  &quot;affect&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;curiosity&quot;: 0.33336,
+      &quot;satisfaction&quot;: 0.6,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;curiosity&quot;: 0.12,
+      &quot;satisfaction&quot;: 0.0,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.7084,
+      &quot;time&quot;: 0.0
+    }
+  },
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: -0.0019199999999999998,
+    &quot;precision&quot;: 0.495448
+  },
+  &quot;events&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [
+        &quot;demo-setback&quot;
+      ],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.9,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: 0.6
+        },
+        &quot;quality&quot;: 0.6,
+        &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+        &quot;uncertainty&quot;: 0.1
+      },
+      &quot;id&quot;: &quot;demo-correction&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+    },
+    &quot;demo-setback&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: -0.8
+        },
+        &quot;quality&quot;: -0.8,
+        &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+        &quot;uncertainty&quot;: 0.7
+      },
+      &quot;id&quot;: &quot;demo-setback&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+    }
+  },
+  &quot;expectations&quot;: {
+    &quot;design&quot;: {
+      &quot;control&quot;: 0.5383035392,
+      &quot;mean&quot;: -0.015681843200000017,
+      &quot;n&quot;: 2
+    }
+  },
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {
+    &quot;design:candidate-A:-0.8&quot;: 1.0,
+    &quot;design:candidate-A:0.6&quot;: 1.0
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.07200000000000001,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.8180000000000001,
+    &quot;resources&quot;: 0.92,
+    &quot;uncertainty&quot;: 0.4337600000000001
+  },
+  &quot;last_appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.9,
+    &quot;expected_quality&quot;: -0.1408,
+    &quot;gain&quot;: 0.6,
+    &quot;goal_relevance&quot;: 0.6,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-correction&quot;
+    ],
+    &quot;surprise&quot;: 0.3704,
+    &quot;uncertainty&quot;: 0.1
+  },
+  &quot;memory&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.33336,
+        &quot;satisfaction&quot;: 0.6,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.0,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 0.9703999999999999,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.1408,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3704,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [
+          &quot;demo-setback&quot;
+        ],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.9,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: 0.6
+          },
+          &quot;quality&quot;: 0.6,
+          &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+          &quot;uncertainty&quot;: 0.1
+        },
+        &quot;id&quot;: &quot;demo-correction&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.12,
+        &quot;satisfaction&quot;: 0.0,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.7084,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 1.2000000000000002,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.3,
+            &quot;expected_quality&quot;: 0.0,
+            &quot;gain&quot;: -0.8,
+            &quot;goal_relevance&quot;: 0.8,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;
+            ],
+            &quot;surprise&quot;: 0.4,
+            &quot;uncertainty&quot;: 0.7
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: -0.8
+          },
+          &quot;quality&quot;: -0.8,
+          &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+          &quot;uncertainty&quot;: 0.7
+        },
+        &quot;id&quot;: &quot;demo-setback&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    }
+  },
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.15562499999999999,
+    &quot;valence&quot;: -0.0028070400000000106
+  },
+  &quot;outcomes&quot;: {
+    &quot;demo-correction:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.9,
+      &quot;event_id&quot;: &quot;demo-correction&quot;,
+      &quot;id&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;partner_correct&quot;: null,
+      &quot;prediction_error&quot;: 0.7408,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: 0.6
+    },
+    &quot;demo-setback:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.3,
+      &quot;event_id&quot;: &quot;demo-setback&quot;,
+      &quot;id&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;partner_correct&quot;: true,
+      &quot;prediction_error&quot;: -0.8,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: -0.8
+    }
+  },
+  &quot;relationships&quot;: {
+    &quot;reviewer&quot;: {
+      &quot;affiliation&quot;: 0.0,
+      &quot;authority&quot;: 0.0,
+      &quot;correct&quot;: 2.0,
+      &quot;familiarity&quot;: 0.1,
+      &quot;incorrect&quot;: 1.0,
+      &quot;reliability&quot;: 0.6666666666666666
+    }
+  },
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 0.0
+}</pre></details><details><summary>6 · reappraise · simulation time 0.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.9,
+    &quot;expected_quality&quot;: -0.015681843200000017,
+    &quot;gain&quot;: 0.6,
+    &quot;goal_relevance&quot;: 0.6,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-setback&quot;,
+      &quot;demo-correction&quot;
+    ],
+    &quot;surprise&quot;: 0.3078409216,
+    &quot;uncertainty&quot;: 0.1
+  },
+  &quot;event_id&quot;: &quot;demo-setback&quot;,
+  &quot;evidence_ids&quot;: [
+    &quot;demo-correction&quot;
+  ],
+  &quot;reason&quot;: &quot;corrected resource measurement&quot;
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [
+    {
+      &quot;action&quot;: &quot;verify&quot;,
+      &quot;control&quot;: {
+        &quot;available_resources&quot;: 0.92,
+        &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+        &quot;exploration&quot;: 0.34749759999999996,
+        &quot;learning_rate&quot;: 0.176,
+        &quot;planning_horizon&quot;: 4,
+        &quot;reason&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;mood&quot;: {
+            &quot;arousal&quot;: 0.12426,
+            &quot;valence&quot;: -0.085008
+          },
+          &quot;uncertainty&quot;: 0.54
+        },
+        &quot;retrieval_bias&quot;: -0.085008,
+        &quot;verification&quot;: 0.518278
+      },
+      &quot;cost&quot;: 0.08,
+      &quot;reason&quot;: {
+        &quot;event_id&quot;: &quot;demo-setback&quot;,
+        &quot;purpose&quot;: &quot;check resource measurement&quot;
+      },
+      &quot;time&quot;: 0.0
+    }
+  ],
+  &quot;affect&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;curiosity&quot;: 0.33336,
+      &quot;satisfaction&quot;: 0.6,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;curiosity&quot;: 0.03196809570461538,
+      &quot;satisfaction&quot;: 0.06923076923076922,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    }
+  },
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: -0.0019199999999999998,
+    &quot;precision&quot;: 0.495448
+  },
+  &quot;events&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [
+        &quot;demo-setback&quot;
+      ],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.9,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: 0.6
+        },
+        &quot;quality&quot;: 0.6,
+        &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+        &quot;uncertainty&quot;: 0.1
+      },
+      &quot;id&quot;: &quot;demo-correction&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+    },
+    &quot;demo-setback&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: -0.8
+        },
+        &quot;quality&quot;: -0.8,
+        &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+        &quot;uncertainty&quot;: 0.7
+      },
+      &quot;id&quot;: &quot;demo-setback&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+    }
+  },
+  &quot;expectations&quot;: {
+    &quot;design&quot;: {
+      &quot;control&quot;: 0.5383035392,
+      &quot;mean&quot;: -0.015681843200000017,
+      &quot;n&quot;: 2
+    }
+  },
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {
+    &quot;design:candidate-A:-0.8&quot;: 1.0,
+    &quot;design:candidate-A:0.6&quot;: 1.0
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.07200000000000001,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.8180000000000001,
+    &quot;resources&quot;: 0.92,
+    &quot;uncertainty&quot;: 0.4337600000000001
+  },
+  &quot;last_appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.9,
+    &quot;expected_quality&quot;: -0.015681843200000017,
+    &quot;gain&quot;: 0.6,
+    &quot;goal_relevance&quot;: 0.6,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-setback&quot;,
+      &quot;demo-correction&quot;
+    ],
+    &quot;surprise&quot;: 0.3078409216,
+    &quot;uncertainty&quot;: 0.1
+  },
+  &quot;memory&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.33336,
+        &quot;satisfaction&quot;: 0.6,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.0,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 0.9703999999999999,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.1408,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3704,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [
+          &quot;demo-setback&quot;
+        ],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.9,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: 0.6
+          },
+          &quot;quality&quot;: 0.6,
+          &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+          &quot;uncertainty&quot;: 0.1
+        },
+        &quot;id&quot;: &quot;demo-correction&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.12,
+        &quot;satisfaction&quot;: 0.0,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.7084,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 1.2000000000000002,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.3,
+            &quot;expected_quality&quot;: 0.0,
+            &quot;gain&quot;: -0.8,
+            &quot;goal_relevance&quot;: 0.8,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;
+            ],
+            &quot;surprise&quot;: 0.4,
+            &quot;uncertainty&quot;: 0.7
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        },
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.015681843200000017,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;,
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3078409216,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;corrected resource measurement&quot;,
+          &quot;version&quot;: 2
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: -0.8
+          },
+          &quot;quality&quot;: -0.8,
+          &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+          &quot;uncertainty&quot;: 0.7
+        },
+        &quot;id&quot;: &quot;demo-setback&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    }
+  },
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.1370764643556923,
+    &quot;valence&quot;: 0.005837497107692297
+  },
+  &quot;outcomes&quot;: {
+    &quot;demo-correction:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.9,
+      &quot;event_id&quot;: &quot;demo-correction&quot;,
+      &quot;id&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;partner_correct&quot;: null,
+      &quot;prediction_error&quot;: 0.7408,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: 0.6
+    },
+    &quot;demo-setback:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.3,
+      &quot;event_id&quot;: &quot;demo-setback&quot;,
+      &quot;id&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;partner_correct&quot;: true,
+      &quot;prediction_error&quot;: -0.8,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: -0.8
+    }
+  },
+  &quot;relationships&quot;: {
+    &quot;reviewer&quot;: {
+      &quot;affiliation&quot;: 0.0,
+      &quot;authority&quot;: 0.0,
+      &quot;correct&quot;: 2.0,
+      &quot;familiarity&quot;: 0.1,
+      &quot;incorrect&quot;: 1.0,
+      &quot;reliability&quot;: 0.6666666666666666
+    }
+  },
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 0.0
+}</pre></details><details><summary>7 · advance_time · simulation time 2.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;dt&quot;: 2
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [
+    {
+      &quot;action&quot;: &quot;verify&quot;,
+      &quot;control&quot;: {
+        &quot;available_resources&quot;: 0.92,
+        &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+        &quot;exploration&quot;: 0.34749759999999996,
+        &quot;learning_rate&quot;: 0.176,
+        &quot;planning_horizon&quot;: 4,
+        &quot;reason&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;mood&quot;: {
+            &quot;arousal&quot;: 0.12426,
+            &quot;valence&quot;: -0.085008
+          },
+          &quot;uncertainty&quot;: 0.54
+        },
+        &quot;retrieval_bias&quot;: -0.085008,
+        &quot;verification&quot;: 0.518278
+      },
+      &quot;cost&quot;: 0.08,
+      &quot;reason&quot;: {
+        &quot;event_id&quot;: &quot;demo-setback&quot;,
+        &quot;purpose&quot;: &quot;check resource measurement&quot;
+      },
+      &quot;time&quot;: 0.0
+    }
+  ],
+  &quot;affect&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;curiosity&quot;: 0.17115273080070487,
+      &quot;satisfaction&quot;: 0.3080502714195552,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;curiosity&quot;: 0.01641296759762181,
+      &quot;satisfaction&quot;: 0.03554426208687175,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    }
+  },
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: -0.0019161638374412793,
+    &quot;precision&quot;: 0.495448
+  },
+  &quot;events&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [
+        &quot;demo-setback&quot;
+      ],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.9,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: 0.6
+        },
+        &quot;quality&quot;: 0.6,
+        &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+        &quot;uncertainty&quot;: 0.1
+      },
+      &quot;id&quot;: &quot;demo-correction&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+    },
+    &quot;demo-setback&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: -0.8
+        },
+        &quot;quality&quot;: -0.8,
+        &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+        &quot;uncertainty&quot;: 0.7
+      },
+      &quot;id&quot;: &quot;demo-setback&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+    }
+  },
+  &quot;expectations&quot;: {
+    &quot;design&quot;: {
+      &quot;control&quot;: 0.5383035392,
+      &quot;mean&quot;: -0.015681843200000017,
+      &quot;n&quot;: 2
+    }
+  },
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {
+    &quot;design:candidate-A:-0.8&quot;: 0.8464817248906141,
+    &quot;design:candidate-A:0.6&quot;: 0.8464817248906141
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.05607365638114116,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.8180000000000001,
+    &quot;resources&quot;: 0.9700000000000001,
+    &quot;uncertainty&quot;: 0.4337600000000001
+  },
+  &quot;last_appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.9,
+    &quot;expected_quality&quot;: -0.015681843200000017,
+    &quot;gain&quot;: 0.6,
+    &quot;goal_relevance&quot;: 0.6,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-setback&quot;,
+      &quot;demo-correction&quot;
+    ],
+    &quot;surprise&quot;: 0.3078409216,
+    &quot;uncertainty&quot;: 0.1
+  },
+  &quot;memory&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.33336,
+        &quot;satisfaction&quot;: 0.6,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.0,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 0.9703999999999999,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.1408,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3704,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [
+          &quot;demo-setback&quot;
+        ],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.9,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: 0.6
+          },
+          &quot;quality&quot;: 0.6,
+          &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+          &quot;uncertainty&quot;: 0.1
+        },
+        &quot;id&quot;: &quot;demo-correction&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.12,
+        &quot;satisfaction&quot;: 0.0,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.7084,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 1.2000000000000002,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.3,
+            &quot;expected_quality&quot;: 0.0,
+            &quot;gain&quot;: -0.8,
+            &quot;goal_relevance&quot;: 0.8,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;
+            ],
+            &quot;surprise&quot;: 0.4,
+            &quot;uncertainty&quot;: 0.7
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        },
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.015681843200000017,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;,
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3078409216,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;corrected resource measurement&quot;,
+          &quot;version&quot;: 2
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: -0.8
+          },
+          &quot;quality&quot;: -0.8,
+          &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+          &quot;uncertainty&quot;: 0.7
+        },
+        &quot;id&quot;: &quot;demo-setback&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    }
+  },
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.1261164354075902,
+    &quot;valence&quot;: 0.0053707566093471265
+  },
+  &quot;outcomes&quot;: {
+    &quot;demo-correction:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.9,
+      &quot;event_id&quot;: &quot;demo-correction&quot;,
+      &quot;id&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;partner_correct&quot;: null,
+      &quot;prediction_error&quot;: 0.7408,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: 0.6
+    },
+    &quot;demo-setback:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.3,
+      &quot;event_id&quot;: &quot;demo-setback&quot;,
+      &quot;id&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;partner_correct&quot;: true,
+      &quot;prediction_error&quot;: -0.8,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: -0.8
+    }
+  },
+  &quot;relationships&quot;: {
+    &quot;reviewer&quot;: {
+      &quot;affiliation&quot;: 0.0,
+      &quot;authority&quot;: 0.0,
+      &quot;correct&quot;: 2.0,
+      &quot;familiarity&quot;: 0.1,
+      &quot;incorrect&quot;: 1.0,
+      &quot;reliability&quot;: 0.6666666666666666
+    }
+  },
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 2.0
+}</pre></details><details><summary>8 · artifact · simulation time 2.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;artifact&quot;: {
+    &quot;elapsed_seconds&quot;: 0,
+    &quot;mode&quot;: &quot;deterministic fixture; no live model&quot;,
+    &quot;provider&quot;: &quot;fixture-model-v1&quot;,
+    &quot;raw_response&quot;: &quot;{\&quot;choices\&quot;:[{\&quot;message\&quot;:{\&quot;content\&quot;:\&quot;Fixture suggestion: separate candidate generation from executable constraint checking; compare a baseline and a revised candidate. Request 2938e37ceb77.\&quot;,\&quot;role\&quot;:\&quot;assistant\&quot;}}],\&quot;usage\&quot;:{\&quot;completion_tokens\&quot;:null,\&quot;prompt_tokens\&quot;:null}}&quot;,
+    &quot;request&quot;: {
+      &quot;max_tokens&quot;: 512,
+      &quot;messages&quot;: [
+        {
+          &quot;content&quot;: &quot;Suggest a constraint-aware revision.&quot;,
+          &quot;role&quot;: &quot;user&quot;
+        }
+      ],
+      &quot;model&quot;: &quot;fixture-model-v1&quot;,
+      &quot;seed&quot;: 0,
+      &quot;temperature&quot;: 0
+    },
+    &quot;response&quot;: {
+      &quot;choices&quot;: [
+        {
+          &quot;message&quot;: {
+            &quot;content&quot;: &quot;Fixture suggestion: separate candidate generation from executable constraint checking; compare a baseline and a revised candidate. Request 2938e37ceb77.&quot;,
+            &quot;role&quot;: &quot;assistant&quot;
+          }
+        }
+      ],
+      &quot;usage&quot;: {
+        &quot;completion_tokens&quot;: null,
+        &quot;prompt_tokens&quot;: null
+      }
+    }
+  },
+  &quot;kind&quot;: &quot;model_call&quot;
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [
+    {
+      &quot;action&quot;: &quot;verify&quot;,
+      &quot;control&quot;: {
+        &quot;available_resources&quot;: 0.92,
+        &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+        &quot;exploration&quot;: 0.34749759999999996,
+        &quot;learning_rate&quot;: 0.176,
+        &quot;planning_horizon&quot;: 4,
+        &quot;reason&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;mood&quot;: {
+            &quot;arousal&quot;: 0.12426,
+            &quot;valence&quot;: -0.085008
+          },
+          &quot;uncertainty&quot;: 0.54
+        },
+        &quot;retrieval_bias&quot;: -0.085008,
+        &quot;verification&quot;: 0.518278
+      },
+      &quot;cost&quot;: 0.08,
+      &quot;reason&quot;: {
+        &quot;event_id&quot;: &quot;demo-setback&quot;,
+        &quot;purpose&quot;: &quot;check resource measurement&quot;
+      },
+      &quot;time&quot;: 0.0
+    }
+  ],
+  &quot;affect&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;curiosity&quot;: 0.17115273080070487,
+      &quot;satisfaction&quot;: 0.3080502714195552,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;curiosity&quot;: 0.01641296759762181,
+      &quot;satisfaction&quot;: 0.03554426208687175,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    }
+  },
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: -0.0019161638374412793,
+    &quot;precision&quot;: 0.495448
+  },
+  &quot;events&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [
+        &quot;demo-setback&quot;
+      ],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.9,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: 0.6
+        },
+        &quot;quality&quot;: 0.6,
+        &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+        &quot;uncertainty&quot;: 0.1
+      },
+      &quot;id&quot;: &quot;demo-correction&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+    },
+    &quot;demo-setback&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: -0.8
+        },
+        &quot;quality&quot;: -0.8,
+        &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+        &quot;uncertainty&quot;: 0.7
+      },
+      &quot;id&quot;: &quot;demo-setback&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+    }
+  },
+  &quot;expectations&quot;: {
+    &quot;design&quot;: {
+      &quot;control&quot;: 0.5383035392,
+      &quot;mean&quot;: -0.015681843200000017,
+      &quot;n&quot;: 2
+    }
+  },
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {
+    &quot;design:candidate-A:-0.8&quot;: 0.8464817248906141,
+    &quot;design:candidate-A:0.6&quot;: 0.8464817248906141
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.05607365638114116,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.8180000000000001,
+    &quot;resources&quot;: 0.9700000000000001,
+    &quot;uncertainty&quot;: 0.4337600000000001
+  },
+  &quot;last_appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.9,
+    &quot;expected_quality&quot;: -0.015681843200000017,
+    &quot;gain&quot;: 0.6,
+    &quot;goal_relevance&quot;: 0.6,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-setback&quot;,
+      &quot;demo-correction&quot;
+    ],
+    &quot;surprise&quot;: 0.3078409216,
+    &quot;uncertainty&quot;: 0.1
+  },
+  &quot;memory&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.33336,
+        &quot;satisfaction&quot;: 0.6,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.0,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 0.9703999999999999,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.1408,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3704,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [
+          &quot;demo-setback&quot;
+        ],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.9,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: 0.6
+          },
+          &quot;quality&quot;: 0.6,
+          &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+          &quot;uncertainty&quot;: 0.1
+        },
+        &quot;id&quot;: &quot;demo-correction&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.12,
+        &quot;satisfaction&quot;: 0.0,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.7084,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 1.2000000000000002,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.3,
+            &quot;expected_quality&quot;: 0.0,
+            &quot;gain&quot;: -0.8,
+            &quot;goal_relevance&quot;: 0.8,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;
+            ],
+            &quot;surprise&quot;: 0.4,
+            &quot;uncertainty&quot;: 0.7
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        },
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.015681843200000017,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;,
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3078409216,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;corrected resource measurement&quot;,
+          &quot;version&quot;: 2
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: -0.8
+          },
+          &quot;quality&quot;: -0.8,
+          &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+          &quot;uncertainty&quot;: 0.7
+        },
+        &quot;id&quot;: &quot;demo-setback&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    }
+  },
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.1261164354075902,
+    &quot;valence&quot;: 0.0053707566093471265
+  },
+  &quot;outcomes&quot;: {
+    &quot;demo-correction:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.9,
+      &quot;event_id&quot;: &quot;demo-correction&quot;,
+      &quot;id&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;partner_correct&quot;: null,
+      &quot;prediction_error&quot;: 0.7408,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: 0.6
+    },
+    &quot;demo-setback:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.3,
+      &quot;event_id&quot;: &quot;demo-setback&quot;,
+      &quot;id&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;partner_correct&quot;: true,
+      &quot;prediction_error&quot;: -0.8,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: -0.8
+    }
+  },
+  &quot;relationships&quot;: {
+    &quot;reviewer&quot;: {
+      &quot;affiliation&quot;: 0.0,
+      &quot;authority&quot;: 0.0,
+      &quot;correct&quot;: 2.0,
+      &quot;familiarity&quot;: 0.1,
+      &quot;incorrect&quot;: 1.0,
+      &quot;reliability&quot;: 0.6666666666666666
+    }
+  },
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 2.0
+}</pre></details><details><summary>9 · artifact · simulation time 2.00</summary><h4>Trigger / recorded result</h4><pre>{
+  &quot;artifact&quot;: {
+    &quot;available_resources&quot;: 1.0,
+    &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+    &quot;exploration&quot;: 0.34749759999999996,
+    &quot;learning_rate&quot;: 0.176,
+    &quot;planning_horizon&quot;: 4,
+    &quot;reason&quot;: {
+      &quot;control&quot;: 0.3,
+      &quot;mood&quot;: {
+        &quot;arousal&quot;: 0.12426,
+        &quot;valence&quot;: -0.085008
+      },
+      &quot;uncertainty&quot;: 0.54
+    },
+    &quot;retrieval_bias&quot;: -0.085008,
+    &quot;verification&quot;: 0.518278
+  },
+  &quot;kind&quot;: &quot;demo_initial_controls&quot;
+}</pre><h4>State after transition</h4><pre>{
+  &quot;actions&quot;: [
+    {
+      &quot;action&quot;: &quot;verify&quot;,
+      &quot;control&quot;: {
+        &quot;available_resources&quot;: 0.92,
+        &quot;evidence_standard&quot;: &quot;observed outcomes, independent of approval&quot;,
+        &quot;exploration&quot;: 0.34749759999999996,
+        &quot;learning_rate&quot;: 0.176,
+        &quot;planning_horizon&quot;: 4,
+        &quot;reason&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;mood&quot;: {
+            &quot;arousal&quot;: 0.12426,
+            &quot;valence&quot;: -0.085008
+          },
+          &quot;uncertainty&quot;: 0.54
+        },
+        &quot;retrieval_bias&quot;: -0.085008,
+        &quot;verification&quot;: 0.518278
+      },
+      &quot;cost&quot;: 0.08,
+      &quot;reason&quot;: {
+        &quot;event_id&quot;: &quot;demo-setback&quot;,
+        &quot;purpose&quot;: &quot;check resource measurement&quot;
+      },
+      &quot;time&quot;: 0.0
+    }
+  ],
+  &quot;affect&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;curiosity&quot;: 0.17115273080070487,
+      &quot;satisfaction&quot;: 0.3080502714195552,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;curiosity&quot;: 0.01641296759762181,
+      &quot;satisfaction&quot;: 0.03554426208687175,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;threat&quot;: 0.0,
+      &quot;time&quot;: 0.0
+    }
+  },
+  &quot;config&quot;: {
+    &quot;disposition_tau&quot;: 1000.0,
+    &quot;fast_tau&quot;: 3.0,
+    &quot;frozen&quot;: false,
+    &quot;memory_coupling&quot;: true,
+    &quot;model&quot;: &quot;reference-v1&quot;,
+    &quot;mood_tau&quot;: 24.0,
+    &quot;relationship_tau&quot;: 240.0,
+    &quot;seed&quot;: 0
+  },
+  &quot;dispositions&quot;: {
+    &quot;optimism&quot;: -0.0019161638374412793,
+    &quot;precision&quot;: 0.495448
+  },
+  &quot;events&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [
+        &quot;demo-setback&quot;
+      ],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.9,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: 0.6
+        },
+        &quot;quality&quot;: 0.6,
+        &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+        &quot;uncertainty&quot;: 0.1
+      },
+      &quot;id&quot;: &quot;demo-correction&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+    },
+    &quot;demo-setback&quot;: {
+      &quot;actor&quot;: &quot;reviewer&quot;,
+      &quot;causal_links&quot;: [],
+      &quot;confidence&quot;: 1.0,
+      &quot;data&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;goal_delta&quot;: {
+          &quot;quality&quot;: -0.8
+        },
+        &quot;quality&quot;: -0.8,
+        &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+        &quot;uncertainty&quot;: 0.7
+      },
+      &quot;id&quot;: &quot;demo-setback&quot;,
+      &quot;kind&quot;: &quot;occurrence&quot;,
+      &quot;schema_version&quot;: 1,
+      &quot;source&quot;: &quot;executable-check&quot;,
+      &quot;target&quot;: &quot;candidate-A&quot;,
+      &quot;task&quot;: &quot;design&quot;,
+      &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+    }
+  },
+  &quot;expectations&quot;: {
+    &quot;design&quot;: {
+      &quot;control&quot;: 0.5383035392,
+      &quot;mean&quot;: -0.015681843200000017,
+      &quot;n&quot;: 2
+    }
+  },
+  &quot;goals&quot;: {
+    &quot;quality&quot;: 1.0
+  },
+  &quot;habituation&quot;: {
+    &quot;design:candidate-A:-0.8&quot;: 0.8464817248906141,
+    &quot;design:candidate-A:0.6&quot;: 0.8464817248906141
+  },
+  &quot;internal&quot;: {
+    &quot;burden&quot;: 0.05607365638114116,
+    &quot;commitments&quot;: 0.0,
+    &quot;reliability&quot;: 0.8180000000000001,
+    &quot;resources&quot;: 0.9700000000000001,
+    &quot;uncertainty&quot;: 0.4337600000000001
+  },
+  &quot;last_appraisal&quot;: {
+    &quot;alternatives&quot;: [
+      &quot;intent unknown&quot;
+    ],
+    &quot;approval&quot;: 0.0,
+    &quot;control&quot;: 0.9,
+    &quot;expected_quality&quot;: -0.015681843200000017,
+    &quot;gain&quot;: 0.6,
+    &quot;goal_relevance&quot;: 0.6,
+    &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+    &quot;responsibility&quot;: 0.0,
+    &quot;schema_version&quot;: 1,
+    &quot;social_meaning&quot;: &quot;unspecified&quot;,
+    &quot;support&quot;: [
+      &quot;demo-setback&quot;,
+      &quot;demo-correction&quot;
+    ],
+    &quot;surprise&quot;: 0.3078409216,
+    &quot;uncertainty&quot;: 0.1
+  },
+  &quot;memory&quot;: {
+    &quot;demo-correction&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.33336,
+        &quot;satisfaction&quot;: 0.6,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.0,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 0.9703999999999999,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.1408,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3704,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [
+          &quot;demo-setback&quot;
+        ],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.9,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: 0.6
+          },
+          &quot;quality&quot;: 0.6,
+          &quot;text&quot;: &quot;Revised measurement: candidate meets the corrected budget.&quot;,
+          &quot;uncertainty&quot;: 0.1
+        },
+        &quot;id&quot;: &quot;demo-correction&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:01Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    },
+    &quot;demo-setback&quot;: {
+      &quot;affect&quot;: {
+        &quot;curiosity&quot;: 0.12,
+        &quot;satisfaction&quot;: 0.0,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;threat&quot;: 0.7084,
+        &quot;time&quot;: 0.0
+      },
+      &quot;encoded_salience&quot;: 1.2000000000000002,
+      &quot;interpretations&quot;: [
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.3,
+            &quot;expected_quality&quot;: 0.0,
+            &quot;gain&quot;: -0.8,
+            &quot;goal_relevance&quot;: 0.8,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;
+            ],
+            &quot;surprise&quot;: 0.4,
+            &quot;uncertainty&quot;: 0.7
+          },
+          &quot;reason&quot;: &quot;initial&quot;,
+          &quot;version&quot;: 1
+        },
+        {
+          &quot;appraisal&quot;: {
+            &quot;alternatives&quot;: [
+              &quot;intent unknown&quot;
+            ],
+            &quot;approval&quot;: 0.0,
+            &quot;control&quot;: 0.9,
+            &quot;expected_quality&quot;: -0.015681843200000017,
+            &quot;gain&quot;: 0.6,
+            &quot;goal_relevance&quot;: 0.6,
+            &quot;provider&quot;: &quot;reference-appraisal-v1&quot;,
+            &quot;responsibility&quot;: 0.0,
+            &quot;schema_version&quot;: 1,
+            &quot;social_meaning&quot;: &quot;unspecified&quot;,
+            &quot;support&quot;: [
+              &quot;demo-setback&quot;,
+              &quot;demo-correction&quot;
+            ],
+            &quot;surprise&quot;: 0.3078409216,
+            &quot;uncertainty&quot;: 0.1
+          },
+          &quot;reason&quot;: &quot;corrected resource measurement&quot;,
+          &quot;version&quot;: 2
+        }
+      ],
+      &quot;observation&quot;: {
+        &quot;actor&quot;: &quot;reviewer&quot;,
+        &quot;causal_links&quot;: [],
+        &quot;confidence&quot;: 1.0,
+        &quot;data&quot;: {
+          &quot;control&quot;: 0.3,
+          &quot;goal_delta&quot;: {
+            &quot;quality&quot;: -0.8
+          },
+          &quot;quality&quot;: -0.8,
+          &quot;text&quot;: &quot;Candidate exceeds the measured resource budget.&quot;,
+          &quot;uncertainty&quot;: 0.7
+        },
+        &quot;id&quot;: &quot;demo-setback&quot;,
+        &quot;kind&quot;: &quot;occurrence&quot;,
+        &quot;schema_version&quot;: 1,
+        &quot;source&quot;: &quot;executable-check&quot;,
+        &quot;target&quot;: &quot;candidate-A&quot;,
+        &quot;task&quot;: &quot;design&quot;,
+        &quot;timestamp&quot;: &quot;2026-10-25T00:00:00Z&quot;
+      },
+      &quot;outcome&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;retrievals&quot;: 0
+    }
+  },
+  &quot;mood&quot;: {
+    &quot;arousal&quot;: 0.1261164354075902,
+    &quot;valence&quot;: 0.0053707566093471265
+  },
+  &quot;outcomes&quot;: {
+    &quot;demo-correction:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.9,
+      &quot;event_id&quot;: &quot;demo-correction&quot;,
+      &quot;id&quot;: &quot;demo-correction:outcome&quot;,
+      &quot;partner_correct&quot;: null,
+      &quot;prediction_error&quot;: 0.7408,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: 0.6
+    },
+    &quot;demo-setback:outcome&quot;: {
+      &quot;approval&quot;: 0.0,
+      &quot;control&quot;: 0.3,
+      &quot;event_id&quot;: &quot;demo-setback&quot;,
+      &quot;id&quot;: &quot;demo-setback:outcome&quot;,
+      &quot;partner_correct&quot;: true,
+      &quot;prediction_error&quot;: -0.8,
+      &quot;provenance&quot;: &quot;deterministic demo fixture&quot;,
+      &quot;quality&quot;: -0.8
+    }
+  },
+  &quot;relationships&quot;: {
+    &quot;reviewer&quot;: {
+      &quot;affiliation&quot;: 0.0,
+      &quot;authority&quot;: 0.0,
+      &quot;correct&quot;: 2.0,
+      &quot;familiarity&quot;: 0.1,
+      &quot;incorrect&quot;: 1.0,
+      &quot;reliability&quot;: 0.6666666666666666
+    }
+  },
+  &quot;schema_version&quot;: 1,
+  &quot;time&quot;: 2.0
+}</pre></details>
+<script>const token="";async function send(op,payload){try{const r=await fetch('/api/'+op,{method:'POST',headers:{'Content-Type':'application/json','X-Regesh-Token':token},body:JSON.stringify(payload)});document.getElementById('result').textContent=await r.text();if(r.ok&&op==='intervene'||r.ok&&op==='advance')location.reload();}catch(e){document.getElementById('result').textContent=String(e)}}</script></body></html>

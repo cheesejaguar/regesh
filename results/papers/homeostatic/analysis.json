@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-25T20:40:06.781291+00:00",
+  "classification": "posthoc_descriptive_diagnostic_not_protocol_selection",
+  "input_manifest_sha256": "3da72a918e1723f3c97251cf428246e0f377f95816467476ea3defa9991f36fd",
+  "analysis_source_sha256": "7e3bb0598ae0e8c95cf43a1372ca95686d91050d8df00b5c6e9439409f1db83f",
+  "conditions": [
+    {
+      "condition": "published_inverse_beta",
+      "independent_summary_recomputation": {
+        "n": 100000,
+        "final_mean": 0.04668,
+        "final_sd": 6.933528753643414,
+        "final_mean_absolute": 5.41912,
+        "maximum_absolute_ever": 86
+      },
+      "agents_exceeding_original_population_maximum_61": 86,
+      "individual_maximum_quantiles": {
+        "0.5": 34.0,
+        "0.95": 44.0,
+        "0.99": 51.0,
+        "0.999": 61.0,
+        "1.0": 86.0
+      },
+      "posthoc_last_100_actions_mean_absolute_deviation": 5.4415294,
+      "posthoc_last_100_actions_rms_deviation": 6.942676803654337
+    },
+    {
+      "condition": "no_learning",
+      "independent_summary_recomputation": {
+        "n": 100000,
+        "final_mean": 30.19544,
+        "final_sd": 38.65094207398314,
+        "final_mean_absolute": 39.79792,
+        "maximum_absolute_ever": 192
+      },
+      "agents_exceeding_original_population_maximum_61": 42666,
+      "individual_maximum_quantiles": {
+        "0.5": 57.0,
+        "0.95": 106.0,
+        "0.99": 130.0,
+        "0.999": 156.00100000000384,
+        "1.0": 192.0
+      },
+      "posthoc_last_100_actions_mean_absolute_deviation": 39.410308199999996,
+      "posthoc_last_100_actions_rms_deviation": 48.536064310984266
+    },
+    {
+      "condition": "beta_temperature_sensitivity",
+      "independent_summary_recomputation": {
+        "n": 100000,
+        "final_mean": 0.0,
+        "final_sd": 0.00894427190999916,
+        "final_mean_absolute": 4e-05,
+        "maximum_absolute_ever": 46
+      },
+      "agents_exceeding_original_population_maximum_61": 0,
+      "individual_maximum_quantiles": {
+        "0.5": 31.0,
+        "0.95": 34.0,
+        "0.99": 36.0,
+        "0.999": 39.0,
+        "1.0": 46.0
+      },
+      "posthoc_last_100_actions_mean_absolute_deviation": 0.500034,
+      "posthoc_last_100_actions_rms_deviation": 0.7072128392499671
+    }
+  ],
+  "cautions": [
+    "The primary maximum differs from the paper; the number of agents above 61 is diagnostic, not a prospectively specified hypothesis test.",
+    "No source-code, seed, or verified beta convention is available for exact numerical reproduction.",
+    "Even/odd endpoint parity matters under forced unit actions, particularly in the temperature sensitivity.",
+    "Finite-horizon maxima do not prove an absolute long-run safety boundary."
+  ]
+}

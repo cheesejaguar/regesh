@@ -1,0 +1,547 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent reproduction critic",
+  "executed_utc": "2026-10-25T20:36:27.956890+00:00",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "analysis_procedure": "Independent stdlib csv read; STEU score sums; LIWC nonmissing Authentic means and scipy.stats.f_oneway; participant-condition matrix and independently implemented repeated-measures sums of squares; scipy.stats.f.sf/ttest_rel; Holm adjustment across all12 items. Does not import reproduction analysis code. Additional independent numeric-condition regression via centered least-squares and Greenhouse-Geisser epsilon via eigenvalues of row-centered participant covariance; Holm across12 GG-adjusted user-item tests.",
+  "source_files_sha256": {
+    "experiment_1_STEU.csv": "10cde1bbc7c562ac468a791fb609df6d63c2b0c491c6a5c536a144d807663e48",
+    "experiment_2_LIWC_Output.csv": "b9ff2c3b143142c798d904459ff32d7e23e9abb72b812f321a67e972267ac4ee",
+    "experiment_3_user_study.csv": "3af212b07a3ddd6a659e650ac8dc8e434cc9fdb434c7a7897ab4f63066d32a5f"
+  },
+  "chain_of_emotion": {
+    "STEU_items": 42,
+    "STEU_correct": {
+      "No Memory": 24,
+      "Memory": 31,
+      "Appraisal": 35
+    },
+    "LIWC_rows": 75,
+    "LIWC_authentic_valid_n": [
+      22,
+      24,
+      27
+    ],
+    "LIWC_authentic_means": [
+      61.51181818181819,
+      61.88625,
+      82.60444444444444
+    ],
+    "LIWC_authentic_independent_group_F": 3.3017389790595604,
+    "LIWC_authentic_independent_group_df": [
+      2,
+      70
+    ],
+    "LIWC_authentic_independent_group_p": 0.0426318640172352,
+    "user_rows": 90,
+    "participants": 30,
+    "unique_participant_condition_cells": 90,
+    "conditions": [
+      "No Memory",
+      "Memory",
+      "Chain of Emotion"
+    ],
+    "user_items": [
+      {
+        "item": "The agent's behavior was human-like.",
+        "means": [
+          4.866666666666666,
+          5.466666666666667,
+          5.733333333333333
+        ],
+        "rm_F": 4.7500000000000115,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.012291429690047349,
+        "independent_group_F": 1.7096631205673773,
+        "independent_group_p": 0.18694867574936241,
+        "paired_coe_minus_nomemory_t": 2.589307699730777,
+        "paired_coe_minus_nomemory_p": 0.014883732582706663,
+        "rm_p_holm_all12": 0.11062286721042613,
+        "GG_epsilon": 0.8638603451280243,
+        "rm_p_GG": 0.01665109997218122,
+        "rm_p_GG_holm12": 0.149859899749631
+      },
+      {
+        "item": "The agent's reactions were natural.",
+        "means": [
+          4.466666666666667,
+          4.966666666666667,
+          5.7
+        ],
+        "rm_F": 7.704167732037845,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.0010784397660826746,
+        "independent_group_F": 4.1039226368836825,
+        "independent_group_p": 0.01980721682244844,
+        "paired_coe_minus_nomemory_t": 3.9372766728532427,
+        "paired_coe_minus_nomemory_p": 0.00047422516613546725,
+        "rm_p_holm_all12": 0.012941277192992096,
+        "GG_epsilon": 0.9937512758166489,
+        "rm_p_GG": 0.0011079431958239626,
+        "rm_p_GG_holm12": 0.013295318349887552
+      },
+      {
+        "item": "The agent reacted to my input.",
+        "means": [
+          5.466666666666667,
+          6.3,
+          6.466666666666667
+        ],
+        "rm_F": 6.082543978349121,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.0039985328504445385,
+        "independent_group_F": 4.324610352126225,
+        "independent_group_p": 0.016197389404061,
+        "paired_coe_minus_nomemory_t": 2.6070817018267762,
+        "paired_coe_minus_nomemory_p": 0.014274583796630418,
+        "rm_p_holm_all12": 0.04398386135488992,
+        "GG_epsilon": 0.7302039572029488,
+        "rm_p_GG": 0.009455026080595737,
+        "rm_p_GG_holm12": 0.10400528688655311
+      },
+      {
+        "item": "The agent did not care about the scenario.",
+        "means": [
+          3.533333333333333,
+          3.3333333333333335,
+          3.2666666666666666
+        ],
+        "rm_F": 0.35836501901140644,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.7003543480432152,
+        "independent_group_F": 0.11689922480620143,
+        "independent_group_p": 0.8898143515723422,
+        "paired_coe_minus_nomemory_t": -0.7067261045607411,
+        "paired_coe_minus_nomemory_p": 0.48537689843430415,
+        "rm_p_holm_all12": 1,
+        "GG_epsilon": 0.7644392992354253,
+        "rm_p_GG": 0.6436718468989895,
+        "rm_p_GG_holm12": 1
+      },
+      {
+        "item": "The agent always knows their friends' emotions from their behavior.",
+        "means": [
+          4.833333333333333,
+          5.066666666666666,
+          5.733333333333333
+        ],
+        "rm_F": 4.114912069380874,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.02132344446533014,
+        "independent_group_F": 2.2249576657548507,
+        "independent_group_p": 0.11418619543510733,
+        "paired_coe_minus_nomemory_t": 2.992366399841797,
+        "paired_coe_minus_nomemory_p": 0.005604891502981904,
+        "rm_p_holm_all12": 0.17058755572264112,
+        "GG_epsilon": 0.9204280224024867,
+        "rm_p_GG": 0.024562737037940412,
+        "rm_p_GG_holm12": 0.1965018963035233
+      },
+      {
+        "item": "The agent is a good observer of others' emotions.",
+        "means": [
+          4.933333333333334,
+          5.366666666666666,
+          5.866666666666666
+        ],
+        "rm_F": 2.9752656331649514,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.05887504724712348,
+        "independent_group_F": 2.293059471069942,
+        "independent_group_p": 0.10702801354012496,
+        "paired_coe_minus_nomemory_t": 2.473541365962594,
+        "paired_coe_minus_nomemory_p": 0.019477737775089172,
+        "rm_p_holm_all12": 0.41212533072986435,
+        "GG_epsilon": 0.9940337912148729,
+        "rm_p_GG": 0.059222947800445895,
+        "rm_p_GG_holm12": 0.41456063460312126
+      },
+      {
+        "item": "The agent is sensitive to the feelings and emotions of others.",
+        "means": [
+          5.166666666666667,
+          5.433333333333334,
+          6.2
+        ],
+        "rm_F": 5.51873622336517,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.006396614955945327,
+        "independent_group_F": 3.787058823529409,
+        "independent_group_p": 0.02648454526021854,
+        "paired_coe_minus_nomemory_t": 3.670121547051337,
+        "paired_coe_minus_nomemory_p": 0.0009718768698225745,
+        "rm_p_holm_all12": 0.06396614955945328,
+        "GG_epsilon": 0.855321886073506,
+        "rm_p_GG": 0.009562867144497254,
+        "rm_p_GG_holm12": 0.10400528688655311
+      },
+      {
+        "item": "The agent has a good understanding of the emotions of people around them.",
+        "means": [
+          4.9,
+          5.133333333333334,
+          5.6
+        ],
+        "rm_F": 1.5310143142989039,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.22492938008208746,
+        "independent_group_F": 1.2401196858247097,
+        "independent_group_p": 0.29441302514886564,
+        "paired_coe_minus_nomemory_t": 1.914554832425244,
+        "paired_coe_minus_nomemory_p": 0.06546169354221354,
+        "rm_p_holm_all12": 1,
+        "GG_epsilon": 0.960615282479911,
+        "rm_p_GG": 0.22569886915811455,
+        "rm_p_GG_holm12": 1
+      },
+      {
+        "item": "How capable was the agent?",
+        "means": [
+          4.933333333333334,
+          5.566666666666666,
+          5.166666666666667
+        ],
+        "rm_F": 0.9925861855924858,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.3768238562017484,
+        "independent_group_F": 0.9939371442712203,
+        "independent_group_p": 0.37427969767534847,
+        "paired_coe_minus_nomemory_t": 0.4323760928250144,
+        "paired_coe_minus_nomemory_p": 0.6686663913929768,
+        "rm_p_holm_all12": 1,
+        "GG_epsilon": 0.8469869091023269,
+        "rm_p_GG": 0.36605920903633626,
+        "rm_p_GG_holm12": 1
+      },
+      {
+        "item": "How competent was the agent?",
+        "means": [
+          5.166666666666667,
+          5.633333333333334,
+          5.3
+        ],
+        "rm_F": 0.695571955719558,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.5029013472243141,
+        "independent_group_F": 0.6045703594814908,
+        "independent_group_p": 0.5485879456173487,
+        "paired_coe_minus_nomemory_t": 0.30573355334443164,
+        "paired_coe_minus_nomemory_p": 0.7619914837380921,
+        "rm_p_holm_all12": 1,
+        "GG_epsilon": 0.8796567181609386,
+        "rm_p_GG": 0.48586570737842977,
+        "rm_p_GG_holm12": 1
+      },
+      {
+        "item": "How warm was the agent?",
+        "means": [
+          4.966666666666667,
+          5.733333333333333,
+          5.066666666666666
+        ],
+        "rm_F": 2.2854982355906572,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.11081351826209523,
+        "independent_group_F": 1.1723989311266265,
+        "independent_group_p": 0.3144663774095173,
+        "paired_coe_minus_nomemory_t": 0.19854477375701848,
+        "paired_coe_minus_nomemory_p": 0.844004221791801,
+        "rm_p_holm_all12": 0.6648811095725714,
+        "GG_epsilon": 0.6901083306204657,
+        "rm_p_GG": 0.13004568611187264,
+        "rm_p_GG_holm12": 0.7802741166712359
+      },
+      {
+        "item": "How friendly was the agent?",
+        "means": [
+          5.6,
+          5.633333333333334,
+          5.166666666666667
+        ],
+        "rm_F": 1.3723816912335134,
+        "rm_df": [
+          2,
+          58
+        ],
+        "rm_p": 0.2616105879755876,
+        "independent_group_F": 0.6955439056356487,
+        "independent_group_p": 0.5015551165614979,
+        "paired_coe_minus_nomemory_t": -1.1698769676849303,
+        "paired_coe_minus_nomemory_p": 0.25157565750104055,
+        "rm_p_holm_all12": 1,
+        "GG_epsilon": 0.7838317115950899,
+        "rm_p_GG": 0.26054648389397383,
+        "rm_p_GG_holm12": 1
+      }
+    ],
+    "LIWC_authentic_numeric_trend_F": 5.093324809756075,
+    "LIWC_authentic_numeric_trend_p": 0.02709715766509749,
+    "LIWC_authentic_numeric_trend_df": [
+      1,
+      71
+    ]
+  },
+  "focused_tests": {
+    "command": "python -m unittest tests.test_homeostatic_reproduction tests.test_happiness_reproduction tests.test_emotionprompt_reproduction -v",
+    "passed": 18,
+    "failures": 0,
+    "source_sha256": {
+      "regesh/reproductions/homeostatic.py": "a89f1d5a79f850d250f761d101f52a820733d5a3fa6c31c137695a2ae12cf89c",
+      "regesh/reproductions/happiness.py": "6b70cccdc7210db4a6cea191e9ede249763f07c9c082965d81aae91a9372cbb6",
+      "regesh/reproductions/emotionprompt.py": "f13f66ee00d733128c1a77de287eedcd19a03ce883448e30d027a72e7319b0cc",
+      "tests/test_homeostatic_reproduction.py": "77079e1ef36ef14c42736596c4fe488fa873985187dc7f06c433d028dd7f4b36",
+      "tests/test_happiness_reproduction.py": "ccece264acef9aff4686f4a24311288a580b481137388a38e7022bfc4c2dab4a",
+      "tests/test_emotionprompt_reproduction.py": "d78abfd0b6819ee04ae39cb38a6f2a4393b9e87c38f0e421032a075af10d57de"
+    },
+    "scope": "Equations, boundaries, normalization, pairing, manifest and fixture mechanics; not performance evidence."
+  },
+  "interpretation": {
+    "data_reanalysis_not_new_observations": true,
+    "published_stats_not_all_exactly_reproduced": true,
+    "holmsignificant_user_items": [
+      "The agent's reactions were natural.",
+      "The agent reacted to my input."
+    ],
+    "source_license_not_inferred_from_public_access": true,
+    "holmsignificant_user_items_GG": [
+      "The agent's reactions were natural."
+    ]
+  },
+  "ordinal_sensitivity_independent_check": {
+    "method": "Manual within-row average ranks and tie-corrected Friedman sum-of-ranks statistic; chi-square2 survival; own Holm correction. Does not call scipy.stats.friedmanchisquare or scripts/check_ordinal_ratings.py.",
+    "results": [
+      {
+        "item": "The agent's behavior was human-like.",
+        "friedman_Q_manual_ties": 9.739130434782648,
+        "friedman_p_chisquare2": 0.007676702259048627,
+        "tie_correction": 0.575,
+        "kendalls_w": 0.1623188405797108,
+        "holm12_p": 0.061413618072389015
+      },
+      {
+        "item": "The agent's reactions were natural.",
+        "friedman_Q_manual_ties": 12.365853658536569,
+        "friedman_p_chisquare2": 0.002064376925135736,
+        "tie_correction": 0.6833333333333333,
+        "kendalls_w": 0.20609756097560947,
+        "holm12_p": 0.022708146176493096
+      },
+      {
+        "item": "The agent reacted to my input.",
+        "friedman_Q_manual_ties": 11.907692307692285,
+        "friedman_p_chisquare2": 0.0025958373041580444,
+        "tie_correction": 0.5416666666666667,
+        "kendalls_w": 0.19846153846153808,
+        "holm12_p": 0.025958373041580444
+      },
+      {
+        "item": "The agent did not care about the scenario.",
+        "friedman_Q_manual_ties": 4.527777777777734,
+        "friedman_p_chisquare2": 0.10394546536220303,
+        "tie_correction": 0.6,
+        "kendalls_w": 0.07546296296296223,
+        "holm12_p": 0.5949061351789621
+      },
+      {
+        "item": "The agent always knows their friends' emotions from their behavior.",
+        "friedman_Q_manual_ties": 10.289156626506035,
+        "friedman_p_chisquare2": 0.005830932672683644,
+        "tie_correction": 0.6916666666666667,
+        "kendalls_w": 0.17148594377510057,
+        "holm12_p": 0.05247839405415279
+      },
+      {
+        "item": "The agent is a good observer of others' emotions.",
+        "friedman_Q_manual_ties": 2.6987951807229025,
+        "friedman_p_chisquare2": 0.2593964765258565,
+        "tie_correction": 0.6916666666666667,
+        "kendalls_w": 0.04497991967871504,
+        "holm12_p": 1
+      },
+      {
+        "item": "The agent is sensitive to the feelings and emotions of others.",
+        "friedman_Q_manual_ties": 13.066666666666682,
+        "friedman_p_chisquare2": 0.0014541505935435695,
+        "tie_correction": 0.75,
+        "kendalls_w": 0.21777777777777804,
+        "holm12_p": 0.017449807122522833
+      },
+      {
+        "item": "The agent has a good understanding of the emotions of people around them.",
+        "friedman_Q_manual_ties": 2.1538461538461187,
+        "friedman_p_chisquare2": 0.3406420441574472,
+        "tie_correction": 0.65,
+        "kendalls_w": 0.03589743589743531,
+        "holm12_p": 1
+      },
+      {
+        "item": "How capable was the agent?",
+        "friedman_Q_manual_ties": 1.535353535353517,
+        "friedman_p_chisquare2": 0.46409000574114656,
+        "tie_correction": 0.825,
+        "kendalls_w": 0.025589225589225283,
+        "holm12_p": 1
+      },
+      {
+        "item": "How competent was the agent?",
+        "friedman_Q_manual_ties": 4.622222222222187,
+        "friedman_p_chisquare2": 0.09915102252982701,
+        "tie_correction": 0.75,
+        "kendalls_w": 0.07703703703703645,
+        "holm12_p": 0.5949061351789621
+      },
+      {
+        "item": "How warm was the agent?",
+        "friedman_Q_manual_ties": 5.780821917808193,
+        "friedman_p_chisquare2": 0.05555337776446762,
+        "tie_correction": 0.6083333333333334,
+        "kendalls_w": 0.09634703196346989,
+        "holm12_p": 0.38887364435127336
+      },
+      {
+        "item": "How friendly was the agent?",
+        "friedman_Q_manual_ties": 0.32499999999996015,
+        "friedman_p_chisquare2": 0.850016090225415,
+        "tie_correction": 0.6666666666666667,
+        "kendalls_w": 0.0054166666666660025,
+        "holm12_p": 1
+      }
+    ],
+    "significant_holm12": [
+      "The agent's reactions were natural.",
+      "The agent reacted to my input.",
+      "The agent is sensitive to the feelings and emotions of others."
+    ],
+    "scope": "Exploratory model-dependent sensitivity on same30participants, asymptotic not exact p values; not preregistered or new independent observations."
+  },
+  "emotionprompt_independent_check": {
+    "method": "Independent original-upstream evaluate.py exact-match calls, raw call/row identity and 32-token/temperature0 one-message checks, independent paired discordance and scipy exact binomial test. No live model calls.",
+    "rows": 64,
+    "calls": 64,
+    "pairs": 32,
+    "conditions": {
+      "baseline": {
+        "correct": 19,
+        "completion_tokens": 162,
+        "prompt_tokens": 1462,
+        "total_tokens": 1624
+      },
+      "emotionprompt_EP02": {
+        "correct": 22,
+        "completion_tokens": 101,
+        "prompt_tokens": 1718,
+        "total_tokens": 1819
+      }
+    },
+    "baseline_only_correct": 2,
+    "emotion_only_correct": 5,
+    "delta": 0.09375,
+    "mcnemar_exact_p": 0.453125,
+    "upstream_metric_sha256": "4009bb64c746b5272e4d61d01c8829f905134e768a060c2503dce13f5c04df98",
+    "input_sha256": {
+      "rows.jsonl": "29558511bd02b06cf1d01f098ff69debc02a450cf80c7d188a0faba6d75c90ae",
+      "calls.jsonl": "fe5c23f0c6a2a1fb3fa3bec48ae14919a958edbd7e5fe53fc5198b379bee29a1",
+      "config.json": "fc025002068c326296b340277bca84e26c2d51d70e0198723ea9a6f24e930531",
+      "items.jsonl": "a4bbd3bac65de4ad195da1a5c9da7a57b08903985b0a7fdf882b80c3c9f4de36"
+    },
+    "scope": "Scoped cross-model method replication. Small fixed4tasksubset; wideinterval; no neutral lengthcontrol. Does not reproduce original aggregate."
+  },
+  "happiness_targeted_independent_check": {
+    "procedure": "Direct gzip JSON parse, stdlib statistics.fmean/stdev for decisive failed/matched settings; per-round fixed/optimism exact objective equality, no experiment code imported.",
+    "selected_cells": [
+      {
+        "setting": "stationary_spread",
+        "condition": "objective",
+        "n": 2000,
+        "mean_stdlib_fmean": 4396.972953528454,
+        "SD_stdlib_stdev": 238.21186930575323
+      },
+      {
+        "setting": "stationary_spread",
+        "condition": "fixed_compare",
+        "n": 2000,
+        "mean_stdlib_fmean": 4301.376988438327,
+        "SD_stdlib_stdev": 1019.7290376954445
+      },
+      {
+        "setting": "sudden_change",
+        "condition": "objective",
+        "n": 2000,
+        "mean_stdlib_fmean": 4195.780627034762,
+        "SD_stdlib_stdev": 190.14633965616116
+      },
+      {
+        "setting": "sudden_change",
+        "condition": "fixed_compare",
+        "n": 2000,
+        "mean_stdlib_fmean": 4566.6004993338665,
+        "SD_stdlib_stdev": 234.12996575575755
+      }
+    ],
+    "all_fixed_optimism_round_rewards_equal": true,
+    "paired_rounds": 8000,
+    "source_raw_sha256": "3f2156ae43b825921b83afbd06d5508f513369679247181841c6cd641b4be0c7"
+  },
+  "homeostatic_targeted_independent_check": {
+    "procedure": "Read32 primary frozen cohort NPZ files directly; sum individual terminal states/absolute states; max and exceedance from individual histories. No simulation implementation imported.",
+    "agents": 100000,
+    "final_mean": 0.04668,
+    "final_mean_absolute": 5.41912,
+    "final_SD": 6.933528753643414,
+    "maximum_absolute_ever": 86,
+    "agents_exceeding_published61": 86
+  },
+  "final_focused_tests": {
+    "command": "python -m unittest tests.test_homeostatic_reproduction tests.test_happiness_reproduction tests.test_chain_emotion_reproduction tests.test_emotionprompt_reproduction -v",
+    "passed": 29,
+    "failures": 0,
+    "run_seconds": 3.443,
+    "source_sha256": {
+      "regesh/reproductions/homeostatic.py": "a89f1d5a79f850d250f761d101f52a820733d5a3fa6c31c137695a2ae12cf89c",
+      "regesh/reproductions/happiness.py": "6b70cccdc7210db4a6cea191e9ede249763f07c9c082965d81aae91a9372cbb6",
+      "regesh/reproductions/chain_emotion.py": "477723b57e54825e39faab4137cfe676f8b2e778589a6454952f68c821886ae9",
+      "regesh/reproductions/emotionprompt.py": "f13f66ee00d733128c1a77de287eedcd19a03ce883448e30d027a72e7319b0cc",
+      "regesh/reproductions/emotionprompt_content.py": "2feb89cbd890de0a7f8a9d27969144e1d3b08f19aa06aa566e4c41ec4f42d327",
+      "tests/test_homeostatic_reproduction.py": "da0c0e3fd227a6fb008b1c822f59ab2b5a2b9b899d5f2303f21197514f009337",
+      "tests/test_happiness_reproduction.py": "ccece264acef9aff4686f4a24311288a580b481137388a38e7022bfc4c2dab4a",
+      "tests/test_chain_emotion_reproduction.py": "627b52183895172f05993becd2fef132afc1eafe88bdaf453bc14776e1b70a5c",
+      "tests/test_emotionprompt_reproduction.py": "4f8a722de5d05d349b4ac48bc6ca9e7b2240aaea3abdbaeae2cbb38b26795f99"
+    },
+    "scope": "Implementation mechanics, not independent scientific outcomes."
+  }
+}

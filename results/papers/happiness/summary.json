@@ -1,0 +1,529 @@
+{
+  "conditions": [
+    {
+      "setting": "stationary_spread",
+      "condition": "objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4396.972953528454,
+      "objective_reward_sd": 238.21186930575323,
+      "objective_reward_ci95": [
+        4384.413611476094,
+        4409.217210305521
+      ],
+      "subjective_reward_mean": 4396.972953528454,
+      "expected_regret_mean": 604.381620672826,
+      "optimal_action_fraction": 0.8038334,
+      "second_half_optimal_fraction": 0.862392,
+      "last_500_optimal_fraction": 0.876435,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 4384.07,
+      "published_sd": 219.66,
+      "reproduced_minus_published": 12.902953528454418,
+      "discrepancy_in_published_sd": 0.058740569646064
+    },
+    {
+      "setting": "stationary_spread",
+      "condition": "fixed_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4301.376988438327,
+      "objective_reward_sd": 1019.7290376954445,
+      "objective_reward_ci95": [
+        4261.448557046413,
+        4339.407665414359
+      ],
+      "subjective_reward_mean": -13198.623011561673,
+      "expected_regret_mean": 699.9775857629544,
+      "optimal_action_fraction": 0.5753023,
+      "second_half_optimal_fraction": 0.578942,
+      "last_500_optimal_fraction": 0.579,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 4648.57,
+      "published_sd": 182.93,
+      "reproduced_minus_published": -347.1930115616724,
+      "discrepancy_in_published_sd": -1.8979555653073437
+    },
+    {
+      "setting": "stationary_spread",
+      "condition": "dynamic_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4705.470415390067,
+      "objective_reward_sd": 499.18544277024967,
+      "objective_reward_ci95": [
+        4688.810051851053,
+        4720.900563387564
+      ],
+      "subjective_reward_mean": -12607.029584609934,
+      "expected_regret_mean": 295.8841588112142,
+      "optimal_action_fraction": 0.7742214,
+      "second_half_optimal_fraction": 0.824369,
+      "last_500_optimal_fraction": 0.833148,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 4796.07,
+      "published_sd": 326.45,
+      "reproduced_minus_published": -90.59958460993312,
+      "discrepancy_in_published_sd": -0.277529743023229
+    },
+    {
+      "setting": "stationary_spread",
+      "condition": "ucb",
+      "rounds": 2000,
+      "objective_reward_mean": 4820.97199391964,
+      "objective_reward_sd": 85.36327578754887,
+      "objective_reward_ci95": [
+        4817.880238830485,
+        4824.036840647745
+      ],
+      "subjective_reward_mean": 4820.97199391964,
+      "expected_regret_mean": 180.3825802816408,
+      "optimal_action_fraction": 0.9091912,
+      "second_half_optimal_fraction": 0.9624219999999999,
+      "last_500_optimal_fraction": 0.9706359999999999,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 4875.8066,
+      "published_sd": 170.81,
+      "reproduced_minus_published": -54.83460608035966,
+      "discrepancy_in_published_sd": -0.3210269075602111
+    },
+    {
+      "setting": "stationary_spread",
+      "condition": "optimistic_objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4301.376988438327,
+      "objective_reward_sd": 1019.7290376954445,
+      "objective_reward_ci95": [
+        4259.856824629862,
+        4339.552489764908
+      ],
+      "subjective_reward_mean": 4301.376988438327,
+      "expected_regret_mean": 699.9775857629544,
+      "optimal_action_fraction": 0.5753023,
+      "second_half_optimal_fraction": 0.578942,
+      "last_500_optimal_fraction": 0.579,
+      "action_disagreements_with_fixed": 0
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4787.99910637961,
+      "objective_reward_sd": 135.88755556298625,
+      "objective_reward_ci95": [
+        4780.971856116218,
+        4794.536137386126
+      ],
+      "subjective_reward_mean": 4787.99910637961,
+      "expected_regret_mean": 212.58004635389392,
+      "optimal_action_fraction": 0.33021419999999996,
+      "second_half_optimal_fraction": 0.3971176,
+      "last_500_optimal_fraction": 0.43249200000000004,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 4792.05,
+      "published_sd": 134.63,
+      "reproduced_minus_published": -4.050893620390525,
+      "discrepancy_in_published_sd": -0.030089085793586313
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "fixed_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4794.501674549957,
+      "objective_reward_sd": 133.84799402257727,
+      "objective_reward_ci95": [
+        4787.958199546218,
+        4800.843908423778
+      ],
+      "subjective_reward_mean": -12705.49832545004,
+      "expected_regret_mean": 206.07747818354696,
+      "optimal_action_fraction": 0.350333,
+      "second_half_optimal_fraction": 0.4198246,
+      "last_500_optimal_fraction": 0.45258499999999996,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 4786.41,
+      "published_sd": 133.16,
+      "reproduced_minus_published": 8.091674549957133,
+      "discrepancy_in_published_sd": 0.060766555647019625
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "dynamic_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4795.423222072806,
+      "objective_reward_sd": 126.37787669743406,
+      "objective_reward_ci95": [
+        4789.804920321234,
+        4801.445354516837
+      ],
+      "subjective_reward_mean": -12654.576777927194,
+      "expected_regret_mean": 205.15593066069857,
+      "optimal_action_fraction": 0.3587335,
+      "second_half_optimal_fraction": 0.44202179999999996,
+      "last_500_optimal_fraction": 0.48194400000000004,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 4790.73,
+      "published_sd": 132.74,
+      "reproduced_minus_published": 4.693222072806748,
+      "discrepancy_in_published_sd": 0.03535650197986099
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "ucb",
+      "rounds": 2000,
+      "objective_reward_mean": 4720.616854987916,
+      "objective_reward_sd": 83.98834833249744,
+      "objective_reward_ci95": [
+        4716.165665443713,
+        4724.877799594513
+      ],
+      "subjective_reward_mean": 4720.616854987916,
+      "expected_regret_mean": 279.9622977455882,
+      "optimal_action_fraction": 0.22344009999999997,
+      "second_half_optimal_fraction": 0.2672806,
+      "last_500_optimal_fraction": 0.29609800000000003,
+      "action_disagreements_with_fixed": 0
+    },
+    {
+      "setting": "stationary_close",
+      "condition": "optimistic_objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4794.501674549957,
+      "objective_reward_sd": 133.84799402257727,
+      "objective_reward_ci95": [
+        4787.826980255267,
+        4800.816067925651
+      ],
+      "subjective_reward_mean": 4794.501674549957,
+      "expected_regret_mean": 206.07747818354696,
+      "optimal_action_fraction": 0.350333,
+      "second_half_optimal_fraction": 0.4198246,
+      "last_500_optimal_fraction": 0.45258499999999996,
+      "action_disagreements_with_fixed": 0
+    },
+    {
+      "setting": "sudden_change",
+      "condition": "objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4195.780627034761,
+      "objective_reward_sd": 190.14633965616116,
+      "objective_reward_ci95": [
+        4186.048757458168,
+        4205.36587073922
+      ],
+      "subjective_reward_mean": 4195.780627034761,
+      "expected_regret_mean": 804.62020754529,
+      "optimal_action_fraction": 0.679828,
+      "second_half_optimal_fraction": 0.6631764,
+      "last_500_optimal_fraction": 0.73413,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 4191.19,
+      "published_sd": 180.47,
+      "reproduced_minus_published": 4.590627034761383,
+      "discrepancy_in_published_sd": 0.025437064524637794
+    },
+    {
+      "setting": "sudden_change",
+      "condition": "fixed_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 4566.600499333866,
+      "objective_reward_sd": 234.12996575575755,
+      "objective_reward_ci95": [
+        4558.591273843275,
+        4574.848548174752
+      ],
+      "subjective_reward_mean": -12933.399500666133,
+      "expected_regret_mean": 433.8003352461854,
+      "optimal_action_fraction": 0.7631896,
+      "second_half_optimal_fraction": 0.7719391999999999,
+      "last_500_optimal_fraction": 0.846356,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 4561.3,
+      "published_sd": 235.11,
+      "reproduced_minus_published": 5.300499333865446,
+      "discrepancy_in_published_sd": 0.022544763446324893
+    },
+    {
+      "setting": "sudden_change",
+      "condition": "ucb",
+      "rounds": 2000,
+      "objective_reward_mean": 4536.928202690862,
+      "objective_reward_sd": 345.275030263987,
+      "objective_reward_ci95": [
+        4521.724827337414,
+        4550.272319394523
+      ],
+      "subjective_reward_mean": 4536.928202690862,
+      "expected_regret_mean": 463.4726318891889,
+      "optimal_action_fraction": 0.8091731,
+      "second_half_optimal_fraction": 0.7628381999999999,
+      "last_500_optimal_fraction": 0.8864489999999999,
+      "action_disagreements_with_fixed": 0
+    },
+    {
+      "setting": "sudden_change",
+      "condition": "optimistic_objective",
+      "rounds": 2000,
+      "objective_reward_mean": 4566.600499333866,
+      "objective_reward_sd": 234.12996575575755,
+      "objective_reward_ci95": [
+        4558.54187937795,
+        4575.135069158715
+      ],
+      "subjective_reward_mean": 4566.600499333866,
+      "expected_regret_mean": 433.8003352461854,
+      "optimal_action_fraction": 0.7631896,
+      "second_half_optimal_fraction": 0.7719391999999999,
+      "last_500_optimal_fraction": 0.846356,
+      "action_disagreements_with_fixed": 0
+    },
+    {
+      "setting": "constant_change",
+      "condition": "objective",
+      "rounds": 2000,
+      "objective_reward_mean": 32536.11164298723,
+      "objective_reward_sd": 10157.196236222599,
+      "objective_reward_ci95": [
+        32139.25719974126,
+        32901.27033558657
+      ],
+      "subjective_reward_mean": 32536.11164298723,
+      "expected_regret_mean": 4273.724209138306,
+      "optimal_action_fraction": 0.7645765,
+      "second_half_optimal_fraction": 0.8130876,
+      "last_500_optimal_fraction": 0.8260919999999999,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 32220.31,
+      "published_sd": 9930.4,
+      "reproduced_minus_published": 315.80164298722957,
+      "discrepancy_in_published_sd": 0.03180150275791807
+    },
+    {
+      "setting": "constant_change",
+      "condition": "fixed_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 31523.209230981425,
+      "objective_reward_sd": 10123.852464166357,
+      "objective_reward_ci95": [
+        31129.273340632768,
+        31886.756241440777
+      ],
+      "subjective_reward_mean": 6523.2092309814225,
+      "expected_regret_mean": 5286.6266211441125,
+      "optimal_action_fraction": 0.6734226,
+      "second_half_optimal_fraction": 0.7162350000000001,
+      "last_500_optimal_fraction": 0.746108,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 30879.62,
+      "published_sd": 9933.37,
+      "reproduced_minus_published": 643.5892309814262,
+      "discrepancy_in_published_sd": 0.06479062301932034
+    },
+    {
+      "setting": "constant_change",
+      "condition": "dynamic_compare",
+      "rounds": 2000,
+      "objective_reward_mean": 35119.038857455336,
+      "objective_reward_sd": 10931.651094165354,
+      "objective_reward_ci95": [
+        34702.079849441456,
+        35511.96351261711
+      ],
+      "subjective_reward_mean": -34868.461142544664,
+      "expected_regret_mean": 1690.796994670202,
+      "optimal_action_fraction": 0.834153,
+      "second_half_optimal_fraction": 0.8758756,
+      "last_500_optimal_fraction": 0.888869,
+      "action_disagreements_with_fixed": 0,
+      "published_mean": 34609.12,
+      "published_sd": 10717.57,
+      "reproduced_minus_published": 509.91885745533364,
+      "discrepancy_in_published_sd": 0.04757784250117645
+    },
+    {
+      "setting": "constant_change",
+      "condition": "ucb",
+      "rounds": 2000,
+      "objective_reward_mean": 25261.064709773862,
+      "objective_reward_sd": 11935.681663655627,
+      "objective_reward_ci95": [
+        24734.97554274035,
+        25745.42427323664
+      ],
+      "subjective_reward_mean": 25261.064709773862,
+      "expected_regret_mean": 11548.771142351676,
+      "optimal_action_fraction": 0.4161287,
+      "second_half_optimal_fraction": 0.365505,
+      "last_500_optimal_fraction": 0.360643,
+      "action_disagreements_with_fixed": 0
+    },
+    {
+      "setting": "constant_change",
+      "condition": "optimistic_objective",
+      "rounds": 2000,
+      "objective_reward_mean": 31523.209230981425,
+      "objective_reward_sd": 10123.852464166357,
+      "objective_reward_ci95": [
+        31126.17727080561,
+        31885.61574272282
+      ],
+      "subjective_reward_mean": 31523.209230981425,
+      "expected_regret_mean": 5286.6266211441125,
+      "optimal_action_fraction": 0.6734226,
+      "second_half_optimal_fraction": 0.7162350000000001,
+      "last_500_optimal_fraction": 0.746108,
+      "action_disagreements_with_fixed": 0
+    }
+  ],
+  "contrasts": [
+    {
+      "setting": "stationary_spread",
+      "condition_a": "fixed_compare",
+      "condition_b": "objective",
+      "paired_difference_mean": -95.59596509012758,
+      "paired_seed_block_ci95": [
+        -134.73962366994297,
+        -60.00356324745316
+      ]
+    },
+    {
+      "setting": "stationary_spread",
+      "condition_a": "dynamic_compare",
+      "condition_b": "objective",
+      "paired_difference_mean": 308.49746186161224,
+      "paired_seed_block_ci95": [
+        286.2564570624875,
+        329.44809561738276
+      ]
+    },
+    {
+      "setting": "stationary_spread",
+      "condition_a": "ucb",
+      "condition_b": "objective",
+      "paired_difference_mean": 423.99904039118564,
+      "paired_seed_block_ci95": [
+        411.309102988827,
+        436.71932791581605
+      ]
+    },
+    {
+      "setting": "stationary_spread",
+      "condition_a": "optimistic_objective",
+      "condition_b": "fixed_compare",
+      "paired_difference_mean": 0.0,
+      "paired_seed_block_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "setting": "stationary_close",
+      "condition_a": "fixed_compare",
+      "condition_b": "objective",
+      "paired_difference_mean": 6.502568170347513,
+      "paired_seed_block_ci95": [
+        0.008410496918585399,
+        12.918595276129997
+      ]
+    },
+    {
+      "setting": "stationary_close",
+      "condition_a": "dynamic_compare",
+      "condition_b": "objective",
+      "paired_difference_mean": 7.42411569319629,
+      "paired_seed_block_ci95": [
+        0.7091779127124122,
+        13.688245073914741
+      ]
+    },
+    {
+      "setting": "stationary_close",
+      "condition_a": "ucb",
+      "condition_b": "objective",
+      "paired_difference_mean": -67.3822513916934,
+      "paired_seed_block_ci95": [
+        -71.98263855737002,
+        -62.730653162231604
+      ]
+    },
+    {
+      "setting": "stationary_close",
+      "condition_a": "optimistic_objective",
+      "condition_b": "fixed_compare",
+      "paired_difference_mean": 0.0,
+      "paired_seed_block_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "setting": "sudden_change",
+      "condition_a": "fixed_compare",
+      "condition_b": "objective",
+      "paired_difference_mean": 370.81987229910476,
+      "paired_seed_block_ci95": [
+        358.06661597021406,
+        384.1365445331921
+      ]
+    },
+    {
+      "setting": "sudden_change",
+      "condition_a": "ucb",
+      "condition_b": "objective",
+      "paired_difference_mean": 341.14757565610114,
+      "paired_seed_block_ci95": [
+        331.92317488036235,
+        350.0907493287793
+      ]
+    },
+    {
+      "setting": "sudden_change",
+      "condition_a": "optimistic_objective",
+      "condition_b": "fixed_compare",
+      "paired_difference_mean": 0.0,
+      "paired_seed_block_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "setting": "constant_change",
+      "condition_a": "fixed_compare",
+      "condition_b": "objective",
+      "paired_difference_mean": -1012.9024120058082,
+      "paired_seed_block_ci95": [
+        -1054.4273746424099,
+        -969.0784463228641
+      ]
+    },
+    {
+      "setting": "constant_change",
+      "condition_a": "dynamic_compare",
+      "condition_b": "objective",
+      "paired_difference_mean": 2582.9272144681026,
+      "paired_seed_block_ci95": [
+        2534.9816646426666,
+        2630.2140943914596
+      ]
+    },
+    {
+      "setting": "constant_change",
+      "condition_a": "ucb",
+      "condition_b": "objective",
+      "paired_difference_mean": -7275.046933213374,
+      "paired_seed_block_ci95": [
+        -7638.840903806552,
+        -6928.761467638993
+      ]
+    },
+    {
+      "setting": "constant_change",
+      "condition_a": "optimistic_objective",
+      "condition_b": "fixed_compare",
+      "paired_difference_mean": 0.0,
+      "paired_seed_block_ci95": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "interpretation": "Independent implementation of named paper experiments; exact original-code/seed replay unavailable. Published SD is between-round dispersion, not confidence interval. Local confidence intervals resample 20 independent seed-block means; paired controller differences preserve common random numbers.",
+  "runtime_seconds": 510.3358134549999
+}

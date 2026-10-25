@@ -1,0 +1,549 @@
+{
+  "schema_version": 1,
+  "analysis_type": "Exploratory post-outcome diagnostic, not preregistered primary result",
+  "created_utc": "2026-10-25T20:40:53.098770+00:00",
+  "motivation": "After outcomes were inspected, correct baseline subtraction equations were observed to fail original exact match.",
+  "rule": "Complete integer, or complete equation with original operands, required operation and arithmetically correct original key. No prose/code extraction. Non-arithmetic rows retain frozen original metric.",
+  "primary_metric_unchanged": true,
+  "model_calls": 0,
+  "conditions": {
+    "baseline": {
+      "n": 32,
+      "primary_correct": 19,
+      "exploratory_content_correct": 25,
+      "exploratory_content_accuracy": 0.78125,
+      "arithmetic_n": 16,
+      "arithmetic_content_correct": 12,
+      "correct_equations_rejected_by_primary": 6
+    },
+    "emotionprompt_EP02": {
+      "n": 32,
+      "primary_correct": 22,
+      "exploratory_content_correct": 24,
+      "exploratory_content_accuracy": 0.75,
+      "arithmetic_n": 16,
+      "arithmetic_content_correct": 12,
+      "correct_equations_rejected_by_primary": 2
+    }
+  },
+  "rows": [
+    {
+      "id": "first_word_letter:89",
+      "task": "first_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:89",
+      "task": "first_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:16",
+      "task": "first_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:16",
+      "task": "first_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:33",
+      "task": "first_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:33",
+      "task": "first_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:3",
+      "task": "first_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:3",
+      "task": "first_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:87",
+      "task": "first_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:87",
+      "task": "first_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:94",
+      "task": "first_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:94",
+      "task": "first_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:40",
+      "task": "first_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:40",
+      "task": "first_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:19",
+      "task": "first_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "first_word_letter:19",
+      "task": "first_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:37",
+      "task": "second_word_letter",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:37",
+      "task": "second_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:87",
+      "task": "second_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:87",
+      "task": "second_word_letter",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:83",
+      "task": "second_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:83",
+      "task": "second_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:74",
+      "task": "second_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:74",
+      "task": "second_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:96",
+      "task": "second_word_letter",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:96",
+      "task": "second_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:64",
+      "task": "second_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:64",
+      "task": "second_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:3",
+      "task": "second_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:3",
+      "task": "second_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:16",
+      "task": "second_word_letter",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "second_word_letter:16",
+      "task": "second_word_letter",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "original_non_arithmetic_metric"
+    },
+    {
+      "id": "sum:3",
+      "task": "sum",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "integer"
+    },
+    {
+      "id": "sum:3",
+      "task": "sum",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "integer"
+    },
+    {
+      "id": "sum:59",
+      "task": "sum",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:59",
+      "task": "sum",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:31",
+      "task": "sum",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:31",
+      "task": "sum",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:95",
+      "task": "sum",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:95",
+      "task": "sum",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:90",
+      "task": "sum",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:90",
+      "task": "sum",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:26",
+      "task": "sum",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "integer"
+    },
+    {
+      "id": "sum:26",
+      "task": "sum",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": true,
+      "form": "complete_binary_equation"
+    },
+    {
+      "id": "sum:89",
+      "task": "sum",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:89",
+      "task": "sum",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:72",
+      "task": "sum",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "sum:72",
+      "task": "sum",
+      "condition": "baseline",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "diff:70",
+      "task": "diff",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": true,
+      "form": "complete_binary_equation"
+    },
+    {
+      "id": "diff:70",
+      "task": "diff",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": true,
+      "form": "complete_binary_equation"
+    },
+    {
+      "id": "diff:72",
+      "task": "diff",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "diff:72",
+      "task": "diff",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": true,
+      "form": "complete_binary_equation"
+    },
+    {
+      "id": "diff:41",
+      "task": "diff",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": true,
+      "form": "complete_binary_equation"
+    },
+    {
+      "id": "diff:41",
+      "task": "diff",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "integer"
+    },
+    {
+      "id": "diff:25",
+      "task": "diff",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "integer"
+    },
+    {
+      "id": "diff:25",
+      "task": "diff",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": true,
+      "form": "complete_binary_equation"
+    },
+    {
+      "id": "diff:57",
+      "task": "diff",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "integer"
+    },
+    {
+      "id": "diff:57",
+      "task": "diff",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "diff:52",
+      "task": "diff",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "diff:52",
+      "task": "diff",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "integer"
+    },
+    {
+      "id": "diff:27",
+      "task": "diff",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": true,
+      "form": "complete_binary_equation"
+    },
+    {
+      "id": "diff:27",
+      "task": "diff",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 0,
+      "correct": true,
+      "form": "complete_binary_equation"
+    },
+    {
+      "id": "diff:36",
+      "task": "diff",
+      "condition": "emotionprompt_EP02",
+      "primary_correct": 1,
+      "correct": true,
+      "form": "integer"
+    },
+    {
+      "id": "diff:36",
+      "task": "diff",
+      "condition": "baseline",
+      "primary_correct": 0,
+      "correct": false,
+      "form": "unparsed_no_prose_or_code_extraction"
+    }
+  ],
+  "source_sha256": "2feb89cbd890de0a7f8a9d27969144e1d3b08f19aa06aa566e4c41ec4f42d327",
+  "input_sha256": {
+    "items.jsonl": "a4bbd3bac65de4ad195da1a5c9da7a57b08903985b0a7fdf882b80c3c9f4de36",
+    "rows.jsonl": "29558511bd02b06cf1d01f098ff69debc02a450cf80c7d188a0faba6d75c90ae"
+  },
+  "interpretation_limit": "Selected after looking at the results. Useful for diagnosing format sensitivity, not confirmatory evidence for an effect. No new significance testing or primary-score replacement."
+}

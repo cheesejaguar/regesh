@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "seed": 711,
+  "max_tokens": 128,
+  "items": 36,
+  "model_call_ceiling": 36,
+  "completion_token_ceiling": 4608,
+  "input_tokens": "additional, recorded when supplied",
+  "model_adapter": "local-openai-compatible-v1",
+  "model": "regesh-qwen-coder",
+  "mode": "live",
+  "item_sha256": "33885e82810c3c663687a6c1c7cbe5dd3874dc14b65f347a175d0321cbf66f49",
+  "bootstrap_samples": 2000,
+  "scope": "externally keyed emotional/social understanding or classification; not subjective experience"
+}

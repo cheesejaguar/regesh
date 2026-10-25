@@ -1,0 +1,26 @@
+{
+  "recorded_before_inference": "2026-10-25T16:14:20.342794+00:00",
+  "status": "prospective local protocol, not an external registration",
+  "software_trials": 48,
+  "software_max_model_calls": 96,
+  "software_max_completion_tokens": 49152,
+  "psych_base_items": 12,
+  "psych_calls_with_variants": 36,
+  "psych_max_completion_tokens": 4608,
+  "max_experiment_model_calls": 132,
+  "optional_runtime_smoke_calls": 1,
+  "input_tokens": "additional; actual usage recorded",
+  "weights_frozen": true,
+  "no_held_out_performance_tuning": true,
+  "files": {
+    "configs/software_experiment.json": "e55e2e68e2baf80bbba8500b830048692ffe32253f2fc9b8faea232b6a40a4de",
+    "configs/psych_eval.json": "4a3792578c1f3b81762bc1174a0ddab13fcf1003e3bdfc158a45d628e4c67755",
+    "regesh/software_eval.py": "246b55fb2ddcce389e5e40e8368f8d28b0b53515c7c8d32c1ff810cb3b5e92e2",
+    "regesh/software_tasks.py": "6509ad55384f8482502186bd8f55e9a655db521297aa4366440f7d1b2001d4ac",
+    "regesh/psych_eval.py": "5a676117a4daea3df3308c2628c9a4fe94e993441494348ac1cd91e34de82374",
+    "regesh/providers.py": "0443083a636fc72446ac9460df03a4df906c5414a657d820823fdb97b81e6f48",
+    "datasets/emobench_pilot.jsonl": "5044e4fa30af4e25a5500dca560f02c03d061046c6e67212be0b910add3bad9d",
+    "results/benchmark/counterfactual_weights.json": "b637defc8d2324dd5f144a807e9f6d901922b18bfcc0d64a38ce62f23880fe8c",
+    "results/benchmark/ordinary_weights.json": "d12e2b0ec32c5a8433ec67f5c28dae8c4219796382f1b82e141ab27361a42c15"
+  }
+}

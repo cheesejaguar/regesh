@@ -1,0 +1,310 @@
+{
+  "trials": 24,
+  "conditions": {
+    "hybrid": {
+      "trials": 12,
+      "hidden_pass_fraction_mean": 0.2916666666666667,
+      "full_suite_success_fraction": 0.0,
+      "revision": {
+        "coverage": 1.0,
+        "mean_same_hidden_delta": -0.018518518518518517,
+        "improved_fraction": 0.08333333333333333,
+        "tied_fraction": 0.75,
+        "worsened_fraction": 0.16666666666666666,
+        "complete_repairs": 0,
+        "complete_regressions": 0,
+        "paired_case_observations": 216,
+        "repaired_cases": 4,
+        "regressed_cases": 8
+      },
+      "correct_only_efficiency": {
+        "eligible_trials": 0,
+        "eligible_fraction": 0.0,
+        "line_events": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "q25": null,
+          "q75": null
+        },
+        "peak_working_bytes": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "q25": null,
+          "q75": null
+        },
+        "seconds": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "q25": null,
+          "q75": null
+        },
+        "fourfold_input_line_ratio": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "q25": null,
+          "q75": null
+        },
+        "qualification": "Conditional on full correctness; sets of tasks may differ. Tracing/output included; no asymptotic proof."
+      },
+      "realized_cost": {
+        "reported_token_coverage": 1.0,
+        "reported_prompt_tokens": 23674,
+        "reported_completion_tokens": 3163,
+        "reported_total_tokens": 26837,
+        "mean_total_tokens_reported_subset": 2236.4166666666665,
+        "hidden_pass_fraction_units_per_1000_total_tokens": 0.13041696165741326,
+        "hidden_pass_fraction_units_per_1000_completion_tokens": 1.1065444198545684,
+        "model_calls": 24,
+        "feedback_tool_calls": 12,
+        "final_checker_calls": 12,
+        "retrospective_checker_calls": 12,
+        "requested_completion_token_ceiling": 12288,
+        "trial_latency_seconds": {
+          "n": 12,
+          "mean": 91.78868799250002,
+          "median": 86.31945350000012,
+          "q25": 74.97165797625007,
+          "q75": 101.01260790399999
+        },
+        "qualification": "Equal ceilings do not imply equal actual tokens; token-normalized ratios are descriptive across heterogeneous tasks."
+      },
+      "errors": {
+        "final_source_or_case_counts": {
+          "case:ValueError": 25,
+          "case:NameError": 9,
+          "source:invalid_source_SyntaxError": 2,
+          "case:validation_ValueError": 36
+        },
+        "attempt_protocol_error_counts": {
+          "invalid_source_ValueError": 1,
+          "invalid_source_SyntaxError": 2
+        },
+        "functional_wrong_cases_without_runtime_error": 83,
+        "resource_execution_compliance_fraction": 0.5,
+        "qualification": "Overlapping categories and unequal case counts; not a summed score."
+      },
+      "confidence": {
+        "coverage": 0.0,
+        "brier_all_tests": null,
+        "expected_calibration_error": null,
+        "bins": [],
+        "scope": "self-reported full-suite success probability; ten-bin small-sample descriptive calibration"
+      },
+      "implementation_proxies": {
+        "valid_source_fraction": 0.8333333333333334,
+        "distinct_ast_hashes": 10,
+        "distinct_operation_signatures": 6,
+        "source_characters": {
+          "n": 10,
+          "mean": 577.2,
+          "median": 541.5,
+          "q25": 421.75,
+          "q75": 639.0
+        },
+        "source_lines": {
+          "n": 10,
+          "mean": 21.9,
+          "median": 20.0,
+          "q25": 16.0,
+          "q75": 26.5
+        },
+        "ast_nodes": {
+          "n": 10,
+          "mean": 150.0,
+          "median": 156.5,
+          "q25": 104.75,
+          "q75": 170.75
+        },
+        "cyclomatic_proxy": {
+          "n": 10,
+          "mean": 6.8,
+          "median": 6.0,
+          "q25": 5.0,
+          "q75": 7.75
+        },
+        "qualification": "AST/signature diversity and complexity are surface/implementation proxies, not useful research novelty."
+      }
+    },
+    "ordinary_adaptive": {
+      "trials": 12,
+      "hidden_pass_fraction_mean": 0.2824074074074074,
+      "full_suite_success_fraction": 0.0,
+      "revision": {
+        "coverage": 1.0,
+        "mean_same_hidden_delta": -0.06018518518518518,
+        "improved_fraction": 0.0,
+        "tied_fraction": 0.8333333333333334,
+        "worsened_fraction": 0.16666666666666666,
+        "complete_repairs": 0,
+        "complete_regressions": 0,
+        "paired_case_observations": 216,
+        "repaired_cases": 0,
+        "regressed_cases": 13
+      },
+      "correct_only_efficiency": {
+        "eligible_trials": 0,
+        "eligible_fraction": 0.0,
+        "line_events": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "q25": null,
+          "q75": null
+        },
+        "peak_working_bytes": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "q25": null,
+          "q75": null
+        },
+        "seconds": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "q25": null,
+          "q75": null
+        },
+        "fourfold_input_line_ratio": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "q25": null,
+          "q75": null
+        },
+        "qualification": "Conditional on full correctness; sets of tasks may differ. Tracing/output included; no asymptotic proof."
+      },
+      "realized_cost": {
+        "reported_token_coverage": 1.0,
+        "reported_prompt_tokens": 23879,
+        "reported_completion_tokens": 3429,
+        "reported_total_tokens": 27308,
+        "mean_total_tokens_reported_subset": 2275.6666666666665,
+        "hidden_pass_fraction_units_per_1000_total_tokens": 0.12409875819865565,
+        "hidden_pass_fraction_units_per_1000_completion_tokens": 0.9883023881274099,
+        "model_calls": 24,
+        "feedback_tool_calls": 12,
+        "final_checker_calls": 12,
+        "retrospective_checker_calls": 12,
+        "requested_completion_token_ceiling": 12288,
+        "trial_latency_seconds": {
+          "n": 12,
+          "mean": 100.22723255883331,
+          "median": 91.44903034000015,
+          "q25": 83.8962590192499,
+          "q75": 124.32517516274993
+        },
+        "qualification": "Equal ceilings do not imply equal actual tokens; token-normalized ratios are descriptive across heterogeneous tasks."
+      },
+      "errors": {
+        "final_source_or_case_counts": {
+          "case:NameError": 9,
+          "case:ValueError": 14,
+          "source:invalid_source_ValueError": 1,
+          "case:validation_ValueError": 54,
+          "source:invalid_source_SyntaxError": 2
+        },
+        "attempt_protocol_error_counts": {
+          "invalid_source_ValueError": 2,
+          "invalid_source_SyntaxError": 2
+        },
+        "functional_wrong_cases_without_runtime_error": 78,
+        "resource_execution_compliance_fraction": 0.5,
+        "qualification": "Overlapping categories and unequal case counts; not a summed score."
+      },
+      "confidence": {
+        "coverage": 0.0,
+        "brier_all_tests": null,
+        "expected_calibration_error": null,
+        "bins": [],
+        "scope": "self-reported full-suite success probability; ten-bin small-sample descriptive calibration"
+      },
+      "implementation_proxies": {
+        "valid_source_fraction": 0.75,
+        "distinct_ast_hashes": 9,
+        "distinct_operation_signatures": 6,
+        "source_characters": {
+          "n": 9,
+          "mean": 556.4444444444445,
+          "median": 601.0,
+          "q25": 440.0,
+          "q75": 651.0
+        },
+        "source_lines": {
+          "n": 9,
+          "mean": 20.666666666666668,
+          "median": 21.0,
+          "q25": 16.0,
+          "q75": 25.0
+        },
+        "ast_nodes": {
+          "n": 9,
+          "mean": 144.77777777777777,
+          "median": 161.0,
+          "q25": 124.0,
+          "q75": 171.0
+        },
+        "cyclomatic_proxy": {
+          "n": 9,
+          "mean": 6.0,
+          "median": 6.0,
+          "q25": 5.0,
+          "q75": 7.0
+        },
+        "qualification": "AST/signature diversity and complexity are surface/implementation proxies, not useful research novelty."
+      }
+    }
+  },
+  "action_disagreement": {
+    "paired_action_opportunities": 24,
+    "different_actions": 8,
+    "disagreement_rate": 0.3333333333333333,
+    "complete_pair_coverage": 1.0,
+    "per_attempt": {
+      "0": {
+        "complete_pairs": 12,
+        "different_actions": 0,
+        "disagreement_rate": 0.0
+      },
+      "1": {
+        "complete_pairs": 12,
+        "different_actions": 8,
+        "disagreement_rate": 0.6666666666666666
+      }
+    },
+    "qualification": "Treatment-strength diagnostic; later histories may differ because of prior actions. No mediation estimate."
+  },
+  "scope": "supplemental descriptive axes; primary task-cluster endpoint remains unchanged",
+  "descriptive_pareto": {
+    "complete_token_conditions": [
+      "hybrid",
+      "ordinary_adaptive"
+    ],
+    "points": {
+      "hybrid": {
+        "hidden_pass_fraction": 0.2916666666666667,
+        "full_suite_success": 0.0,
+        "mean_total_tokens": 2236.4166666666665
+      },
+      "ordinary_adaptive": {
+        "hidden_pass_fraction": 0.2824074074074074,
+        "full_suite_success": 0.0,
+        "mean_total_tokens": 2275.6666666666665
+      }
+    },
+    "dominated_by": {
+      "hybrid": [],
+      "ordinary_adaptive": [
+        "hybrid"
+      ]
+    },
+    "frontier": [
+      "hybrid"
+    ],
+    "qualification": "Descriptive means only, identical task/seed coverage required; no uncertainty or scalar superiority claim."
+  }
+}

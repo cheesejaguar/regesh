@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "fresh_fetch_cache": "/workspace/scratch/chain-emotion-fetch-verification",
+  "all_three_fresh_downloads_match_pinned_sha256": true,
+  "all_delivered_artifact_hashes_verified": true,
+  "numerical_summary_identical_after_provenance_archiving": true,
+  "preserved_first_analysis": "/workspace/scratch/chain-emotion-first-analysis",
+  "tests_passed": 9,
+  "model_calls": 0,
+  "new_participants": 0
+}

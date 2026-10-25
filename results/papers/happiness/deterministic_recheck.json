@@ -1,0 +1,11 @@
+{
+  "setting": "sudden_change",
+  "seed_block": 7100,
+  "source_sha256": "6b70cccdc7210db4a6cea191e9ede249763f07c9c082965d81aae91a9372cbb6",
+  "full_horizon": 5000,
+  "round_condition_records_matched": 400,
+  "checkpoint_records_matched": 200,
+  "exact_float_and_structure_equality": true,
+  "model_calls": 0,
+  "network_calls": 0
+}

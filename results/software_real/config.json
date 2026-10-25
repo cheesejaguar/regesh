@@ -1,0 +1,46 @@
+{
+  "attempts": 2,
+  "bootstrap_samples": 2000,
+  "bootstrap_seed": 6211,
+  "case_cpu_seconds": 3,
+  "case_memory_mib": 128,
+  "case_wall_seconds": 5,
+  "conditions": [
+    "hybrid",
+    "ordinary_adaptive"
+  ],
+  "counterfactual_sha256": "b637defc8d2324dd5f144a807e9f6d901922b18bfcc0d64a38ce62f23880fe8c",
+  "execution_mode": "live",
+  "final_hidden_checker_per_trial": 1,
+  "generation_temperature": 0.6,
+  "held_out_scope": "new executable task families; pretrained-model contamination unknown",
+  "line_event_limit": 150000,
+  "max_source_characters": 24000,
+  "max_tokens": 512,
+  "maximum_completion_tokens": 24576,
+  "maximum_model_calls": 48,
+  "model": "regesh-qwen-coder",
+  "model_adapter": "local-openai-compatible-v1",
+  "numpy": "2.3.5",
+  "ordinary_sha256": "d12e2b0ec32c5a8433ec67f5c28dae8c4219796382f1b82e141ab27361a42c15",
+  "python": "3.12.14",
+  "retrospective_checker_per_trial": 1,
+  "runtime_budget_note": "Two generation seeds per each of six tasks chosen after unrelated throughput probe and before any held-out task generation. Four-seed larger protocol retained separately.",
+  "schema_version": 1,
+  "seeds": [
+    910,
+    911
+  ],
+  "study_status": "prospective_cpu_pilot_v1",
+  "tasks": [
+    "lru",
+    "ttl",
+    "batching",
+    "dedup",
+    "toposort",
+    "rolling"
+  ],
+  "temperature_observed": 0.6,
+  "tool_calls_per_trial": 1,
+  "weights_frozen": true
+}

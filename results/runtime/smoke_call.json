@@ -1,0 +1,62 @@
+{
+  "purpose": "one unrelated runtime smoke/throughput call, excluded from experiment outcomes",
+  "record": {
+    "provider": "local-openai-compatible-v1",
+    "endpoint": "http://127.0.0.1:8080/v1/chat/completions",
+    "request": {
+      "model": "regesh-qwen-coder",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Return only Python source for a function double(x) that returns twice x."
+        }
+      ],
+      "seed": 17,
+      "temperature": 0.6,
+      "max_tokens": 128
+    },
+    "started_at": "2026-10-25T16:16:36.039891+00:00",
+    "mode": "live re-execution",
+    "timeout_seconds": 180,
+    "http_status": 200,
+    "raw_response": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"```python\\ndef double(x):\\n    \\\"\\\"\\\"\\n    Returns twice the value of the input x.\\n\\n    Args:\\n    x (int or float): The input number.\\n\\n    Returns:\\n    int or float: The doubled value of x.\\n    \\\"\\\"\\\"\\n    return 2 * x\\n```\"}}],\"created\":1792945011,\"model\":\"regesh-qwen-coder\",\"system_fingerprint\":\"b11878-a55c16e4e\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":58,\"prompt_tokens\":44,\"total_tokens\":102,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-7cdxdLpv7ruZcmtG69EyPviYMgfbJXqy\",\"timings\":{\"cache_n\":0,\"prompt_n\":44,\"prompt_ms\":2193.496,\"prompt_per_token_ms\":49.85218181818182,\"prompt_per_second\":20.059302592756037,\"predicted_n\":58,\"predicted_ms\":13301.697,\"predicted_per_token_ms\":233.3631052631579,\"predicted_per_second\":4.285167524113652}}",
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "```python\ndef double(x):\n    \"\"\"\n    Returns twice the value of the input x.\n\n    Args:\n    x (int or float): The input number.\n\n    Returns:\n    int or float: The doubled value of x.\n    \"\"\"\n    return 2 * x\n```"
+          }
+        }
+      ],
+      "created": 1792945011,
+      "model": "regesh-qwen-coder",
+      "system_fingerprint": "b11878-a55c16e4e",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 44,
+        "total_tokens": 102,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-7cdxdLpv7ruZcmtG69EyPviYMgfbJXqy",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 44,
+        "prompt_ms": 2193.496,
+        "prompt_per_token_ms": 49.85218181818182,
+        "prompt_per_second": 20.059302592756037,
+        "predicted_n": 58,
+        "predicted_ms": 13301.697,
+        "predicted_per_token_ms": 233.3631052631579,
+        "predicted_per_second": 4.285167524113652
+      }
+    },
+    "elapsed_seconds": 15.65872996500002
+  },
+  "text": "```python\ndef double(x):\n    \"\"\"\n    Returns twice the value of the input x.\n\n    Args:\n    x (int or float): The input number.\n\n    Returns:\n    int or float: The doubled value of x.\n    \"\"\"\n    return 2 * x\n```"
+}
