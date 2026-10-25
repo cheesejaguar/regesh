@@ -18,6 +18,14 @@ listed here, because they are the mechanism and also the safety boundary:
 The bond never changes factual reliability, authority, epistemic uncertainty or
 tool permissions, and a support request is bounded by the partner's attention
 budget so help-seeking cannot become a disengagement deterrent (De Freitas 2026).
+
+Event-level semantics differ from the robot's per-timestep loop in one declared
+way: responsiveness (Eq. 5) is updated once per resolved request (answered by
+the partner's next occurrence with support, or unanswered on that occurrence or
+after `request_window`). The independent reproduction showed that the literal
+per-step reading drives responsiveness down under a responsive caregiver because
+latency steps outnumber comfort steps; the per-resolution update avoids that
+artefact while keeping the published rates and ranges.
 """
 from __future__ import annotations
 from copy import deepcopy

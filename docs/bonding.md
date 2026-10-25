@@ -90,7 +90,52 @@ replayable and interveneable. See `bonding_disclosure.md`.
 
 ## Reproductions of published work
 
-RESULTS_REPRODUCTIONS
+All four are independent implementations or scoped replications; none is a
+rerun of the authors' code. Full protocols, declared ambiguities, raw outputs and
+hashes are in the linked reports and `results/papers/`.
+
+### Hiolle, Lewis & Cañamero (2014): arousal regulation and adaptation
+
+Independent simulation with the shared equations, Table 1/2 parameters and a
+declared stimulation substitute (2,100 runs, 601,324 steps;
+[report](reproductions/attachment_robot.md)). Needy-minus-independent contrasts
+with a responsive caregiver, 100 seeds, paired bootstrap:
+
+| Published observation | Measured | Status |
+|---|---|---|
+| Needy requests comfort much more often | +2.00 requests (simple), +3.00 (complex); intervals exclude zero | Direction reproduced |
+| Needy spends more time at medium arousal and learns more; independent explores more | learn-band fraction +.19 / +.15; explore fraction -.24 / -.22; learning steps +15 / +16 | Direction reproduced |
+| Independent comfort trace lasts up to 10 s | 12.3 s above the .1 floor (needy 3.0 s) | Consistent; arithmetic of beta_h = .95 |
+| Complex environment: 140 s vs 170 s for two traversals (ratio 1.21) | 26.0 s vs 31.4 s, ratio 1.207 | Ratio reproduced; **absolute seconds do not** |
+| Simple environment: similar pace for both profiles | 26.7 s vs 31.6 s, ratio 1.186 | **Not reproduced in substance** |
+| Adaptive robot: responsiveness rises under a responsive human (5-140 s), falls after 150 s | Literal Eq. 5: falls from .5 to .014 by 100 s, beta_h/tau_h to the independent end; rise-then-fall appears only when the regulatory behaviour is assumed to persist through a 3 s comfort episode (.977 at 150 s, .916 at end) | **Primary direction not reproduced**; reproduced under two unspecified semantics, reported as sensitivities |
+
+Consequence for the platform: the per-step Eq. 5 cannot raise responsiveness when
+comfort arrives after a latency, so the bond updates responsiveness once per
+resolved request at the published rate. The runs are nearly deterministic across
+seeds, so the intervals describe declared noise only.
+
+### Danescu-Niculescu-Mizil, Lee, Pang & Kleinberg (2012): coordination and power
+
+Independent implementation of the Supreme Court analysis on the public ConvoKit
+corpus with the shared open-lexicon measure: 204/204 argument sessions, 49,281
+Justice-lawyer exchanges (paper 50,389), 11 Justices, 312 lawyers
+([report](reproductions/coordination_power.md)). Percent scale, Welch t across
+(speaker, case) entities, ConvoKit 7/7 thresholds fixed before any result:
+
+| Published claim | Aggregated 3 difference (points) | p | Status |
+|---|---:|---:|---|
+| Lawyers coordinate more toward Justices than conversely (Fig. 4) | +1.18 [0.77, 1.57] | <.0001 | Reproduced; 6/8 markers in direction, 4 significant |
+| Lawyers coordinate more toward unfavorable than favorable Justices (Fig. 5a) | +0.98 [0.37, 1.60] | .002 | Reproduced; 8/8 markers in direction |
+| Lawyers coordinate more toward the Chief than Associate Justices (p<.01) | -0.35 | .50 | Not reproduced; direction only under the loosest threshold |
+| Favorable Justices coordinate more toward lawyers (Fig. 5b) | +0.07 | .83 | Not reproduced; adverbs significant in the opposite direction |
+
+Absolute levels are not comparable with the paper because the lexicon is not
+LIWC. The measure recovers the two large published asymmetries and not the two
+smaller ones; this run cannot separate lexicon, threshold and data-processing
+explanations for the failures.
+
+RESULTS_REPRODUCTIONS_REMAINING
 
 ## Platform-level simulation checks
 

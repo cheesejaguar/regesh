@@ -10,6 +10,20 @@ images; callers supply any stimulation signal in [0, 1]-like range.
 Published quirks are preserved and labelled rather than silently corrected:
 the responsiveness decrease in Eq. (5) uses (1 - Resp), not Resp. Arousal is
 floored at zero here (the paper does not state a floor; see `floor` argument).
+
+Usage hazards found by the independent reproduction (docs/reproductions/attachment_robot.md):
+
+* Eq. (4) tests ``contact > 0 or face > 0``. If callers pass Eq. (1) traces, which
+  decay geometrically and never reach zero, the ``beta_h`` branch becomes
+  unreachable after the first contact and the two profiles behave alike. Pass
+  raw or truncated sensor values (the platform passes per-event support).
+* Eqs. (6)-(7) give ``beta_h = 1`` at ``Resp = 0``, so the comfort trace then
+  stops decaying between interventions; the platform additionally decays comfort
+  with elapsed time.
+* Evaluating Eq. (5) only on steps where arousal is in the request band cannot
+  yield a net increase under a caregiver whose response arrives after a latency,
+  because comfort removes arousal from that band immediately. The platform
+  therefore updates responsiveness once per resolved request instead.
 """
 from __future__ import annotations
 
