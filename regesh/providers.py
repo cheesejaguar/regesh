@@ -13,7 +13,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from .schema import canonical
+from .schema import canonical, finite
 from .appraisal import validate_appraisal
 
 
@@ -58,7 +58,7 @@ class LocalChatModel:
     """
     identifier = "local-openai-compatible-v1"
 
-    def __init__(self, base_url=None, model=None, api_key=None, timeout=60):
+    def __init__(self, base_url=None, model=None, api_key=None, timeout=60, temperature=0):
         self.base_url = base_url or os.environ.get("REGESH_MODEL_BASE_URL")
         self.model = model or os.environ.get("REGESH_MODEL_NAME")
         self.api_key = api_key if api_key is not None else os.environ.get("REGESH_MODEL_API_KEY")
@@ -70,12 +70,13 @@ class LocalChatModel:
         if timeout <= 0:
             raise ValueError("timeout must be positive")
         self.timeout = timeout
+        self.temperature = finite(temperature,0,2)
 
     def complete(self, messages, *, seed=0, max_tokens=512, recorder=None):
         if not isinstance(max_tokens, int) or not 1 <= max_tokens <= 8192:
             raise ValueError("max_tokens must be between 1 and 8192")
         request = {"model": self.model, "messages": messages, "seed": seed,
-                   "temperature": 0, "max_tokens": max_tokens}
+                   "temperature": self.temperature, "max_tokens": max_tokens}
         # Canonical encoding rejects non-finite JSON before any network request.
         body = canonical(request).encode()
         url = self.base_url.rstrip("/") + "/chat/completions"

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "selection": "English; hash-ranked seed711, first one/category then fill to six per subtask, fixed before inference",
+  "purpose": "evaluation only; no training/tuning",
+  "source_repository": "https://github.com/Sahandfer/EmoBench",
+  "commit": "3b4f84312541f8469e909965e1fff3691ef85c62",
+  "license": "MIT",
+  "files": {
+    "EA": {
+      "file_sha256": "344c84913ed4adc9f26261a03cc4ddbecceeef4fcb8f77ab0405f8a63e8a4628",
+      "english_items": 200,
+      "selected_qids": [
+        "6",
+        "122",
+        "63",
+        "161",
+        "16",
+        "187"
+      ]
+    },
+    "EU": {
+      "file_sha256": "60140a7617779bdb496cd50dcebaf33037c39c65821ae300a6a24a72fd7c7037",
+      "english_items": 200,
+      "selected_qids": [
+        "21",
+        "127",
+        "53",
+        "182",
+        "57",
+        "3"
+      ]
+    }
+  },
+  "items_sha256": "5044e4fa30af4e25a5500dca560f02c03d061046c6e67212be0b910add3bad9d"
+}
