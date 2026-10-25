@@ -1,15 +1,28 @@
 # Regesh
 
-A local research platform for persistent functional affect: versioned evidence and appraisal, durable agent state, operational resources, developing expectations, affect-modulated cognitive control, causal interventions, and provider-free replay.
+**Persistent affect. Inspectable causes. Reproducible experiments.**
 
-**Current evidence:** compact journaling reduces measured retained storage by about 97%, and snapshot lookup reduces isolated peak RAM by 89.5% at 250 events. Rust works as an optional backend but showed no dependable CPU/RAM gain. A completed real-model software pilot also found **no demonstrated affect advantage**: hidden pass rates 29.17% vs 28.24%, paired difference +0.93 points, 95% interval [−4.17, 6.94]. Neither controller produced a fully correct solution. See the [extended report](docs/extended_report.md) for real-model QA, human-label training, all failures, and multiple quality measures. Biological fidelity and subjective experience remain unestablished.
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![MIT license](https://img.shields.io/github/license/cheesejaguar/regesh?color=475569)](LICENSE)
+[![SQLite storage](https://img.shields.io/badge/Storage-SQLite-4169E1?logo=sqlite&logoColor=white)](docs/architecture.md)
+[![Optional Rust backend](https://img.shields.io/badge/Rust-optional-8B5E3C?logo=rust&logoColor=white)](docs/rust_memory.md)
 
-**Published-paper experiments:** [three core reproductions and a fourth scoped
-replication](docs/paper_reproductions.md) are complete. They include 482 million
-homeostatic transitions, 190 million bandit choices, original Chain-of-Emotion
-data reanalysis and 64 new EmotionPrompt model calls. Results are mixed. Fixed
-comparison exactly matches ordinary optimistic learning, and the prompt study
-exposes a format confound. These are measured limitations, not affect superiority.
+Regesh is a local research platform for persistent, developing affect in AI
+agents. It connects versioned observations and appraisals to durable state,
+memory and cognitive control, with replay and causal interventions.
+
+| Capability | What it provides |
+|---|---|
+| 🧠 Persistent state | Mixed affect, mood, relationships and expectations that develop across interactions and restarts. |
+| 🔎 Inspectable behavior | Evidence-preserving memory, cognitive controls, snapshots, interventions and provider-free replay. |
+| 🧪 Reproducible research | Offline fixtures, real-model adapters, executable benchmarks and published-paper comparisons. |
+
+[Quick start](#run-locally) · [How it works](#how-it-works) · [Measured results](#measured-results) · [SDK](#sdk) · [Research](#research-and-results)
+
+> [!NOTE]
+> **Experimental research software.** Current studies do not demonstrate an
+> affect-specific improvement in useful idea generation. Biological fidelity
+> and subjective experience remain unestablished.
 
 ## Run locally
 
@@ -26,6 +39,56 @@ python -m regesh benchmark --output results/benchmark-new
 ```
 
 The full default benchmark trains on 6,144 observed transitions and runs 88 development plus 660 test trials, 32 objective probes per trial, across 11 conditions. Every condition shares information, action operators, model-prediction counts and probe budget. Actual timings and all raw evidence are retained. Use a new output directory to preserve a run. Distributed raw JSONL archives may be gzip-compressed; `gzip -dk FILE.jsonl.gz` restores them. Fresh runs produce plain JSONL.
+
+## How it works
+
+```mermaid
+flowchart LR
+    O[Observation] --> A[Appraisal]
+    A --> S[State transition]
+    S --> C[Cognitive control]
+    C --> X[Action]
+    X --> R[Observed outcome]
+    R --> L[Learning]
+    L --> A
+    S <--> M[(Durable state and memory)]
+    L --> M
+    M --> C
+```
+
+Appraisal considers goals, expectations, relationships and controllability.
+State influences retrieval, exploration, verification and planning. Observations,
+interpretations and outcomes remain distinct in the saved causal history.
+
+## Measured results
+
+| Study | Observed result | Evidence |
+|---|---|---|
+| Compact journaling | About **97% less retained storage** at 250 events. | [Memory profiles](docs/rust_memory.md) |
+| Snapshot lookup | **89.5% lower peak RAM** in the isolated 250-event comparison. | [Extended report](docs/extended_report.md) |
+| Real-model software pilot | Hybrid **29.17%** vs ordinary **28.24%** hidden-check pass rate; difference +0.93 points, 95% interval [−4.17, 6.94]. | [Protocol and results](docs/extended_report.md#same-real-model-frozen-controllers-executable-held-out-tasks) |
+| Published-paper experiments | **Three core reproductions and a fourth scoped replication**, with mixed results and explicit failed matches. | [Paper comparisons](docs/paper_reproductions.md) |
+
+Neither software controller produced a fully correct final solution. Rust works
+as an optional backend but showed no dependable CPU/RAM advantage. These measured
+results do not establish affect superiority.
+
+The paper studies include 482 million homeostatic transitions, 190 million bandit
+choices, original Chain-of-Emotion data reanalysis and 64 new EmotionPrompt calls.
+Fixed comparison matches ordinary optimistic learning in the tested bandits;
+the prompting study exposes a format confound.
+
+<details>
+<summary><strong>View the quantitative paper comparisons</strong></summary>
+
+![Four panels comparing homeostatic regulation, bandit reward differences, original Chain-of-Emotion scores and the EmotionPrompt pilot.](results/papers/figures/paper_comparisons.svg)
+
+Each panel measures a different endpoint. Chain-of-Emotion reuses original
+observations; the EmotionPrompt pilot changes the model and task scope.
+See the [full report](docs/paper_reproductions.md) for uncertainty, causal controls
+and reproduction limits.
+
+</details>
 
 ## SDK
 
