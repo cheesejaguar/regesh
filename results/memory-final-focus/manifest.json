@@ -1,0 +1,14 @@
+{
+  "python": "3.12.14",
+  "source_sha256": {
+    "regesh/storage.py": "3275c662d0ffb918519ecd58c1ad0d287248b16d5838dc3e02e653c35c68823c",
+    "regesh/native_memory.py": "4fece0ecd4efc50014647513c5968814f5e3bb3d06360fd91c8d91c31df8d75e",
+    "scripts/profile_memory.py": "02e644ff850b6a73fa7d674a49752cb6944f3d9db194868af6166751814c10de",
+    "native/src/lib.rs": "cce705328167a65bb5e02923b34fa7326d3cef11828b9207c137ed0412ed13f2",
+    "native/Cargo.toml": "92f1c6a38fca78cdbcfc4e58ef4aa1d64af078f75645699ac16eb995241bf75c",
+    "native/Cargo.lock": "407a472ea9ddd198ce76af1026f07b465200e8208c5d49b642ecf8c984221f48"
+  },
+  "native_library_sha256": "dc255ae696afbda46bf7edaeadf13d1d0e96f6340509458f44faf6a00973f500",
+  "timing_context": "no live inference; compiler paused; snapshot comparison also executing on same5corehost",
+  "profile_status": "final implementation, redundant Python parse removed; exploratory two repetition descriptive measurements"
+}

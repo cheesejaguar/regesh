@@ -1,0 +1,24 @@
+{
+  "scope": "single isolated measurement each, not confidence intervals",
+  "rows": [
+    {
+      "mode": "legacy",
+      "events": 250,
+      "snapshot_seconds": 7.371830736999982,
+      "peak_rss_kib": 235460,
+      "presnapshot_peak_rss_kib": 24544,
+      "digest": "481510361a9d421edaa8db6063b103e2382e3b38ae5efef3c71c2cecb15ad41a",
+      "journal_hash": "d26af2b1cbc43f919b35009401c9d4af3c87579ebacc172263fdb1eee48c9b01"
+    },
+    {
+      "mode": "latest",
+      "events": 250,
+      "snapshot_seconds": 0.1084088929999325,
+      "peak_rss_kib": 24608,
+      "presnapshot_peak_rss_kib": 24608,
+      "digest": "481510361a9d421edaa8db6063b103e2382e3b38ae5efef3c71c2cecb15ad41a",
+      "journal_hash": "d26af2b1cbc43f919b35009401c9d4af3c87579ebacc172263fdb1eee48c9b01"
+    }
+  ],
+  "logical_results_equal": true
+}

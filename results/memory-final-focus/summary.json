@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "python": "3.12.14",
+  "counts": [
+    100
+  ],
+  "repeats": 2,
+  "backends": [
+    "python",
+    "rust"
+  ],
+  "workloads": [
+    "append",
+    "clocked"
+  ],
+  "all_histories_identical": true,
+  "measurements": {
+    "append": {
+      "100": {
+        "python": {
+          "write_seconds": 1.767826105000097,
+          "snapshot_seconds": 0.005259843999965597,
+          "streaming_audit_seconds": 0.47909552550004264,
+          "database_bytes": 1097728.0,
+          "peak_rss_kib": 20374.0
+        },
+        "rust": {
+          "write_seconds": 3.082849145999944,
+          "snapshot_seconds": 0.014794818500035944,
+          "streaming_audit_seconds": 0.5975844075001078,
+          "database_bytes": 1097728.0,
+          "peak_rss_kib": 23276.0
+        }
+      }
+    },
+    "clocked": {
+      "100": {
+        "python": {
+          "write_seconds": 3.3839030240000056,
+          "snapshot_seconds": 0.005447362000040812,
+          "streaming_audit_seconds": 0.9741751619999377,
+          "database_bytes": 1765376.0,
+          "peak_rss_kib": 21196.0
+        },
+        "rust": {
+          "write_seconds": 3.2854780485000674,
+          "snapshot_seconds": 0.007045535999964159,
+          "streaming_audit_seconds": 1.6726399714999616,
+          "database_bytes": 1765376.0,
+          "peak_rss_kib": 24038.0
+        }
+      }
+    }
+  },
+  "scope": "SQLite journal representation and optional Rust JSON-diff kernel; no agent capability improvement claim"
+}

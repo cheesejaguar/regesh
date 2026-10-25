@@ -45,10 +45,7 @@ class Agent:
         return self.store.read(self.id)
 
     def _append(self, operation, payload, state):
-        row=self.store.db.execute("SELECT seq,hash FROM journal WHERE agent=? ORDER BY seq DESC LIMIT 1",(self.id,)).fetchone()
-        entry={"seq":row[0]+1 if row else 0,"operation":operation,"payload":payload,"state":state,"previous":row[1] if row else ""}
-        self.store.db.execute("INSERT INTO journal VALUES(?,?,?,?,?,?,?,?)",(self.id,entry["seq"],operation,canonical(payload),canonical(state),entry["previous"],digest(entry),datetime.now(timezone.utc).isoformat()))
-        self.store.db.execute("UPDATE agents SET state=? WHERE id=?",(canonical(state),self.id))
+        self.store.append(self.id,operation,payload,state,datetime.now(timezone.utc).isoformat())
 
     def _mutate(self, operation, fn):
         self.store.db.execute("BEGIN IMMEDIATE")
@@ -278,7 +275,7 @@ class Agent:
 
     def snapshot(self):
         s=self.get_state()
-        return {"schema_version":1,"state":s,"digest":digest(s),"provenance":{"agent":self.id,"journal_hash":self.store.entries(self.id)[-1]["hash"]}}
+        return {"schema_version":1,"state":s,"digest":digest(s),"provenance":{"agent":self.id,"journal_hash":self.store.last_hash(self.id)}}
 
     def restore(self,snapshot):
         if snapshot.get("schema_version")!=1 or digest(snapshot["state"])!=snapshot["digest"]:
@@ -307,7 +304,12 @@ class Agent:
         return self._mutate("reset",fn)
 
     def trace(self):
+        """Compatibility materialization; prefer iter_trace for long histories."""
         return self.store.entries(self.id)
+
+    def iter_trace(self):
+        """Validate and stream independent poststates without retaining a full history."""
+        return self.store.iter_entries(self.id)
 
     def replay(self,new_agent_id,through=None,mode="recompute"):
         """Replay exact recorded appraisals, timing, actions, interventions and outcomes.
@@ -316,17 +318,23 @@ class Agent:
         explicit `playback` mode only restores hash-validated recorded poststates.
         Neither mode calls a live provider. Live re-execution is a new experiment.
         """
-        entries=self.trace()
-        chosen=entries if through is None else [e for e in entries if e["seq"]<=through]
-        if not chosen: raise ValueError("empty replay")
+        from itertools import chain, takewhile
+        entries=self.iter_trace()
+        first=next(entries,None)
+        if first is None or through is not None and through<first["seq"]:
+            raise ValueError("empty replay")
+        chosen=chain((first,),entries)
+        if through is not None: chosen=takewhile(lambda e:e["seq"]<=through,chosen)
         if mode=="playback":
-            return self.fork(new_agent_id,{"schema_version":1,"state":chosen[-1]["state"],"digest":digest(chosen[-1]["state"]),"provenance":{"replay_source":self.id}})
+            latest=first
+            for latest in chosen: pass
+            return self.fork(new_agent_id,{"schema_version":1,"state":latest["state"],"digest":digest(latest["state"]),"provenance":{"replay_source":self.id}})
         if mode!="recompute": raise ValueError("unknown replay mode")
         if self.store.db.execute("SELECT 1 FROM agents WHERE id=?",(new_agent_id,)).fetchone():
             raise ValueError("replay target exists")
         path=self.store.db.execute("PRAGMA database_list").fetchone()[2]
         if not path: raise ValueError("replay requires a file-backed database")
-        child=Agent(path,new_agent_id,chosen[0]["state"]["config"],_create_only=True)
+        child=Agent(path,new_agent_id,first["state"]["config"],_create_only=True)
         class RecordedAppraisal:
             def __init__(self,value): self.value=value
             def appraise(self,*args): return deepcopy(self.value)

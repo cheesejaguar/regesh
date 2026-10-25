@@ -1,0 +1,9 @@
+{
+  "scope": "single fresh worker per mode, full-snapshot storage backend shared; old snapshot lookup semantics versus new lookup",
+  "python": "3.12.14",
+  "source_sha256": {
+    "scripts/profile_snapshot.py": "cac7b1be37bfafd73ab9aafaa3a02a84e2beeefd22e7ba21e78a6fa1a5159386",
+    "regesh/agent.py": "eb61b61d27a938ebab03d0fcc2fbb4c3befef3d93570c01c5412dfded2ea534f",
+    "regesh/storage.py": "3275c662d0ffb918519ecd58c1ad0d287248b16d5838dc3e02e653c35c68823c"
+  }
+}
