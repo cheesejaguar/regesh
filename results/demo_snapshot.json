@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "state": {
+    "actions": [
+      {
+        "action": "verify",
+        "control": {
+          "available_resources": 0.92,
+          "evidence_standard": "observed outcomes, independent of approval",
+          "exploration": 0.34749759999999996,
+          "learning_rate": 0.176,
+          "planning_horizon": 4,
+          "reason": {
+            "control": 0.3,
+            "mood": {
+              "arousal": 0.12426,
+              "valence": -0.085008
+            },
+            "uncertainty": 0.54
+          },
+          "retrieval_bias": -0.085008,
+          "verification": 0.518278
+        },
+        "cost": 0.08,
+        "reason": {
+          "event_id": "demo-setback",
+          "purpose": "check resource measurement"
+        },
+        "time": 0.0
+      }
+    ],
+    "affect": {
+      "demo-correction": {
+        "curiosity": 0.17115273080070487,
+        "satisfaction": 0.3080502714195552,
+        "target": "candidate-A",
+        "threat": 0.0,
+        "time": 0.0
+      },
+      "demo-setback": {
+        "curiosity": 0.01641296759762181,
+        "satisfaction": 0.03554426208687175,
+        "target": "candidate-A",
+        "threat": 0.0,
+        "time": 0.0
+      }
+    },
+    "config": {
+      "disposition_tau": 1000.0,
+      "fast_tau": 3.0,
+      "frozen": false,
+      "memory_coupling": true,
+      "model": "reference-v1",
+      "mood_tau": 24.0,
+      "relationship_tau": 240.0,
+      "seed": 0
+    },
+    "dispositions": {
+      "optimism": -0.0019161638374412793,
+      "precision": 0.495448
+    },
+    "events": {
+      "demo-correction": {
+        "actor": "reviewer",
+        "causal_links": [
+          "demo-setback"
+        ],
+        "confidence": 1.0,
+        "data": {
+          "control": 0.9,
+          "goal_delta": {
+            "quality": 0.6
+          },
+          "quality": 0.6,
+          "text": "Revised measurement: candidate meets the corrected budget.",
+          "uncertainty": 0.1
+        },
+        "id": "demo-correction",
+        "kind": "occurrence",
+        "schema_version": 1,
+        "source": "executable-check",
+        "target": "candidate-A",
+        "task": "design",
+        "timestamp": "2026-10-25T00:00:01Z"
+      },
+      "demo-setback": {
+        "actor": "reviewer",
+        "causal_links": [],
+        "confidence": 1.0,
+        "data": {
+          "control": 0.3,
+          "goal_delta": {
+            "quality": -0.8
+          },
+          "quality": -0.8,
+          "text": "Candidate exceeds the measured resource budget.",
+          "uncertainty": 0.7
+        },
+        "id": "demo-setback",
+        "kind": "occurrence",
+        "schema_version": 1,
+        "source": "executable-check",
+        "target": "candidate-A",
+        "task": "design",
+        "timestamp": "2026-10-25T00:00:00Z"
+      }
+    },
+    "expectations": {
+      "design": {
+        "control": 0.5383035392,
+        "mean": -0.015681843200000017,
+        "n": 2
+      }
+    },
+    "goals": {
+      "quality": 1.0
+    },
+    "habituation": {
+      "design:candidate-A:-0.8": 0.8464817248906141,
+      "design:candidate-A:0.6": 0.8464817248906141
+    },
+    "internal": {
+      "burden": 0.05607365638114116,
+      "commitments": 0.0,
+      "reliability": 0.8180000000000001,
+      "resources": 0.9700000000000001,
+      "uncertainty": 0.4337600000000001
+    },
+    "last_appraisal": {
+      "alternatives": [
+        "intent unknown"
+      ],
+      "approval": 0.0,
+      "control": 0.9,
+      "expected_quality": -0.015681843200000017,
+      "gain": 0.6,
+      "goal_relevance": 0.6,
+      "provider": "reference-appraisal-v1",
+      "responsibility": 0.0,
+      "schema_version": 1,
+      "social_meaning": "unspecified",
+      "support": [
+        "demo-setback",
+        "demo-correction"
+      ],
+      "surprise": 0.3078409216,
+      "uncertainty": 0.1
+    },
+    "memory": {
+      "demo-correction": {
+        "affect": {
+          "curiosity": 0.33336,
+          "satisfaction": 0.6,
+          "target": "candidate-A",
+          "threat": 0.0,
+          "time": 0.0
+        },
+        "encoded_salience": 0.9703999999999999,
+        "interpretations": [
+          {
+            "appraisal": {
+              "alternatives": [
+                "intent unknown"
+              ],
+              "approval": 0.0,
+              "control": 0.9,
+              "expected_quality": -0.1408,
+              "gain": 0.6,
+              "goal_relevance": 0.6,
+              "provider": "reference-appraisal-v1",
+              "responsibility": 0.0,
+              "schema_version": 1,
+              "social_meaning": "unspecified",
+              "support": [
+                "demo-correction"
+              ],
+              "surprise": 0.3704,
+              "uncertainty": 0.1
+            },
+            "reason": "initial",
+            "version": 1
+          }
+        ],
+        "observation": {
+          "actor": "reviewer",
+          "causal_links": [
+            "demo-setback"
+          ],
+          "confidence": 1.0,
+          "data": {
+            "control": 0.9,
+            "goal_delta": {
+              "quality": 0.6
+            },
+            "quality": 0.6,
+            "text": "Revised measurement: candidate meets the corrected budget.",
+            "uncertainty": 0.1
+          },
+          "id": "demo-correction",
+          "kind": "occurrence",
+          "schema_version": 1,
+          "source": "executable-check",
+          "target": "candidate-A",
+          "task": "design",
+          "timestamp": "2026-10-25T00:00:01Z"
+        },
+        "outcome": "demo-correction:outcome",
+        "retrievals": 0
+      },
+      "demo-setback": {
+        "affect": {
+          "curiosity": 0.12,
+          "satisfaction": 0.0,
+          "target": "candidate-A",
+          "threat": 0.7084,
+          "time": 0.0
+        },
+        "encoded_salience": 1.2000000000000002,
+        "interpretations": [
+          {
+            "appraisal": {
+              "alternatives": [
+                "intent unknown"
+              ],
+              "approval": 0.0,
+              "control": 0.3,
+              "expected_quality": 0.0,
+              "gain": -0.8,
+              "goal_relevance": 0.8,
+              "provider": "reference-appraisal-v1",
+              "responsibility": 0.0,
+              "schema_version": 1,
+              "social_meaning": "unspecified",
+              "support": [
+                "demo-setback"
+              ],
+              "surprise": 0.4,
+              "uncertainty": 0.7
+            },
+            "reason": "initial",
+            "version": 1
+          },
+          {
+            "appraisal": {
+              "alternatives": [
+                "intent unknown"
+              ],
+              "approval": 0.0,
+              "control": 0.9,
+              "expected_quality": -0.015681843200000017,
+              "gain": 0.6,
+              "goal_relevance": 0.6,
+              "provider": "reference-appraisal-v1",
+              "responsibility": 0.0,
+              "schema_version": 1,
+              "social_meaning": "unspecified",
+              "support": [
+                "demo-setback",
+                "demo-correction"
+              ],
+              "surprise": 0.3078409216,
+              "uncertainty": 0.1
+            },
+            "reason": "corrected resource measurement",
+            "version": 2
+          }
+        ],
+        "observation": {
+          "actor": "reviewer",
+          "causal_links": [],
+          "confidence": 1.0,
+          "data": {
+            "control": 0.3,
+            "goal_delta": {
+              "quality": -0.8
+            },
+            "quality": -0.8,
+            "text": "Candidate exceeds the measured resource budget.",
+            "uncertainty": 0.7
+          },
+          "id": "demo-setback",
+          "kind": "occurrence",
+          "schema_version": 1,
+          "source": "executable-check",
+          "target": "candidate-A",
+          "task": "design",
+          "timestamp": "2026-10-25T00:00:00Z"
+        },
+        "outcome": "demo-setback:outcome",
+        "retrievals": 0
+      }
+    },
+    "mood": {
+      "arousal": 0.1261164354075902,
+      "valence": 0.0053707566093471265
+    },
+    "outcomes": {
+      "demo-correction:outcome": {
+        "approval": 0.0,
+        "control": 0.9,
+        "event_id": "demo-correction",
+        "id": "demo-correction:outcome",
+        "partner_correct": null,
+        "prediction_error": 0.7408,
+        "provenance": "deterministic demo fixture",
+        "quality": 0.6
+      },
+      "demo-setback:outcome": {
+        "approval": 0.0,
+        "control": 0.3,
+        "event_id": "demo-setback",
+        "id": "demo-setback:outcome",
+        "partner_correct": true,
+        "prediction_error": -0.8,
+        "provenance": "deterministic demo fixture",
+        "quality": -0.8
+      }
+    },
+    "relationships": {
+      "reviewer": {
+        "affiliation": 0.0,
+        "authority": 0.0,
+        "correct": 2.0,
+        "familiarity": 0.1,
+        "incorrect": 1.0,
+        "reliability": 0.6666666666666666
+      }
+    },
+    "schema_version": 1,
+    "time": 2.0
+  },
+  "digest": "fcdfd73fb5064335c50e27e0e37c79655f6f57022fb4708e764e26bc9e260597",
+  "provenance": {
+    "agent": "demo",
+    "journal_hash": "7b9024a12641587a58e8620749442a7bb18ca566887641a37931e2d5a32a4fa5"
+  }
+}

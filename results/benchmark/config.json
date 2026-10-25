@@ -1,0 +1,73 @@
+{
+  "bootstrap_samples": 2000,
+  "bootstrap_seed": 411,
+  "budget": 32,
+  "conditions": [
+    "memory_planning",
+    "static_persona",
+    "turn_sentiment",
+    "heuristic",
+    "hybrid",
+    "ordinary_adaptive",
+    "unlabelled_hybrid",
+    "frozen",
+    "shuffled",
+    "no_memory",
+    "no_counterfactual"
+  ],
+  "development_families": [
+    "software",
+    "engineering"
+  ],
+  "development_seeds": [
+    200,
+    201,
+    202,
+    203
+  ],
+  "held_out_family": "scientific",
+  "ridge": 1.0,
+  "schema_version": 1,
+  "test_families": [
+    "software",
+    "engineering",
+    "scientific"
+  ],
+  "test_seeds": [
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308,
+    309,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319
+  ],
+  "training_episodes_per_seed": 12,
+  "training_families": [
+    "software",
+    "engineering"
+  ],
+  "training_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107
+  ]
+}

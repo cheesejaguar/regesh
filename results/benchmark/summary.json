@@ -1,0 +1,322 @@
+{
+  "budget": 32,
+  "claim_scope": "procedural simulator only; no LLM creativity or published novelty evidence",
+  "development_trials": 88,
+  "family_means": {
+    "frozen": {
+      "engineering": 0.5229070121002908,
+      "scientific": 0.5063213224841224,
+      "software": 0.5600152010892814
+    },
+    "heuristic": {
+      "engineering": 0.5698301138311308,
+      "scientific": 0.5729497439791111,
+      "software": 0.6418333705855478
+    },
+    "hybrid": {
+      "engineering": 0.6130361235277221,
+      "scientific": 0.5979930381858864,
+      "software": 0.628027219708909
+    },
+    "memory_planning": {
+      "engineering": 0.5412204864490604,
+      "scientific": 0.5414480955235408,
+      "software": 0.6176445967421383
+    },
+    "no_counterfactual": {
+      "engineering": 0.6035122736723889,
+      "scientific": 0.6297785910585343,
+      "software": 0.6599966124848293
+    },
+    "no_memory": {
+      "engineering": 0.6130361235277221,
+      "scientific": 0.5989181042374493,
+      "software": 0.628027219708909
+    },
+    "ordinary_adaptive": {
+      "engineering": 0.5702325881451841,
+      "scientific": 0.6383942384943209,
+      "software": 0.6689132607748107
+    },
+    "shuffled": {
+      "engineering": 0.5886472707830716,
+      "scientific": 0.6214441241584108,
+      "software": 0.6865279845886411
+    },
+    "static_persona": {
+      "engineering": 0.5088932380445232,
+      "scientific": 0.5565727054654466,
+      "software": 0.6607012817813442
+    },
+    "turn_sentiment": {
+      "engineering": 0.5797673897677574,
+      "scientific": 0.6027144357770138,
+      "software": 0.682773350362736
+    },
+    "unlabelled_hybrid": {
+      "engineering": 0.6130361235277221,
+      "scientific": 0.5979930381858864,
+      "software": 0.628027219708909
+    }
+  },
+  "means": {
+    "frozen": {
+      "benchmark_original": 0.95,
+      "brier": 0.08380816837750533,
+      "canonical_design_diversity": 3.6166666666666667,
+      "constraint_compliance": 0.7723958333333333,
+      "mechanism_diversity": 2.216666666666667,
+      "mechanism_original": 0.26666666666666666,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.0172744364906938,
+      "predictor_evaluations": 128.0,
+      "quality": 0.5297478452245649,
+      "seconds": 0.010500900566675379,
+      "useful_original": 0.6833333333333333,
+      "usefulness": 0.6466207487768921
+    },
+    "heuristic": {
+      "benchmark_original": 0.95,
+      "brier": 0.15241981131329368,
+      "canonical_design_diversity": 12.483333333333333,
+      "constraint_compliance": 0.8580729166666666,
+      "mechanism_diversity": 7.1,
+      "mechanism_original": 0.6833333333333333,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.16581446716610665,
+      "predictor_evaluations": 128.0,
+      "quality": 0.5948710761319299,
+      "seconds": 0.010970328583323408,
+      "useful_original": 0.6666666666666666,
+      "usefulness": 0.658923334375262
+    },
+    "hybrid": {
+      "benchmark_original": 1.0,
+      "brier": 0.13314720998802584,
+      "canonical_design_diversity": 14.75,
+      "constraint_compliance": 0.9177083333333333,
+      "mechanism_diversity": 7.483333333333333,
+      "mechanism_original": 0.7333333333333333,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.20691943890860987,
+      "predictor_evaluations": 128.0,
+      "quality": 0.6130187938075057,
+      "seconds": 0.010751233566656993,
+      "useful_original": 0.8166666666666667,
+      "usefulness": 0.6499816000306043
+    },
+    "memory_planning": {
+      "benchmark_original": 1.0,
+      "brier": 0.1482025722414871,
+      "canonical_design_diversity": 17.1,
+      "constraint_compliance": 0.7791666666666667,
+      "mechanism_diversity": 9.333333333333334,
+      "mechanism_original": 0.85,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.18838696996396573,
+      "predictor_evaluations": 128.0,
+      "quality": 0.56677105957158,
+      "seconds": 0.01378901486665806,
+      "useful_original": 0.6333333333333333,
+      "usefulness": 0.6793624464730622
+    },
+    "no_counterfactual": {
+      "benchmark_original": 1.0,
+      "brier": 0.19135495064216282,
+      "canonical_design_diversity": 24.45,
+      "constraint_compliance": 0.9203125,
+      "mechanism_diversity": 11.433333333333334,
+      "mechanism_original": 0.7333333333333333,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.23052198567021726,
+      "predictor_evaluations": 128.0,
+      "quality": 0.6310958257385841,
+      "seconds": 0.010644372883321769,
+      "useful_original": 0.7666666666666667,
+      "usefulness": 0.6689846143229116
+    },
+    "no_memory": {
+      "benchmark_original": 1.0,
+      "brier": 0.13309104239800526,
+      "canonical_design_diversity": 14.75,
+      "constraint_compliance": 0.9177083333333333,
+      "mechanism_diversity": 7.466666666666667,
+      "mechanism_original": 0.7333333333333333,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.2152163163582304,
+      "predictor_evaluations": 128.0,
+      "quality": 0.6133271491580267,
+      "seconds": 0.010788254366665721,
+      "useful_original": 0.8166666666666667,
+      "usefulness": 0.6502899553811251
+    },
+    "ordinary_adaptive": {
+      "benchmark_original": 0.9666666666666667,
+      "brier": 0.12982114725220079,
+      "canonical_design_diversity": 14.766666666666667,
+      "constraint_compliance": 0.9036458333333334,
+      "mechanism_diversity": 7.6,
+      "mechanism_original": 0.5833333333333334,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.19348875568649476,
+      "predictor_evaluations": 128.0,
+      "quality": 0.6258466958047718,
+      "seconds": 0.016682011066651133,
+      "useful_original": 0.7,
+      "usefulness": 0.6681691599239478
+    },
+    "shuffled": {
+      "benchmark_original": 1.0,
+      "brier": 0.18242514102958976,
+      "canonical_design_diversity": 22.833333333333332,
+      "constraint_compliance": 0.90546875,
+      "mechanism_diversity": 10.6,
+      "mechanism_original": 0.7,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.20030840472810135,
+      "predictor_evaluations": 128.0,
+      "quality": 0.6322064598433744,
+      "seconds": 0.011763024899994434,
+      "useful_original": 0.7833333333333333,
+      "usefulness": 0.6753159145578309
+    },
+    "static_persona": {
+      "benchmark_original": 1.0,
+      "brier": 0.17150209169778083,
+      "canonical_design_diversity": 21.5,
+      "constraint_compliance": 0.7825520833333334,
+      "mechanism_diversity": 11.433333333333334,
+      "mechanism_original": 0.7,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.1919995551471407,
+      "predictor_evaluations": 128.0,
+      "quality": 0.5753890750971047,
+      "seconds": 0.01051483740001231,
+      "useful_original": 0.6666666666666666,
+      "usefulness": 0.6937630640110102
+    },
+    "turn_sentiment": {
+      "benchmark_original": 1.0,
+      "brier": 0.18815641612288142,
+      "canonical_design_diversity": 25.316666666666666,
+      "constraint_compliance": 0.88203125,
+      "mechanism_diversity": 12.65,
+      "mechanism_original": 0.6666666666666666,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.20479961841824854,
+      "predictor_evaluations": 128.0,
+      "quality": 0.6217517253025024,
+      "seconds": 0.013315629533334079,
+      "useful_original": 0.65,
+      "usefulness": 0.6754350011252686
+    },
+    "unlabelled_hybrid": {
+      "benchmark_original": 1.0,
+      "brier": 0.13314720998802584,
+      "canonical_design_diversity": 14.75,
+      "constraint_compliance": 0.9177083333333333,
+      "mechanism_diversity": 7.483333333333333,
+      "mechanism_original": 0.7333333333333333,
+      "oracle_evaluations": 32.0,
+      "post_criticism_gain": 0.20691943890860987,
+      "predictor_evaluations": 128.0,
+      "quality": 0.6130187938075057,
+      "seconds": 0.011849056299979566,
+      "useful_original": 0.8166666666666667,
+      "usefulness": 0.6499816000306043
+    }
+  },
+  "paired_quality_vs_hybrid": {
+    "frozen": {
+      "ci95": [
+        0.031145772578745665,
+        0.14253680462898916
+      ],
+      "hybrid_minus_condition": 0.08327094858294096,
+      "seed_clusters": 20
+    },
+    "heuristic": {
+      "ci95": [
+        -0.016662663667187584,
+        0.05871795803143349
+      ],
+      "hybrid_minus_condition": 0.01814771767557595,
+      "seed_clusters": 20
+    },
+    "hybrid": {
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "hybrid_minus_condition": 0.0,
+      "seed_clusters": 20
+    },
+    "memory_planning": {
+      "ci95": [
+        0.009781721336579514,
+        0.08473992754777661
+      ],
+      "hybrid_minus_condition": 0.04624773423592599,
+      "seed_clusters": 20
+    },
+    "no_counterfactual": {
+      "ci95": [
+        -0.04428692720977513,
+        0.005836803241169323
+      ],
+      "hybrid_minus_condition": -0.018077031931078315,
+      "seed_clusters": 20
+    },
+    "no_memory": {
+      "ci95": [
+        -0.0009250660515627729,
+        0.0
+      ],
+      "hybrid_minus_condition": -0.0003083553505209243,
+      "seed_clusters": 20
+    },
+    "ordinary_adaptive": {
+      "ci95": [
+        -0.037046772275390535,
+        0.009404332014468776
+      ],
+      "hybrid_minus_condition": -0.012827901997266042,
+      "seed_clusters": 20
+    },
+    "shuffled": {
+      "ci95": [
+        -0.044288919644138225,
+        0.008394063815740727
+      ],
+      "hybrid_minus_condition": -0.019187666035868602,
+      "seed_clusters": 20
+    },
+    "static_persona": {
+      "ci95": [
+        -0.002820452214654676,
+        0.08258502276234737
+      ],
+      "hybrid_minus_condition": 0.03762971871040118,
+      "seed_clusters": 20
+    },
+    "turn_sentiment": {
+      "ci95": [
+        -0.03357312688076339,
+        0.018313538950988188
+      ],
+      "hybrid_minus_condition": -0.008732931494996555,
+      "seed_clusters": 20
+    },
+    "unlabelled_hybrid": {
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "hybrid_minus_condition": 0.0,
+      "seed_clusters": 20
+    }
+  },
+  "test_trials": 660,
+  "uncertainty_method": "paired bootstrap of whole seeds, averaging all families per seed",
+  "weight_sha256": "b637defc8d2324dd5f144a807e9f6d901922b18bfcc0d64a38ce62f23880fe8c"
+}

@@ -1,0 +1,7 @@
+{
+  "counterfactual_parameters": 288,
+  "ordinary_parameters": 288,
+  "samples": 6144,
+  "seconds": 3.696607391000043,
+  "training_oracle_evaluations": 6144
+}

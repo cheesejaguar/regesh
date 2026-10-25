@@ -1,0 +1,6 @@
+{
+  "all_660_trial_records_identical_excluding_latency": true,
+  "trained_weights_identical": true,
+  "ordinary_weights_identical": true,
+  "all_action_traces_identical": true
+}
