@@ -130,6 +130,40 @@ separately rechecks the executable outcomes. [Expanded measurements](docs/measur
 and [frozen secondary analysis](docs/extended_analysis.md) keep correctness,
 robustness, repair, cost, calibration, coverage and diversity proxies separate.
 
+## Pair bonding with a user (opt-in)
+
+The affect loop can keep a per-partner **bond**: attachment-style arousal
+regulation with budgeted help-seeking (Hiolle et al. 2014), secure-base threat
+buffering (Coan et al. 2006), an online-identified dyadic affect model with
+bounded steering and repair (Gottman et al. 1999/2003), a mid-range style
+coordination control (Danescu-Niculescu-Mizil et al. 2012; Jaffe et al. 2001)
+and reciprocity-weighted intimacy (Laurenceau et al. 1998). Default agents are
+unchanged; the committed demo digest is identical.
+
+```python
+agent = Agent('agent.sqlite', 'companion', config={'bonding': True, 'partner': 'user'})
+bond = agent.actuation_context()['bond']   # request_support, security, dyad steering, coordination excess
+agent.express('user', valence=bond['dyad']['expressed_valence'], text='...')
+```
+
+The bond never alters factual reliability, authority or permissions, and
+requests are bounded by the partner's attention budget. Four new published-paper
+experiments and a platform-level simulation accompany the mechanisms:
+
+```bash
+python -m regesh.reproductions.attachment_robot --output results-new/attachment-robot
+python -m regesh.reproductions.marital_dynamics --output results-new/marital-dynamics
+python -m regesh.reproductions.coordination_power --cache .cache/convokit/supreme --output results-new/coordination
+python -m regesh.reproductions.llm_convergence --base-url http://127.0.0.1:8080/v1 --model regesh-qwen-coder --output results-new/llm-convergence
+python -m regesh.bonding.experiment --config configs/bonding_platform.json --output results-new/bonding-platform
+python -m unittest tests.test_bonding tests.test_bonding_experiment -v
+```
+
+See the [bonding report](docs/bonding.md), the [novelty statement and
+safeguards](docs/bonding_disclosure.md) and the per-paper reports under
+`docs/reproductions/`. No result establishes benefit to users; see the report
+for measured outcomes and their limits.
+
 ## Research and results
 
 - [Published-paper reproductions, quantitative comparisons and run commands](docs/paper_reproductions.md)

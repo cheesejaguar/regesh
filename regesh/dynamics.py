@@ -7,11 +7,20 @@ def initial_state(config):
     defaults={"seed":0,"model":"reference-v1","memory_coupling":True,"frozen":False,
               "fast_tau":3.,"mood_tau":24.,"relationship_tau":240.,"disposition_tau":1000.}
     defaults.update(config)
-    return {"schema_version":1,"config":defaults,"time":0.,"goals":{"quality":1.},
+    state={"schema_version":1,"config":defaults,"time":0.,"goals":{"quality":1.},
       "affect":{},"mood":{"valence":0.,"arousal":0.},"relationships":{},
       "expectations":{},"dispositions":{"precision":.5,"optimism":0.},
       "internal":{"resources":1.,"commitments":0.,"reliability":.9,"uncertainty":.5,"burden":0.},
       "events":{},"memory":{},"outcomes":{},"actions":[],"habituation":{},"last_appraisal":None}
+    if defaults.get("bonding"):
+        # Opt-in pair-bonding state; absent by default so historical numerics are unchanged.
+        from .bonding.platform import BOND_CONFIG, ATTACHMENT_INITIAL
+        from copy import deepcopy
+        for key,value in BOND_CONFIG.items():
+            defaults.setdefault(key,deepcopy(value))
+        state["bonds"]={}
+        state["attachment"]=deepcopy(ATTACHMENT_INITIAL)
+    return state
 
 
 def advance(state, dt):
@@ -31,6 +40,9 @@ def advance(state, dt):
     internal=state["internal"]
     internal["burden"]*=math.exp(-dt/8.)
     internal["resources"]=min(1.,internal["resources"]+dt*.025)
+    if state["config"].get("bonding") and "bonds" in state:
+        from .bonding import platform as bonding
+        bonding.advance(state,dt)
 
 
 def transition(state,event,appraisal):
@@ -47,6 +59,11 @@ def transition(state,event,appraisal):
     gain=a["gain"]
     # High burden alone never produces threat. Goal loss and low control do.
     threat=max(0.,-gain)*(1-.65*a["control"])*(1+.2*state["internal"]["uncertainty"])
+    bonded=occurring and state["config"].get("bonding") and "bonds" in state
+    if bonded:
+        # Secure-base buffering by a present, responsive, familiar partner (Coan et al. 2006).
+        from .bonding import platform as bonding
+        threat*=1-bonding.threat_buffer(state)
     affect={"satisfaction":max(0.,gain)*intensity,"threat":min(1.,threat*intensity),
             "curiosity":a["surprise"]*a["control"]*intensity,"target":event.target,"time":state["time"]}
     state["affect"][event.id]=affect
@@ -58,6 +75,8 @@ def transition(state,event,appraisal):
         r["familiarity"]=min(1.,r["familiarity"]+.05)
         r["affiliation"]=clip(.95*r["affiliation"]+.05*a["approval"])
         state["internal"]["uncertainty"]=.8*state["internal"]["uncertainty"]+.2*a["uncertainty"]
+    if bonded:
+        bonding.observe(state,event,a,affect)
 
 
 def controls(state):

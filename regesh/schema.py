@@ -49,9 +49,14 @@ class Event:
         finite(self.confidence, 0, 1)
         if not isinstance(self.data, dict) or not isinstance(self.causal_links, list) or not all(isinstance(x,str) for x in self.causal_links):
             raise ValueError("invalid data/causal links")
-        for key in ("quality", "approval", "control", "uncertainty", "responsibility"):
+        for key in ("quality", "approval", "control", "uncertainty", "responsibility", "support", "partner_affect", "responsiveness"):
             if key in self.data:
-                finite(self.data[key], -1 if key in {"quality", "approval"} else 0, 1)
+                finite(self.data[key], -1 if key in {"quality", "approval", "partner_affect"} else 0, 1)
+        if "disclosure" in self.data:
+            disclosure = self.data["disclosure"]
+            if not isinstance(disclosure, dict) or not isinstance(disclosure.get("emotional", True), bool):
+                raise ValueError("disclosure must be a mapping with depth and optional boolean emotional")
+            finite(disclosure.get("depth"), 0, 1)
         if not isinstance(self.data.get("goal_delta", {}),dict):
             raise ValueError("goal_delta must be a mapping")
         for v in self.data.get("goal_delta", {}).values():

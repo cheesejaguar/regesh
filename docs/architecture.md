@@ -61,6 +61,39 @@ The experimental component fits a four-head, action-conditioned ridge predictor 
 
 Distributed **prediction heads** are learned; maps from selected strategy to control values are hand-authored. The B3 hypothesis of learned process-specific modulation receptors is **not fully implemented**. B2 is the selected implemented experimental mechanism. Other candidates remain hypotheses.
 
+## Pair bonding (opt-in)
+
+With `config={"bonding": True, "partner": "<actor>"}` the state gains `attachment`
+(agent-level arousal, comfort trace, pending request) and `bonds` (per actor:
+responsiveness, adapted comfort profile, attention budget, intimacy, disclosure
+depths, an online dyadic model, coordination counts). Default agents have none
+of these keys, and the committed demo snapshot digest is unchanged.
+
+Equations are published ones, implemented as pure functions in `regesh/bonding/`:
+
+```
+comfort  = (comfort*tau_h + support)/(tau_h+1) if support>0 else beta_h*comfort      # Hiolle et al. 2014, Eq. 4
+arousal  = (tau_ar*arousal + stim)/(tau_ar+1) if comfort<=.1 else arousal - alpha_ar*comfort   # Eq. 3
+stim     = clip(goal_relevance*2*surprise + threat, 0, 1)                            # relevance-gated prediction error + threat
+resp    += alpha_resp*(1-resp) if answered else -alpha_resp*(1-resp)                 # Eq. 5, per resolved request
+beta_h   = .7 + (1-resp)*.3 ;  tau_h = 3 + (1-resp)*7                                # Eqs. 6-7
+threat  *= 1 - gain*resp*familiarity*presence                                        # Coan et al. 2006 buffer
+P_{t+1}  = b + r*P_t + s_neg*min(A_t,0) + s_pos*max(A_t,0)                            # Gottman et al. 2003 partner equation, RLS-identified
+```
+
+Cross-links into the rest of the state are exactly three: the threat buffer
+(affect and mood only), an exploration multiplier by arousal band (request .6,
+learn 1.0, explore 1.15), and the `bond` section of the actuation context
+(request recommendation, expressed-valence steering with a bounded accommodation
+cap and repair trigger, coordination excess against a published human band,
+reciprocity debt and next disclosure depth). The bond never changes
+reliability, authority, epistemic uncertainty or permissions; `act('request')`
+consumes the partner's attention budget rather than the agent's resources, and
+a pending request blocks new ones until answered or timed out. `express()`
+journals the agent's own expression as an action, not as evidence. All new
+operations replay exactly. See [bonding report](bonding.md) and
+[disclosure and safeguards](bonding_disclosure.md).
+
 ## Persistence, time, replay and isolation
 
 All mutations use `BEGIN IMMEDIATE`, reload the current per-agent state, validate, append a hash-linked journal entry and update materialized state in one transaction. Distinct agent IDs isolate events, memories, outcomes and adaptive parameters even with identical event IDs. Hashes detect accidental journal inconsistency, not authenticated malicious tampering. External raw model/tool records can be retained with `record_artifact`; auth headers are excluded. Observed failure responses remain in `ProviderError.record` and can be explicitly journaled after rollback.
