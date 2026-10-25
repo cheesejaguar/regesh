@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "model_calls": 0,
+  "counts": {
+    "all": {
+      "EmoBench-EA": 200,
+      "EmoBench-EU": 200
+    },
+    "with_causes": {
+      "EmoBench-EA": 200,
+      "EmoBench-EU": 200,
+      "EmoBench-EU-cause": 200
+    },
+    "regenerated_pilot": {
+      "EmoBench-EA": 6,
+      "EmoBench-EU": 6
+    }
+  },
+  "outputs": {
+    "all": {
+      "items": 400,
+      "items_sha256": "836ce0c4deeefdafa943df91bab20ac307d43f4c8361531ef157dfdaf689d234",
+      "converter_sha256": "99aaddc83f286a6e2305e103c19ce80d51836757dd95f06c3bc0ebfeecc3626a"
+    },
+    "with_causes": {
+      "items": 600,
+      "items_sha256": "7ec0964453040c2d0bcdb7271e5cd152aaf3bf2503c075063d77284ebc1227db",
+      "converter_sha256": "99aaddc83f286a6e2305e103c19ce80d51836757dd95f06c3bc0ebfeecc3626a"
+    },
+    "regenerated_pilot": {
+      "items": 12,
+      "items_sha256": "5044e4fa30af4e25a5500dca560f02c03d061046c6e67212be0b910add3bad9d",
+      "converter_sha256": "99aaddc83f286a6e2305e103c19ce80d51836757dd95f06c3bc0ebfeecc3626a"
+    }
+  },
+  "locked_pilot_unchanged": true,
+  "pilot_regeneration_byte_identical": true
+}

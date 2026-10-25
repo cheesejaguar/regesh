@@ -63,14 +63,15 @@ def parse_answer(text, labels):
 
 def _classification(rows):
     # Invalid responses and abstentions count as incorrect in overall accuracy.
-    gold_classes=sorted({r['gold'] for r in rows})
+    gold_classes={r['gold'] for r in rows}
+    classes=sorted(gold_classes | {r['answer'] for r in rows if r.get('answer') is not None and not r.get('error')})
     hits=sum(r.get('answer')==r['gold'] and not r.get('error') for r in rows)
     recalls=[]; f1s=[]
-    for label in gold_classes:
+    for label in classes:
         tp=sum(r['gold']==label and r.get('answer')==label and not r.get('error') for r in rows)
         fn=sum(r['gold']==label and (r.get('answer')!=label or bool(r.get('error'))) for r in rows)
         fp=sum(r['gold']!=label and r.get('answer')==label and not r.get('error') for r in rows)
-        recalls.append(tp/(tp+fn))
+        if label in gold_classes:recalls.append(tp/(tp+fn))
         f1s.append(2*tp/(2*tp+fp+fn) if 2*tp+fp+fn else 0.)
     return {'accuracy':hits/len(rows), 'balanced_accuracy':float(np.mean(recalls)),
             'macro_f1':float(np.mean(f1s))}
@@ -94,7 +95,9 @@ def evaluate_answers(rows, *, bootstrap_samples=2000, seed=711, calibration_bins
             raise ValueError('gold missing from choices')
         if row.get('answer') is not None and row['answer'] not in row['choices']:
             raise ValueError('unknown answer label')
-    result={'attempts':len(rows),**_classification(rows)}
+    result={'attempts':len(rows),**_classification(rows),
+            'macro_f1_label_universe':'gold labels union valid non-abstained predicted labels',
+            'balanced_accuracy_label_universe':'gold-supported labels'}
     answered=[r for r in rows if r.get('answer') is not None and not r.get('error')]
     result['answer_coverage']=len(answered)/len(rows)
     result['abstentions']=sum(r.get('answer') is None and not r.get('error') for r in rows)
@@ -235,7 +238,7 @@ def run_qa_eval(model, items, output_dir, *, max_tokens=128, seed=711, bootstrap
     config={'schema_version':1,'seed':seed,'max_tokens':max_tokens,'items':len(items),
         'model_call_ceiling':len(items),'completion_token_ceiling':len(items)*max_tokens,
         'input_tokens':'additional, recorded when supplied','model_adapter':getattr(model,'identifier',type(model).__name__),
-        'model':getattr(model,'model',None),'mode':'live' if isinstance(model,LocalChatModel) else 'injected adapter; inspect provenance',
+        'model':getattr(model,'model',None),'timeout_seconds':getattr(model,'timeout',None),'mode':'live' if isinstance(model,LocalChatModel) else 'injected adapter; inspect provenance',
         'item_sha256':hashlib.sha256(canonical(items).encode()).hexdigest(),'bootstrap_samples':bootstrap_samples,
         'scope':'externally keyed emotional/social understanding or classification; not subjective experience'}
     (out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
@@ -337,6 +340,7 @@ def main():
     parser.add_argument('--base-url');parser.add_argument('--model')
     parser.add_argument('--output',required=True)
     parser.add_argument('--max-tokens',type=int,default=128);parser.add_argument('--seed',type=int,default=711)
+    parser.add_argument('--timeout',type=float,default=300)
     parser.add_argument('--permutation',action='store_true');parser.add_argument('--persona',action='store_true')
     args=parser.parse_args()
     if args.history:
@@ -346,7 +350,7 @@ def main():
             parser.error('QA requires --items, --base-url and --model')
         items=[json.loads(line) for line in Path(args.items).read_text().splitlines()]
         if args.permutation or args.persona:items=make_variants(items,permutation=args.permutation,persona=args.persona)
-        result=run_qa_eval(LocalChatModel(args.base_url,args.model),items,args.output,max_tokens=args.max_tokens,seed=args.seed)
+        result=run_qa_eval(LocalChatModel(args.base_url,args.model,timeout=args.timeout),items,args.output,max_tokens=args.max_tokens,seed=args.seed)
     print(json.dumps(result,indent=2))
 
 

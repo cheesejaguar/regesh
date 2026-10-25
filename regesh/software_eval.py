@@ -381,7 +381,7 @@ def write_report(output,summary):
         lines.append(f"| {condition} | {m['final_hidden_pass_rate']:.4f} | {m['all_tests_passed']:.4f} | {m['boundary_pass_rate']:.4f} | {m['randomized_pass_rate']:.4f} | {m['resource_limit_compliance']:.4f} |")
     d=summary['paired_final_pass_rate'];lines+=['',f"Hybrid minus ordinary final pass rate: {d['hybrid_minus_ordinary']:.4f}, 95% task-cluster bootstrap [{d['ci95'][0]:.4f}, {d['ci95'][1]:.4f}].",
       '', 'Frozen generic weights were verified unchanged. Context adaptation is within trial only. Equal call/tool ceilings do not imply equal realized tokens; actual usage is reported.',
-      'The transferred controllers were trained on a different toy grammar; this study tests that unvalidated transfer, not an optimized software policy. Six authored tasks and four seeds are exploratory.',
+      f"The transferred controllers were trained on a different toy grammar; this study tests that unvalidated transfer, not an optimized software policy. {d['task_clusters']} authored tasks and {d['pairs']//d['task_clusters']} seeds are exploratory.",
       'Reported source/operation diversity and static complexity are proxies, not research originality. Resource measurements include returned output and tracing overhead; asymptotic storage bounds are not formally proved.',
       'Initial source is retrospectively checked on the same hidden suite only after final generation; that improvement metric cannot influence selection. Public-to-hidden score difference is separately labeled confounded. No human psychological, biological or subjective-experience claim follows.']
     (Path(output)/'report.md').write_text('\n'.join(lines)+'\n')

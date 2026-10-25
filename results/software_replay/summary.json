@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "mode": "record-only actor replay; optional separate evaluator recheck",
+  "model_calls": 0,
+  "live_provider_calls": 0,
+  "network_calls": 0,
+  "actor_trials_verified": 24,
+  "actor_phases_verified": 48,
+  "conditions_verified": [
+    "hybrid",
+    "ordinary_adaptive"
+  ],
+  "all_actor_trajectories_verified": true,
+  "recorded_public_tool_results_consumed": 24,
+  "hidden_checker_calls_during_actor_replay": 0,
+  "independent_recheck_calls": 48,
+  "all_independent_rechecks_match": true,
+  "independent_recheck_mismatches": 0,
+  "source_sha256": {
+    "software_eval.py": "246b55fb2ddcce389e5e40e8368f8d28b0b53515c7c8d32c1ff810cb3b5e92e2",
+    "software_tasks.py": "6509ad55384f8482502186bd8f55e9a655db521297aa4366440f7d1b2001d4ac"
+  },
+  "weights_sha256": {
+    "counterfactual": "b637defc8d2324dd5f144a807e9f6d901922b18bfcc0d64a38ce62f23880fe8c",
+    "ordinary": "d12e2b0ec32c5a8433ec67f5c28dae8c4219796382f1b82e141ab27361a42c15"
+  },
+  "scope": "exact recorded-response trajectory closure; not fresh-model determinism or replication across model versions"
+}

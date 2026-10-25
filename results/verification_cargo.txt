@@ -1,0 +1,14 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/lib.rs (native/target/debug/deps/regesh_memory-fb7a7e2f273b6cf0)
+
+running 2 tests
+test tests::additions_deletions_and_append ... ok
+test tests::numeric_representation_is_preserved ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests regesh_memory
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

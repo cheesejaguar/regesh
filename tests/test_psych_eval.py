@@ -58,6 +58,14 @@ class PsychScoreChecks(unittest.TestCase):
         self.assertEqual(result['accuracy'],.9)
         self.assertEqual(result['balanced_accuracy'],.5)
         self.assertLess(result['macro_f1'],result['accuracy'])
+    def test_macro_f1_includes_predicted_only_class(self):
+        rows=[{**item(str(i)),'gold':'A','answer':answer,'probabilities':{'A':.5,'B':.5}}
+              for i,answer in enumerate(['A','A','B'])]
+        result=evaluate_answers(rows,bootstrap_samples=20)
+        self.assertAlmostEqual(result['macro_f1'],.4)
+        self.assertAlmostEqual(result['balanced_accuracy'],2/3)
+        self.assertEqual(result['macro_f1_label_universe'],'gold labels union valid non-abstained predicted labels')
+
     def test_permutation_preserves_gold_meaning(self):
         base,changed=make_variants([item()])
         self.assertNotEqual(base['gold'],changed['gold'])

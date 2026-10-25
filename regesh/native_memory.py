@@ -102,8 +102,8 @@ class DeltaKernel:
         try:patch=json.loads(ctypes.string_at(pointer))
         finally:self.library.regesh_memory_free(pointer)
         if 'error' in patch:
-            if 'recursion limit' in patch['error']:
-                # Python-valid deeply nested evidence remains supported. This
+            if any(marker in patch['error'] for marker in ('recursion limit','hex escape','surrogate','unicode code point')):
+                # Python-valid deep or escaped-surrogate evidence remains supported. This
                 # exceptional fallback is observable for performance accounting.
                 self.native_fallbacks+=1
                 return python_diff(json.loads(old_json) if old is None and old_json is not None else old,new)

@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "executed_at": "2026-10-25T16:44:10.620534+00:00",
+  "scope": "human-label text-emotion recognition only; not functional agent affect or creativity",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/google-research/google-research/ba728e288c51126eac25e316b11dfee94d68c301/goemotions/data/test.tsv",
+      "filename": "goemotions-test-test.tsv",
+      "bytes": 436706,
+      "sha256": "0587b2dd8b27b97352adbfc3fb083d46005c8946657fdc2b1ca8b1cc7f1f8be4",
+      "revision": "ba728e288c51126eac25e316b11dfee94d68c301",
+      "dataset_id": "goemotions",
+      "license": "Apache-2.0",
+      "split": "test",
+      "path": "/workspace/scratch/regesh-datasets/goemotions-test-test.tsv"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/google-research/google-research/ba728e288c51126eac25e316b11dfee94d68c301/goemotions/data/train.tsv",
+      "filename": "goemotions-train-train.tsv",
+      "bytes": 3519053,
+      "sha256": "1c254a142be5c00e80d819b9ae1bbd36d94b2eeb8f4b1271846508d57e57d9c5",
+      "revision": "ba728e288c51126eac25e316b11dfee94d68c301",
+      "dataset_id": "goemotions",
+      "license": "Apache-2.0",
+      "split": "train",
+      "path": "/workspace/scratch/regesh-datasets/goemotions-train-train.tsv"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/google-research/google-research/ba728e288c51126eac25e316b11dfee94d68c301/goemotions/data/emotions.txt",
+      "filename": "goemotions-labels-emotions.txt",
+      "bytes": 248,
+      "sha256": "45c3ef86782d2a4d7fedcd6d8c111aa0d0e94720689bd164fac94fefb4495a89",
+      "revision": "ba728e288c51126eac25e316b11dfee94d68c301",
+      "dataset_id": "goemotions",
+      "license": "Apache-2.0",
+      "split": "labels",
+      "path": "/workspace/scratch/regesh-datasets/goemotions-labels-emotions.txt"
+    }
+  ],
+  "source_license": "Official card/repository declare Apache-2.0; upstream Reddit rights not independently guaranteed",
+  "source_sha256": "ee235baca48ab00fe282abb4d5b4c02602bd1284d1c15b7d8d228f863b011b30",
+  "catalog_sha256": "d6dbafd98d1205c077072c1d7066589e1514e34b04c231db2a97561172eb29ff",
+  "artifact_sha256": {
+    "reference.npz": "a93865ac2802e6731206a68b4df8ed27853b3e377d0e6d1547a38fb7c44ddf98",
+    "split_ids.json": "400f1d83e69252bc65b364db94d67e1015a99b68946a58ab0f3f5bf9d75d0934",
+    "predictions.jsonl.gz": "238851d9ed57812fb515cabc92edb452dc2749cd3bbe7513bf4a661c439a9b88",
+    "source_dataset_baseline.py": "ee235baca48ab00fe282abb4d5b4c02602bd1284d1c15b7d8d228f863b011b30"
+  },
+  "seed": 49261,
+  "features": 4096,
+  "feature_rule": "binary lowercase token presence hashed with CRC32",
+  "model": "one-vs-rest Bernoulli Naive Bayes",
+  "smoothing_alpha": 1.0,
+  "split_rule": "SHA256(regesh-goemotions-dev-v1:ID) first8 hex modulo10==0 development",
+  "counts": {
+    "official_train": 43410,
+    "fit": 39013,
+    "development": 4397,
+    "test": 5427,
+    "labels": 28
+  },
+  "tuning": {
+    "criterion": "development Brier temperature, then development micro-F1 global threshold",
+    "temperature_candidates": [
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "temperature_brier": [
+      0.036556702107191086,
+      0.03420263156294823,
+      0.03603171184659004,
+      0.05518491193652153,
+      0.09756826609373093
+    ],
+    "temperature": 1.0,
+    "threshold_candidates": [
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2,
+      0.25,
+      0.3,
+      0.35000000000000003,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6000000000000001,
+      0.6500000000000001,
+      0.7000000000000001,
+      0.7500000000000001,
+      0.8
+    ],
+    "threshold": 0.25,
+    "development_micro_f1": 0.41289633060206626,
+    "development_brier": 0.03420263156294823
+  },
+  "baseline": {
+    "type": "constant smoothed empirical fitting-label priors",
+    "threshold": 0.1,
+    "development_micro_f1": 0.30468423253868676
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "thread_variables": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "cpu_affinity": [
+      0
+    ],
+    "training_seconds": 1.7953188800001953,
+    "test_inference_seconds": 0.14065453500006697,
+    "total_seconds": 5.714988235000419,
+    "process_peak_rss_kib_linux": 56384
+  },
+  "footprint": {
+    "learned_array_bytes": 458976,
+    "compressed_model_bytes": 251343
+  },
+  "unchanged_main_controllers": true,
+  "live_model_calls": 0,
+  "limitations": [
+    "Base-model training contamination is irrelevant to this fitted-from-scratch reference but applies to future LLM comparisons.",
+    "This evaluates perceived text emotion labels; it does not establish an agent has emotions.",
+    "Bernoulli feature independence, hashing collisions and tokenization limit probability calibration.",
+    "Micro ECE is dominated by the many negative label decisions; inspect class ECE and rare-label recall.",
+    "The IID comment bootstrap may understate uncertainty if unknown authors or threads are correlated.",
+    "Threshold and temperature are development-tuned; test numbers were not used to choose them."
+  ]
+}

@@ -23,8 +23,7 @@ reconstruction. This is not a complete Rust port. A byte-for-byte-equivalent
 Python delta backend is included, so compact storage never requires a compiler.
 Both kernels preserve integer-versus-float distinctions, signed zero, Unicode,
 append behavior, and arbitrary-sized JSON integers. Rust uses `float_roundtrip`
-and `arbitrary_precision`. Deep Python-valid evidence beyond serde's parser depth
-uses an observable Python fallback (`DeltaKernel.native_fallbacks`). Invalid
+and `arbitrary_precision`. Deep Python-valid evidence beyond serde's parser depth and escaped lone surrogates accepted by Python use an observable Python fallback (`DeltaKernel.native_fallbacks`). Invalid
 native results otherwise raise rather than silently changing state.
 
 `Store.iter_entries` streams reconstructed independent poststates. `entries()`

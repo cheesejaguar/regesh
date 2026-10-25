@@ -20,6 +20,8 @@ The grader receives no controller-condition argument. It computes expected outco
 
 ## Calls, feedback and candidate selection
 
+The completed CPU pilot uses `configs/software_cpu_pilot.json`: two seeds, 24 trials, at most 48 model calls and 24,576 completion tokens. This resource amendment followed an unrelated runtime probe before any held-out generation; the original larger configuration below remains available. See `results/runtime/cpu_plan_amendment.json`.
+
 Default prospective size: six tasks × four generation seeds × two conditions × two candidate calls = **48 trials, at most 96 model calls and 49,152 requested completion tokens**. Input tokens are additional. Each paired condition uses the same model, nonzero sampling temperature 0.6, generation seeds, public information, parsing rules, tool ceiling and allowed operations. Execution order alternates within task/seed pairs to reduce systematic ordering/cache effects. Different generated histories can produce different actual prompt lengths and EOS completion lengths. Exact actual usage and ceilings are recorded; there is no claim of equal consumed tokens.
 
 First generation is followed by exactly **one visible checker call** on two public examples plus one diagnostic case. The feedback discloses those checked inputs, expected and actual outputs, pass/failure status and errors. Wall timings are omitted from the model prompt. No repair call is hidden. Second generation is always the final candidate, even if it fails. Hidden quality never selects a candidate, informs a prompt or updates the controller.

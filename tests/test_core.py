@@ -72,3 +72,17 @@ class CoreChecks(unittest.TestCase):
         self.assertEqual(reliable[0]['relationships']['reviewer']['affiliation'],misleading[0]['relationships']['reviewer']['affiliation'])
         self.assertLess(reliable[1]['uncertainty'],misleading[1]['uncertainty'])
         self.assertEqual(reliable[0]['relationships']['reviewer']['authority'],0.)
+
+    def test_snapshot_and_replay_stream_without_materializing_trace(self):
+        from unittest.mock import patch
+        for i in range(4):
+            self.agent.observe(Event(str(i),'test','p','g','t','2026-10-25T00:00:00Z'))
+        expected=self.agent.get_state()
+        with patch.object(Agent,'trace',side_effect=AssertionError('full history must not be materialized')):
+            self.assertEqual(self.agent.snapshot()['state'],expected)
+            copy=self.agent.replay('streamed')
+            try:self.assertEqual(copy.get_state(),expected)
+            finally:copy.close()
+            playback=self.agent.replay('played',mode='playback')
+            try:self.assertEqual(playback.get_state(),expected)
+            finally:playback.close()

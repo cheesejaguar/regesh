@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "purpose": "evaluation-only; no training or tuning on locked evaluation items",
+  "catalog_sha256": "d6dbafd98d1205c077072c1d7066589e1514e34b04c231db2a97561172eb29ff",
+  "converter_sha256": "99aaddc83f286a6e2305e103c19ce80d51836757dd95f06c3bc0ebfeecc3626a",
+  "inputs": [
+    {
+      "filename": "emobench-EA.jsonl",
+      "url": "https://raw.githubusercontent.com/Sahandfer/EmoBench/3b4f84312541f8469e909965e1fff3691ef85c62/data/EA.jsonl",
+      "revision": "3b4f84312541f8469e909965e1fff3691ef85c62",
+      "license": "MIT",
+      "sha256": "344c84913ed4adc9f26261a03cc4ddbecceeef4fcb8f77ab0405f8a63e8a4628",
+      "language_records": 200
+    },
+    {
+      "filename": "emobench-EU.jsonl",
+      "url": "https://raw.githubusercontent.com/Sahandfer/EmoBench/3b4f84312541f8469e909965e1fff3691ef85c62/data/EU.jsonl",
+      "revision": "3b4f84312541f8469e909965e1fff3691ef85c62",
+      "license": "MIT",
+      "sha256": "60140a7617779bdb496cd50dcebaf33037c39c65821ae300a6a24a72fd7c7037",
+      "language_records": 200
+    }
+  ],
+  "language": "en",
+  "include_cause_questions": false,
+  "selection": "hash rank seed711; first one/category then fill to 6/kind",
+  "items": 12,
+  "counts": {
+    "EmoBench-EA": 6,
+    "EmoBench-EU": 6
+  },
+  "items_sha256": "5044e4fa30af4e25a5500dca560f02c03d061046c6e67212be0b910add3bad9d",
+  "case_clusters": {
+    "emobench-EA-en-6": "emobench-EA-en-6",
+    "emobench-EA-en-122": "emobench-EA-en-122",
+    "emobench-EA-en-63": "emobench-EA-en-63",
+    "emobench-EA-en-161": "emobench-EA-en-161",
+    "emobench-EA-en-16": "emobench-EA-en-16",
+    "emobench-EA-en-187": "emobench-EA-en-187",
+    "emobench-EU-en-21": "emobench-EU-en-21",
+    "emobench-EU-en-127": "emobench-EU-en-127",
+    "emobench-EU-en-53": "emobench-EU-en-53",
+    "emobench-EU-en-182": "emobench-EU-en-182",
+    "emobench-EU-en-57": "emobench-EU-en-57",
+    "emobench-EU-en-3": "emobench-EU-en-3"
+  },
+  "case_cluster_note": "EU emotion and optional cause QA share one scenario; cluster them together for uncertainty estimates."
+}

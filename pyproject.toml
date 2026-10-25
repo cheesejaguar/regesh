@@ -17,3 +17,6 @@ include = ["regesh*"]
 
 [tool.setuptools.package-data]
 regesh = ["data/*.json"]
+
+[project.optional-dependencies]
+analysis = ["matplotlib>=3.7"]

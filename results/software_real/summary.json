@@ -1,0 +1,89 @@
+{
+  "execution_mode": "live",
+  "frozen_weights_verified": true,
+  "means": {
+    "hybrid": {
+      "all_tests_passed": 0.0,
+      "boundary_pass_rate": 0.5138888888888888,
+      "brier_all_tests": null,
+      "confidence_coverage": 0.0,
+      "feedback_tool_calls": 12,
+      "final_hidden_pass_rate": 0.2916666666666667,
+      "format_valid": 0.8333333333333334,
+      "initial_diagnostic_pass_rate": 0.1111111111111111,
+      "mean_line_events_correct_only": null,
+      "mean_peak_bytes_correct_only": null,
+      "metamorphic_pass_rate": 0.375,
+      "model_calls": 24,
+      "operation_signature_diversity": 6,
+      "randomized_pass_rate": 0.05555555555555555,
+      "reported_completion_tokens": 3163,
+      "reported_prompt_tokens": 23674,
+      "resource_limit_compliance": 0.5,
+      "revision_delta_same_hidden_suite": -0.018518518518518517,
+      "seconds": 1101.4642559100002,
+      "source_ast_diversity": 10
+    },
+    "ordinary_adaptive": {
+      "all_tests_passed": 0.0,
+      "boundary_pass_rate": 0.5,
+      "brier_all_tests": null,
+      "confidence_coverage": 0.0,
+      "feedback_tool_calls": 12,
+      "final_hidden_pass_rate": 0.2824074074074074,
+      "format_valid": 0.75,
+      "initial_diagnostic_pass_rate": 0.1111111111111111,
+      "mean_line_events_correct_only": null,
+      "mean_peak_bytes_correct_only": null,
+      "metamorphic_pass_rate": 0.3541666666666667,
+      "model_calls": 24,
+      "operation_signature_diversity": 6,
+      "randomized_pass_rate": 0.05555555555555555,
+      "reported_completion_tokens": 3429,
+      "reported_prompt_tokens": 23879,
+      "resource_limit_compliance": 0.5,
+      "revision_delta_same_hidden_suite": -0.06018518518518518,
+      "seconds": 1202.7267907059997,
+      "source_ast_diversity": 9
+    }
+  },
+  "multiple_comparisons": "exploratory; intervals not multiplicity corrected",
+  "paired_final_pass_rate": {
+    "ci95": [
+      -0.041666666666666664,
+      0.06944444444444445
+    ],
+    "hybrid_minus_ordinary": 0.009259259259259259,
+    "pairs": 12,
+    "per_task": {
+      "batching": {
+        "difference": 0.0,
+        "pairs": 2
+      },
+      "dedup": {
+        "difference": 0.0,
+        "pairs": 2
+      },
+      "lru": {
+        "difference": -0.08333333333333334,
+        "pairs": 2
+      },
+      "rolling": {
+        "difference": 0.0,
+        "pairs": 2
+      },
+      "toposort": {
+        "difference": 0.0,
+        "pairs": 2
+      },
+      "ttl": {
+        "difference": 0.1388888888888889,
+        "pairs": 2
+      }
+    },
+    "task_clusters": 6
+  },
+  "primary_uncertainty": "paired bootstrap of task means; generation seeds clustered within tasks",
+  "scope": "held-out authored executable software design; no published originality claim",
+  "trials": 24
+}

@@ -1,0 +1,9 @@
+{
+  "source_sha256": "238851d9ed57812fb515cabc92edb452dc2749cd3bbe7513bf4a661c439a9b88",
+  "implementation": "independent stdlib sets/counts, no classifier evaluation function",
+  "test_rows": 5427,
+  "micro_f1": 0.41412268188302426,
+  "macro_f1": 0.2231033942082261,
+  "exact_set_accuracy": 0.2791597567716971,
+  "all_checked_metrics_match": true
+}

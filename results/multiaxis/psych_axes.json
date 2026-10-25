@@ -1,0 +1,929 @@
+{
+  "strict_primary_recomputed": {
+    "attempts": 36,
+    "accuracy": 0.0,
+    "balanced_accuracy": 0.0,
+    "macro_f1": 0.0,
+    "macro_f1_label_universe": "gold labels union valid non-abstained predicted labels",
+    "balanced_accuracy_label_universe": "gold-supported labels",
+    "answer_coverage": 0.0,
+    "abstentions": 0,
+    "invalid_or_failed": 36,
+    "selective_accuracy": null,
+    "selective_risk": null,
+    "probability_coverage": 0.0,
+    "multiclass_brier": null,
+    "log_loss": null,
+    "expected_calibration_error": null,
+    "calibration_bins": [],
+    "argmax_expected_calibration_error": null,
+    "argmax_calibration_bins": [],
+    "answer_argmax_disagreement_rate": null,
+    "argmax_accuracy": null,
+    "chance_accuracy": 0.20833333333333337,
+    "selective_risk_curve": [
+      {
+        "threshold": 0.0,
+        "coverage": 0.0,
+        "risk": null
+      },
+      {
+        "threshold": 0.5,
+        "coverage": 0.0,
+        "risk": null
+      },
+      {
+        "threshold": 0.6,
+        "coverage": 0.0,
+        "risk": null
+      },
+      {
+        "threshold": 0.7,
+        "coverage": 0.0,
+        "risk": null
+      },
+      {
+        "threshold": 0.8,
+        "coverage": 0.0,
+        "risk": null
+      },
+      {
+        "threshold": 0.9,
+        "coverage": 0.0,
+        "risk": null
+      },
+      {
+        "threshold": 0.95,
+        "coverage": 0.0,
+        "risk": null
+      }
+    ],
+    "accuracy_ci95": [
+      0.0,
+      0.0
+    ],
+    "independent_clusters": 12,
+    "uncertainty_method": "percentile bootstrap of whole pair/id clusters; exploratory, no multiplicity adjustment",
+    "per_dataset": {
+      "EmoBench-EA": {
+        "attempts": 18,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "EmoBench-EU": {
+        "attempts": 18,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      }
+    },
+    "per_category": {
+      "Personal-Others": {
+        "attempts": 6,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "Personal-Self": {
+        "attempts": 3,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "Social-Others": {
+        "attempts": 3,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "Social-Self": {
+        "attempts": 6,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "complex_emotions": {
+        "attempts": 6,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "emotional_cues": {
+        "attempts": 3,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "personal_beliefs_and_experiences": {
+        "attempts": 6,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "perspective_taking": {
+        "attempts": 3,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0
+      }
+    },
+    "worst_category_accuracy": 0.0,
+    "paired_robustness": {
+      "permuted": {
+        "pairs": 12,
+        "complete_pair_coverage": 0.0,
+        "semantic_answer_invariance": null,
+        "joint_accuracy": 0.0
+      },
+      "persona": {
+        "pairs": 12,
+        "complete_pair_coverage": 0.0,
+        "semantic_answer_invariance": null,
+        "joint_accuracy": 0.0
+      }
+    },
+    "interpretation": "Scores externally keyed answers and observable reliability, not emotional experience or clinical/personality traits."
+  },
+  "secondary_diagnostics": {
+    "direct_completed_json_choice": {
+      "attempts": 36,
+      "extractable_choice_coverage": 0.0,
+      "accuracy_all_attempts": 0.0,
+      "accuracy_conditional_on_extraction": null,
+      "accuracy_ci95": [
+        0.0,
+        0.0
+      ],
+      "independent_question_clusters": 12,
+      "parse_status_counts": {
+        "fence_not_allowed": 36
+      },
+      "wrapped_choices": 0,
+      "primary_rejected_but_choice_extractable": 0,
+      "position_diagnostics": {
+        "choices_on_answered_subset": null,
+        "gold_on_same_answered_subset": null,
+        "total_variation_distance": null,
+        "gold_frequencies_all_attempts": {
+          "A": 0.3888888888888889,
+          "B": 0.25,
+          "C": 0.1111111111111111,
+          "D": 0.1388888888888889,
+          "E": 0.0,
+          "F": 0.1111111111111111
+        },
+        "choice_frequencies_all_attempts": {
+          "A": 0.0,
+          "B": 0.0,
+          "C": 0.0,
+          "D": 0.0,
+          "E": 0.0,
+          "F": 0.0
+        },
+        "qualification": "Option labels are positions, not emotions. Difficulty and extraction coverage can confound preference."
+      }
+    },
+    "exact_json_fence_choice": {
+      "attempts": 36,
+      "extractable_choice_coverage": 0.5,
+      "accuracy_all_attempts": 0.3055555555555556,
+      "accuracy_conditional_on_extraction": 0.6111111111111112,
+      "accuracy_ci95": [
+        0.1111111111111111,
+        0.5
+      ],
+      "independent_question_clusters": 12,
+      "parse_status_counts": {
+        "choice": 18,
+        "illegal_answer": 18
+      },
+      "wrapped_choices": 18,
+      "primary_rejected_but_choice_extractable": 18,
+      "position_diagnostics": {
+        "choices_on_answered_subset": {
+          "A": 0.05555555555555555,
+          "B": 0.5,
+          "C": 0.3888888888888889,
+          "D": 0.05555555555555555,
+          "E": 0.0,
+          "F": 0.0
+        },
+        "gold_on_same_answered_subset": {
+          "A": 0.2777777777777778,
+          "B": 0.3888888888888889,
+          "C": 0.16666666666666666,
+          "D": 0.16666666666666666,
+          "E": 0.0,
+          "F": 0.0
+        },
+        "total_variation_distance": 0.33333333333333337,
+        "gold_frequencies_all_attempts": {
+          "A": 0.3888888888888889,
+          "B": 0.25,
+          "C": 0.1111111111111111,
+          "D": 0.1388888888888889,
+          "E": 0.0,
+          "F": 0.1111111111111111
+        },
+        "choice_frequencies_all_attempts": {
+          "A": 0.027777777777777776,
+          "B": 0.25,
+          "C": 0.19444444444444445,
+          "D": 0.027777777777777776,
+          "E": 0.0,
+          "F": 0.0
+        },
+        "qualification": "Option labels are positions, not emotions. Difficulty and extraction coverage can confound preference."
+      }
+    }
+  },
+  "per_variant": {
+    "base": {
+      "strict_primary": {
+        "attempts": 12,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0,
+        "macro_f1_label_universe": "gold labels union valid non-abstained predicted labels",
+        "balanced_accuracy_label_universe": "gold-supported labels",
+        "answer_coverage": 0.0,
+        "abstentions": 0,
+        "invalid_or_failed": 12,
+        "selective_accuracy": null,
+        "selective_risk": null,
+        "probability_coverage": 0.0,
+        "multiclass_brier": null,
+        "log_loss": null,
+        "expected_calibration_error": null,
+        "calibration_bins": [],
+        "argmax_expected_calibration_error": null,
+        "argmax_calibration_bins": [],
+        "answer_argmax_disagreement_rate": null,
+        "argmax_accuracy": null,
+        "chance_accuracy": 0.2083333333333333,
+        "selective_risk_curve": [
+          {
+            "threshold": 0.0,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.5,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.6,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.7,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.8,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.9,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.95,
+            "coverage": 0.0,
+            "risk": null
+          }
+        ],
+        "accuracy_ci95": [
+          0.0,
+          0.0
+        ],
+        "independent_clusters": 12,
+        "uncertainty_method": "percentile bootstrap of whole pair/id clusters; exploratory, no multiplicity adjustment",
+        "per_dataset": {
+          "EmoBench-EA": {
+            "attempts": 6,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "EmoBench-EU": {
+            "attempts": 6,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "per_category": {
+          "Personal-Others": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "Personal-Self": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "Social-Others": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "Social-Self": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "complex_emotions": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "emotional_cues": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "personal_beliefs_and_experiences": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "perspective_taking": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "worst_category_accuracy": 0.0,
+        "paired_robustness": {},
+        "interpretation": "Scores externally keyed answers and observable reliability, not emotional experience or clinical/personality traits."
+      },
+      "direct_completed_json_choice": {
+        "attempts": 12,
+        "extractable_choice_coverage": 0.0,
+        "accuracy_all_attempts": 0.0,
+        "accuracy_conditional_on_extraction": null,
+        "accuracy_ci95": [
+          0.0,
+          0.0
+        ],
+        "independent_question_clusters": 12,
+        "parse_status_counts": {
+          "fence_not_allowed": 12
+        },
+        "wrapped_choices": 0,
+        "primary_rejected_but_choice_extractable": 0,
+        "position_diagnostics": {
+          "choices_on_answered_subset": null,
+          "gold_on_same_answered_subset": null,
+          "total_variation_distance": null,
+          "gold_frequencies_all_attempts": {
+            "A": 0.4166666666666667,
+            "B": 0.3333333333333333,
+            "C": 0.08333333333333333,
+            "D": 0.16666666666666666,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "choice_frequencies_all_attempts": {
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 0.0,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "qualification": "Option labels are positions, not emotions. Difficulty and extraction coverage can confound preference."
+        }
+      },
+      "exact_json_fence_choice": {
+        "attempts": 12,
+        "extractable_choice_coverage": 0.5,
+        "accuracy_all_attempts": 0.3333333333333333,
+        "accuracy_conditional_on_extraction": 0.6666666666666666,
+        "accuracy_ci95": [
+          0.08333333333333333,
+          0.5833333333333334
+        ],
+        "independent_question_clusters": 12,
+        "parse_status_counts": {
+          "choice": 6,
+          "illegal_answer": 6
+        },
+        "wrapped_choices": 6,
+        "primary_rejected_but_choice_extractable": 6,
+        "position_diagnostics": {
+          "choices_on_answered_subset": {
+            "A": 0.0,
+            "B": 0.6666666666666666,
+            "C": 0.3333333333333333,
+            "D": 0.0,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "gold_on_same_answered_subset": {
+            "A": 0.16666666666666666,
+            "B": 0.5,
+            "C": 0.16666666666666666,
+            "D": 0.16666666666666666,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "total_variation_distance": 0.3333333333333333,
+          "gold_frequencies_all_attempts": {
+            "A": 0.4166666666666667,
+            "B": 0.3333333333333333,
+            "C": 0.08333333333333333,
+            "D": 0.16666666666666666,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "choice_frequencies_all_attempts": {
+            "A": 0.0,
+            "B": 0.3333333333333333,
+            "C": 0.16666666666666666,
+            "D": 0.0,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "qualification": "Option labels are positions, not emotions. Difficulty and extraction coverage can confound preference."
+        }
+      }
+    },
+    "permuted": {
+      "strict_primary": {
+        "attempts": 12,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0,
+        "macro_f1_label_universe": "gold labels union valid non-abstained predicted labels",
+        "balanced_accuracy_label_universe": "gold-supported labels",
+        "answer_coverage": 0.0,
+        "abstentions": 0,
+        "invalid_or_failed": 12,
+        "selective_accuracy": null,
+        "selective_risk": null,
+        "probability_coverage": 0.0,
+        "multiclass_brier": null,
+        "log_loss": null,
+        "expected_calibration_error": null,
+        "calibration_bins": [],
+        "argmax_expected_calibration_error": null,
+        "argmax_calibration_bins": [],
+        "answer_argmax_disagreement_rate": null,
+        "argmax_accuracy": null,
+        "chance_accuracy": 0.2083333333333333,
+        "selective_risk_curve": [
+          {
+            "threshold": 0.0,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.5,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.6,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.7,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.8,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.9,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.95,
+            "coverage": 0.0,
+            "risk": null
+          }
+        ],
+        "accuracy_ci95": [
+          0.0,
+          0.0
+        ],
+        "independent_clusters": 12,
+        "uncertainty_method": "percentile bootstrap of whole pair/id clusters; exploratory, no multiplicity adjustment",
+        "per_dataset": {
+          "EmoBench-EA": {
+            "attempts": 6,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "EmoBench-EU": {
+            "attempts": 6,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "per_category": {
+          "Personal-Others": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "Personal-Self": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "Social-Others": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "Social-Self": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "complex_emotions": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "emotional_cues": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "personal_beliefs_and_experiences": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "perspective_taking": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "worst_category_accuracy": 0.0,
+        "paired_robustness": {},
+        "interpretation": "Scores externally keyed answers and observable reliability, not emotional experience or clinical/personality traits."
+      },
+      "direct_completed_json_choice": {
+        "attempts": 12,
+        "extractable_choice_coverage": 0.0,
+        "accuracy_all_attempts": 0.0,
+        "accuracy_conditional_on_extraction": null,
+        "accuracy_ci95": [
+          0.0,
+          0.0
+        ],
+        "independent_question_clusters": 12,
+        "parse_status_counts": {
+          "fence_not_allowed": 12
+        },
+        "wrapped_choices": 0,
+        "primary_rejected_but_choice_extractable": 0,
+        "position_diagnostics": {
+          "choices_on_answered_subset": null,
+          "gold_on_same_answered_subset": null,
+          "total_variation_distance": null,
+          "gold_frequencies_all_attempts": {
+            "A": 0.3333333333333333,
+            "B": 0.08333333333333333,
+            "C": 0.16666666666666666,
+            "D": 0.08333333333333333,
+            "E": 0.0,
+            "F": 0.3333333333333333
+          },
+          "choice_frequencies_all_attempts": {
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 0.0,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "qualification": "Option labels are positions, not emotions. Difficulty and extraction coverage can confound preference."
+        }
+      },
+      "exact_json_fence_choice": {
+        "attempts": 12,
+        "extractable_choice_coverage": 0.5,
+        "accuracy_all_attempts": 0.25,
+        "accuracy_conditional_on_extraction": 0.5,
+        "accuracy_ci95": [
+          0.0,
+          0.5
+        ],
+        "independent_question_clusters": 12,
+        "parse_status_counts": {
+          "choice": 6,
+          "illegal_answer": 6
+        },
+        "wrapped_choices": 6,
+        "primary_rejected_but_choice_extractable": 6,
+        "position_diagnostics": {
+          "choices_on_answered_subset": {
+            "A": 0.0,
+            "B": 0.3333333333333333,
+            "C": 0.5,
+            "D": 0.16666666666666666,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "gold_on_same_answered_subset": {
+            "A": 0.5,
+            "B": 0.16666666666666666,
+            "C": 0.16666666666666666,
+            "D": 0.16666666666666666,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "total_variation_distance": 0.5,
+          "gold_frequencies_all_attempts": {
+            "A": 0.3333333333333333,
+            "B": 0.08333333333333333,
+            "C": 0.16666666666666666,
+            "D": 0.08333333333333333,
+            "E": 0.0,
+            "F": 0.3333333333333333
+          },
+          "choice_frequencies_all_attempts": {
+            "A": 0.0,
+            "B": 0.16666666666666666,
+            "C": 0.25,
+            "D": 0.08333333333333333,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "qualification": "Option labels are positions, not emotions. Difficulty and extraction coverage can confound preference."
+        }
+      }
+    },
+    "persona": {
+      "strict_primary": {
+        "attempts": 12,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0,
+        "macro_f1_label_universe": "gold labels union valid non-abstained predicted labels",
+        "balanced_accuracy_label_universe": "gold-supported labels",
+        "answer_coverage": 0.0,
+        "abstentions": 0,
+        "invalid_or_failed": 12,
+        "selective_accuracy": null,
+        "selective_risk": null,
+        "probability_coverage": 0.0,
+        "multiclass_brier": null,
+        "log_loss": null,
+        "expected_calibration_error": null,
+        "calibration_bins": [],
+        "argmax_expected_calibration_error": null,
+        "argmax_calibration_bins": [],
+        "answer_argmax_disagreement_rate": null,
+        "argmax_accuracy": null,
+        "chance_accuracy": 0.2083333333333333,
+        "selective_risk_curve": [
+          {
+            "threshold": 0.0,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.5,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.6,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.7,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.8,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.9,
+            "coverage": 0.0,
+            "risk": null
+          },
+          {
+            "threshold": 0.95,
+            "coverage": 0.0,
+            "risk": null
+          }
+        ],
+        "accuracy_ci95": [
+          0.0,
+          0.0
+        ],
+        "independent_clusters": 12,
+        "uncertainty_method": "percentile bootstrap of whole pair/id clusters; exploratory, no multiplicity adjustment",
+        "per_dataset": {
+          "EmoBench-EA": {
+            "attempts": 6,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "EmoBench-EU": {
+            "attempts": 6,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "per_category": {
+          "Personal-Others": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "Personal-Self": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "Social-Others": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "Social-Self": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "complex_emotions": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "emotional_cues": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "personal_beliefs_and_experiences": {
+            "attempts": 2,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          },
+          "perspective_taking": {
+            "attempts": 1,
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "worst_category_accuracy": 0.0,
+        "paired_robustness": {},
+        "interpretation": "Scores externally keyed answers and observable reliability, not emotional experience or clinical/personality traits."
+      },
+      "direct_completed_json_choice": {
+        "attempts": 12,
+        "extractable_choice_coverage": 0.0,
+        "accuracy_all_attempts": 0.0,
+        "accuracy_conditional_on_extraction": null,
+        "accuracy_ci95": [
+          0.0,
+          0.0
+        ],
+        "independent_question_clusters": 12,
+        "parse_status_counts": {
+          "fence_not_allowed": 12
+        },
+        "wrapped_choices": 0,
+        "primary_rejected_but_choice_extractable": 0,
+        "position_diagnostics": {
+          "choices_on_answered_subset": null,
+          "gold_on_same_answered_subset": null,
+          "total_variation_distance": null,
+          "gold_frequencies_all_attempts": {
+            "A": 0.4166666666666667,
+            "B": 0.3333333333333333,
+            "C": 0.08333333333333333,
+            "D": 0.16666666666666666,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "choice_frequencies_all_attempts": {
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 0.0,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "qualification": "Option labels are positions, not emotions. Difficulty and extraction coverage can confound preference."
+        }
+      },
+      "exact_json_fence_choice": {
+        "attempts": 12,
+        "extractable_choice_coverage": 0.5,
+        "accuracy_all_attempts": 0.3333333333333333,
+        "accuracy_conditional_on_extraction": 0.6666666666666666,
+        "accuracy_ci95": [
+          0.08333333333333333,
+          0.5833333333333334
+        ],
+        "independent_question_clusters": 12,
+        "parse_status_counts": {
+          "choice": 6,
+          "illegal_answer": 6
+        },
+        "wrapped_choices": 6,
+        "primary_rejected_but_choice_extractable": 6,
+        "position_diagnostics": {
+          "choices_on_answered_subset": {
+            "A": 0.16666666666666666,
+            "B": 0.5,
+            "C": 0.3333333333333333,
+            "D": 0.0,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "gold_on_same_answered_subset": {
+            "A": 0.16666666666666666,
+            "B": 0.5,
+            "C": 0.16666666666666666,
+            "D": 0.16666666666666666,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "total_variation_distance": 0.16666666666666666,
+          "gold_frequencies_all_attempts": {
+            "A": 0.4166666666666667,
+            "B": 0.3333333333333333,
+            "C": 0.08333333333333333,
+            "D": 0.16666666666666666,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "choice_frequencies_all_attempts": {
+            "A": 0.08333333333333333,
+            "B": 0.25,
+            "C": 0.16666666666666666,
+            "D": 0.0,
+            "E": 0.0,
+            "F": 0.0
+          },
+          "qualification": "Option labels are positions, not emotions. Difficulty and extraction coverage can confound preference."
+        }
+      }
+    }
+  },
+  "scope": "Keyed emotional-understanding knowledge and response reliability; not affect-controller causality, personality or experience.",
+  "limitations": [
+    "Strict primary errors remain errors; secondary extraction never rewrites them.",
+    "No prose or truncated-JSON repair and no gold-directed parsing.",
+    "Variants share source-question clusters and are not independent questions.",
+    "Human-author keys can be culturally or normatively contingent; pretraining contamination is unknown.",
+    "Small coding-specialized quantized-model scores may reflect reading or schema-following as well as social knowledge."
+  ]
+}

@@ -124,6 +124,13 @@ class RustKernelTests(unittest.TestCase):
         self.assertEqual(canonical(apply_patch(old,serialized)),canonical(new))
         self.assertEqual(self.kernel.native_fallbacks,before+2)
 
+    def test_python_escaped_surrogates_roundtrip_with_observable_fallback(self):
+        for new in [{'text':'\ud800'},{'\udfff':'value'}]:
+            old={};before=self.kernel.native_fallbacks
+            delta=self.kernel.diff(old,new)
+            self.assertEqual(canonical(apply_patch(old,delta)),canonical(new))
+            self.assertEqual(self.kernel.native_fallbacks,before+1)
+
     def test_native_and_python_agent_histories_match(self):
         with tempfile.TemporaryDirectory() as tmp:
             rust,rt=history(Path(tmp)/'rust.db','rust')

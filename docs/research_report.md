@@ -1,4 +1,6 @@
-# Persistent developing affect: implementation and exploratory evidence
+# Persistent developing affect: initial implementation and exploratory evidence
+
+**Historical initial study at commit `2bf0e03`.** The [extended report](extended_report.md) adds compact/Rust memory work, completed real-model software and QA pilots, human-label training and broader measurements. Statements below about unavailable live inference describe the initial study.
 
 **2026-10-25.** Regesh is a working local platform and an executed small research study. Functional persistence, development and causal cognitive effects are demonstrated in deterministic histories. **The learned affect mechanism did not demonstrate superior useful solution generation over ordinary adaptive control.** Architectural priority, real-LLM creativity, psychological validity, biological fidelity and subjective experience remain unestablished.
 

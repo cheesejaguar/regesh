@@ -1,0 +1,14 @@
+{
+  "status": "aborted runtime pilot, preserved in full; excluded from final full-run inference",
+  "reason": "Default60second HTTP timeout was too short when a shared CPU slot queued a software generation. Restart with300second deadline; prompts/items/decoding/metrics unchanged. No performance tuning.",
+  "completed_attempt_records": 5,
+  "additional_in_flight_request_upper_bound": 1,
+  "error_types": [
+    "provider_error",
+    "invalid_answer_schema",
+    "invalid_answer_schema",
+    "invalid_answer_schema",
+    "invalid_answer_schema"
+  ],
+  "aborted_utc": "2026-10-25T16:26:40.789080+00:00"
+}

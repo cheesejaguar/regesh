@@ -11,7 +11,7 @@ There is no single valid “emotion quality” number. Keep knowledge, evidence 
 | Axis | Implemented measurement | Interpretation / limit |
 |---|---|---|
 | Keyed answer quality | Overall accuracy and cluster-bootstrap interval | All attempts count, including malformed/failed/abstained answers; authored key may be culturally/normatively contingent |
-| Class imbalance | Balanced accuracy and macro-F1 | On MCQ letter labels these describe answer-position balance, **not emotion-category validity**; inspect per-category results |
+| Class imbalance | Balanced accuracy over gold-supported labels; macro-F1 over gold∪valid-predicted labels | On MCQ letter labels these describe answer-position balance, **not emotion-category validity**; inspect per-category results |
 | Construct slices | Per-dataset, per-author-category and worst-category accuracy | Small slices have high variance; categories are not protected demographic groups |
 | Chance comparison | Mean `1 / number_of_options` | Variable option counts matter; not an uncertainty estimate |
 | Probabilistic support | Multiclass Brier and negative log score | Proper scores for the reported distribution, scored only where a valid distribution exists; its coverage is shown |
@@ -70,3 +70,29 @@ EmoBench-style keyed tasks are preferable to inventing an “emotion exam,” bu
 Self-report personality inventories are a different instrument. Public-domain IPIP items can support response-pattern/consistency studies, but have no universal correct answers; scoring them as an intelligence or emotion-accuracy exam would be invalid. Human trait norms and reverse-keying do not justify attributing a clinical trait to a language model. Proprietary instruments such as MSCEIT and many clinical/psychology exams should not be copied into this repository without appropriate rights. A publicly viewable dataset is not automatically licensed for redistribution or training. See [dataset catalog](datasets.md) for verified licenses and access limits.
 
 The stronger long-term tests are interventions over histories: prediction calibration after experience, accurate versus misleading criticism, goals/resources held fixed, coping after controlled setbacks, neutral-path access to disconfirming evidence, transfer to unseen people/task orders, and useful solutions after revision. Independent human annotation, longitudinal participants, clinical validity, physiology, biological fidelity and subjective experience remain unmeasured. [The prospective longitudinal protocol](longitudinal_protocol.md) describes a separate study; it is not a participant result.
+
+
+Runtime note: the local CPU CLI now accepts `--timeout` (default 300 seconds). An early shared-slot run used the adapter's 60-second deadline and was aborted; all partial records remain in `results/psych_runtime_partial`. The final full run retains every attempted item, including malformed probabilities and abstentions. A runtime correction is not a claim of improved emotional understanding.
+
+## Scaling the pinned EmoBench data without new labels
+
+The reusable `scripts/prepare_emobench.py` converter validates the downloaded EA/EU files against `datasets/catalog.json` checksums. It maps each external author answer to exactly one unchanged choice text; unmatched or duplicated answers, unknown question types, corrupted downloads and nonempty output directories are rejected. There are no model calls or label generation. Source IDs, author category, license, revision and original-file SHA accompany every canonical item. The output manifest preserves scenario-case clusters; optional EU emotion and cause questions about the same scenario must remain in the same statistical cluster.
+
+```bash
+python scripts/fetch_datasets.py --ids emobench --cache "$HOME/.cache/regesh/datasets"
+python scripts/prepare_emobench.py \
+  --cache "$HOME/.cache/regesh/datasets" --output /tmp/emobench-all-new
+# Optional: 200 additional externally keyed cause questions
+python scripts/prepare_emobench.py \
+  --cache "$HOME/.cache/regesh/datasets" --include-causes \
+  --output /tmp/emobench-with-causes-new
+# Recreate the locked twelve-item pilot in a separate directory
+python scripts/prepare_emobench.py \
+  --cache "$HOME/.cache/regesh/datasets" --pilot-per-kind 6 \
+  --output /tmp/emobench-pilot-copy-new
+```
+
+The converter was executed on the pinned downloads: **400 English QA items** by default (200 application, 200 emotion understanding), or **600** including 200 cause questions. These are 400 scenario cases, not 600 independent cases. Its hash-ranked pilot regeneration is byte-for-byte identical to the existing twelve-item pilot. `results/emobench_adapter/` saves source/converter/output hashes, counts, cluster manifests and verification; full converted data remain in the external cache. The currently measured real-model pilot was not rewritten, expanded or rerun by the converter. English question stems are explicitly reviewed fixed templates; non-English conversion is not silently supplied.
+
+
+A later independent scorer review corrected macro-F1's label universe from only gold-supported labels to the conventional union of gold and valid predicted labels; balanced accuracy still averages recall over supported gold classes. The completed pilot's original `results/psych_real/summary.json` and exact raw responses are preserved. `summary_corrected.json` records the definition correction, original/corrected scorer hashes and unchanged accuracy/proper-score assertions. This rescoring made **no new model calls**. All 36 pilot responses failed the strict schema, so both macro-F1 definitions return zero; zero strict answer coverage precludes a conclusion of zero emotional knowledge. Sixteen scorer/behavior tests pass, including the predicted-only-class regression.

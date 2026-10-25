@@ -2,7 +2,7 @@
 
 A local research platform for persistent functional affect: versioned evidence and appraisal, durable agent state, operational resources, developing expectations, affect-modulated cognitive control, causal interventions, and provider-free replay.
 
-**Current evidence:** the system passes persistence/development/control tests, but the exploratory simulator experiment does **not** demonstrate better useful solution generation than ordinary adaptive control. Hybrid quality 0.6130 vs adaptive 0.6258; paired difference −0.0128, 95% interval [−0.0370, 0.0094]. No live-model creativity, biological fidelity, or subjective experience has been established.
+**Current evidence:** compact journaling reduces measured retained storage by about 97%, and snapshot lookup reduces isolated peak RAM by 89.5% at 250 events. Rust works as an optional backend but showed no dependable CPU/RAM gain. A completed real-model software pilot also found **no demonstrated affect advantage**: hidden pass rates 29.17% vs 28.24%, paired difference +0.93 points, 95% interval [−4.17, 6.94]. Neither controller produced a fully correct solution. See the [extended report](docs/extended_report.md) for real-model QA, human-label training, all failures, and multiple quality measures. Biological fidelity and subjective experience remain unestablished.
 
 ## Run locally
 
@@ -68,11 +68,65 @@ python -m regesh.live_benchmark \
   --seeds 800 801 802 --budget 8 --max-tokens 192
 ```
 
-Default ceiling: 504 model calls and 96,768 completion tokens; input tokens are additional. See [live protocol and recorded-response replay](docs/live_protocol.md). Live evaluation was blocked here by the absence of a model endpoint/credential and GPU runtime. Fake HTTP/adapter tests validate the protocol only.
+Default ceiling: 504 model calls and 96,768 completion tokens; input tokens are additional. See [live protocol and recorded-response replay](docs/live_protocol.md). The initial study had no configured endpoint. The extension provisioned an open-weight CPU model and completed the software and psychology pilots; their measured results are separate from this original numeric-design runner and its fixtures.
+
+## Compact memory, datasets and expanded experiments
+
+Compact Python storage is the default. The optional Rust kernel uses the same
+lossless representation; it is an evaluated alternative, not a blanket speed claim:
+
+```bash
+cargo test --locked --manifest-path native/Cargo.toml
+cargo build --release --locked --manifest-path native/Cargo.toml
+REGESH_MEMORY_BACKEND=rust python -m regesh demo --db rust-demo.sqlite
+```
+
+See [memory profiles and remaining scaling limits](docs/rust_memory.md).
+`agent.iter_trace()` and default replay stream history; `trace()` explicitly
+materializes it. Original numerical behavior is unchanged.
+
+The [dataset catalog](docs/datasets.md) covers 57 resources with license/access
+checks. Four have pinned verified downloads. The [psychology suite](docs/psychometrics.md)
+uses external answer keys, response-order/persona checks and calibration/coverage;
+it does not infer clinical traits or feelings. Full EmoBench conversion and a
+small supervised human-label reference are runnable:
+
+```bash
+python scripts/fetch_datasets.py --cache .cache/regesh-data
+python scripts/prepare_emobench.py --cache .cache/regesh-data --output .cache/emobench-all
+python -m regesh.dataset_baseline --cache .cache/regesh-data --output results/recognition-new
+```
+
+To reproduce local real-model inference, use Python 3.12+ for the prebuilt helper
+(or its source-build option), Linux x64 and about 1.12 GB model download:
+
+```bash
+python scripts/prepare_local_model.py --cache .cache/regesh-model --prebuilt-server
+.cache/regesh-model/llama-b11878/llama-server \
+  --model .cache/regesh-model/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf \
+  --host 127.0.0.1 --port 8080 --alias regesh-qwen-coder \
+  --ctx-size 8192 --parallel 1 --threads 4 --threads-batch 4 --n-gpu-layers 0
+# In a second terminal:
+python -m regesh.software_eval --base-url http://127.0.0.1:8080/v1 \
+  --model regesh-qwen-coder --config configs/software_cpu_pilot.json \
+  --weights results/benchmark --output results/software-new --timeout 300
+python -m regesh.psych_eval --items datasets/emobench_pilot.jsonl \
+  --base-url http://127.0.0.1:8080/v1 --model regesh-qwen-coder \
+  --permutation --persona --max-tokens 128 --timeout 300 --output results/psych-new
+```
+
+The completed CPU pilot used 48 software and 36 QA calls; the larger software
+configuration remains available. Exact limits, raw costs, source/model hashes,
+runtime corrections and seed nondeterminism are documented. [Recorded-response
+replay](docs/software_replay.md) verifies every actor phase without a model and
+separately rechecks the executable outcomes. [Expanded measurements](docs/measurement_framework.md)
+and [frozen secondary analysis](docs/extended_analysis.md) keep correctness,
+robustness, repair, cost, calibration, coverage and diversity proxies separate.
 
 ## Research and results
 
-- [Research report and claim ledger](docs/research_report.md)
+- [Extended measured report with figures](docs/extended_report.md)
+- [Initial research report and claim ledger](docs/research_report.md)
 - [Prior-art matrix: 28 primary-source comparisons](docs/research_matrix.md)
 - [Ten competing hypotheses and independent critic](docs/hypotheses.md)
 - [Benchmark protocol](docs/benchmark_protocol.md) and [executed results](results/benchmark/report.md)
