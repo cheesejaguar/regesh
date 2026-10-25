@@ -47,3 +47,28 @@ All requested work is complete. The CPU service was stopped after measurement to
 - Human-label GoEmotions reference: 39,013 fit / 4,397 development / 5,427 test. Micro-F1 0.414123 vs prior 0.304015; macro-F1 0.223103. Exact-set accuracy, Hamming loss and calibration worsen; five rarest labels F1=0. Learned arrays 458,976 bytes, compressed model 251,343 bytes. No main-controller changes. Independent stdlib counting reproduces primary metrics.
 - Expanded measurements include correctness, boundary/generated/metamorphic/scaling robustness, same-suite repair/regression, confidence/coverage, proper scores, abstention/risk, cost, source proxies, source reliability and finite feedback/recovery. Undefined metrics remain missing. Four standalone SVG/PNG figure pairs are in results/figures.
 - Final verification: 141 Python tests pass in BOTH backends, plus two Rust tests; wheel builds. Historical results/provenance.json remains tied to initial commit 2bf0e03. New code/evidence hashes are in results/extended_provenance.json. The main current report is docs/extended_report.md. Final next experiment: common checked initial-history fork, a stronger/appropriate model with baseline full-task success, and validated decoding/replay before a larger fixed comparison.
+
+## Published-paper reproduction checkpoint
+
+The user's subsequent request for at least three relevant paper experiments is
+complete: two full-scale independent computational experiment implementations
+(Keramati/Gutkin2014 and Dubey/Griffiths/Dayan2022), one original-data statistical
+reproduction (Croissant etal2024), plus a scoped real-model EmotionPrompt
+replication (Li etalICML2024). Primary sources, fidelity labels, direct numerical
+comparisons, failed matches and commands are in `docs/paper_reproductions.md`.
+Detailed durable notes are `docs/reproductions/WORK_LOG.md`.
+
+Executed482million homeostatic transitions,190million bandit choices,42original
+STEUscore rows,73completeLIWCrows,30×3originaluser ratings and64newmodelcalls.
+Homeostatic maximum86vs61 and stationary fixed-comparison reward reversal remain
+unreproduced. Sudden-change reward contrast370.82 closely matches370.11. Fixed
+comparison exactly matches ordinary optimistic learning across40million paired
+actions. STEUcounts24/31/35 reproduce. Questionnaire inference depends on analysis
+assumptions. Promptaccuracy19/32→22/32 is inconclusive and format-sensitive;
+exploratory arithmetic correctness is12/16both. No affect-specific creativity
+advantage is established. The model service is stopped; no jobs remain.
+
+All173Python tests, independent raw-result audits and compileall pass. New hashes
+are in `results/papers/provenance.json`; all prior provenance/evidence/weights are
+preserved. Draft PR1 now includes runnable papers, quantitative figures and the
+independent review. It remains unmerged.

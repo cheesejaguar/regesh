@@ -1,0 +1,1813 @@
+{
+  "schema_version": 1,
+  "paper": "https://doi.org/10.1371/journal.pone.0301033",
+  "status": "statistical reproduction on author-released data",
+  "experiment_1": {
+    "conditions": [
+      {
+        "condition": "No Memory",
+        "correct": 24,
+        "n": 42,
+        "accuracy": 0.5714285714285714,
+        "wilson_95_ci": [
+          0.4220623987810458,
+          0.7088234882381393
+        ],
+        "published_correct": 24,
+        "matches_published_count": true,
+        "binomial_p_above_chance_0_2": 1.2982219414383035e-07
+      },
+      {
+        "condition": "Memory",
+        "correct": 31,
+        "n": 42,
+        "accuracy": 0.7380952380952381,
+        "wilson_95_ci": [
+          0.5893126929422804,
+          0.8469735971216702
+        ],
+        "published_correct": 31,
+        "matches_published_count": true,
+        "binomial_p_above_chance_0_2": 8.629839377494147e-14
+      },
+      {
+        "condition": "Appraisal Prompts",
+        "correct": 35,
+        "n": 42,
+        "accuracy": 0.8333333333333334,
+        "wilson_95_ci": [
+          0.6939599725535115,
+          0.9168408335360192
+        ],
+        "published_correct": 35,
+        "matches_published_count": true,
+        "binomial_p_above_chance_0_2": 2.0424534690734097e-18
+      }
+    ],
+    "paired_comparisons": [
+      {
+        "base": "No Memory",
+        "treatment": "Memory",
+        "accuracy_delta": 0.16666666666666666,
+        "item_bootstrap_95_ci": [
+          0.023809523809523808,
+          0.30952380952380953
+        ],
+        "gained_items": 9,
+        "lost_items": 2,
+        "mcnemar_exact_p": 0.0654296875,
+        "mcnemar_holm_p_3_contrasts": 0.130859375
+      },
+      {
+        "base": "No Memory",
+        "treatment": "Appraisal Prompts",
+        "accuracy_delta": 0.2619047619047619,
+        "item_bootstrap_95_ci": [
+          0.11904761904761904,
+          0.40476190476190477
+        ],
+        "gained_items": 12,
+        "lost_items": 1,
+        "mcnemar_exact_p": 0.00341796875,
+        "mcnemar_holm_p_3_contrasts": 0.01025390625
+      },
+      {
+        "base": "Memory",
+        "treatment": "Appraisal Prompts",
+        "accuracy_delta": 0.09523809523809523,
+        "item_bootstrap_95_ci": [
+          0.0,
+          0.21428571428571427
+        ],
+        "gained_items": 5,
+        "lost_items": 1,
+        "mcnemar_exact_p": 0.21875,
+        "mcnemar_holm_p_3_contrasts": 0.21875
+      }
+    ],
+    "unit": "the same 42 fixed test items, not 126 independent samples",
+    "fresh_model_calls": 0,
+    "gold_verification": "author-released score columns; full STEU key not independently re-annotated"
+  },
+  "experiment_2": {
+    "released_rows": 75,
+    "complete_metric_rows": 73,
+    "excluded_missing_metric_rows": [
+      {
+        "condition": "2",
+        "segment": "2",
+        "word_count": "0"
+      },
+      {
+        "condition": "2",
+        "segment": "3",
+        "word_count": "0"
+      }
+    ],
+    "metrics": [
+      {
+        "metric": "WC",
+        "conditions": {
+          "No Memory": {
+            "n": 22,
+            "mean": 18.045454545454547,
+            "sd": 6.917729277369732
+          },
+          "Memory": {
+            "n": 24,
+            "mean": 15.25,
+            "sd": 4.729647472845234
+          },
+          "Chain of Emotion": {
+            "n": 27,
+            "mean": 17.037037037037038,
+            "sd": 7.587852039641955
+          }
+        },
+        "categorical_anova": {
+          "F": 1.0807670790056132,
+          "p": 0.34492913480015025,
+          "df": [
+            2,
+            70
+          ],
+          "holm_p_6_metrics": 1.0
+        },
+        "numeric_condition_trend": {
+          "F": 0.2029557860943622,
+          "p": 0.6537182453231807,
+          "df": [
+            1,
+            71
+          ],
+          "slope": -0.4268018018018002,
+          "holm_p_6_metrics": 1.0
+        },
+        "published": {
+          "means": [
+            18.0,
+            15.2,
+            17.0
+          ],
+          "F": 0.2,
+          "p": 0.65
+        },
+        "numeric_trend_minus_published_F": 0.0029557860943622005,
+        "mean_minus_published": [
+          0.045454545454546746,
+          0.05000000000000071,
+          0.03703703703703809
+        ]
+      },
+      {
+        "metric": "Authentic",
+        "conditions": {
+          "No Memory": {
+            "n": 22,
+            "mean": 61.51181818181819,
+            "sd": 38.57553180034792
+          },
+          "Memory": {
+            "n": 24,
+            "mean": 61.88625,
+            "sd": 39.47970560796147
+          },
+          "Chain of Emotion": {
+            "n": 27,
+            "mean": 82.60444444444444,
+            "sd": 21.19344044624935
+          }
+        },
+        "categorical_anova": {
+          "F": 3.3017389790595604,
+          "p": 0.0426318640172352,
+          "df": [
+            2,
+            70
+          ],
+          "holm_p_6_metrics": 0.2557911841034112
+        },
+        "numeric_condition_trend": {
+          "F": 5.093324809756069,
+          "p": 0.027097157665097585,
+          "df": [
+            1,
+            71
+          ],
+          "slope": 10.889957770270263,
+          "holm_p_6_metrics": 0.1625829459905855
+        },
+        "published": {
+          "means": [
+            61.5,
+            61.9,
+            82.6
+          ],
+          "F": 5.1,
+          "p": 0.03
+        },
+        "numeric_trend_minus_published_F": -0.006675190243930373,
+        "mean_minus_published": [
+          0.011818181818192386,
+          -0.013750000000001705,
+          0.004444444444445139
+        ]
+      },
+      {
+        "metric": "Tone",
+        "conditions": {
+          "No Memory": {
+            "n": 22,
+            "mean": 74.24136363636364,
+            "sd": 38.58375284710177
+          },
+          "Memory": {
+            "n": 24,
+            "mean": 61.96750000000001,
+            "sd": 44.78826537406189
+          },
+          "Chain of Emotion": {
+            "n": 27,
+            "mean": 53.90592592592593,
+            "sd": 43.958826475137215
+          }
+        },
+        "categorical_anova": {
+          "F": 1.3796258141021855,
+          "p": 0.258430388292247,
+          "df": [
+            2,
+            70
+          ],
+          "holm_p_6_metrics": 1.0
+        },
+        "numeric_condition_trend": {
+          "F": 2.757519257683387,
+          "p": 0.10120859629490614,
+          "df": [
+            1,
+            71
+          ],
+          "slope": -10.096565315315312,
+          "holm_p_6_metrics": 0.5060429814745306
+        },
+        "published": {
+          "means": [
+            74.2,
+            62.0,
+            53.9
+          ],
+          "F": 2.76,
+          "p": 0.1
+        },
+        "numeric_trend_minus_published_F": -0.002480742316612883,
+        "mean_minus_published": [
+          0.041363636363641376,
+          -0.03249999999999176,
+          0.005925925925929221
+        ]
+      },
+      {
+        "metric": "Affect",
+        "conditions": {
+          "No Memory": {
+            "n": 22,
+            "mean": 11.41,
+            "sd": 8.187705649907294
+          },
+          "Memory": {
+            "n": 24,
+            "mean": 13.539583333333335,
+            "sd": 11.048091505133234
+          },
+          "Chain of Emotion": {
+            "n": 27,
+            "mean": 10.831111111111111,
+            "sd": 7.816335130468426
+          }
+        },
+        "categorical_anova": {
+          "F": 0.6069673362391044,
+          "p": 0.5478441600723656,
+          "df": [
+            2,
+            70
+          ],
+          "holm_p_6_metrics": 1.0
+        },
+        "numeric_condition_trend": {
+          "F": 0.08070010607143964,
+          "p": 0.7771777066749487,
+          "df": [
+            1,
+            71
+          ],
+          "slope": -0.3711683558558566,
+          "holm_p_6_metrics": 1.0
+        },
+        "published": {
+          "means": [
+            11.4,
+            13.5,
+            10.65
+          ],
+          "F": 0.08,
+          "p": 0.78
+        },
+        "numeric_trend_minus_published_F": 0.0007001060714396379,
+        "mean_minus_published": [
+          0.009999999999999787,
+          0.039583333333334636,
+          0.181111111111111
+        ]
+      },
+      {
+        "metric": "emo_pos",
+        "conditions": {
+          "No Memory": {
+            "n": 22,
+            "mean": 5.275,
+            "sd": 6.28802319606772
+          },
+          "Memory": {
+            "n": 24,
+            "mean": 4.131666666666667,
+            "sd": 4.81531584287746
+          },
+          "Chain of Emotion": {
+            "n": 27,
+            "mean": 3.316296296296296,
+            "sd": 4.3528029414727065
+          }
+        },
+        "categorical_anova": {
+          "F": 0.8781647659559406,
+          "p": 0.4200721145955129,
+          "df": [
+            2,
+            70
+          ],
+          "holm_p_6_metrics": 1.0
+        },
+        "numeric_condition_trend": {
+          "F": 1.7644977341277983,
+          "p": 0.1883185744369707,
+          "df": [
+            1,
+            71
+          ],
+          "slope": -0.9738119369369357,
+          "holm_p_6_metrics": 0.7532742977478828
+        },
+        "published": {
+          "means": [
+            5.28,
+            4.13,
+            3.32
+          ],
+          "F": 1.76,
+          "p": 0.19
+        },
+        "numeric_trend_minus_published_F": 0.004497734127798303,
+        "mean_minus_published": [
+          -0.004999999999999893,
+          0.0016666666666669272,
+          -0.0037037037037039866
+        ]
+      },
+      {
+        "metric": "emo_neg",
+        "conditions": {
+          "No Memory": {
+            "n": 22,
+            "mean": 0.5909090909090909,
+            "sd": 1.9678146183760228
+          },
+          "Memory": {
+            "n": 24,
+            "mean": 3.1041666666666665,
+            "sd": 7.555001174958425
+          },
+          "Chain of Emotion": {
+            "n": 27,
+            "mean": 1.5725925925925925,
+            "sd": 2.886489207154592
+          }
+        },
+        "categorical_anova": {
+          "F": 1.6155637150429263,
+          "p": 0.2061015165893769,
+          "df": [
+            2,
+            70
+          ],
+          "holm_p_6_metrics": 1.0
+        },
+        "numeric_condition_trend": {
+          "F": 0.36788988862551036,
+          "p": 0.5460912810037738,
+          "df": [
+            1,
+            71
+          ],
+          "slope": 0.4225168918918924,
+          "holm_p_6_metrics": 1.0
+        },
+        "published": {
+          "means": [
+            0.59,
+            3.1,
+            1.57
+          ],
+          "F": 0.37,
+          "p": 0.55
+        },
+        "numeric_trend_minus_published_F": -0.0021101113744896316,
+        "mean_minus_published": [
+          0.0009090909090909705,
+          0.00416666666666643,
+          0.0025925925925924798
+        ]
+      }
+    ],
+    "interpretation": "Numeric condition 0/1/2 trend approximates published F and p; categorical ANOVA is a different estimand. Sentences from three conversations are not independent experimental replications.",
+    "liwc_recomputed_from_text": false
+  },
+  "experiment_3": {
+    "participants": 30,
+    "rows": 90,
+    "conditions": [
+      "No Memory",
+      "Memory",
+      "Chain of Emotion"
+    ],
+    "items": [
+      {
+        "item": "The agent's behavior was human-like.",
+        "item_index": 0,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 4.866666666666666,
+            "sd": 2.192987779787851
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 5.466666666666667,
+            "sd": 1.6760654528683687
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 5.733333333333333,
+            "sd": 1.659524928558094
+          }
+        },
+        "published": {
+          "means": [
+            4.82,
+            5.36,
+            5.75
+          ],
+          "F": 1.95,
+          "p": 0.15
+        },
+        "mean_minus_published": [
+          0.04666666666666597,
+          0.10666666666666647,
+          -0.016666666666666607
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 1.7096631205673773,
+          "p": 0.18694867574936241,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 4.7500000000000115,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.012291429690047349,
+          "greenhouse_geisser_epsilon": 0.8638603451280245,
+          "p_greenhouse_geisser": 0.01665109997218121,
+          "partial_eta_squared": 0.14074074074074103,
+          "holm_p_12_items": 0.11062286721042613,
+          "holm_p_12_items_greenhouse_geisser": 0.14985989974963088
+        }
+      },
+      {
+        "item": "The agent's reactions were natural.",
+        "item_index": 1,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 4.466666666666667,
+            "sd": 2.046583921349534
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 4.966666666666667,
+            "sd": 1.711690701461939
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 5.7,
+            "sd": 1.149212624004981
+          }
+        },
+        "published": {
+          "means": [
+            4.43,
+            4.89,
+            5.71
+          ],
+          "F": 3.65,
+          "p": 0.03
+        },
+        "mean_minus_published": [
+          0.03666666666666707,
+          0.0766666666666671,
+          -0.009999999999999787
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 4.1039226368836825,
+          "p": 0.01980721682244844,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 7.704167732037845,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.0010784397660826746,
+          "greenhouse_geisser_epsilon": 0.9937512758166493,
+          "p_greenhouse_geisser": 0.0011079431958239618,
+          "partial_eta_squared": 0.20989898989898997,
+          "holm_p_12_items": 0.012941277192992096,
+          "holm_p_12_items_greenhouse_geisser": 0.013295318349887541
+        }
+      },
+      {
+        "item": "The agent reacted to my input.",
+        "item_index": 2,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 5.466666666666667,
+            "sd": 1.978040363127335
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 6.3,
+            "sd": 0.9878573120474016
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 6.466666666666667,
+            "sd": 1.0416609195243756
+          }
+        },
+        "published": {
+          "means": [
+            5.43,
+            6.29,
+            6.54
+          ],
+          "F": 3.62,
+          "p": 0.04
+        },
+        "mean_minus_published": [
+          0.03666666666666707,
+          0.009999999999999787,
+          -0.07333333333333325
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 4.324610352126225,
+          "p": 0.016197389404061,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 6.082543978349121,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.0039985328504445385,
+          "greenhouse_geisser_epsilon": 0.7302039572029492,
+          "p_greenhouse_geisser": 0.009455026080595721,
+          "partial_eta_squared": 0.17337807606263983,
+          "holm_p_12_items": 0.04398386135488992,
+          "holm_p_12_items_greenhouse_geisser": 0.10400528688655293
+        }
+      },
+      {
+        "item": "The agent did not care about the scenario.",
+        "item_index": 3,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 3.533333333333333,
+            "sd": 2.17720689991959
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 3.3333333333333335,
+            "sd": 2.2024020324735627
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 3.2666666666666666,
+            "sd": 2.2884015402012388
+          }
+        },
+        "published": {
+          "means": [
+            3.32,
+            3.14,
+            3.32
+          ],
+          "F": 0.26,
+          "p": 0.78
+        },
+        "mean_minus_published": [
+          0.21333333333333337,
+          0.19333333333333336,
+          -0.05333333333333323
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 0.11689922480620143,
+          "p": 0.8898143515723422,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 0.35836501901140644,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.7003543480432152,
+          "greenhouse_geisser_epsilon": 0.7644392992354258,
+          "p_greenhouse_geisser": 0.6436718468989896,
+          "partial_eta_squared": 0.012206572769953038,
+          "holm_p_12_items": 1.0,
+          "holm_p_12_items_greenhouse_geisser": 1.0
+        }
+      },
+      {
+        "item": "The agent always knows their friends' emotions from their behavior.",
+        "item_index": 4,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 4.833333333333333,
+            "sd": 1.8952451089472584
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 5.066666666666666,
+            "sd": 1.7991057804352142
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 5.733333333333333,
+            "sd": 1.412587094253156
+          }
+        },
+        "published": {
+          "means": [
+            4.79,
+            5.04,
+            5.71
+          ],
+          "F": 1.32,
+          "p": 0.27
+        },
+        "mean_minus_published": [
+          0.043333333333333,
+          0.026666666666666394,
+          0.023333333333333428
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 2.2249576657548507,
+          "p": 0.11418619543510733,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 4.114912069380874,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.02132344446533014,
+          "greenhouse_geisser_epsilon": 0.920428022402486,
+          "p_greenhouse_geisser": 0.024562737037940485,
+          "partial_eta_squared": 0.12426160337552748,
+          "holm_p_12_items": 0.17058755572264112,
+          "holm_p_12_items_greenhouse_geisser": 0.19650189630352388
+        }
+      },
+      {
+        "item": "The agent is a good observer of others' emotions.",
+        "item_index": 5,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 4.933333333333334,
+            "sd": 2.0499509385774854
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 5.366666666666666,
+            "sd": 1.8842968748696896
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 5.866666666666666,
+            "sd": 0.8995528902176073
+          }
+        },
+        "published": {
+          "means": [
+            4.89,
+            5.29,
+            5.93
+          ],
+          "F": 2.25,
+          "p": 0.11
+        },
+        "mean_minus_published": [
+          0.04333333333333389,
+          0.07666666666666622,
+          -0.06333333333333346
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 2.293059471069942,
+          "p": 0.10702801354012496,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 2.9752656331649514,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.05887504724712348,
+          "greenhouse_geisser_epsilon": 0.994033791214873,
+          "p_greenhouse_geisser": 0.05922294780044588,
+          "partial_eta_squared": 0.0930489731437598,
+          "holm_p_12_items": 0.41212533072986435,
+          "holm_p_12_items_greenhouse_geisser": 0.41456063460312115
+        }
+      },
+      {
+        "item": "The agent is sensitive to the feelings and emotions of others.",
+        "item_index": 6,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 5.166666666666667,
+            "sd": 1.6832508230603465
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 5.433333333333334,
+            "sd": 1.7157150581957192
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 6.2,
+            "sd": 1.0305673027596216
+          }
+        },
+        "published": {
+          "means": [
+            5.14,
+            5.39,
+            6.25
+          ],
+          "F": 3.31,
+          "p": 0.04
+        },
+        "mean_minus_published": [
+          0.026666666666667282,
+          0.04333333333333389,
+          -0.04999999999999982
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 3.787058823529409,
+          "p": 0.02648454526021854,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 5.51873622336517,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.006396614955945327,
+          "greenhouse_geisser_epsilon": 0.8553218860735062,
+          "p_greenhouse_geisser": 0.009562867144497241,
+          "partial_eta_squared": 0.15987654320987646,
+          "holm_p_12_items": 0.06396614955945328,
+          "holm_p_12_items_greenhouse_geisser": 0.10400528688655293
+        }
+      },
+      {
+        "item": "The agent has a good understanding of the emotions of people around them.",
+        "item_index": 7,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 4.9,
+            "sd": 1.9360464514233549
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 5.133333333333334,
+            "sd": 1.9070347687431926
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 5.6,
+            "sd": 1.3544307876819288
+          }
+        },
+        "published": {
+          "means": [
+            4.86,
+            5.11,
+            5.61
+          ],
+          "F": 0.86,
+          "p": 0.43
+        },
+        "mean_minus_published": [
+          0.040000000000000036,
+          0.023333333333333428,
+          -0.010000000000000675
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 1.2401196858247097,
+          "p": 0.29441302514886564,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 1.5310143142989039,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.22492938008208746,
+          "greenhouse_geisser_epsilon": 0.9606152824799116,
+          "p_greenhouse_geisser": 0.22569886915811446,
+          "partial_eta_squared": 0.05014619883040925,
+          "holm_p_12_items": 1.0,
+          "holm_p_12_items_greenhouse_geisser": 1.0
+        }
+      },
+      {
+        "item": "How capable was the agent?",
+        "item_index": 8,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 4.933333333333334,
+            "sd": 1.9106477207072157
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 5.566666666666666,
+            "sd": 1.5013403972802926
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 5.166666666666667,
+            "sd": 1.8398525678065536
+          }
+        },
+        "published": {
+          "means": [
+            4.86,
+            5.57,
+            5.14
+          ],
+          "F": 1.68,
+          "p": 0.19
+        },
+        "mean_minus_published": [
+          0.07333333333333325,
+          -0.0033333333333338544,
+          0.026666666666667282
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 0.9939371442712203,
+          "p": 0.37427969767534847,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 0.9925861855924858,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.3768238562017484,
+          "greenhouse_geisser_epsilon": 0.8469869091023264,
+          "p_greenhouse_geisser": 0.36605920903633643,
+          "partial_eta_squared": 0.033094384707287886,
+          "holm_p_12_items": 1.0,
+          "holm_p_12_items_greenhouse_geisser": 1.0
+        }
+      },
+      {
+        "item": "How competent was the agent?",
+        "item_index": 9,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 5.166666666666667,
+            "sd": 1.6626388110747186
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 5.633333333333334,
+            "sd": 1.2726115785600325
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 5.3,
+            "sd": 2.0535923108811898
+          }
+        },
+        "published": {
+          "means": [
+            5.39,
+            5.39,
+            5.11
+          ],
+          "F": 1.68,
+          "p": 0.19
+        },
+        "mean_minus_published": [
+          -0.22333333333333272,
+          0.24333333333333407,
+          0.1899999999999995
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 0.6045703594814908,
+          "p": 0.5485879456173487,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 0.695571955719558,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.5029013472243141,
+          "greenhouse_geisser_epsilon": 0.8796567181609389,
+          "p_greenhouse_geisser": 0.4858657073784297,
+          "partial_eta_squared": 0.023423423423423448,
+          "holm_p_12_items": 1.0,
+          "holm_p_12_items_greenhouse_geisser": 1.0
+        }
+      },
+      {
+        "item": "How warm was the agent?",
+        "item_index": 10,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 4.966666666666667,
+            "sd": 2.1732437750393134
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 5.733333333333333,
+            "sd": 1.837039096937831
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 5.066666666666666,
+            "sd": 2.2884015402012388
+          }
+        },
+        "published": {
+          "means": [
+            6.07,
+            6.38,
+            5.55
+          ],
+          "F": 2.48,
+          "p": 0.09
+        },
+        "mean_minus_published": [
+          -1.1033333333333335,
+          -0.6466666666666665,
+          -0.4833333333333334
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 1.1723989311266265,
+          "p": 0.3144663774095173,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 2.2854982355906572,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.11081351826209523,
+          "greenhouse_geisser_epsilon": 0.6901083306204656,
+          "p_greenhouse_geisser": 0.1300456861118726,
+          "partial_eta_squared": 0.07305295950155764,
+          "holm_p_12_items": 0.6648811095725714,
+          "holm_p_12_items_greenhouse_geisser": 0.7802741166712355
+        }
+      },
+      {
+        "item": "How friendly was the agent?",
+        "item_index": 11,
+        "conditions": {
+          "No Memory": {
+            "n": 30,
+            "mean": 5.6,
+            "sd": 1.404426499715613
+          },
+          "Memory": {
+            "n": 30,
+            "mean": 5.633333333333334,
+            "sd": 1.731718965280638
+          },
+          "Chain of Emotion": {
+            "n": 30,
+            "mean": 5.166666666666667,
+            "sd": 1.9490640252984621
+          }
+        },
+        "published": {
+          "means": [
+            4.86,
+            5.18,
+            5.0
+          ],
+          "F": 0.41,
+          "p": 0.66
+        },
+        "mean_minus_published": [
+          0.7399999999999993,
+          0.45333333333333403,
+          0.16666666666666696
+        ],
+        "unpaired_diagnostic_anova": {
+          "F": 0.6955439056356487,
+          "p": 0.5015551165614979,
+          "df": [
+            2,
+            87
+          ]
+        },
+        "repeated_measures_anova": {
+          "F": 1.3723816912335134,
+          "df": [
+            2,
+            58
+          ],
+          "p": 0.2616105879755876,
+          "greenhouse_geisser_epsilon": 0.78383171159509,
+          "p_greenhouse_geisser": 0.2605464838939739,
+          "partial_eta_squared": 0.045185185185185155,
+          "holm_p_12_items": 1.0,
+          "holm_p_12_items_greenhouse_geisser": 1.0
+        }
+      }
+    ],
+    "paired_contrasts": [
+      {
+        "item": "The agent's behavior was human-like.",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.6,
+        "paired_t": 2.0973498526698835,
+        "df": 29,
+        "p": 0.04479336366610735,
+        "paired_t_95_ci": [
+          0.014910305156051962,
+          1.185089694843948
+        ],
+        "participant_bootstrap_95_ci": [
+          0.06666666666666667,
+          1.1666666666666667
+        ],
+        "cohen_dz": 0.38292194176247735,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent's behavior was human-like.",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.8666666666666667,
+        "paired_t": 2.589307699730777,
+        "df": 29,
+        "p": 0.014883732582706663,
+        "paired_t_95_ci": [
+          0.18210825875736025,
+          1.551225074575973
+        ],
+        "participant_bootstrap_95_ci": [
+          0.23333333333333334,
+          1.5333333333333334
+        ],
+        "cohen_dz": 0.47274074515478665,
+        "holm_p_36_pairwise_contrasts": 0.4567866814921734
+      },
+      {
+        "item": "The agent's behavior was human-like.",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.26666666666666666,
+        "paired_t": 1.1368725120413008,
+        "df": 29,
+        "p": 0.2648986701458294,
+        "paired_t_95_ci": [
+          -0.21306572677128294,
+          0.7463990601046162
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.16666666666666666,
+          0.7333333333333333
+        ],
+        "cohen_dz": 0.2075635732841947,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent's reactions were natural.",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.5,
+        "paired_t": 1.5251895647938813,
+        "df": 29,
+        "p": 0.13804477689061165,
+        "paired_t_95_ci": [
+          -0.1704837514440708,
+          1.170483751444071
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.13333333333333333,
+          1.1
+        ],
+        "cohen_dz": 0.27846024303636535,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent's reactions were natural.",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 1.2333333333333334,
+        "paired_t": 3.9372766728532427,
+        "df": 29,
+        "p": 0.00047422516613546725,
+        "paired_t_95_ci": [
+          0.5926748016747714,
+          1.8739918649918954
+        ],
+        "participant_bootstrap_95_ci": [
+          0.6333333333333333,
+          1.8666666666666667
+        ],
+        "cohen_dz": 0.7188450829535366,
+        "holm_p_36_pairwise_contrasts": 0.01707210598087682
+      },
+      {
+        "item": "The agent's reactions were natural.",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.7333333333333333,
+        "paired_t": 2.3906032111906503,
+        "df": 29,
+        "p": 0.02353485635659507,
+        "paired_t_95_ci": [
+          0.10594562470965252,
+          1.3607210419570142
+        ],
+        "participant_bootstrap_95_ci": [
+          0.16666666666666666,
+          1.3666666666666667
+        ],
+        "cohen_dz": 0.4364624349378019,
+        "holm_p_36_pairwise_contrasts": 0.6354411216280669
+      },
+      {
+        "item": "The agent reacted to my input.",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.8333333333333334,
+        "paired_t": 2.8164101799932064,
+        "df": 29,
+        "p": 0.008646506456275063,
+        "paired_t_95_ci": [
+          0.2281807006600992,
+          1.4384859660065676
+        ],
+        "participant_bootstrap_95_ci": [
+          0.3,
+          1.4333333333333333
+        ],
+        "cohen_dz": 0.5142037955898214,
+        "holm_p_36_pairwise_contrasts": 0.2853347130570771
+      },
+      {
+        "item": "The agent reacted to my input.",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 1.0,
+        "paired_t": 2.6070817018267762,
+        "df": 29,
+        "p": 0.014274583796630418,
+        "paired_t_95_ci": [
+          0.21550995478982693,
+          1.784490045210173
+        ],
+        "participant_bootstrap_95_ci": [
+          0.3,
+          1.7666666666666666
+        ],
+        "cohen_dz": 0.4759858191164943,
+        "holm_p_36_pairwise_contrasts": 0.4567866814921734
+      },
+      {
+        "item": "The agent reacted to my input.",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.16666666666666666,
+        "paired_t": 0.7570485649179111,
+        "df": 29,
+        "p": 0.455128025951419,
+        "paired_t_95_ci": [
+          -0.2835971906580993,
+          0.6169305239914326
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.3,
+          0.5333333333333333
+        ],
+        "cohen_dz": 0.1382175253774847,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent did not care about the scenario.",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": -0.2,
+        "paired_t": -0.5505777769777327,
+        "df": 29,
+        "p": 0.586139786539866,
+        "paired_t_95_ci": [
+          -0.9429394093454009,
+          0.5429394093454007
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.8666666666666667,
+          0.5333333333333333
+        ],
+        "cohen_dz": -0.10052128937058427,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent did not care about the scenario.",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": -0.26666666666666666,
+        "paired_t": -0.7067261045607411,
+        "df": 29,
+        "p": 0.48537689843430415,
+        "paired_t_95_ci": [
+          -1.038386527749727,
+          0.5050531944163936
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.9333333333333333,
+          0.5
+        ],
+        "cohen_dz": -0.1290299431485575,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent did not care about the scenario.",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": -0.06666666666666667,
+        "paired_t": -0.3039024315435616,
+        "df": 29,
+        "p": 0.7633721085710173,
+        "paired_t_95_ci": [
+          -0.515325935749555,
+          0.3819926024162216
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.4666666666666667,
+          0.36666666666666664
+        ],
+        "cohen_dz": -0.05548473901235942,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent always knows their friends' emotions from their behavior.",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.23333333333333334,
+        "paired_t": 0.629933751830347,
+        "df": 29,
+        "p": 0.5336702301446363,
+        "paired_t_95_ci": [
+          -0.5242387898373082,
+          0.990905456503975
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.5,
+          0.9333333333333333
+        ],
+        "cohen_dz": 0.11500964187044745,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent always knows their friends' emotions from their behavior.",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.9,
+        "paired_t": 2.992366399841797,
+        "df": 29,
+        "p": 0.005604891502981904,
+        "paired_t_95_ci": [
+          0.28486587804997787,
+          1.5151341219500223
+        ],
+        "participant_bootstrap_95_ci": [
+          0.3333333333333333,
+          1.5
+        ],
+        "cohen_dz": 0.5463288591712919,
+        "holm_p_36_pairwise_contrasts": 0.19056631110138475
+      },
+      {
+        "item": "The agent always knows their friends' emotions from their behavior.",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.6666666666666666,
+        "paired_t": 2.217037265651648,
+        "df": 29,
+        "p": 0.03461787042409873,
+        "paired_t_95_ci": [
+          0.05166282834024927,
+          1.2816705049930839
+        ],
+        "participant_bootstrap_95_ci": [
+          0.1,
+          1.2666666666666666
+        ],
+        "cohen_dz": 0.404773773742327,
+        "holm_p_36_pairwise_contrasts": 0.900064631026567
+      },
+      {
+        "item": "The agent is a good observer of others' emotions.",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.43333333333333335,
+        "paired_t": 1.0905386045205034,
+        "df": 29,
+        "p": 0.2844545679681032,
+        "paired_t_95_ci": [
+          -0.37935332863695526,
+          1.246019995303622
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.3333333333333333,
+          1.2
+        ],
+        "cohen_dz": 0.19910419784202835,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent is a good observer of others' emotions.",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.9333333333333333,
+        "paired_t": 2.473541365962594,
+        "df": 29,
+        "p": 0.019477737775089172,
+        "paired_t_95_ci": [
+          0.16161347225027323,
+          1.7050531944163936
+        ],
+        "participant_bootstrap_95_ci": [
+          0.26666666666666666,
+          1.7
+        ],
+        "cohen_dz": 0.4516048010199514,
+        "holm_p_36_pairwise_contrasts": 0.5607907476273338
+      },
+      {
+        "item": "The agent is a good observer of others' emotions.",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.5,
+        "paired_t": 1.337954953199144,
+        "df": 29,
+        "p": 0.1913088903582512,
+        "paired_t_95_ci": [
+          -0.2643118466890143,
+          1.2643118466890142
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.16666666666666666,
+          1.2333333333333334
+        ],
+        "cohen_dz": 0.24427603626431335,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent is sensitive to the feelings and emotions of others.",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.26666666666666666,
+        "paired_t": 0.6955841649668709,
+        "df": 29,
+        "p": 0.4922262186716512,
+        "paired_t_95_ci": [
+          -0.5174146835195661,
+          1.0507480168528993
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.5,
+          1.0
+        ],
+        "cohen_dz": 0.1269957125985833,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent is sensitive to the feelings and emotions of others.",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 1.0333333333333334,
+        "paired_t": 3.670121547051337,
+        "df": 29,
+        "p": 0.0009718768698225745,
+        "paired_t_95_ci": [
+          0.45749301402971654,
+          1.6091736526369504
+        ],
+        "participant_bootstrap_95_ci": [
+          0.5333333333333333,
+          1.6
+        ],
+        "cohen_dz": 0.6700694533685917,
+        "holm_p_36_pairwise_contrasts": 0.03401569044379011
+      },
+      {
+        "item": "The agent is sensitive to the feelings and emotions of others.",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.7666666666666667,
+        "paired_t": 2.6048130187117544,
+        "df": 29,
+        "p": 0.014351027299181661,
+        "paired_t_95_ci": [
+          0.16470046754300793,
+          1.3686328657903255
+        ],
+        "participant_bootstrap_95_ci": [
+          0.23333333333333334,
+          1.3666666666666667
+        ],
+        "cohen_dz": 0.4755716161438515,
+        "holm_p_36_pairwise_contrasts": 0.4567866814921734
+      },
+      {
+        "item": "The agent has a good understanding of the emotions of people around them.",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.23333333333333334,
+        "paired_t": 0.559398487783773,
+        "df": 29,
+        "p": 0.5801848915395651,
+        "paired_t_95_ci": [
+          -0.6197620186430672,
+          1.086428685309734
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.5666666666666667,
+          1.0333333333333334
+        ],
+        "cohen_dz": 0.10213172346448353,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent has a good understanding of the emotions of people around them.",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.7,
+        "paired_t": 1.914554832425244,
+        "df": 29,
+        "p": 0.06546169354221354,
+        "paired_t_95_ci": [
+          -0.04777735546980877,
+          1.4477773554698086
+        ],
+        "participant_bootstrap_95_ci": [
+          0.03333333333333333,
+          1.4333333333333333
+        ],
+        "cohen_dz": 0.34954828976660984,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "The agent has a good understanding of the emotions of people around them.",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.4666666666666667,
+        "paired_t": 1.0700674367055107,
+        "df": 29,
+        "p": 0.2934147662907003,
+        "paired_t_95_ci": [
+          -0.42527758555768735,
+          1.3586109188910207
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.36666666666666664,
+          1.3
+        ],
+        "cohen_dz": 0.19536669104511326,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How capable was the agent?",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.6333333333333333,
+        "paired_t": 1.671070912358829,
+        "df": 29,
+        "p": 0.10546655459364614,
+        "paired_t_95_ci": [
+          -0.14180558932053844,
+          1.408472255987205
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.06666666666666667,
+          1.4
+        ],
+        "cohen_dz": 0.30509441129655634,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How capable was the agent?",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.23333333333333334,
+        "paired_t": 0.4323760928250144,
+        "df": 29,
+        "p": 0.6686663913929768,
+        "paired_t_95_ci": [
+          -0.8703822923687066,
+          1.3370489590353734
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.8,
+          1.2666666666666666
+        ],
+        "cohen_dz": 0.07894071312206932,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How capable was the agent?",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": -0.4,
+        "paired_t": -0.9292596909373572,
+        "df": 29,
+        "p": 0.3604254587821878,
+        "paired_t_95_ci": [
+          -1.2803694648886155,
+          0.4803694648886154
+        ],
+        "participant_bootstrap_95_ci": [
+          -1.2333333333333334,
+          0.43333333333333335
+        ],
+        "cohen_dz": -0.16965883150222316,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How competent was the agent?",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.4666666666666667,
+        "paired_t": 1.439245834257849,
+        "df": 29,
+        "p": 0.16078820842587663,
+        "paired_t_95_ci": [
+          -0.19648654659525533,
+          1.1298198799285886
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.16666666666666666,
+          1.0666666666666667
+        ],
+        "cohen_dz": 0.2627691364061218,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How competent was the agent?",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.13333333333333333,
+        "paired_t": 0.30573355334443164,
+        "df": 29,
+        "p": 0.7619914837380921,
+        "paired_t_95_ci": [
+          -0.7586109188910207,
+          1.0252775855576874
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.7666666666666667,
+          0.9666666666666667
+        ],
+        "cohen_dz": 0.05581905458431807,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How competent was the agent?",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": -0.3333333333333333,
+        "paired_t": -0.7397092748646286,
+        "df": 29,
+        "p": 0.4654227307150612,
+        "paired_t_95_ci": [
+          -1.2549700319795651,
+          0.5883033653128984
+        ],
+        "participant_bootstrap_95_ci": [
+          -1.2333333333333334,
+          0.5
+        ],
+        "cohen_dz": -0.13505181861304874,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How warm was the agent?",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.7666666666666667,
+        "paired_t": 2.4766805247006385,
+        "df": 29,
+        "p": 0.019337611987149443,
+        "paired_t_95_ci": [
+          0.13355739937783562,
+          1.3997759339554978
+        ],
+        "participant_bootstrap_95_ci": [
+          0.23333333333333334,
+          1.4
+        ],
+        "cohen_dz": 0.4521779303707568,
+        "holm_p_36_pairwise_contrasts": 0.5607907476273338
+      },
+      {
+        "item": "How warm was the agent?",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": 0.1,
+        "paired_t": 0.19854477375701848,
+        "df": 29,
+        "p": 0.844004221791801,
+        "paired_t_95_ci": [
+          -0.9301100368603407,
+          1.1301100368603407
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.8666666666666667,
+          1.0666666666666667
+        ],
+        "cohen_dz": 0.03624915042049291,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How warm was the agent?",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": -0.6666666666666666,
+        "paired_t": -2.0427094434851956,
+        "df": 29,
+        "p": 0.05026478044818541,
+        "paired_t_95_ci": [
+          -1.3341558352496141,
+          0.00082250191628086
+        ],
+        "participant_bootstrap_95_ci": [
+          -1.3333333333333333,
+          -0.1
+        ],
+        "cohen_dz": -0.37294601354188867,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How friendly was the agent?",
+        "base": "No Memory",
+        "treatment": "Memory",
+        "mean_delta": 0.03333333333333333,
+        "paired_t": 0.14999353490075773,
+        "df": 29,
+        "p": 0.8818080742185465,
+        "paired_t_95_ci": [
+          -0.42118173259621183,
+          0.4878483992628785
+        ],
+        "participant_bootstrap_95_ci": [
+          -0.4,
+          0.4666666666666667
+        ],
+        "cohen_dz": 0.027384947515027805,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How friendly was the agent?",
+        "base": "No Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": -0.43333333333333335,
+        "paired_t": -1.1698769676849303,
+        "df": 29,
+        "p": 0.25157565750104055,
+        "paired_t_95_ci": [
+          -1.190905456503975,
+          0.32423878983730825
+        ],
+        "participant_bootstrap_95_ci": [
+          -1.1666666666666667,
+          0.26666666666666666
+        ],
+        "cohen_dz": -0.21358933490225954,
+        "holm_p_36_pairwise_contrasts": 1.0
+      },
+      {
+        "item": "How friendly was the agent?",
+        "base": "Memory",
+        "treatment": "Chain of Emotion",
+        "mean_delta": -0.4666666666666667,
+        "paired_t": -1.4087714049867635,
+        "df": 29,
+        "p": 0.16953513133672893,
+        "paired_t_95_ci": [
+          -1.1441651566866962,
+          0.21083182335336292
+        ],
+        "participant_bootstrap_95_ci": [
+          -1.1333333333333333,
+          0.13333333333333333
+        ],
+        "cohen_dz": -0.25720529229316547,
+        "holm_p_36_pairwise_contrasts": 1.0
+      }
+    ],
+    "observed_rating_range": [
+      1.0,
+      7.0
+    ],
+    "missing_age_participants": 1,
+    "exclusions": "None: all 90 complete rating rows retained, including missing demographic age.",
+    "published_vs_released": "Published Table3 means and F values are not exactly reproduced from all released ratings; no undocumented exclusions or item relabeling were selected to force agreement.",
+    "new_participants": 0
+  }
+}

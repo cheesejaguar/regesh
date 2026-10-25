@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "paper": "Dubey, Griffiths & Dayan (2022), PLOS Computational Biology 18(8):e1010316",
+  "doi": "10.1371/journal.pcbi.1010316",
+  "protocol_frozen_utc": "2026-10-25T20:29:50Z",
+  "experiment": "Experiments 2a and 2b; Figure 5; published selected parameters without new grid search",
+  "steps": 5000,
+  "arms": 10,
+  "seed_blocks": [7100, 7101, 7102, 7103, 7104, 7105, 7106, 7107, 7108, 7109, 7110, 7111, 7112, 7113, 7114, 7115, 7116, 7117, 7118, 7119],
+  "rounds_per_block": 100,
+  "settings": ["stationary_spread", "stationary_close", "sudden_change", "constant_change"],
+  "checkpoint_every": 100,
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 7222,
+  "reward_noise_sd": 1.0,
+  "initial_q": 0.0,
+  "random_generator": "NumPy PCG64 with separate SeedSequence-derived environment and policy streams",
+  "randomization": "Same per-step Gaussian reward innovation and policy uniform draws across controllers within each round; independent environments per setting and round. Random uniform argmax ties. At sudden-change step 2500 randomly permute each round's arm means, including possible identity of the best arm.",
+  "ordinary_equivalence_check": "In each fixed-aspiration condition, run ordinary objective learner initialized at Q=rho against fixed compare with exactly coupled policy/outcome draws; count action disagreements. This is an additional causal control, not a paper condition.",
+  "declared_ambiguities": [
+    "Authors' public repository contains gridworld code but no located bandit runner or exact random seeds; this is an independent implementation, not original-code replay.",
+    "Paper does not specify initial bandit Q values or tie breaking. Use Q=0 (consistent with released gridworld default) and random uniform ties.",
+    "Paper does not identify random-number draw order or whether environments/outcomes are paired across conditions. Pair them here to improve precision without changing marginal laws.",
+    "Use NumPy PCG64 rather than unrecovered author RNG/seeds.",
+    "Dynamic-compare sudden-change schedule is not specified; omit it rather than invent it.",
+    "Select the published best hyperparameters directly; do not reproduce the costly original tuning search or tune on these runs.",
+    "Stationary-spread dynamic schedule includes rho=2.75 although Methods describes a 0.5 grid; follow the explicit Results schedule and record the discrepancy."
+  ]
+}

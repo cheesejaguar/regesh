@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "search_date": "2026-10-25",
+  "paper": {
+    "title": "Homeostatic reinforcement learning for integrating reward collection and physiological stability",
+    "authors": [
+      "Mehdi Keramati",
+      "Boris Gutkin"
+    ],
+    "year": 2014,
+    "venue": "eLife",
+    "doi": "10.7554/eLife.04811",
+    "status": "peer-reviewed Version of Record",
+    "license": "Creative Commons Attribution (article and supplement; credit Keramati and Gutkin2014)",
+    "authors_code": "No executable authors code found in bounded main-paper, supplement, and web search; independent reimplementation."
+  },
+  "frozen_utc": "2026-10-25T20:31:18.648656+00:00",
+  "config_sha256": "da966d459a33cef5728795ec4548e4ad8ca3f6454cd35d9aeefce31f3e40799e",
+  "sources": [
+    {
+      "name": "paper.html",
+      "url": "https://elifesciences.org/articles/04811",
+      "bytes": 491877,
+      "sha256": "35fbee37352df5dc7c93b432054a57223733009d830f15e2e9cc773e2f553f0b"
+    },
+    {
+      "name": "fig6.docx",
+      "url": "https://cdn.elifesciences.org/articles/04811/elife-04811-fig6-data1-v1.docx",
+      "bytes": 40547,
+      "sha256": "a0edaed0f79f7e6fd97330acd2b26b4bcc678850f781de461f4c16c92e56c7a0"
+    },
+    {
+      "name": "fig6.jpg",
+      "url": "https://iiif.elifesciences.org/lax/04811%2Felife-04811-fig6-v1.tif/full/1500,/0/default.jpg",
+      "bytes": 94332,
+      "sha256": "cb08d4db0d525afe35b1a0fe1b22011f06e8c0669d71eb8a415d79873ac682bc"
+    },
+    {
+      "name": "fig6-figsupp1.jpg",
+      "url": "https://iiif.elifesciences.org/lax/04811%2Felife-04811-fig6-figsupp1-v1.tif/full/1500,/0/default.jpg",
+      "bytes": 50761,
+      "sha256": "a043c2bd990018dce32f8dc087aef154ba76f10fa933875cd67ffe40597a1ee7"
+    }
+  ],
+  "parameters_transcribed_from": "Figure6-source-data1 originalDOCX",
+  "softmax_disclosure": "The original table calls beta an exploration rate but does not specify beta-vs-inverse-beta convention. Primary inverse-beta and opposite-convention sensitivity fixed before simulation."
+}

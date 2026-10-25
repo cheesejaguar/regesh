@@ -4,6 +4,13 @@ A local research platform for persistent functional affect: versioned evidence a
 
 **Current evidence:** compact journaling reduces measured retained storage by about 97%, and snapshot lookup reduces isolated peak RAM by 89.5% at 250 events. Rust works as an optional backend but showed no dependable CPU/RAM gain. A completed real-model software pilot also found **no demonstrated affect advantage**: hidden pass rates 29.17% vs 28.24%, paired difference +0.93 points, 95% interval [−4.17, 6.94]. Neither controller produced a fully correct solution. See the [extended report](docs/extended_report.md) for real-model QA, human-label training, all failures, and multiple quality measures. Biological fidelity and subjective experience remain unestablished.
 
+**Published-paper experiments:** [three core reproductions and a fourth scoped
+replication](docs/paper_reproductions.md) are complete. They include 482 million
+homeostatic transitions, 190 million bandit choices, original Chain-of-Emotion
+data reanalysis and 64 new EmotionPrompt model calls. Results are mixed. Fixed
+comparison exactly matches ordinary optimistic learning, and the prompt study
+exposes a format confound. These are measured limitations, not affect superiority.
+
 ## Run locally
 
 Python 3.11+ and NumPy; CPU only. No API key is needed for offline work.
@@ -125,6 +132,7 @@ robustness, repair, cost, calibration, coverage and diversity proxies separate.
 
 ## Research and results
 
+- [Published-paper reproductions, quantitative comparisons and run commands](docs/paper_reproductions.md)
 - [Extended measured report with figures](docs/extended_report.md)
 - [Initial research report and claim ledger](docs/research_report.md)
 - [Prior-art matrix: 28 primary-source comparisons](docs/research_matrix.md)

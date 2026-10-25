@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-25T20:31:27.643939+00:00",
+  "config_sha256": "fc025002068c326296b340277bca84e26c2d51d70e0198723ea9a6f24e930531",
+  "items_sha256": "a4bbd3bac65de4ad195da1a5c9da7a57b08903985b0a7fdf882b80c3c9f4de36",
+  "runner_sha256": "f13f66ee00d733128c1a77de287eedcd19a03ce883448e30d027a72e7319b0cc",
+  "model_reference": "results/runtime/model.json (historical pinned download/server identity, not this run accounting)",
+  "model": "regesh-qwen-coder",
+  "max_calls": 64,
+  "max_completion_tokens": 2048,
+  "model_calls_completed": 64,
+  "complete": true,
+  "finished_utc": "2026-10-25T20:39:29.467803+00:00",
+  "artifact_sha256": {
+    "config.json": "fc025002068c326296b340277bca84e26c2d51d70e0198723ea9a6f24e930531",
+    "summary.json": "fff5d76aa1402593f3fca019c9582217edf033b78a2062824ed10061102729e1",
+    "runner.py": "f13f66ee00d733128c1a77de287eedcd19a03ce883448e30d027a72e7319b0cc",
+    "calls.jsonl": "fe5c23f0c6a2a1fb3fa3bec48ae14919a958edbd7e5fe53fc5198b379bee29a1",
+    "items.jsonl": "a4bbd3bac65de4ad195da1a5c9da7a57b08903985b0a7fdf882b80c3c9f4de36",
+    "rows.jsonl": "29558511bd02b06cf1d01f098ff69debc02a450cf80c7d188a0faba6d75c90ae"
+  }
+}

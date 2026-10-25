@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "paper_url": "https://doi.org/10.1371/journal.pcbi.1010316",
+  "primary_pdf_url": "https://cocosci.princeton.edu/papers/dubey2022pursuit.pdf",
+  "primary_pdf_sha256": "f4068b6979811004dd27f26d5092dce618e6ec6b1e50d81224842857f294e6b3",
+  "author_repo": "https://github.com/rach0012/happiness_RL",
+  "inspected_author_repo_commit": "c0af9d85ad2b3724c939c8ea9ef197b3ce7d3123",
+  "author_code_executed": false,
+  "author_code_copied": false,
+  "fidelity": "independent implementation of published bandit experiments",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "command": "python -m regesh.reproductions.happiness --config configs/reproductions/happiness.json --output results/papers/happiness",
+  "files": {
+    "checkpoints.jsonl.gz": "900462bcf0b6ee393f0769ae5abc13518d19e822f29ca700b4a4227f48b48ad3",
+    "config.json": "9de0cb610f086d12a0adbad382f901e358a0b4e6de7cbe2cc37dc9c21db178c8",
+    "rounds.jsonl.gz": "3f2156ae43b825921b83afbd06d5508f513369679247181841c6cd641b4be0c7",
+    "source.py": "6b70cccdc7210db4a6cea191e9ede249763f07c9c082965d81aae91a9372cbb6",
+    "summary.json": "10deeabe7ca3990235086abb030cc77526fdc370663c2d9cb5949d3de4feb6d2"
+  }
+}

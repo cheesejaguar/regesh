@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "paper": "https://doi.org/10.1371/journal.pone.0301033",
+  "experiment": "Statistical reproduction of original author-released data, not fresh human or model replication",
+  "seed": 20261025,
+  "bootstrap_samples": 10000,
+  "primary_population": "All 42 author-scored STEU items; all 30 participants and all 90 rating rows",
+  "liwc_missing_rule": "Complete cases across WC, Authentic, Tone, Affect, emo_pos, emo_neg: 73 of 75 rows",
+  "user_design": "Participant-matched repeated-measures ANOVA, Greenhouse-Geisser sensitivity, paired t and participant bootstrap contrasts",
+  "multiplicity": "Holm separately across 3 STEU contrasts, 6 LIWC metrics, 12 user outcomes and 36 user paired contrasts",
+  "interpretation": "Exploratory retrospective reanalysis, not preregistered; published numeric-condition LIWC trend retained separately from categorical diagnostic",
+  "command": "python -m regesh.reproductions.chain_emotion --cache .cache/papers/chain_emotion --fetch --output results-new/chain-emotion --seed 20261025 --bootstrap-samples 10000"
+}

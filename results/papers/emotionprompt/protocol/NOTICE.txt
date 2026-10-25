@@ -1,0 +1,10 @@
+Instruction Induction data and evaluation provenance
+
+Original project: Or Honovich et al., https://github.com/orhonovich/instruction-induction
+Pinned revision: f7304ae0a35239c9819a08f93fd58426f6b4e4c1
+License: Apache-2.0; a copy is included as INSTRUCTION_INDUCTION_LICENSE.txt.
+The file upstream_evaluate.py.txt is an unchanged copy of the original evaluate.py.
+Selected input/output records in items.jsonl are unchanged original execution examples.
+Regesh added selection, task-instruction and provenance fields; it adapted the original
+normalization into regesh/reproductions/emotionprompt.py with lowercase fixed true,
+and added experiment execution and statistical analysis. No model-generated keys.

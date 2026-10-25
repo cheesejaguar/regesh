@@ -1,5 +1,10 @@
 # Compact memory, real-model experiments and broader quality measurement
 
+Subsequent work: [three published-paper reproductions plus a scoped real-model
+replication](paper_reproductions.md). Those studies preserve the measurements
+below and add quantitative prior-art comparisons, partial failures and causal
+controls.
+
 **Executed 2026-10-25.** Memory retention and snapshots are substantially lighter.
 An integrated Rust backend works, but it did not show a dependable speed/RAM
 advantage, so compact Python is the default. The real-model software pilot did

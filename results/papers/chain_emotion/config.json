@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "seed": 20261025,
+  "bootstrap_samples": 10000,
+  "population": "all 42 STEU items and all 30 complete participant triplets",
+  "liwc_filter": "complete six-metric cases",
+  "model_calls": 0,
+  "new_participants": 0
+}

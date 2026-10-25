@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "paper": "https://doi.org/10.7554/eLife.04811",
+  "experiment": "Figure 6A,C,D; full published population and horizons",
+  "frozen_before_first_simulation": true,
+  "parameters": {
+    "alpha": 0.4,
+    "beta": 0.05,
+    "gamma": 0.9,
+    "m": 3.0,
+    "n": 4.0,
+    "initial": 30,
+    "radius": 256,
+    "convention": "inverse",
+    "learn": true
+  },
+  "agents_per_batch": 3125,
+  "cohort_steps": 1500,
+  "cohort_seeds": [
+    14400,
+    14401,
+    14402,
+    14403,
+    14404,
+    14405,
+    14406,
+    14407,
+    14408,
+    14409,
+    14410,
+    14411,
+    14412,
+    14413,
+    14414,
+    14415,
+    14416,
+    14417,
+    14418,
+    14419,
+    14420,
+    14421,
+    14422,
+    14423,
+    14424,
+    14425,
+    14426,
+    14427,
+    14428,
+    14429,
+    14430,
+    14431
+  ],
+  "cohort_conditions": [
+    {
+      "name": "published_inverse_beta",
+      "parameters": {}
+    },
+    {
+      "name": "no_learning",
+      "parameters": {
+        "learn": false
+      }
+    },
+    {
+      "name": "beta_temperature_sensitivity",
+      "parameters": {
+        "convention": "temperature"
+      }
+    }
+  ],
+  "long_joint_seed": 14500,
+  "long_steps": 1000000,
+  "resource_limit": "CPU only; target less than 5 minutes; no paid services",
+  "long_replicates": 32
+}

@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "paper": "https://doi.org/10.7554/eLife.04811",
+  "reproduction_class": "independent_method_reimplementation",
+  "cohorts": [
+    {
+      "condition": "published_inverse_beta",
+      "agents": 100000,
+      "steps": 1500,
+      "final_mean": 0.04668,
+      "final_sd": 6.933528753643415,
+      "final_mean_absolute": 5.4191199999999995,
+      "maximum_absolute_ever": 86,
+      "final_mean_batch_uncertainty": {
+        "n": 32,
+        "mean": 0.04668,
+        "standard_error": 0.02159284827840444,
+        "normal_95_ci": [
+          0.004358017374327297,
+          0.0890019826256727
+        ]
+      },
+      "final_mean_absolute_batch_uncertainty": {
+        "n": 32,
+        "mean": 5.41912,
+        "standard_error": 0.012889902024202841,
+        "normal_95_ci": [
+          5.3938557920325625,
+          5.444384207967438
+        ]
+      }
+    },
+    {
+      "condition": "no_learning",
+      "agents": 100000,
+      "steps": 1500,
+      "final_mean": 30.19544,
+      "final_sd": 38.65094207398314,
+      "final_mean_absolute": 39.79791999999999,
+      "maximum_absolute_ever": 192,
+      "final_mean_batch_uncertainty": {
+        "n": 32,
+        "mean": 30.19544,
+        "standard_error": 0.13181438131926515,
+        "normal_95_ci": [
+          29.93708381261424,
+          30.453796187385763
+        ]
+      },
+      "final_mean_absolute_batch_uncertainty": {
+        "n": 32,
+        "mean": 39.797920000000005,
+        "standard_error": 0.09794705087032249,
+        "normal_95_ci": [
+          39.605943780294176,
+          39.989896219705834
+        ]
+      }
+    },
+    {
+      "condition": "beta_temperature_sensitivity",
+      "agents": 100000,
+      "steps": 1500,
+      "final_mean": 0.0,
+      "final_sd": 0.00894427190999916,
+      "final_mean_absolute": 4e-05,
+      "maximum_absolute_ever": 46,
+      "final_mean_batch_uncertainty": {
+        "n": 32,
+        "mean": 0.0,
+        "standard_error": 2.8736848324283982e-05,
+        "normal_95_ci": [
+          -5.632422271559661e-05,
+          5.632422271559661e-05
+        ]
+      },
+      "final_mean_absolute_batch_uncertainty": {
+        "n": 32,
+        "mean": 4e-05,
+        "standard_error": 2.7824333745610094e-05,
+        "normal_95_ci": [
+          -1.453569414139578e-05,
+          9.453569414139579e-05
+        ]
+      }
+    }
+  ],
+  "long": {
+    "agents": 32,
+    "joint_generator_seed": 14500,
+    "steps": 1000000,
+    "maximum_absolute_per_agent": [
+      37,
+      38,
+      47,
+      36,
+      50,
+      45,
+      36,
+      50,
+      45,
+      41,
+      38,
+      35,
+      46,
+      42,
+      36,
+      40,
+      38,
+      39,
+      36,
+      46,
+      40,
+      39,
+      36,
+      35,
+      36,
+      39,
+      37,
+      39,
+      34,
+      32,
+      44,
+      44
+    ],
+    "fraction_replicates_maximum_le_40": 0.65625,
+    "maximum_absolute_ever": 50,
+    "visits": 32000000
+  },
+  "paired_learned_minus_no_learning_final_absolute_deviation": {
+    "n": 32,
+    "mean": -34.3788,
+    "standard_error": 0.09527296634475607,
+    "normal_95_ci": [
+      -34.56553501403572,
+      -34.19206498596428
+    ]
+  },
+  "elapsed_seconds": 459.41056623100303,
+  "published_numeric_targets": {
+    "single_agent_million_steps_maximum_deviation_le": 40,
+    "hundred_thousand_agents_1500_steps_maximum_deviation": 61,
+    "final_mean": "converges to zero; no tabulated numeric endpoint",
+    "final_sd": "converges; no tabulated numeric endpoint"
+  },
+  "scope": "simulated regulatory learning, not LLM affect or creativity",
+  "deviations": [
+    "Independent implementation and PCG64 random streams; original source/RNG unavailable.",
+    "Primary interprets beta as inverse temperature; explicit opposite convention sensitivity retained.",
+    "100,000 independent agents generated in 32 independent batches; identical total/horizon.",
+    "32 long-run replicas replace the paper's single long-run realization.",
+    "Dense Q allocation has a fail-fast guard, never a clipping boundary."
+  ]
+}

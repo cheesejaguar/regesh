@@ -1,0 +1,31 @@
+{
+  "artifact_hashes_verified": 5,
+  "unique_round_condition_records": 38000,
+  "stdlib_metrics_matched": 76,
+  "ordinary_equivalence": [
+    {
+      "setting": "stationary_spread",
+      "paired_rounds": 2000,
+      "equal_objective_rewards": true,
+      "action_disagreements": 0
+    },
+    {
+      "setting": "stationary_close",
+      "paired_rounds": 2000,
+      "equal_objective_rewards": true,
+      "action_disagreements": 0
+    },
+    {
+      "setting": "sudden_change",
+      "paired_rounds": 2000,
+      "equal_objective_rewards": true,
+      "action_disagreements": 0
+    },
+    {
+      "setting": "constant_change",
+      "paired_rounds": 2000,
+      "equal_objective_rewards": true,
+      "action_disagreements": 0
+    }
+  ]
+}

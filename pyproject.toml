@@ -20,3 +20,4 @@ regesh = ["data/*.json"]
 
 [project.optional-dependencies]
 analysis = ["matplotlib>=3.7"]
+papers = ["scipy>=1.10"]

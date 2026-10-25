@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "source_url": "https://proceedings.mlr.press/v235/li24bs.html",
+  "table": 7,
+  "setting": "InstructionInductionzero-shot",
+  "pdf_sha256": "ec9f3f972bd6973ddbf346ea1571ca8faeaf4e72bb6d2002ad8d17316c9e0a57",
+  "data_type": "Manually transcribed printed aggregate cells, not raw participant or generation data",
+  "rows": [
+    {
+      "condition": "Original",
+      "published_model_cells": {
+        "Llama2": 0.3409,
+        "ChatGPT": 0.7581,
+        "GPT4": 0.7858
+      },
+      "computed_model_mean": 0.6282666666666666,
+      "published_avg": 0.6283,
+      "roundtrip_within_last_printed_decimal": true
+    },
+    {
+      "condition": "Original+Ours(avg)",
+      "published_model_cells": {
+        "Llama2": 0.3778,
+        "ChatGPT": 0.7826,
+        "GPT4": 0.8018
+      },
+      "computed_model_mean": 0.6540666666666667,
+      "published_avg": 0.6541,
+      "roundtrip_within_last_printed_decimal": true
+    },
+    {
+      "condition": "Original+Ours(max)",
+      "published_model_cells": {
+        "Llama2": 0.407,
+        "ChatGPT": 0.8068,
+        "GPT4": 0.8178
+      },
+      "computed_model_mean": 0.6772,
+      "published_avg": 0.6772,
+      "roundtrip_within_last_printed_decimal": true
+    }
+  ],
+  "printed_avg_gain_percentage_points": 2.5800000000000045,
+  "printed_max_gain_percentage_points": 4.890000000000006,
+  "limitation": "Arithmetic roundtrip verifies reported aggregation only. Original scores, uncertainty, pairing and underlying model calls cannot be regenerated from these printed cells."
+}
