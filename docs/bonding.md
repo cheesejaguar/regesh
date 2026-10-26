@@ -135,6 +135,27 @@ LIWC. The measure recovers the two large published asymmetries and not the two
 smaller ones; this run cannot separate lexicon, threshold and data-processing
 explanations for the failures.
 
+### Gottman, Swanson & Murray (1999) and Gottman et al. (2003): dyadic affect model
+
+Computational reproduction of the model's stated properties and of its published
+estimation procedure from the published group means; no couple data
+([report](reproductions/marital_dynamics.md)).
+
+| Published statement | Outcome |
+|---|---|
+| Sigmoidal influence gives one, three or five steady states | Step ojive: at most three fixed points, all stable (7,056 couples); counting the jump crossings of the completed null clines gives exactly 1/3/5 in every couple. Smooth sigmoid (1,488 couples): counts always 1, 3 or 5, with stable minus unstable equal to one. Reproduced once the reading is made explicit |
+| Uninfluenced steady state a/(1-r) | Reproduced exactly |
+| Published influenced steady-state means | Not matched within 0.5 for stable, happy-stable or unhappy-stable groups (distance 1.16-1.85) for any plateau pair; expected, since they are means of per-couple estimates |
+| Divorced parameters attract negatively; initial conditions decide the end point | Reproduced qualitatively (divorced: 100% negative basins at plateaus up to 8/5); period-2 threshold-straddling cycles capture 10-22% of initial conditions at large plateaus, which the papers do not mention |
+| The published estimation algorithm | Exact on noiseless data with partner zeros; at 150 points with SD-3 process noise it is near-unbiased but imprecise (inertia RMSE 0.24-0.29; positive threshold biased -3.2 to -5.1). Widening the zero subset to within 1 halves the inertia error; the joint and online bilinear estimators have inertia RMSE 0.08-0.10 but a misspecification bias for off-zero groups |
+| Damping may create a positive-positive attractor where none existed (2003) | Not reproduced in 0/360 configurations; with constant-trigger damping and monotone influence it is provably impossible (the damped map is dominated by the undamped one). The authors' own damping algorithm was not available; reported as untested, not refuted |
+
+Consequence for the platform: the agent's online identifier should be read with
+the E3 precision in mind (inertia to about 0.1 after 150 exchanges), the
+steering recommendation is therefore capped and labelled by `model_trusted`, and
+the closed-loop fixed point it reports is a model prediction, not an observed
+attractor.
+
 RESULTS_REPRODUCTIONS_REMAINING
 
 ## Platform-level simulation checks
