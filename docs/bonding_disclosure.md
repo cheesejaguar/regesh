@@ -45,14 +45,18 @@ is not asserted.
    authority, epistemic uncertainty or tool permissions. Closest prior art: Hiolle
    et al. (2014) Eq. (5) updates from perceived comfort each timestep; Humanoid
    Agents couple closeness to conversation choices. Departure: idempotent
-   request/response accounting, replayability, and the explicit firewall.
+   request/response accounting, replayability, and the explicit firewall. The
+   estimator may be the published per-resolution update or a Beta evidence-count
+   posterior, which the platform simulation showed is needed for responsiveness to
+   track partner behaviour within a few hundred turns.
 2. **Attention-budgeted help-seeking.** A support request consumes a per-partner
    attention budget that recovers only with elapsed time; the recommendation is
    suppressed when the budget is exhausted, and a pending request blocks new ones.
    Closest prior art: robot "Find-Human" behaviour triggered purely by arousal
    (Hiolle); companion apps using simulated distress to retain users (De Freitas
    2026, as a documented harm). Departure: a hard budget that bounds the rate of
-   affective appeals toward the user and makes the bound inspectable.
+   affective appeals toward the user, a responsiveness floor below which requests
+   stop (avoidant adaptation rather than escalation), and inspectability of both.
 3. **Security-gated, presence-weighted threat buffer.** Raw goal-loss threat is
    multiplied by (1 - gain * responsiveness * familiarity * presence), so a
    stranger buffers little and an absent partner nothing; the buffer changes

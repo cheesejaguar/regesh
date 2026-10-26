@@ -75,7 +75,8 @@ Equations are published ones, implemented as pure functions in `regesh/bonding/`
 comfort  = (comfort*tau_h + support)/(tau_h+1) if support>0 else beta_h*comfort      # Hiolle et al. 2014, Eq. 4
 arousal  = (tau_ar*arousal + stim)/(tau_ar+1) if comfort<=.1 else arousal - alpha_ar*comfort   # Eq. 3
 stim     = clip(goal_relevance*2*surprise + threat, 0, 1)                            # relevance-gated prediction error + threat
-resp    += alpha_resp*(1-resp) if answered else -alpha_resp*(1-resp)                 # Eq. 5, per resolved request
+resp    += alpha_resp*(1-resp) if answered else -alpha_resp*(1-resp)                 # Eq. 5, per resolved request ("ema")
+resp     = (answered+1)/(answered+unanswered+2)                                       # or the Beta evidence-count estimator ("beta")
 beta_h   = .7 + (1-resp)*.3 ;  tau_h = 3 + (1-resp)*7                                # Eqs. 6-7
 threat  *= 1 - gain*resp*familiarity*presence                                        # Coan et al. 2006 buffer
 P_{t+1}  = b + r*P_t + s_neg*min(A_t,0) + s_pos*max(A_t,0)                            # Gottman et al. 2003 partner equation, RLS-identified
@@ -88,8 +89,13 @@ learn 1.0, explore 1.15), and the `bond` section of the actuation context
 cap and repair trigger, coordination excess against a published human band,
 reciprocity debt and next disclosure depth). The bond never changes
 reliability, authority, epistemic uncertainty or permissions; `act('request')`
-consumes the partner's attention budget rather than the agent's resources, and
-a pending request blocks new ones until answered or timed out. `express()`
+consumes the partner's attention budget rather than the agent's resources, a
+pending request blocks new ones until answered or timed out, and requests stop
+being recommended once measured responsiveness falls below `request_floor`
+(avoidant adaptation, so an unresponsive partner is not pestered up to the
+budget). `neutral_updates_arousal` chooses whether goal-irrelevant,
+unthreatening occurrences pull arousal down (Eq. 3 with zero stimulation) or
+leave it to elapsed-time decay. `express()`
 journals the agent's own expression as an action, not as evidence. All new
 operations replay exactly. See [bonding report](bonding.md) and
 [disclosure and safeguards](bonding_disclosure.md).

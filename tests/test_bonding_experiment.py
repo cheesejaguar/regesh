@@ -29,6 +29,21 @@ class PlatformExperimentChecks(unittest.TestCase):
         ojive = ex.simulate_dyad(1, 'ojive_mismatch', 'steer', self.cfg)
         self.assertIn('identifier_inertia_error', ojive)
 
+    def test_second_protocol_variants_and_policies(self):
+        cfg = json.loads(Path('configs/bonding_platform_v2.json').read_text())
+        cfg.update(turns=12, seeds=2, bootstrap_samples=50); cfg['attachment']['turns'] = 12; cfg['dyad']['turns'] = 12
+        row = ex.simulate_attachment(1, 0.0, True, cfg, 'beta_hold')
+        self.assertEqual(row['variant'], 'beta_hold')
+        fixed = ex.simulate_dyad(1, 'reactant_mismatch', 'fixed_positive', cfg)
+        self.assertGreater(fixed['mean_agent_valence'], .4)
+        att = [ex.simulate_attachment(s, q, b, cfg, v) for q in cfg['attachment']['responsiveness_levels'] for v in cfg['attachment']['variants'] for s in range(2) for b in (True,)]
+        att += [ex.simulate_attachment(s, q, False, cfg) for q in cfg['attachment']['responsiveness_levels'] for s in range(2)]
+        dy = [ex.simulate_dyad(s, p, pol, cfg) for p in cfg['dyad']['partners'] for pol in cfg['dyad']['policies'] for s in range(2)]
+        summary = ex.analyze(att, dy, cfg)
+        self.assertIn('q=1.0|bonded:beta', summary['attachment']['conditions'])
+        self.assertIn('q=1.0|beta_hold', summary['attachment']['paired_bonded_minus_reference'])
+        self.assertIn('reactant_mismatch|fixed_positive-own_mood', summary['dyad']['contrasts'])
+
     def test_run_writes_manifest_and_refuses_nonempty_output(self):
         with tempfile.TemporaryDirectory() as tmp:
             cfg_path = Path(tmp) / 'cfg.json'; cfg_path.write_text(json.dumps(self.cfg))

@@ -26,7 +26,7 @@ def verify_manifest(directory):
         return {'directory': str(directory), 'status': 'no manifest'}
     manifest = json.loads(manifest_path.read_text())
     hashes = None
-    for key in ('files', 'artifact_sha256', 'file_sha256', 'outputs'):
+    for key in ('files', 'artifact_sha256', 'file_sha256', 'outputs', 'artifacts'):
         if isinstance(manifest.get(key), dict):
             hashes = manifest[key]; break
     if hashes is None:

@@ -26,11 +26,16 @@ def _event(i, actor, **data):
     return Event(f"{actor}-{i}", "simulation", actor, "agent", "conversation", STAMP, data=data)
 
 
-def simulate_attachment(seed, responsiveness, bonded, cfg):
-    """One agent against a partner who answers support requests with a fixed probability."""
+def simulate_attachment(seed, responsiveness, bonded, cfg, variant=None):
+    """One agent against a partner who answers support requests with a fixed probability.
+
+    `variant` names an entry of cfg["attachment"]["variants"] (agent-config overrides); None
+    uses the base agent config. `bonded=False` is the reference agent without bond state.
+    """
     rng = np.random.default_rng([seed, 11])
     a = cfg["attachment"]; cfg = {**cfg, "turns": a.get("turns", cfg["turns"])}
-    agent = Agent(":memory:", "a", config=a["agent_config"] if bonded else None)
+    agent_config = {**a["agent_config"], **(a.get("variants", {}).get(variant, {}) if variant else {})}
+    agent = Agent(":memory:", "a", config=agent_config if bonded else None)
     # Task stream: mild shocks with episodic low-control setbacks (declared regime-switching schedule).
     mild = np.clip(rng.normal(a["task_quality_mean"], a["task_quality_sd"], cfg["turns"]), -1, 1)
     episode = np.zeros(cfg["turns"], bool); t = 0
@@ -43,7 +48,7 @@ def simulate_attachment(seed, responsiveness, bonded, cfg):
     speaks = rng.random(cfg["turns"]) < a["partner_speaks_probability"]
     affects = np.clip(rng.normal(0, a["partner_affect_sd"], cfg["turns"]), -1, 1)
     answers = rng.random(cfg["turns"]) < responsiveness
-    out = {"seed": seed, "responsiveness": responsiveness, "bonded": bonded, "requests": 0, "answered": 0, "setback_turns": int(episode.sum()),
+    out = {"seed": seed, "responsiveness": responsiveness, "bonded": bonded, "variant": variant if bonded else "reference", "requests": 0, "answered": 0, "setback_turns": int(episode.sum()),
            "cumulative_threat": 0., "mood": [], "arousal": [], "buffer": [], "exploration": []}
     pending = False
     try:
@@ -107,6 +112,8 @@ def simulate_dyad(seed, partner_name, policy_name, cfg):
                 a_t = agent.get_state()["mood"]["valence"]
             elif policy_name == "mirror":
                 a_t = p
+            elif policy_name == "fixed_positive":
+                a_t = min(1., agent.get_state()["mood"]["valence"] + agent_cfg.get("coordination_cap", .5))
             else:
                 a_t = controls["bond"]["dyad"]["expressed_valence"]
             agent.express("user", valence=float(a_t))
@@ -125,6 +132,15 @@ def simulate_dyad(seed, partner_name, policy_name, cfg):
             "trajectory_partner": partner.round(4).tolist(), "trajectory_agent": agent_vals.round(4).tolist()}
 
 
+def analyze_partial(att_rows, dyad_rows, cfg):
+    """Analyze whichever experiments ran; absent experiments are reported as not executed."""
+    full = analyze(att_rows or [{"seed": 0, "responsiveness": q, "bonded": b, "variant": v} for q in cfg["attachment"]["responsiveness_levels"] for b in (True, False) for v in (list(cfg["attachment"].get("variants", {})) or [None])],
+                   dyad_rows or [{"seed": 0, "partner": p, "policy": pol} for p in cfg["dyad"]["partners"] for pol in cfg["dyad"]["policies"]], cfg)
+    if not att_rows: full["attachment"] = {"status": "not executed in this protocol"}
+    if not dyad_rows: full["dyad"] = {"status": "not executed in this protocol"}
+    return full
+
+
 def _ci(values, rng, samples):
     values = np.asarray([v for v in values if v is not None], float)
     if len(values) == 0:
@@ -136,15 +152,16 @@ def _ci(values, rng, samples):
 def analyze(att_rows, dyad_rows, cfg):
     rng = np.random.default_rng(cfg["bootstrap_seed"]); S = cfg["bootstrap_samples"]
     result = {"schema_version": 1, "attachment": {"conditions": {}, "paired_bonded_minus_reference": {}}, "dyad": {"conditions": {}, "contrasts": {}}}
+    variants = list(cfg["attachment"].get("variants", {})) or [None]
     for q in cfg["attachment"]["responsiveness_levels"]:
-        for bonded in (True, False):
-            rows = [r for r in att_rows if r["responsiveness"] == q and r["bonded"] == bonded]
-            key = f"q={q}|{'bonded' if bonded else 'reference'}"
-            result["attachment"]["conditions"][key] = {e: _ci([r.get(e) for r in rows], rng, S) for e in cfg["attachment"]["endpoints"] + ["final_beta_h", "final_attention"]}
-        bonded = {r["seed"]: r for r in att_rows if r["responsiveness"] == q and r["bonded"]}
         ref = {r["seed"]: r for r in att_rows if r["responsiveness"] == q and not r["bonded"]}
-        result["attachment"]["paired_bonded_minus_reference"][f"q={q}"] = {
-            e: _ci([bonded[s][e] - ref[s][e] for s in bonded if s in ref], rng, S) for e in ("cumulative_threat", "mean_mood_valence", "mean_exploration")}
+        result["attachment"]["conditions"][f"q={q}|reference"] = {e: _ci([r.get(e) for r in ref.values()], rng, S) for e in cfg["attachment"]["endpoints"] + ["final_beta_h", "final_attention"]}
+        for variant in variants:
+            label = "bonded" if variant is None else f"bonded:{variant}"
+            bonded = {r["seed"]: r for r in att_rows if r["responsiveness"] == q and r["bonded"] and r.get("variant") == variant}
+            result["attachment"]["conditions"][f"q={q}|{label}"] = {e: _ci([r.get(e) for r in bonded.values()], rng, S) for e in cfg["attachment"]["endpoints"] + ["final_beta_h", "final_attention"]}
+            result["attachment"]["paired_bonded_minus_reference"][f"q={q}" + ("" if variant is None else f"|{variant}")] = {
+                e: _ci([bonded[s][e] - ref[s][e] for s in bonded if s in ref], rng, S) for e in ("cumulative_threat", "mean_mood_valence", "mean_exploration")}
     for partner in cfg["dyad"]["partners"]:
         for policy in cfg["dyad"]["policies"]:
             rows = [r for r in dyad_rows if r["partner"] == partner and r["policy"] == policy]
@@ -171,8 +188,13 @@ def run(config_path, output, workers=2):
     (output / "config.json").write_bytes(config_path.read_bytes())
     (output / "source.py").write_bytes(Path(__file__).read_bytes())
     start = time.perf_counter()
-    att_jobs = [(s, q, b) for q in cfg["attachment"]["responsiveness_levels"] for b in (True, False) for s in range(cfg["seeds"])]
+    experiments = cfg.get("experiments", ["attachment", "dyad"])
+    variants = list(cfg["attachment"].get("variants", {})) or [None]
+    att_jobs = [(s, q, True, v) for q in cfg["attachment"]["responsiveness_levels"] for v in variants for s in range(cfg["seeds"])]
+    att_jobs += [(s, q, False, None) for q in cfg["attachment"]["responsiveness_levels"] for s in range(cfg["seeds"])]
     dyad_jobs = [(s, p, pol) for p in cfg["dyad"]["partners"] for pol in cfg["dyad"]["policies"] for s in range(cfg["seeds"])]
+    if "attachment" not in experiments: att_jobs = []
+    if "dyad" not in experiments: dyad_jobs = []
     if workers > 1:
         from multiprocessing import Pool
         with Pool(workers) as pool:
@@ -180,7 +202,7 @@ def run(config_path, output, workers=2):
             dyad_rows = pool.starmap(_dyad_job, [(j, cfg) for j in dyad_jobs])
     else:
         att_rows = [_att_job(j, cfg) for j in att_jobs]; dyad_rows = [_dyad_job(j, cfg) for j in dyad_jobs]
-    summary = analyze(att_rows, dyad_rows, cfg)
+    summary = analyze(att_rows, dyad_rows, cfg) if att_rows and dyad_rows else analyze_partial(att_rows, dyad_rows, cfg)
     summary["runtime_seconds"] = time.perf_counter() - start
     with gzip.open(output / "attachment_runs.jsonl.gz", "wt") as f:
         for row in att_rows: f.write(json.dumps(row, sort_keys=True) + "\n")
@@ -195,8 +217,8 @@ def run(config_path, output, workers=2):
 
 
 def _att_job(job, cfg):
-    s, q, b = job
-    return simulate_attachment(s, q, b, cfg)
+    s, q, b, v = job
+    return simulate_attachment(s, q, b, cfg, v)
 
 
 def _dyad_job(job, cfg):
@@ -211,7 +233,7 @@ def main():
     parser.add_argument("--workers", type=int, default=2)
     args = parser.parse_args()
     summary = run(args.config, args.output, args.workers)
-    print(json.dumps({k: summary["attachment"]["paired_bonded_minus_reference"][k]["cumulative_threat"] for k in summary["attachment"]["paired_bonded_minus_reference"]}, indent=2))
+    print(json.dumps(summary["attachment"].get("paired_bonded_minus_reference", summary["attachment"]), indent=2)[:3000])
 
 
 if __name__ == "__main__":

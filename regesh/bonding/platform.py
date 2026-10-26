@@ -41,6 +41,15 @@ BOND_CONFIG = {
     "attention_cost": .1, "attention_recovery": .05, "request_window": 2.,
     "coordination_cap": .5, "target_partner_affect": .5,
     "repair_threshold": -.4, "repair_amplitude": .3, "steer_min_samples": 6,
+    # Responsiveness estimator: "ema" is the published per-resolution Eq. 5 update; "beta" is the
+    # posterior mean of a Beta(prior_strength*resp0, prior_strength*(1-resp0)) response probability,
+    # the evidence-count estimator appropriate for sparse event-level resolutions.
+    "responsiveness_rule": "ema", "responsiveness_prior_strength": 2.,
+    # Whether goal-irrelevant, unthreatening occurrences (stimulation 0) update arousal (Eq. 3) or leave it.
+    "neutral_updates_arousal": True,
+    # Avoidant adaptation: once measured responsiveness falls below this floor the agent stops
+    # recommending requests to that partner (Ainsworth et al. 1978), in addition to the budget.
+    "request_floor": .1,
     "profile": dict(ADAPTIVE),
     # Laurenceau, Feldman Barrett & Pietromonaco (1998) Study 2 standardized paths:
     # self-disclosure .22, partner disclosure .32, perceived responsiveness .36 -> intimacy;
@@ -115,13 +124,12 @@ def observe(state, event, appraisal, affect):
     profile = bond["profile"]
     att["comfort"] = comfort_step(att["comfort"], support, 0., profile["tau_h"], profile["beta_h"])
     stimulation = clip(appraisal["goal_relevance"] * 2. * appraisal["surprise"] + affect.get("threat", 0.), 0., 1.)
-    att["arousal"] = arousal_step(att["arousal"], stimulation, att["comfort"], cfg["profile"]["tau_ar"], cfg["profile"]["alpha_ar"])
+    if stimulation > 0. or support > 0. or cfg.get("neutral_updates_arousal", True):
+        att["arousal"] = arousal_step(att["arousal"], stimulation, att["comfort"], cfg["profile"]["tau_ar"], cfg["profile"]["alpha_ar"])
     # A pending request to this partner is answered by support, or counted unanswered.
     if att["pending"] == actor:
         answered = support > .1
-        bond["responsiveness"] = responsiveness_step(bond["responsiveness"], att["comfort"] if answered else 0., cfg["profile"]["alpha_resp"])
-        bond["profile"] = profile_from_responsiveness(bond["responsiveness"], cfg["profile"]["beta_h"], cfg["profile"]["tau_h"], cfg["profile"]["r_beta"], cfg["profile"]["r_tau"])
-        bond["answered" if answered else "unanswered"] += 1
+        _resolve_request(bond, cfg, answered, att["comfort"])
         att["answered"] += answered
         att["pending"] = None; att["pending_since"] = None
     # Dyad identification: partner affect sequence with the agent's expression in between.
@@ -144,6 +152,18 @@ def observe(state, event, appraisal, affect):
         _update_intimacy(bond, cfg)
     if isinstance(d.get("text"), str):
         bond["last_partner_text"] = d["text"][:cfg["text_cap"]]
+
+
+def _resolve_request(bond, cfg, answered, comfort):
+    """Update measured responsiveness and the adapted profile after a request is resolved."""
+    bond["answered" if answered else "unanswered"] += 1
+    p = cfg["profile"]
+    if cfg.get("responsiveness_rule", "ema") == "beta":
+        k = cfg.get("responsiveness_prior_strength", 2.)
+        bond["responsiveness"] = (bond["answered"] + k * p["resp0"]) / (bond["answered"] + bond["unanswered"] + k)
+    else:
+        bond["responsiveness"] = responsiveness_step(bond["responsiveness"], comfort if answered else 0., p["alpha_resp"])
+    bond["profile"] = profile_from_responsiveness(bond["responsiveness"], p["beta_h"], p["tau_h"], p["r_beta"], p["r_tau"])
 
 
 def _update_intimacy(bond, cfg):
@@ -195,10 +215,7 @@ def advance(state, dt):
     for bond in state["bonds"].values():
         bond["attention"] = min(1., bond["attention"] + dt * cfg["attention_recovery"])
     if att["pending"] is not None and state["time"] - att["pending_since"] > cfg["request_window"]:
-        bond = state["bonds"][att["pending"]]
-        bond["responsiveness"] = responsiveness_step(bond["responsiveness"], 0., cfg["profile"]["alpha_resp"])
-        bond["profile"] = profile_from_responsiveness(bond["responsiveness"], cfg["profile"]["beta_h"], cfg["profile"]["tau_h"], cfg["profile"]["r_beta"], cfg["profile"]["r_tau"])
-        bond["unanswered"] += 1
+        _resolve_request(state["bonds"][att["pending"]], cfg, False, 0.)
         att["pending"] = None; att["pending_since"] = None
 
 
@@ -216,7 +233,8 @@ def controls(state):
         return out
     bond = state["bonds"][partner]
     out.update({
-        "request_support": mode == "request" and att["pending"] is None and bond["attention"] + 1e-12 >= cfg["attention_cost"],
+        "request_support": (mode == "request" and att["pending"] is None and bond["attention"] + 1e-12 >= cfg["attention_cost"]
+                            and bond["responsiveness"] >= cfg.get("request_floor", 0.)),
         "security": security(state, partner), "presence": presence(bond, state["time"], cfg["presence_tau"]),
         "responsiveness": bond["responsiveness"], "profile": dict(bond["profile"]), "attention": bond["attention"],
         "intimacy": bond["intimacy"],

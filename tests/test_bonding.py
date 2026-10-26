@@ -186,6 +186,25 @@ class BondedAgent(unittest.TestCase):
             finally: copy.close()
         finally: agent.close()
 
+    def test_beta_estimator_hold_option_and_request_floor(self):
+        agent = Agent(self.path, 'b', config={'bonding': True, 'partner': 'user', 'responsiveness_rule': 'beta',
+                                               'neutral_updates_arousal': False, 'attention_cost': .01, 'request_window': .5})
+        try:
+            agent.observe(ev(0, goal_delta={'quality': -.9}, quality=-.9, control=.1, uncertainty=.9))
+            arousal = agent.get_state()['attachment']['arousal']
+            agent.observe(ev('idle', goal_delta={'quality': 0.}))          # goal-irrelevant: arousal held
+            self.assertEqual(agent.get_state()['attachment']['arousal'], arousal)
+            for i in range(9):                                            # nine unanswered requests
+                agent.act('request', reason={'partner': 'user'}); agent.advance_time(1.)
+            bond = agent.get_state()['bonds']['user']
+            self.assertAlmostEqual(bond['responsiveness'], 1 / 11)       # (0 + 1) / (9 + 2)
+            self.assertEqual(bond['unanswered'], 9)
+            agent.intervene({'attachment': {'arousal': .9}}, 'force high arousal')
+            self.assertFalse(agent.actuation_context()['bond']['request_support'])   # below the .1 floor
+            agent.intervene({'bonds': {'user': {'responsiveness': .5}}}, 'reset measured responsiveness')
+            self.assertTrue(agent.actuation_context()['bond']['request_support'])
+        finally: agent.close()
+
     def test_schema_validates_bond_evidence_fields(self):
         with self.assertRaises(ValueError): ev(1, support=1.5)
         with self.assertRaises(ValueError): ev(1, partner_affect=-2)

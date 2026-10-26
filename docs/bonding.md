@@ -160,7 +160,56 @@ RESULTS_REPRODUCTIONS_REMAINING
 
 ## Platform-level simulation checks
 
-RESULTS_PLATFORM
+Protocol, runner and raw runs: `configs/bonding_platform.json`,
+`regesh/bonding/experiment.py`, `results/bonding/platform/` (first protocol) and
+`configs/bonding_platform_v2.json`, `results/bonding/platform_v2/` (second,
+post hoc protocol). Both use the full agent with in-memory storage, 40 seeds,
+common random numbers between a bonded agent and a reference agent without bond
+state, and bootstrap intervals over seeds. Partners are simulated by declared
+equations; no human took part.
+
+### First protocol (pre-registered)
+
+**Attachment loop** (240 turns, episodic low-control setbacks, partner answers a
+request with probability q). Bonded minus reference, paired by seed:
+
+| q | Cumulative affect threat | Mean mood valence | Requests (bonded) | Answered fraction | Final responsiveness | Final tau_h | Mean threat buffer |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1.0 | -10.58 [-10.71, -10.46] of 71.9 | +.024 | 3.35 | .99 | .547 | 6.17 | .246 |
+| 0.5 | -10.40 [-10.53, -10.29] | +.024 | 3.23 | .46 | .495 | 6.53 | .242 |
+| 0.0 | -10.34 [-10.46, -10.23] | +.024 | 3.08 | .00 | .452 | 6.83 | .240 |
+
+The buffer removes about 15% of cumulative threat, but almost independently of
+partner behaviour: at the published per-resolution rate (alpha .03) and about
+three resolved requests per run, measured responsiveness moves only from .50 to
+.55 or .45, so security is dominated by its prior and by familiarity. The
+direction of the responsiveness and profile adaptation is correct and
+monotone in q; its size is not useful at this interaction density. This is a
+measured limitation of the first design and the reason for the second protocol.
+
+**Dyadic steering** (120 turns, published-parameter partners scaled to [-1, 1],
+declared influence slopes, process noise .05; final-window partner affect, mean
+over the last 40 turns; contrasts versus expressing own mood, paired by seed):
+
+| Partner | Own mood | Mirror (unbounded) | Steer, cap .5 | Steer, cap .2 | Steer minus own mood |
+|---|---:|---:|---:|---:|---:|
+| Stable husband (r .40, u +.03) | +.029 | +.048 | +.286 | +.116 | +.257 [.256, .257] |
+| Divorced husband (r .30, u -.08) | -.082 | **-.281** | +.136 | -.008 | +.218 [.218, .218] |
+| Step-ojive mismatch (u -.05) | -.051 | -.051 | +.282 | -.051 | +.333 [.333, .333] |
+
+Capped steering raised the simulated partner's affect for every partner,
+including the out-of-model one, while unbounded mirroring lowered the negative
+partner's affect by .20 (0% positive turns), the quantitative form of the
+argument against maximal accommodation. Two honest caveats: the repair trigger
+never fired (no partner fell to -.4), so repair is untested here; and because
+all three partners respond positively to positive expression, the model-based
+recommendation saturated at the cap and was indistinguishable from fixed
+positivity. The second protocol adds a partner for whom positivity backfires.
+The online identifier's inertia error was about -.04 under steering and -.20 to
++.13 under mirroring, where the agent's expression is collinear with the
+partner's state.
+
+RESULTS_PLATFORM_V2
 
 ## Claim ledger
 
