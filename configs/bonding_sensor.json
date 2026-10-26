@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "title": "Partner-state sensor: affect evidence from the reply model's own embeddings",
+  "protocol_frozen_utc": "2026-10-26T03:00:00Z",
+  "purpose": "Replace hand-supplied partner_affect (and, opt-in, support) evidence with estimates from a small head trained on mean-pooled embeddings of the same local language model that generates replies. Measure recognition quality against the archived hashed-token reference and a like-for-like reference trained on the same subset, and conversational transfer on DailyDialog turns. Nothing here measures user experience; the sensor is an evidence provider the host runs before agent.observe and the Agent never calls the network.",
+  "embedding_model": {
+    "name": "regesh-qwen-coder",
+    "file": "qwen2.5-coder-1.5b-instruct-q4_k_m.gguf",
+    "server": "llama.cpp b11878 llama-server --embedding --pooling mean --ctx-size 2048 (OpenAI-compatible /v1/embeddings)",
+    "dimension": 1536,
+    "cache": "regesh.bonding.embeddings.EmbeddingCache, float16 NPZ keyed by SHA-256 of the exact text; duplicate texts share one vector; produced by a separate job before this run, never queried by the trainer"
+  },
+  "embedding_cache_files": {
+    "goemotions": "goemotions-regesh-qwen-coder.npz",
+    "dailydialog": "dailydialog-regesh-qwen-coder.npz"
+  },
+  "embedding_manifests": {
+    "goemotions_train": "goemotions-train-manifest.json",
+    "goemotions_test": "goemotions-test-manifest.json",
+    "dailydialog_train": "dailydialog-train-manifest.json",
+    "dailydialog_valid": "dailydialog-valid-manifest.json",
+    "dailydialog_test": "dailydialog-test-manifest.json"
+  },
+  "standardization": "per-dimension mean and standard deviation of the training-row embeddings only (GoEmotions fit rows for E1; DailyDialog selected train turns for E2); standard deviations below 1e-6 are set to 1; applied unchanged to development/validation and test rows",
+  "training": {
+    "optimizer": "Adam (regesh.bonding.mlp.MLP.fit)",
+    "epochs": 60,
+    "batch": 128,
+    "lr": 0.001,
+    "l2": 0.0001,
+    "patience": 6,
+    "seed": 0,
+    "early_stopping": "development (E1) / validation (E2) sigmoid-BCE loss evaluated after every epoch; weights of the best epoch restored; one seed per head; no hyperparameter search"
+  },
+  "goemotions": {
+    "experiment": "E1 GoEmotions 28-label multilabel recognition on frozen embeddings",
+    "labels_file": "goemotions-labels-emotions.txt",
+    "train_fraction": 0.35,
+    "train_salt": "goemotions-train",
+    "selection": "select_by_hash(official train IDs, 0.35, 'goemotions-train') exactly as regesh.bonding.embeddings used to populate the cache",
+    "development_rule": "regesh.dataset_baseline.is_development: SHA256('regesh-goemotions-dev-v1:' + ID) first 8 hex digits modulo 10 == 0, applied within the hash-selected 35%; development rows are excluded from fitting and used for early stopping and the single global threshold",
+    "models": {
+      "linear": {"hidden": null, "activation": null, "sizes": "[d, 28]", "description": "logistic regression head (MLP with no hidden layer)"},
+      "mlp": {"hidden": 256, "activation": "tanh", "sizes": "[d, 256, 28]", "description": "one tanh hidden layer"}
+    },
+    "loss": "multilabel sigmoid binary cross-entropy (MLP loss 'bce')",
+    "threshold_rule": "one global threshold from the baseline grid .05 .. .80 step .05 chosen by development micro-F1 (regesh.dataset_baseline.select_threshold, earliest tie); no temperature scaling for the heads",
+    "comparators": {
+      "constant_prior": "smoothed fitting-label frequencies (count + 1) / (n + 2) of the 35% fit rows, with its own development-selected threshold, as in the archived baseline",
+      "bernoulli_35": "regesh.dataset_baseline.BernoulliReference (one-vs-rest hashed-token Bernoulli naive Bayes, 4,096 CRC32 features) fit on exactly the same 35% fit rows and calibrated (temperature then threshold) on the same development rows: the like-for-like comparison",
+      "archived_reference": "results/goemotions_baseline/metrics.json: the same Bernoulli reference fit on 100% of the official train rows (micro-F1 .414, macro-F1 .223 at threshold .25; constant prior micro-F1 .304); quoted, not recomputed"
+    },
+    "archived_reference_metrics": "results/goemotions_baseline/metrics.json",
+    "test": "official test split (5,427 rows), evaluated once per model after every choice above is fixed; no test number informs any choice",
+    "metrics": "regesh.dataset_baseline.evaluate: micro/macro F1, support-weighted F1, Hamming loss, Brier, micro ECE, per-class precision/recall/F1/Brier/ECE/AUC",
+    "deployed_head_selection": "the head with the higher development micro-F1 at its selected threshold becomes the shipped Sensor (sensor.json); ties go to linear",
+    "training_size_handicap": "The heads and the 35% Bernoulli reference see about 35% of the official training rows (about 13,700 fit rows); the archived reference saw 39,013. The archived number is therefore a handicapped comparison against the heads; the like-for-like comparison is bernoulli_35."
+  },
+  "dailydialog": {
+    "experiment": "E2 conversational transfer: DailyDialog 7-class turn emotion",
+    "source": "ParlAI JSON-lines mirror of DailyDialog (Li et al. 2017, CC BY-NC-SA 4.0); train 11,118 / valid 1,000 / test 1,000 dialogues; raw data outside git",
+    "emotions": ["no_emotion", "anger", "disgust", "fear", "happiness", "sadness", "surprise"],
+    "unit": "one turn (utterance) with its emotion label; dialogues, not turns, are selected by hash",
+    "train_fraction": 0.2,
+    "train_salt": "dailydialog-train",
+    "selection": "select_by_hash(['train-0', 'train-1', ...], 0.2, 'dailydialog-train') exactly as the embedding job used",
+    "validation": "all turns of the full valid split for early stopping; no other use",
+    "test": "all turns of the full test split (7,740 turns), evaluated once",
+    "models": {
+      "linear": {"hidden": null, "activation": null, "sizes": "[d, 7]"},
+      "mlp": {"hidden": 256, "activation": "tanh", "sizes": "[d, 256, 7]"}
+    },
+    "loss_and_decoding": "sigmoid BCE on one-hot targets (the shared MLP has no softmax); prediction is the argmax of the seven sigmoid outputs; no class reweighting or resampling",
+    "valence_scale": {"no_emotion": 0, "anger": -1, "disgust": -1, "fear": -1, "happiness": 1, "sadness": -1, "surprise": 0},
+    "metrics": [
+      "accuracy",
+      "macro_f1 over the seven classes (a class with no true and no predicted turns would count 0; all seven occur in test)",
+      "valence_mae: mean |valence(argmax class) - valence(gold class)|",
+      "valence_mae_soft (heads only, secondary): expected valence under the normalized sigmoid outputs"
+    ],
+    "baselines": {
+      "majority": "the most frequent class of the selected training turns (no_emotion) for every test turn",
+      "bernoulli_20": "regesh.dataset_baseline.BernoulliReference fit on the same selected training turns as single-label rows, argmax decoding (temperature does not change the argmax)"
+    },
+    "zero_shot": {
+      "model": "the deployed GoEmotions Sensor (its head and GoEmotions standardizer) applied to the raw DailyDialog test-turn embeddings",
+      "sign_agreement": "among test turns whose gold valence is non-zero (anger, disgust, fear, sadness -> -1; happiness -> +1), the fraction whose sensor partner_affect has the same sign; a sensor value of exactly 0 counts as disagreement",
+      "baselines": ["chance .5", "majority sign: +1 for every emotional turn, which scores the positive fraction of emotional turns"],
+      "ranking": "ROC-AUC of the sensor valence for positive versus negative gold turns (threshold-free)",
+      "three_way": "secondary: gold sign in {-1, 0, +1} versus sensor sign with a dead band |v| < dead_band; compared with predicting 0 everywhere",
+      "dead_band": 0.1,
+      "descriptives": "mean sensor valence per DailyDialog emotion; mean |valence| on no_emotion turns"
+    }
+  },
+  "bootstrap": {
+    "samples": 1000,
+    "seed": 20261026,
+    "unit": "test item (GoEmotions comment; DailyDialog turn)",
+    "design": "percentile 95% intervals; the same seed and item count produce identical resamples for every model, so model differences are paired",
+    "clustering": "author/thread (GoEmotions) and dialogue (DailyDialog) clustering is not modelled; intervals may be too narrow"
+  },
+  "valence_map": {
+    "name": "goemotions-sentiment-v1",
+    "source": "Demszky et al. (2020) GoEmotions sentiment grouping (official repository data/sentiment_dict.json)",
+    "positive": ["admiration", "amusement", "approval", "caring", "desire", "excitement", "gratitude", "joy", "love", "optimism", "pride", "relief"],
+    "negative": ["anger", "annoyance", "disappointment", "disapproval", "disgust", "embarrassment", "fear", "grief", "nervousness", "remorse", "sadness"],
+    "ambiguous": ["confusion", "curiosity", "realization", "surprise"],
+    "neutral": ["neutral"],
+    "signs": {"positive": 1, "negative": -1, "ambiguous": 0, "neutral": 0},
+    "rule": "partner_affect = sum_l sign_l * p_l / sum_l p_l over all 28 label probabilities (mass-weighted mean sign; 0 when the total mass is 0), clipped to [-1, 1]"
+  },
+  "support_proxy": {
+    "name": "goemotions-support-noisy-or-v1",
+    "labels": ["caring", "gratitude", "approval", "love", "admiration"],
+    "rule": "support_proxy = 1 - prod_l (1 - p_l) over the five labels: the probability that at least one supportive label is present",
+    "status": "declared PROXY for the platform's `support` evidence; off by default (annotate_event fill_support=False). It detects supportive language in the user's text; it does not establish that the user answered the agent's request."
+  },
+  "pilots": "Before the train caches existed, pipeline smoke tests ran on synthetic vectors (unit tests) and on the test/valid caches to check dimension, cache coverage, vector statistics and runtime only. No hyperparameter, model size, threshold grid, map or metric was changed after this file was frozen. Official test numbers come from the single frozen run.",
+  "declared_choices": [
+    "Embeddings are mean-pooled final hidden states of Qwen2.5-Coder-1.5B-Instruct (Q4_K_M) served by llama.cpp; no fine-tuning of the language model; the head is the only trained component.",
+    "Standardization statistics come from the training rows only.",
+    "Hyperparameters (hidden 256, tanh, Adam lr 1e-3, l2 1e-4, batch 128, up to 60 epochs, patience 6, seed 0) were fixed before any training on real vectors and were not searched.",
+    "Early stopping uses development/validation BCE; the GoEmotions threshold is chosen on development micro-F1 from the archived baseline's grid; heads receive no temperature scaling while the Bernoulli comparator keeps its baseline temperature step.",
+    "The shipped Sensor is the GoEmotions head with the higher development micro-F1 (ties to linear); its label threshold is stored but partner_affect uses the probabilities directly.",
+    "The 35% Bernoulli reference is fit on exactly the same fit rows and calibrated on the same development rows as the heads; the archived 100% result is quoted from results/goemotions_baseline/metrics.json.",
+    "DailyDialog heads use one-hot sigmoid BCE with argmax decoding; majority and hashed-token Bernoulli baselines use the same selected training turns.",
+    "Zero-shot transfer uses the deployed GoEmotions Sensor unchanged, including its GoEmotions standardizer, on DailyDialog test turns.",
+    "Bootstrap: 1,000 item resamples, seed 20261026, shared across models."
+  ],
+  "limitations": [
+    "The embeddings come from a 1.5B decoder-only code-instruct model with mean pooling, not from a sentence-embedding model; nothing is fine-tuned, so the head can only use what that representation already separates.",
+    "Training uses hash-selected subsets (35% of GoEmotions train, 20% of DailyDialog train dialogues) because the shared CPU server embedded them; the archived reference used 100% of GoEmotions train.",
+    "GoEmotions is Reddit comments with multilabel annotations; DailyDialog is scripted everyday dialogue with one label per turn and about 83% no_emotion, so E2 and the zero-shot check measure a domain shift that the sensor will also face with real users.",
+    "The valence map is a fixed three-valued sign map: it flattens intensity, treats ambiguous emotions and neutral as 0, and inherits every annotation bias of GoEmotions.",
+    "The support value is a proxy for supportive language. It is not evidence that the user answered a request, and it stays off unless the host opts in.",
+    "Cached vectors are float16; quantization error is not measured separately.",
+    "Item bootstraps ignore author/thread and dialogue clustering.",
+    "Sensor outputs are machine-generated interpretations of the user's text. They fill affect evidence only; they never establish facts, authority or tool permissions (the platform's trust firewall is unchanged).",
+    "No human validation of the mapped valence against users' own reports was run; recognition quality on labelled corpora is not benefit to users."
+  ]
+}

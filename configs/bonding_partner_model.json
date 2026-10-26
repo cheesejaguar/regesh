@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "title": "Learned partner model: next-turn partner affect from conversation history and the agent's turn, versus the online linear identifier",
+  "protocol_frozen_utc": "2026-10-26T02:58:00Z",
+  "purpose": "Measure whether a learned model over utterance embeddings and scalar context predicts the partner's next affect better than the platform's four-parameter online identifier (RecursiveIdentifier) and simple baselines, on held-out DailyDialog dialogues. Observational next-turn prediction only; no causal claim about the agent's expression.",
+  "data": {
+    "corpus": "DailyDialog (Li et al. 2017), ParlAI JSON conversion: one line per dialogue {fold, topic, dialogue: [{emotion, act, text}, ...]}, speakers alternate starting with speaker A",
+    "directory": ".cache/dailydialog/parlai",
+    "files": {
+      "train": "train.json",
+      "valid": "valid.json",
+      "test": "test.json"
+    },
+    "splits": {
+      "train": {
+        "fraction": 0.2,
+        "salt": "dailydialog-train",
+        "role": "model fitting",
+        "rule": "select_by_hash([f'train-{i}' for i in range(len(train))], .2, 'dailydialog-train'): exactly the dialogues whose utterances the embedding cache holds"
+      },
+      "valid": {
+        "fraction": 1.0,
+        "salt": "dailydialog-valid",
+        "role": "early stopping, ridge penalty selection"
+      },
+      "test": {
+        "fraction": 1.0,
+        "salt": "dailydialog-test",
+        "role": "evaluated once, after training"
+      }
+    },
+    "frame": "The PARTNER is speaker A (turns 1, 3, 5, ... one-based) and the AGENT role is speaker B (turns 2, 4, 6, ...). One example per A turn t that has a B reply at t+1 and an A turn at t+2: inputs are A's turn t-1 (when it exists), A's turn t and B's turn t+1; the target is A's emotion at t+2 and its valence under the fixed map.",
+    "example_rule": "for i in range(0, len(dialogue) - 2, 2): example (A_{i-2} or none, A_i, B_{i+1}) -> A_{i+2}; file order then turn order; examples of one dialogue are contiguous",
+    "expected_class_imbalance": "about 83% of A targets are no_emotion in train; reported per split in summary.json",
+    "manifest_check": "the runner records whether each split's embedding manifest (fraction, selected_ids_sha256, source_sha256) matches this selection; a mismatch is reported, not silently accepted"
+  },
+  "valence_map": {
+    "no_emotion": 0.0,
+    "happiness": 0.7,
+    "surprise": 0.3,
+    "anger": -0.7,
+    "disgust": -0.6,
+    "fear": -0.5,
+    "sadness": -0.6
+  },
+  "valence_map_justification": "Fixed before any result. Signs follow the circumplex placement of the six Ekman categories (Russell 1980) and the ordering of affective norms (Warriner, Kuperman & Brysbaert 2013): anger, disgust and sadness are the most unpleasant, fear unpleasant but in conversation usually mild worry, happiness clearly pleasant, surprise mildly pleasant on average and ambiguous in sign, hence the small magnitude. Magnitudes stay below 1 because the labels are categorical and the dialogues are scripted; no_emotion is 0. Metrics that do not depend on the map (class accuracy, macro F1, sign accuracy) are reported alongside.",
+  "features": {
+    "history_scalars": [
+      "a_prev_valence (0 when absent)",
+      "has_prev",
+      "a_valence",
+      "a_act one-hot (inform, question, directive, commissive)",
+      "exchange_index = (turn index // 2) / 10"
+    ],
+    "candidate_scalars": [
+      "b_valence",
+      "b_act one-hot"
+    ],
+    "scalar_note": "A valence at t-1 is added to the listed scalar set so the scalar ablation sees the same three turns as the embedding window; otherwise 'what embeddings add' would be confounded with 'what the previous turn adds'. Scalar affect and act features are gold corpus labels (an oracle for the partner's observed affect that a host would replace with an affect recognizer).",
+    "embedding_window": "mean-pooled embeddings of A_{t-1} (zero vector when absent), A_t and B_{t+1}, each standardized per dimension and projected to 256 principal components (z(.) below)",
+    "feature_sets": {
+      "embeddings+scalars": "[z(A_{t-1}) * has_prev, z(A_t), z(B_{t+1}), history_scalars, candidate_scalars]: 3*256 + 13 = 781 inputs (headline)",
+      "scalars": "[history_scalars, candidate_scalars]  (ablation: no text)",
+      "embeddings": "[z(A_{t-1}) * has_prev, z(A_t), z(B_{t+1}), has_prev, exchange_index]: 3*256 + 2 = 770 inputs (ablation: no gold affect or act labels; the deployment-realistic input for rank_candidates)"
+    }
+  },
+  "embeddings": {
+    "cache_file": "dailydialog-regesh-qwen-coder.npz",
+    "source": "Qwen2.5-Coder-1.5B-Instruct Q4_K_M served by llama.cpp with --embedding --pooling mean; vectors stored as float16, keyed by SHA-256 of the exact utterance; produced by a separate background job, never called by this runner",
+    "dimension": 1536,
+    "standardization": "per-dimension mean and standard deviation over the unique utterances of the training examples; sd floored at 1e-3 so float16 quantization noise in near-constant dimensions is not amplified",
+    "missing_previous_turn": "zero vector after standardization, with has_prev = 0",
+    "sd_floor": 0.001,
+    "pca_components": 256,
+    "projection": "after standardization each utterance vector is projected onto the top 256 principal components fitted on the standardized unique training utterances (deterministic eigendecomposition, signs fixed); the explained-variance fraction is recorded in summary.json"
+  },
+  "models": {
+    "persistence": "predicted valence = A's valence at t; predicted class = A's emotion at t",
+    "constant": "predicted valence = mean training target valence; predicted class = majority training class",
+    "identifier_default": "regesh.bonding.dyad.RecursiveIdentifier with default settings (theta0 [0, .3, .2, .2], P = 100 I, lambda .98), a fresh instance per test dialogue, run online on the valence sequence (A_t, B_{t+1}) -> A_{t+2}, predicting before each update. This is the current platform method.",
+    "identifier_pooled_prior": {
+      "description": "same online identifier warm-started at the pooled least-squares bilinear fit of the training examples with P = 1.0 I and lambda .98, to separate the cold-start problem from the model class",
+      "prior": 1.0,
+      "lam": 0.98
+    },
+    "ridge": {
+      "description": "pooled ridge regression on standardized scalar features (13): one valence output and a one-hot class block decoded by argmax",
+      "lambda_grid": [
+        0.01,
+        0.1,
+        1.0,
+        10.0,
+        100.0,
+        1000.0
+      ],
+      "selection": "lowest valid mean squared error, valence and one-hot block separately"
+    },
+    "mlp": {
+      "description": "two heads with the shared regesh.bonding.mlp.MLP: valence (mse, 1 output) and 7-class (sigmoid cross-entropy on one-hot, 7 outputs); class probabilities are the normalized sigmoids",
+      "hidden": [
+        64
+      ],
+      "activation": "tanh",
+      "optimizer": "Adam",
+      "lr": 0.001,
+      "l2": 0.0001,
+      "batch": 64,
+      "epochs": 80,
+      "patience": 8,
+      "early_stopping": "lowest valid loss of each head; best weights restored",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "headline_seed": 0,
+      "seed_note": "seed 0 is the pre-declared headline; seeds 1 and 2 are reported as a stability check, not selected on",
+      "variants": [
+        "embeddings+scalars",
+        "scalars",
+        "embeddings"
+      ],
+      "headline_variant": "embeddings+scalars",
+      "class_decision_rules": {
+        "argmax": "argmax of class probabilities (primary)",
+        "balanced": "argmax of probability divided by the training class prior (secondary, declared for the imbalance)"
+      }
+    }
+  },
+  "metrics": {
+    "valence": [
+      "MAE",
+      "RMSE",
+      "sign accuracy on non-neutral targets (a zero prediction counts as wrong)"
+    ],
+    "class": [
+      "accuracy",
+      "macro F1 over the classes present in the test targets"
+    ],
+    "intervals": {
+      "unit": "test dialogue (resampled with replacement; all its examples enter)",
+      "samples": 2000,
+      "seed": 20261026,
+      "level": 0.95,
+      "method": "percentile"
+    },
+    "paired_differences": [
+      "each model minus persistence",
+      "each model minus identifier_default",
+      "mlp embeddings+scalars minus mlp scalars",
+      "mlp embeddings+scalars minus mlp embeddings",
+      "mlp embeddings+scalars minus ridge"
+    ],
+    "test_use": "the full test split is evaluated once after all training and selection; nothing is tuned on it"
+  },
+  "preference_check": {
+    "name": "within-item preference accuracy for rank_candidates",
+    "items": "test examples whose true next A emotion is non-neutral",
+    "comparison": "the model's prediction for the ACTUAL B turn versus for one randomly drawn other B turn of the test set (different example; seed 20261027), with the same history",
+    "rule": "correct when sign(pred_actual - pred_other) equals the sign of the true target valence: a positive outcome should favour the actual turn, a negative one the alternative; also reported for positive and negative targets separately and as the raw fraction with pred_actual > pred_other",
+    "candidate_description": "candidate B turns carry their own gold valence and act in the scalar feature sets; the 'embeddings' feature set uses text only",
+    "models": [
+      "mlp embeddings+scalars (headline seed)",
+      "mlp scalars",
+      "mlp embeddings",
+      "ridge",
+      "identifier_default (candidate valence through its per-example parameters)",
+      "persistence (control: ignores B, ties count as wrong)"
+    ],
+    "status": "a weak, observational proxy for counterfactual usefulness: the alternative turn was never said in this context, and DailyDialog's speaker B is a human",
+    "seed": 20261027,
+    "bootstrap_samples": 2000
+  },
+  "outputs": {
+    "summary.json": "data counts and class distributions, manifest checks, every model's test metrics with intervals, paired differences, per-seed metrics, preference checks, training histories",
+    "predictions.jsonl.gz": "per test example: dialogue, turn, target, each model's predicted valence and class",
+    "partner_model.json.gz": "headline model (embeddings+scalars, seed 0) with digest",
+    "partner_model_scalars.json.gz": "scalar-only ablation model (seed 0)",
+    "config.json, source_partner_model.py, source_train_partner_model.py, manifest.json": "copies and sha256 of every output"
+  },
+  "declared_choices": [
+    "Train only on the hash-selected 20% of train dialogues because that is the subset the embedding cache holds; valid and test are used in full.",
+    "The identifier baseline is evaluated as a predictor; steer()'s min_samples trust gate does not apply to prediction and is not used.",
+    "Examples whose dialogue has no A turn at t+2 are not created; the last A turn of a dialogue is never a target-less input.",
+    "The MLP hyperparameters are fixed in advance and not tuned; early stopping is the only selection, on the valid split.",
+    "Headline model: embeddings+scalars at seed 0. Seeds 1 and 2 are reported for stability only.",
+    "Macro F1 averages over the classes present in the test targets (rare classes such as fear may have single-digit support).",
+    "Pipeline smoke tests on partial caches are allowed before the frozen run but hyperparameters are not changed after this stamp; any change is recorded as an iteration note in the report.",
+    "Embedding dimensionality is reduced by PCA to 256 components fitted on the training utterances (see amendments); the projection matrix is stored in the saved model so a host applies the identical transform."
+  ],
+  "limitations": [
+    "Observational: predicting the partner's next affect from what the human speaker B said is not the causal effect of an agent's expression; B's turns were chosen by a human in context.",
+    "20% training subset (about 2,200 dialogues), set by the embedding budget.",
+    "Embeddings are mean-pooled hidden states of a small decoder-only code model, not a trained sentence encoder, stored in float16.",
+    "About 83% of targets are no_emotion; class metrics are dominated by the majority class, hence macro F1 and sign accuracy on non-neutral targets.",
+    "DailyDialog is a scripted English-learning corpus with annotator emotion labels; transfer to real agent-user conversation is unmeasured.",
+    "Scalar affect and act features are gold labels of observed turns (an oracle); a host would need an affect recognizer, and the 'embeddings' variant shows the label-free performance.",
+    "The preference check compares against a random other B turn, not against alternatives a host would actually generate."
+  ],
+  "runtime_budget": "all training in minutes on 4 CPU cores; no GPU",
+  "amendments": [
+    {
+      "utc": "2026-10-26T03:04:00Z",
+      "before_any_real_data": true,
+      "change": "Added a PCA projection to 256 components per utterance between standardization and the MLP (previously the full 1536 standardized dimensions, 4621 inputs).",
+      "reason": "A timing check at full scale with random inputs measured 7.1 s per epoch under CPU contention with the embedding server, a worst case near two hours for 80 epochs x 2 heads x 3 seeds x 2 embedding variants, outside the declared minutes budget. With 256 components one epoch takes 1.8 s (worst case 29 min, less with early stopping). On the 4,096 test-split vectors cached at the time (geometry only, no labels read) 256 components keep .82 of the standardized variance and 128 keep .72.",
+      "what_was_not_seen": "No target label, no prediction and no metric of any model on any split had been computed with real embeddings when this change was made."
+    }
+  ]
+}
