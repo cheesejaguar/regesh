@@ -287,6 +287,60 @@ Figures: `results/bonding/figures/platform.png` and `platform_v2.png`. The
 record-only audit (`results/bonding/audit.json`) recomputes every summary mean
 from the raw runs and verifies all six manifests.
 
+## Learned components: what a small network adds, measured
+
+Two follow-up studies asked whether a small neural network trained on
+embeddings from the same local model that generates replies improves on the
+hand-specified and linear parts of the bond. Both use the shared NumPy MLP
+(`regesh/bonding/mlp.py`) and a content-addressed cache of mean-pooled
+1536-dimensional embeddings (`regesh/bonding/embeddings.py`), with frozen
+protocols, hash-selected training subsets and single evaluations on official
+test splits.
+
+### Learned partner affect model versus the online identifier
+
+Task: predict the partner's next affect from history plus the agent-role turn
+on DailyDialog (partner = first speaker; 2,258 training dialogues, full test
+split of 1,000 dialogues, 3,040 examples, 81% neutral targets; seven-emotion
+valence map declared; [report](bonding_partner_model.md)). Dialogue-level
+bootstrap intervals:
+
+| Model | RMSE | Balanced sign accuracy | Next-emotion macro-F1 |
+|---|---:|---:|---:|
+| Persistence (repeat the partner's last affect) | .266 | .49 | **.545** |
+| Platform identifier, diffuse start (previous default) | .275 [.259, .291] | .64 | n/a |
+| Same identifier warm-started from the pooled fit | **.244** [.233, .256] | .80 | n/a |
+| Ridge on 13 scalar features | **.235** | .79 | .196 |
+| MLP, scalar features only | **.235** | **.81** | .128 |
+| MLP, embeddings plus scalars (headline) | .242 [.230, .253] | .80 | .128 |
+| MLP, embeddings only | .270 | .53 | .128 |
+
+Findings. Embeddings added nothing to aggregate next-affect accuracy and cost a
+small, significant amount (headline minus scalar-only MLP: RMSE +.007 [+.004,
++.009]); validation selected the strongest penalties, nearly switching them
+off. The learned model's advantage over the platform identifier (RMSE -.033
+[-.044, -.023]) is a cold-start effect: warm-starting the same four linear
+parameters from the pooled training fit recovers it (-.031 [-.038, -.024]).
+No learned model predicted any rare emotion class; persistence did (anger,
+disgust and fear F1 .59-.70), because emotion persists within a speaker.
+Candidate ranking with embeddings preferred the actual next agent turn over a
+random one in 71% of positive-outcome items but was at chance for negative
+outcomes, and the comparison confounds affect with topical coherence. Protocol
+amendments (projection, whitening, a validation-selected penalty grid after
+the frozen configuration memorised) were made before any test label was read
+and are dated in the configuration.
+
+Consequence adopted in the platform: the partner identifier now warm-starts
+from the pooled DailyDialog prior with unit covariance (`identifier_prior`
+"dailydialog-pooled-v1"; the diffuse start remains selectable), and persistence
+is the recommended predictor of the next emotion class. The pooled fit's
+positive slope exceeds its negative one, the reverse of the asymmetry Gottman
+reports for marital conflict; it is a property of this scripted everyday
+corpus, not a general law. The learned model is retained as an evaluated
+alternative, not deployed.
+
+LEARNED_SENSOR_SECTION
+
 ## Claim ledger
 
 | Label | Scope |
@@ -294,6 +348,7 @@ from the raw runs and verifies all six manifests.
 | Established precedent | Arousal regulation by a caregiver, adaptive attachment profiles, coupled dyadic affect equations with attractors and repair, mid-range contingency, linguistic coordination and style matching, the intimacy process model, relational agents and chatbot attachment. None is claimed as new. |
 | Engineering synthesis | One replayable, hash-journaled bond state per partner that combines these mechanisms inside the cognitive-control loop, with shared pure-function modules used by both the platform and the reproductions, an attention budget, a responsiveness floor and a trust firewall. |
 | Measured result | Default agents unchanged (demo digest identical). Reproductions: Hiolle profile contrasts and the complex-environment traversal ratio reproduce, absolute pace and the literal adaptive rule do not; the step ojive admits at most three fixed points, the published counts are null-cline crossings or smooth-form roots, the published estimator is imprecise at 150 points, damping never created a positive attractor; two of four Supreme Court coordination asymmetries reproduce; LLM over-convergence does not reproduce with the 1.5B model and the bounded instruction is a null. Platform: a paired cumulative threat reduction of 10-15% that depends on partner responsiveness only under the evidence-count estimator; identifier-based steering equals fixed positivity for cooperative partners and avoids its harm for a reactant one; repair untested. |
+| Measured result (learned components) | On DailyDialog, embeddings from the generating model add nothing to next-affect prediction beyond scalar affect features; the identifier's deficit was cold start and is fixed by a pooled warm start, now the default; persistence predicts the next emotion class best. SENSOR_LEDGER |
 | Speculative hypothesis | That these mechanisms improve collaboration, trust calibration or wellbeing with real users. No human study was run; the simulated partners follow declared equations; benefit to users is unestablished. |
 
 What would change the ledger: a matched study with real users and an ordinary

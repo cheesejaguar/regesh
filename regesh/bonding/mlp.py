@@ -68,6 +68,8 @@ class MLP:
 
     def fit(self, x, y, *, x_dev=None, y_dev=None, epochs=50, batch=64, lr=1e-3, l2=1e-5, patience=5, seed=0, verbose=False):
         """Adam with mini-batches; early stopping on development loss when provided."""
+        if (x_dev is None) != (y_dev is None):
+            raise ValueError("x_dev and y_dev must be given together")
         rng = np.random.default_rng(seed); x = np.asarray(x, float); y = np.asarray(y, float)
         mW = [np.zeros_like(w) for w in self.W]; vW = [np.zeros_like(w) for w in self.W]
         mb = [np.zeros_like(b) for b in self.b]; vb = [np.zeros_like(b) for b in self.b]

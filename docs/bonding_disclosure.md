@@ -74,7 +74,9 @@ is not asserted.
    Gottman's offline estimation and clinical "repair" concept; mirroring/empathy
    in relational agents (Bickmore & Picard 2005). Departure: online estimation,
    explicit accommodation cap motivated by mid-range contingency, and exposure of
-   the predicted attractor as a control variable.
+   the predicted attractor as a control variable. The identifier is warm-started
+   from a corpus-derived prior; a learned embedding-based alternative was
+   evaluated and did not improve on it (`bonding_partner_model.md`).
 5. **Mid-range coordination control.** Function-word coordination toward the
    partner is measured online (Eq. 1 of Danescu-Niculescu-Mizil et al. 2012) and
    compared with a published human-human band; the actuation context reports the

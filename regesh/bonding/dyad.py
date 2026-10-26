@@ -39,6 +39,14 @@ PUBLISHED_1999 = {
 }
 SPAFF_RANGE = (-24, 24)
 
+# Pooled least-squares bilinear fit of partner next-affect on a hash-selected 20% of
+# DailyDialog training dialogues (speaker A as partner, speaker B as the agent role,
+# declared seven-emotion valence map), from results/bonding/partner_model/summary.json.
+# Order: constant, inertia, slope_neg, slope_pos. Human-human conversation data; the
+# positive slope exceeding the negative one is corpus-specific and the reverse of the
+# asymmetry Gottman reports for marital conflict.
+DAILYDIALOG_POOLED_PRIOR = (0.03691770901755599, 0.3546044474577197, 0.12021559885929885, 0.34968725826500563)
+
 
 def ojive(x, neg_threshold, neg_value, pos_threshold, pos_value):
     """1999 Figure 1A: no influence inside the thresholds, fixed values outside."""
@@ -289,9 +297,17 @@ class RecursiveIdentifier:
     """
     NAMES = ("constant", "inertia", "slope_neg", "slope_pos")
 
-    def __init__(self, state=None, lam=.98, prior=1e2):
+    def __init__(self, state=None, lam=.98, prior=1e2, prior_theta=None):
+        """`prior` scales the initial covariance; `prior_theta` warm-starts the parameters.
+
+        The diffuse default (P = 100 I) makes the first update a near-full jump, which the
+        DailyDialog evaluation (results/bonding/partner_model) showed never recovers within
+        short dialogues. Warm-starting from `DAILYDIALOG_POOLED_PRIOR` with P = I lowered
+        next-affect RMSE from .275 to .244 on held-out dialogues.
+        """
         if state is None:
-            state = {"theta": [0., .3, .2, .2], "P": (np.eye(4) * prior).tolist(), "n": 0, "lam": lam, "sse": 0.}
+            theta = list(prior_theta) if prior_theta is not None else [0., .3, .2, .2]
+            state = {"theta": [float(v) for v in theta], "P": (np.eye(4) * prior).tolist(), "n": 0, "lam": lam, "sse": 0.}
         self.state = state
 
     @staticmethod

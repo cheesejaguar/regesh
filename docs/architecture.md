@@ -79,7 +79,7 @@ resp    += alpha_resp*(1-resp) if answered else -alpha_resp*(1-resp)            
 resp     = (answered+1)/(answered+unanswered+2)                                       # or the Beta evidence-count estimator ("beta")
 beta_h   = .7 + (1-resp)*.3 ;  tau_h = 3 + (1-resp)*7                                # Eqs. 6-7
 threat  *= 1 - gain*resp*familiarity*presence                                        # Coan et al. 2006 buffer
-P_{t+1}  = b + r*P_t + s_neg*min(A_t,0) + s_pos*max(A_t,0)                            # Gottman et al. 2003 partner equation, RLS-identified
+P_{t+1}  = b + r*P_t + s_neg*min(A_t,0) + s_pos*max(A_t,0)                            # Gottman et al. 2003 partner equation, RLS-identified, warm-started from a pooled DailyDialog fit
 ```
 
 Cross-links into the rest of the state are exactly three: the threat buffer

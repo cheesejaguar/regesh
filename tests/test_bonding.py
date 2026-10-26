@@ -205,6 +205,21 @@ class BondedAgent(unittest.TestCase):
             self.assertTrue(agent.actuation_context()['bond']['request_support'])
         finally: agent.close()
 
+    def test_identifier_warm_start_is_default_and_selectable(self):
+        agent = Agent(self.path, 'b', config={'bonding': True, 'partner': 'user'})
+        try:
+            agent.observe(ev(0, goal_delta={'quality': .1}, partner_affect=.2))
+            theta = agent.get_state()['bonds']['user']['dyad']['model']['theta']
+            self.assertEqual(tuple(theta), dyad.DAILYDIALOG_POOLED_PRIOR)
+            self.assertEqual(agent.get_state()['bonds']['user']['dyad']['model']['P'][0][0], 1.)
+        finally: agent.close()
+        diffuse = Agent(self.path, 'd', config={'bonding': True, 'partner': 'user', 'identifier_prior': 'diffuse'})
+        try:
+            diffuse.observe(ev(0, goal_delta={'quality': .1}, partner_affect=.2))
+            model = diffuse.get_state()['bonds']['user']['dyad']['model']
+            self.assertEqual(model['theta'], [0., .3, .2, .2]); self.assertEqual(model['P'][0][0], 100.)
+        finally: diffuse.close()
+
     def test_schema_validates_bond_evidence_fields(self):
         with self.assertRaises(ValueError): ev(1, support=1.5)
         with self.assertRaises(ValueError): ev(1, partner_affect=-2)
