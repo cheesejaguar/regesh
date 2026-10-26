@@ -120,3 +120,24 @@ partner model (slot 2) in parallel.
   emotion class best.
 - Full suite 252 tests pass; demo digest unchanged; audit covers nine manifests.
 
+## Harness installer checkpoint (2026-10-26)
+
+User asked for a one-line install that detects the main agent harnesses and
+hooks the affect layer into them.
+
+- `install.sh` (curl | sh): venv at `~/.regesh/venv`, `pip install git+...`,
+  reattaches `/dev/tty` for the interface, `REGESH_INSTALL_ARGS` for scripts.
+- `regesh/integrations/`: `bridge.py` (harness events -> bonded Agent, declared
+  tool-result heuristic, context line), `mcp_server.py` (stdio JSON-RPC, six
+  tools, one resource), `hooks.py` (per-harness stdin/stdout schemas verified
+  against each harness's hook docs; fail open), `detect.py`, `install.py`
+  (idempotent writers with backups, manifest and hash-exact restore),
+  `tui.py` (curses checklist, plain fallback), `cli.py`, templates for the
+  Hermes plugin, OpenCode plugin and instruction block.
+- `text_affect.py`: embedding sensor when the local server and bundle exist,
+  otherwise packaged hashed-token GoEmotions reference (251 KB) with a gate
+  calibrated on DailyDialog valid (tau .2, band .6; test macro-F1 .446 vs
+  .303 all-zero; it keeps 39% of emotional turns and signs .375 of all of them correctly).
+- Verified: install/idempotence/uninstall byte-exact against a seeded home with
+  all six harnesses; surgical removal after user edits; curses interface driven
+  through a pty; MCP round trip over a subprocess. Suite 282 tests pass.

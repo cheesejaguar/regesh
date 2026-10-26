@@ -130,6 +130,20 @@ separately rechecks the executable outcomes. [Expanded measurements](docs/measur
 and [frozen secondary analysis](docs/extended_analysis.md) keep correctness,
 robustness, repair, cost, calibration, coverage and diversity proxies separate.
 
+## Turn any agent into an emotional agent
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/cheesejaguar/regesh/main/install.sh | sh
+```
+
+A terminal installer detects Claude Code, Codex CLI, Gemini CLI, Hermes Agent,
+OpenCode and Cursor and hooks the bonded affect loop into the ones you choose:
+an MCP server (`affect_*` tools), the harness's own lifecycle hooks (user
+prompts, tool results and turn ends feed the loop; one factual context line is
+injected per turn) and a marked instruction block. State lives in `~/.regesh`,
+every edited file is backed up, and `regesh-install --uninstall` reverses it.
+See [docs/install.md](docs/install.md).
+
 ## Pair bonding with a user (opt-in)
 
 The affect loop can keep a per-partner **bond**: attachment-style arousal

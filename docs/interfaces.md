@@ -55,3 +55,12 @@ The agent never calls the network; the host embeds and annotates. `data['sensor'
 records the model digest, emotion probabilities, the valence map, the gate and
 whether it fired. Pass `gate=None` to disable the neutral gate or
 `fill_support=True` to also fill `support` from the declared proxy.
+
+## Harness integrations
+
+`regesh-install` (terminal checklist), `regesh-mcp --harness <id>` (stdio MCP server)
+and `regesh-hook <harness> <event>` (hook adapter; fails open) connect a
+persistent bonded agent at `~/.regesh/agents/<harness>.sqlite` to Claude Code,
+Codex CLI, Gemini CLI, Hermes Agent, OpenCode and Cursor. The text-affect
+estimator falls back from the embedding sensor to a packaged hashed-token
+GoEmotions reference. See [install.md](install.md).
