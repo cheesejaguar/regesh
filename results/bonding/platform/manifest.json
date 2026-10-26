@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "finished_utc": "2026-10-26T00:18:01.698214+00:00",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "command": "python -m regesh.bonding.experiment --config configs/bonding_platform.json --output results/bonding/platform",
+  "files": {
+    "attachment_runs.jsonl.gz": "8d5fa693f17adb29c360d7d3f48639daa8e169729d7e7b8f8e8d7512e3ad9356",
+    "config.json": "2213c92cafc5537aa2c911496f43420e39e5813cc2d95c907e55f557aec67efd",
+    "dyad_runs.jsonl.gz": "85d4fc798ca930d4cc32a0f17b41c2fce24bb3d0141d60e37c3262c37588fa9c",
+    "source.py": "ffbe062e083c9f6ec8efe52a12b2d9e12e57e5c560533866cb49028eaa3a654f",
+    "summary.json": "fbc0b8a7219db37f463a19b43ad42d012a25a29c9ec1b4addb302bc7843617a7"
+  }
+}

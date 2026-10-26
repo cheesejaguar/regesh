@@ -1,0 +1,759 @@
+{
+  "schema_version": 1,
+  "manifests": [
+    {
+      "directory": "results/bonding/platform",
+      "status": "ok",
+      "checked": 5,
+      "mismatches": []
+    },
+    {
+      "directory": "results/papers/attachment_robot",
+      "status": "ok",
+      "checked": 25,
+      "mismatches": []
+    },
+    {
+      "directory": "results/papers/marital_dynamics",
+      "status": "ok",
+      "checked": 11,
+      "mismatches": []
+    },
+    {
+      "directory": "results/papers/coordination_power",
+      "status": "manifest without recognised hash map"
+    },
+    {
+      "directory": "results/papers/llm_convergence/live",
+      "status": "manifest without recognised hash map"
+    }
+  ],
+  "platform_recomputation": {
+    "attachment": {
+      "q=1.0|bonded:requests": {
+        "recomputed": 3.35,
+        "summary": 3.35,
+        "n": 40
+      },
+      "q=1.0|bonded:answered_fraction": {
+        "recomputed": 0.9885416666666667,
+        "summary": 0.9885416666666667,
+        "n": 40
+      },
+      "q=1.0|bonded:final_responsiveness": {
+        "recomputed": 0.5469696225232309,
+        "summary": 0.546969622523231,
+        "n": 40
+      },
+      "q=1.0|bonded:final_tau_h": {
+        "recomputed": 6.171212642337383,
+        "summary": 6.171212642337383,
+        "n": 40
+      },
+      "q=1.0|bonded:final_security": {
+        "recomputed": 0.5469696225232309,
+        "summary": 0.546969622523231,
+        "n": 40
+      },
+      "q=1.0|bonded:mean_threat_buffer": {
+        "recomputed": 0.2457951313853136,
+        "summary": 0.2457951313853136,
+        "n": 40
+      },
+      "q=1.0|bonded:cumulative_threat": {
+        "recomputed": 61.31796025942598,
+        "summary": 61.31796025942598,
+        "n": 40
+      },
+      "q=1.0|bonded:mean_mood_valence": {
+        "recomputed": -0.10084081409982086,
+        "summary": -0.10084081409982089,
+        "n": 40
+      },
+      "q=1.0|bonded:mean_arousal": {
+        "recomputed": 0.30583329414344784,
+        "summary": 0.3058332941434479,
+        "n": 40
+      },
+      "q=1.0|bonded:mean_exploration": {
+        "recomputed": 0.34701548974852725,
+        "summary": 0.34701548974852725,
+        "n": 40
+      },
+      "q=1.0|bonded:setback_turns": {
+        "recomputed": 92.075,
+        "summary": 92.075,
+        "n": 40
+      },
+      "q=1.0|bonded:final_beta_h": {
+        "recomputed": 0.8359091132430306,
+        "summary": 0.8359091132430307,
+        "n": 40
+      },
+      "q=1.0|bonded:final_attention": {
+        "recomputed": 0.9974999999999999,
+        "summary": 0.9974999999999999,
+        "n": 40
+      },
+      "q=1.0|reference:requests": {
+        "recomputed": 0.0,
+        "summary": 0.0,
+        "n": 40
+      },
+      "q=1.0|reference:cumulative_threat": {
+        "recomputed": 71.90134503786525,
+        "summary": 71.90134503786525,
+        "n": 40
+      },
+      "q=1.0|reference:mean_mood_valence": {
+        "recomputed": -0.12508632889406118,
+        "summary": -0.12508632889406118,
+        "n": 40
+      },
+      "q=1.0|reference:mean_exploration": {
+        "recomputed": 0.30377070335572265,
+        "summary": 0.3037707033557227,
+        "n": 40
+      },
+      "q=1.0|reference:setback_turns": {
+        "recomputed": 92.075,
+        "summary": 92.075,
+        "n": 40
+      },
+      "q=0.5|bonded:requests": {
+        "recomputed": 3.225,
+        "summary": 3.225,
+        "n": 40
+      },
+      "q=0.5|bonded:answered_fraction": {
+        "recomputed": 0.4607142857142857,
+        "summary": 0.4607142857142857,
+        "n": 40
+      },
+      "q=0.5|bonded:final_responsiveness": {
+        "recomputed": 0.49503998903212487,
+        "summary": 0.49503998903212487,
+        "n": 40
+      },
+      "q=0.5|bonded:final_tau_h": {
+        "recomputed": 6.534720076775126,
+        "summary": 6.534720076775128,
+        "n": 40
+      },
+      "q=0.5|bonded:final_security": {
+        "recomputed": 0.49503998903212487,
+        "summary": 0.49503998903212487,
+        "n": 40
+      },
+      "q=0.5|bonded:mean_threat_buffer": {
+        "recomputed": 0.24154611811267684,
+        "summary": 0.24154611811267684,
+        "n": 40
+      },
+      "q=0.5|bonded:cumulative_threat": {
+        "recomputed": 61.49726693865493,
+        "summary": 61.49726693865493,
+        "n": 40
+      },
+      "q=0.5|bonded:mean_mood_valence": {
+        "recomputed": -0.1012560269543955,
+        "summary": -0.10125602695439548,
+        "n": 40
+      },
+      "q=0.5|bonded:mean_arousal": {
+        "recomputed": 0.3056298668893709,
+        "summary": 0.3056298668893709,
+        "n": 40
+      },
+      "q=0.5|bonded:mean_exploration": {
+        "recomputed": 0.34685653393343474,
+        "summary": 0.34685653393343474,
+        "n": 40
+      },
+      "q=0.5|bonded:setback_turns": {
+        "recomputed": 92.075,
+        "summary": 92.075,
+        "n": 40
+      },
+      "q=0.5|bonded:final_beta_h": {
+        "recomputed": 0.8514880032903624,
+        "summary": 0.8514880032903624,
+        "n": 40
+      },
+      "q=0.5|bonded:final_attention": {
+        "recomputed": 0.9974999999999999,
+        "summary": 0.9974999999999999,
+        "n": 40
+      },
+      "q=0.5|reference:requests": {
+        "recomputed": 0.0,
+        "summary": 0.0,
+        "n": 40
+      },
+      "q=0.5|reference:cumulative_threat": {
+        "recomputed": 71.90134503786525,
+        "summary": 71.90134503786525,
+        "n": 40
+      },
+      "q=0.5|reference:mean_mood_valence": {
+        "recomputed": -0.12508632889406118,
+        "summary": -0.12508632889406118,
+        "n": 40
+      },
+      "q=0.5|reference:mean_exploration": {
+        "recomputed": 0.30377070335572265,
+        "summary": 0.3037707033557227,
+        "n": 40
+      },
+      "q=0.5|reference:setback_turns": {
+        "recomputed": 92.075,
+        "summary": 92.075,
+        "n": 40
+      },
+      "q=0.0|bonded:requests": {
+        "recomputed": 3.075,
+        "summary": 3.075,
+        "n": 40
+      },
+      "q=0.0|bonded:answered_fraction": {
+        "recomputed": 0.0,
+        "summary": 0.0,
+        "n": 40
+      },
+      "q=0.0|bonded:final_responsiveness": {
+        "recomputed": 0.45233815090635954,
+        "summary": 0.45233815090635954,
+        "n": 40
+      },
+      "q=0.0|bonded:final_tau_h": {
+        "recomputed": 6.833632943655483,
+        "summary": 6.833632943655482,
+        "n": 40
+      },
+      "q=0.0|bonded:final_security": {
+        "recomputed": 0.45233815090635954,
+        "summary": 0.45233815090635954,
+        "n": 40
+      },
+      "q=0.0|bonded:mean_threat_buffer": {
+        "recomputed": 0.2401041666666667,
+        "summary": 0.2401041666666667,
+        "n": 40
+      },
+      "q=0.0|bonded:cumulative_threat": {
+        "recomputed": 61.55856188671887,
+        "summary": 61.55856188671887,
+        "n": 40
+      },
+      "q=0.0|bonded:mean_mood_valence": {
+        "recomputed": -0.1013978014315469,
+        "summary": -0.10139780143154689,
+        "n": 40
+      },
+      "q=0.0|bonded:mean_arousal": {
+        "recomputed": 0.3050909956834299,
+        "summary": 0.3050909956834299,
+        "n": 40
+      },
+      "q=0.0|bonded:mean_exploration": {
+        "recomputed": 0.3468585306872495,
+        "summary": 0.3468585306872495,
+        "n": 40
+      },
+      "q=0.0|bonded:setback_turns": {
+        "recomputed": 92.075,
+        "summary": 92.075,
+        "n": 40
+      },
+      "q=0.0|bonded:final_beta_h": {
+        "recomputed": 0.864298554728092,
+        "summary": 0.8642985547280922,
+        "n": 40
+      },
+      "q=0.0|bonded:final_attention": {
+        "recomputed": 0.9974999999999999,
+        "summary": 0.9974999999999999,
+        "n": 40
+      },
+      "q=0.0|reference:requests": {
+        "recomputed": 0.0,
+        "summary": 0.0,
+        "n": 40
+      },
+      "q=0.0|reference:cumulative_threat": {
+        "recomputed": 71.90134503786525,
+        "summary": 71.90134503786525,
+        "n": 40
+      },
+      "q=0.0|reference:mean_mood_valence": {
+        "recomputed": -0.12508632889406118,
+        "summary": -0.12508632889406118,
+        "n": 40
+      },
+      "q=0.0|reference:mean_exploration": {
+        "recomputed": 0.30377070335572265,
+        "summary": 0.3037707033557227,
+        "n": 40
+      },
+      "q=0.0|reference:setback_turns": {
+        "recomputed": 92.075,
+        "summary": 92.075,
+        "n": 40
+      }
+    },
+    "dyad": {
+      "stable_husband_1999|own_mood:final_partner_affect_mean": {
+        "recomputed": 0.02920846537144039,
+        "summary": 0.02920846537144039,
+        "n": 40
+      },
+      "stable_husband_1999|own_mood:final_positive_fraction": {
+        "recomputed": 0.70125,
+        "summary": 0.70125,
+        "n": 40
+      },
+      "stable_husband_1999|own_mood:mean_accommodation_distance": {
+        "recomputed": 0.04931785065422422,
+        "summary": 0.04931785065422422,
+        "n": 40
+      },
+      "stable_husband_1999|own_mood:mean_agent_valence": {
+        "recomputed": 0.001410862708595292,
+        "summary": 0.001410862708595292,
+        "n": 40
+      },
+      "stable_husband_1999|own_mood:identifier_inertia_error": {
+        "recomputed": -0.03796424709439072,
+        "summary": -0.03796424709439072,
+        "n": 40
+      },
+      "stable_husband_1999|own_mood:identifier_uninfluenced_error": {
+        "recomputed": -0.00037098824652348266,
+        "summary": -0.00037098824652348266,
+        "n": 40
+      },
+      "stable_husband_1999|mirror:final_partner_affect_mean": {
+        "recomputed": 0.04826520723765827,
+        "summary": 0.04826520723765827,
+        "n": 40
+      },
+      "stable_husband_1999|mirror:final_positive_fraction": {
+        "recomputed": 0.749375,
+        "summary": 0.749375,
+        "n": 40
+      },
+      "stable_husband_1999|mirror:mean_accommodation_distance": {
+        "recomputed": 0.0,
+        "summary": 0.0,
+        "n": 40
+      },
+      "stable_husband_1999|mirror:mean_agent_valence": {
+        "recomputed": 0.05023277267480599,
+        "summary": 0.05023277267480599,
+        "n": 40
+      },
+      "stable_husband_1999|mirror:identifier_inertia_error": {
+        "recomputed": 0.0490888831350114,
+        "summary": 0.049088883135011405,
+        "n": 40
+      },
+      "stable_husband_1999|mirror:identifier_uninfluenced_error": {
+        "recomputed": 0.00920835955278969,
+        "summary": 0.00920835955278969,
+        "n": 40
+      },
+      "stable_husband_1999|steer:final_partner_affect_mean": {
+        "recomputed": 0.2858731678176794,
+        "summary": 0.2858731678176794,
+        "n": 40
+      },
+      "stable_husband_1999|steer:final_positive_fraction": {
+        "recomputed": 1.0,
+        "summary": 1.0,
+        "n": 40
+      },
+      "stable_husband_1999|steer:mean_accommodation_distance": {
+        "recomputed": 0.22081668807843466,
+        "summary": 0.22081668807843466,
+        "n": 40
+      },
+      "stable_husband_1999|steer:mean_agent_valence": {
+        "recomputed": 0.48634149760235906,
+        "summary": 0.48634149760235895,
+        "n": 40
+      },
+      "stable_husband_1999|steer:identifier_inertia_error": {
+        "recomputed": -0.040334832333126514,
+        "summary": -0.040334832333126514,
+        "n": 40
+      },
+      "stable_husband_1999|steer:identifier_uninfluenced_error": {
+        "recomputed": -0.007881293874232132,
+        "summary": -0.007881293874232132,
+        "n": 40
+      },
+      "stable_husband_1999|steer_tight:final_partner_affect_mean": {
+        "recomputed": 0.1158690039619927,
+        "summary": 0.11586900396199269,
+        "n": 40
+      },
+      "stable_husband_1999|steer_tight:final_positive_fraction": {
+        "recomputed": 0.9475,
+        "summary": 0.9475000000000001,
+        "n": 40
+      },
+      "stable_husband_1999|steer_tight:mean_accommodation_distance": {
+        "recomputed": 0.07219450771638969,
+        "summary": 0.07219450771638969,
+        "n": 40
+      },
+      "stable_husband_1999|steer_tight:mean_agent_valence": {
+        "recomputed": 0.1643446601432816,
+        "summary": 0.16434466014328164,
+        "n": 40
+      },
+      "stable_husband_1999|steer_tight:identifier_inertia_error": {
+        "recomputed": -0.04191542769333117,
+        "summary": -0.04191542769333117,
+        "n": 40
+      },
+      "stable_husband_1999|steer_tight:identifier_uninfluenced_error": {
+        "recomputed": -0.004944756229885255,
+        "summary": -0.004944756229885255,
+        "n": 40
+      },
+      "stable_husband_1999|steer_no_repair:final_partner_affect_mean": {
+        "recomputed": 0.2858731678176794,
+        "summary": 0.2858731678176794,
+        "n": 40
+      },
+      "stable_husband_1999|steer_no_repair:final_positive_fraction": {
+        "recomputed": 1.0,
+        "summary": 1.0,
+        "n": 40
+      },
+      "stable_husband_1999|steer_no_repair:mean_accommodation_distance": {
+        "recomputed": 0.22081668807843466,
+        "summary": 0.22081668807843466,
+        "n": 40
+      },
+      "stable_husband_1999|steer_no_repair:mean_agent_valence": {
+        "recomputed": 0.48634149760235906,
+        "summary": 0.48634149760235895,
+        "n": 40
+      },
+      "stable_husband_1999|steer_no_repair:identifier_inertia_error": {
+        "recomputed": -0.040334832333126514,
+        "summary": -0.040334832333126514,
+        "n": 40
+      },
+      "stable_husband_1999|steer_no_repair:identifier_uninfluenced_error": {
+        "recomputed": -0.007881293874232132,
+        "summary": -0.007881293874232132,
+        "n": 40
+      },
+      "divorced_husband_1999|own_mood:final_partner_affect_mean": {
+        "recomputed": -0.08146029566639669,
+        "summary": -0.08146029566639668,
+        "n": 40
+      },
+      "divorced_husband_1999|own_mood:final_positive_fraction": {
+        "recomputed": 0.0675,
+        "summary": 0.0675,
+        "n": 40
+      },
+      "divorced_husband_1999|own_mood:mean_accommodation_distance": {
+        "recomputed": 0.08175899185289834,
+        "summary": 0.08175899185289834,
+        "n": 40
+      },
+      "divorced_husband_1999|own_mood:mean_agent_valence": {
+        "recomputed": -0.0020134676411171855,
+        "summary": -0.002013467641117185,
+        "n": 40
+      },
+      "divorced_husband_1999|own_mood:identifier_inertia_error": {
+        "recomputed": -0.034379527572815885,
+        "summary": -0.034379527572815885,
+        "n": 40
+      },
+      "divorced_husband_1999|own_mood:identifier_uninfluenced_error": {
+        "recomputed": -0.0016951354611561317,
+        "summary": -0.0016951354611561317,
+        "n": 40
+      },
+      "divorced_husband_1999|mirror:final_partner_affect_mean": {
+        "recomputed": -0.28047595423157795,
+        "summary": -0.28047595423157795,
+        "n": 40
+      },
+      "divorced_husband_1999|mirror:final_positive_fraction": {
+        "recomputed": 0.0,
+        "summary": 0.0,
+        "n": 40
+      },
+      "divorced_husband_1999|mirror:mean_accommodation_distance": {
+        "recomputed": 0.0,
+        "summary": 0.0,
+        "n": 40
+      },
+      "divorced_husband_1999|mirror:mean_agent_valence": {
+        "recomputed": -0.2695581922038881,
+        "summary": -0.2695581922038881,
+        "n": 40
+      },
+      "divorced_husband_1999|mirror:identifier_inertia_error": {
+        "recomputed": 0.1259121458738996,
+        "summary": 0.1259121458738996,
+        "n": 40
+      },
+      "divorced_husband_1999|mirror:identifier_uninfluenced_error": {
+        "recomputed": -0.039871107854107316,
+        "summary": -0.039871107854107316,
+        "n": 40
+      },
+      "divorced_husband_1999|steer:final_partner_affect_mean": {
+        "recomputed": 0.13632810824248082,
+        "summary": 0.13632810824248082,
+        "n": 40
+      },
+      "divorced_husband_1999|steer:final_positive_fraction": {
+        "recomputed": 0.9949999999999999,
+        "summary": 0.9949999999999999,
+        "n": 40
+      },
+      "divorced_husband_1999|steer:mean_accommodation_distance": {
+        "recomputed": 0.3546315523414453,
+        "summary": 0.3546315523414453,
+        "n": 40
+      },
+      "divorced_husband_1999|steer:mean_agent_valence": {
+        "recomputed": 0.47699511911381676,
+        "summary": 0.47699511911381676,
+        "n": 40
+      },
+      "divorced_husband_1999|steer:identifier_inertia_error": {
+        "recomputed": -0.0378733477284255,
+        "summary": -0.0378733477284255,
+        "n": 40
+      },
+      "divorced_husband_1999|steer:identifier_uninfluenced_error": {
+        "recomputed": -0.006996649901454742,
+        "summary": -0.006996649901454742,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_tight:final_partner_affect_mean": {
+        "recomputed": -0.008109742721185632,
+        "summary": -0.008109742721185632,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_tight:final_positive_fraction": {
+        "recomputed": 0.460625,
+        "summary": 0.46062499999999995,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_tight:mean_accommodation_distance": {
+        "recomputed": 0.17051187079532995,
+        "summary": 0.17051187079532992,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_tight:mean_agent_valence": {
+        "recomputed": 0.15673287998189075,
+        "summary": 0.15673287998189075,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_tight:identifier_inertia_error": {
+        "recomputed": -0.03911337329796408,
+        "summary": -0.03911337329796407,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_tight:identifier_uninfluenced_error": {
+        "recomputed": -0.006515264041632577,
+        "summary": -0.0065152640416325765,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_no_repair:final_partner_affect_mean": {
+        "recomputed": 0.13632810824248082,
+        "summary": 0.13632810824248082,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_no_repair:final_positive_fraction": {
+        "recomputed": 0.9949999999999999,
+        "summary": 0.9949999999999999,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_no_repair:mean_accommodation_distance": {
+        "recomputed": 0.3546315523414453,
+        "summary": 0.3546315523414453,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_no_repair:mean_agent_valence": {
+        "recomputed": 0.47699511911381676,
+        "summary": 0.47699511911381676,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_no_repair:identifier_inertia_error": {
+        "recomputed": -0.0378733477284255,
+        "summary": -0.0378733477284255,
+        "n": 40
+      },
+      "divorced_husband_1999|steer_no_repair:identifier_uninfluenced_error": {
+        "recomputed": -0.006996649901454742,
+        "summary": -0.006996649901454742,
+        "n": 40
+      },
+      "ojive_mismatch|own_mood:final_partner_affect_mean": {
+        "recomputed": -0.051416780824097966,
+        "summary": -0.05141678082409797,
+        "n": 40
+      },
+      "ojive_mismatch|own_mood:final_positive_fraction": {
+        "recomputed": 0.169375,
+        "summary": 0.169375,
+        "n": 40
+      },
+      "ojive_mismatch|own_mood:mean_accommodation_distance": {
+        "recomputed": 0.059777040005932744,
+        "summary": 0.059777040005932744,
+        "n": 40
+      },
+      "ojive_mismatch|own_mood:mean_agent_valence": {
+        "recomputed": -0.0011027337599628733,
+        "summary": -0.001102733759962873,
+        "n": 40
+      },
+      "ojive_mismatch|own_mood:identifier_inertia_error": {
+        "recomputed": -0.04044012767137599,
+        "summary": -0.04044012767137599,
+        "n": 40
+      },
+      "ojive_mismatch|own_mood:identifier_uninfluenced_error": {
+        "recomputed": -0.0005897697814179639,
+        "summary": -0.0005897697814179639,
+        "n": 40
+      },
+      "ojive_mismatch|mirror:final_partner_affect_mean": {
+        "recomputed": -0.051416780824097966,
+        "summary": -0.05141678082409797,
+        "n": 40
+      },
+      "ojive_mismatch|mirror:final_positive_fraction": {
+        "recomputed": 0.169375,
+        "summary": 0.169375,
+        "n": 40
+      },
+      "ojive_mismatch|mirror:mean_accommodation_distance": {
+        "recomputed": 0.0,
+        "summary": 0.0,
+        "n": 40
+      },
+      "ojive_mismatch|mirror:mean_agent_valence": {
+        "recomputed": -0.0504565635001127,
+        "summary": -0.0504565635001127,
+        "n": 40
+      },
+      "ojive_mismatch|mirror:identifier_inertia_error": {
+        "recomputed": -0.20462140365418646,
+        "summary": -0.20462140365418646,
+        "n": 40
+      },
+      "ojive_mismatch|mirror:identifier_uninfluenced_error": {
+        "recomputed": 0.009865147143868108,
+        "summary": 0.009865147143868108,
+        "n": 40
+      },
+      "ojive_mismatch|steer:final_partner_affect_mean": {
+        "recomputed": 0.2819165525092354,
+        "summary": 0.2819165525092354,
+        "n": 40
+      },
+      "ojive_mismatch|steer:final_positive_fraction": {
+        "recomputed": 1.0,
+        "summary": 1.0,
+        "n": 40
+      },
+      "ojive_mismatch|steer:mean_accommodation_distance": {
+        "recomputed": 0.22798317898784887,
+        "summary": 0.22798317898784887,
+        "n": 40
+      },
+      "ojive_mismatch|steer:mean_agent_valence": {
+        "recomputed": 0.4892527306645805,
+        "summary": 0.4892527306645805,
+        "n": 40
+      },
+      "ojive_mismatch|steer:identifier_inertia_error": {
+        "recomputed": -0.04055025060839458,
+        "summary": -0.04055025060839458,
+        "n": 40
+      },
+      "ojive_mismatch|steer:identifier_uninfluenced_error": {
+        "recomputed": -0.004980970752356376,
+        "summary": -0.0049809707523563755,
+        "n": 40
+      },
+      "ojive_mismatch|steer_tight:final_partner_affect_mean": {
+        "recomputed": -0.051416780824097966,
+        "summary": -0.05141678082409797,
+        "n": 40
+      },
+      "ojive_mismatch|steer_tight:final_positive_fraction": {
+        "recomputed": 0.169375,
+        "summary": 0.169375,
+        "n": 40
+      },
+      "ojive_mismatch|steer_tight:mean_accommodation_distance": {
+        "recomputed": 0.11684966879687615,
+        "summary": 0.11684966879687615,
+        "n": 40
+      },
+      "ojive_mismatch|steer_tight:mean_agent_valence": {
+        "recomputed": 0.05981184957337047,
+        "summary": 0.05981184957337047,
+        "n": 40
+      },
+      "ojive_mismatch|steer_tight:identifier_inertia_error": {
+        "recomputed": -0.042209696244564936,
+        "summary": -0.042209696244564936,
+        "n": 40
+      },
+      "ojive_mismatch|steer_tight:identifier_uninfluenced_error": {
+        "recomputed": -0.011242397979883356,
+        "summary": -0.011242397979883356,
+        "n": 40
+      },
+      "ojive_mismatch|steer_no_repair:final_partner_affect_mean": {
+        "recomputed": 0.2819165525092354,
+        "summary": 0.2819165525092354,
+        "n": 40
+      },
+      "ojive_mismatch|steer_no_repair:final_positive_fraction": {
+        "recomputed": 1.0,
+        "summary": 1.0,
+        "n": 40
+      },
+      "ojive_mismatch|steer_no_repair:mean_accommodation_distance": {
+        "recomputed": 0.22798317898784887,
+        "summary": 0.22798317898784887,
+        "n": 40
+      },
+      "ojive_mismatch|steer_no_repair:mean_agent_valence": {
+        "recomputed": 0.4892527306645805,
+        "summary": 0.4892527306645805,
+        "n": 40
+      },
+      "ojive_mismatch|steer_no_repair:identifier_inertia_error": {
+        "recomputed": -0.04055025060839458,
+        "summary": -0.04055025060839458,
+        "n": 40
+      },
+      "ojive_mismatch|steer_no_repair:identifier_uninfluenced_error": {
+        "recomputed": -0.004980970752356376,
+        "summary": -0.0049809707523563755,
+        "n": 40
+      }
+    },
+    "max_abs_difference": 1.7763568394002505e-15,
+    "agree_within_1e-9": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "source": "results/bonding/platform/summary.json",
+  "files": [
+    "platform.png",
+    "platform.svg"
+  ]
+}
