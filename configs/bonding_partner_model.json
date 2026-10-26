@@ -57,11 +57,11 @@
       "b_act one-hot"
     ],
     "scalar_note": "A valence at t-1 is added to the listed scalar set so the scalar ablation sees the same three turns as the embedding window; otherwise 'what embeddings add' would be confounded with 'what the previous turn adds'. Scalar affect and act features are gold corpus labels (an oracle for the partner's observed affect that a host would replace with an affect recognizer).",
-    "embedding_window": "mean-pooled embeddings of A_{t-1} (zero vector when absent), A_t and B_{t+1}, each standardized per dimension and projected to 256 principal components (z(.) below)",
+    "embedding_window": "mean-pooled embeddings of A_{t-1} (zero vector when absent), A_t and B_{t+1}, each standardized per dimension, projected to k whitened principal components (z(.) below)",
     "feature_sets": {
-      "embeddings+scalars": "[z(A_{t-1}) * has_prev, z(A_t), z(B_{t+1}), history_scalars, candidate_scalars]: 3*256 + 13 = 781 inputs (headline)",
+      "embeddings+scalars": "[z(A_{t-1}) * has_prev, z(A_t), z(B_{t+1}), history_scalars, candidate_scalars]: 3k + 13 inputs (headline)",
       "scalars": "[history_scalars, candidate_scalars]  (ablation: no text)",
-      "embeddings": "[z(A_{t-1}) * has_prev, z(A_t), z(B_{t+1}), has_prev, exchange_index]: 3*256 + 2 = 770 inputs (ablation: no gold affect or act labels; the deployment-realistic input for rank_candidates)"
+      "embeddings": "[z(A_{t-1}) * has_prev, z(A_t), z(B_{t+1}), has_prev, exchange_index]: 3k + 2 inputs (ablation: no gold affect or act labels; the deployment-realistic input for rank_candidates)"
     }
   },
   "embeddings": {
@@ -71,9 +71,9 @@
     "standardization": "per-dimension mean and standard deviation over the unique utterances of the training examples; sd floored at 1e-3 so float16 quantization noise in near-constant dimensions is not amplified",
     "missing_previous_turn": "zero vector after standardization, with has_prev = 0",
     "sd_floor": 0.001,
-    "pca_components": 256,
-    "projection": "after standardization each utterance vector is projected onto the top 256 principal components fitted on the standardized unique training utterances (deterministic eigendecomposition, signs fixed) and whitened (each component divided by its training standard deviation, unit variance per component); the explained-variance fraction is recorded in summary.json",
-    "whiten": true
+    "projection": "after standardization each utterance vector is projected onto the top k principal components fitted on the standardized unique training utterances (deterministic eigendecomposition, signs fixed) and whitened (unit variance per component); k is selected on the valid split; explained-variance fractions are recorded in summary.json",
+    "whiten": true,
+    "pca_components": "selected on the valid split from {32, 64, 128} (see models.mlp.selection and models.ridge_embeddings); one projection per candidate size is fitted on the standardized training utterances"
   },
   "models": {
     "persistence": "predicted valence = A's valence at t; predicted class = A's emotion at t",
@@ -101,23 +101,39 @@
     "mlp": {
       "description": "two heads with the shared regesh.bonding.mlp.MLP: valence (mse, 1 output) and 7-class (sigmoid cross-entropy on one-hot, 7 outputs); class probabilities are the normalized sigmoids",
       "hidden": [
-        64
+        32
       ],
       "activation": "tanh",
       "optimizer": "Adam",
-      "lr": 0.001,
-      "l2": 0.0001,
+      "lr": 0.003,
       "batch": 64,
       "epochs": 80,
       "patience": 8,
       "early_stopping": "lowest valid loss of each head; best weights restored",
+      "selection": {
+        "criterion": "for each feature set, the (pca_components, l2) pair with the lowest valid MSE of the early-stopped valence head at seed 0; ties go to the stronger penalty and fewer components; the class head shares the selected configuration",
+        "grid": {
+          "l2": [
+            0.001,
+            0.01,
+            0.03,
+            0.1
+          ],
+          "pca_components": [
+            32,
+            64,
+            128
+          ]
+        },
+        "scalars_note": "the scalar-only feature set has no projection and is selected over l2 alone"
+      },
       "seeds": [
         0,
         1,
         2
       ],
       "headline_seed": 0,
-      "seed_note": "seed 0 is the pre-declared headline; seeds 1 and 2 are reported as a stability check, not selected on",
+      "seed_note": "seed 0 is the pre-declared headline (and the selection seed); seeds 1 and 2 retrain the selected configuration and are reported as a stability check, not selected on",
       "variants": [
         "embeddings+scalars",
         "scalars",
@@ -126,8 +142,24 @@
       "headline_variant": "embeddings+scalars",
       "class_decision_rules": {
         "argmax": "argmax of class probabilities (primary)",
-        "balanced": "argmax of probability divided by the training class prior (secondary, declared for the imbalance)"
+        "balanced": "argmax of probability divided by the training class prior (secondary, declared for the imbalance; the valid pilot showed it collapses onto rare classes because the rare-class sigmoids are uncalibrated, it is kept for the record)"
       }
+    },
+    "ridge_embeddings": {
+      "description": "linear comparator on the headline feature set: pooled ridge regression over whitened projected embeddings of the three turns plus the 13 scalar features; pca_components and the penalty are selected jointly by valid MSE of the valence output, the one-hot class block selects its own penalty at the same pca_components",
+      "lambda_grid": [
+        1.0,
+        10.0,
+        100.0,
+        1000.0,
+        10000.0,
+        100000.0
+      ],
+      "pca_components": [
+        32,
+        64,
+        128
+      ]
     }
   },
   "metrics": {
@@ -153,7 +185,10 @@
       "each model minus identifier_default",
       "mlp embeddings+scalars minus mlp scalars",
       "mlp embeddings+scalars minus mlp embeddings",
-      "mlp embeddings+scalars minus ridge"
+      "mlp embeddings+scalars minus ridge",
+      "mlp embeddings+scalars minus ridge_embeddings",
+      "ridge_embeddings minus ridge",
+      "mlp scalars minus ridge"
     ],
     "test_use": "the full test split is evaluated once after all training and selection; nothing is tuned on it"
   },
@@ -168,6 +203,7 @@
       "mlp scalars",
       "mlp embeddings",
       "ridge",
+      "ridge_embeddings",
       "identifier_default (candidate valence through its per-example parameters)",
       "persistence (control: ignores B, ties count as wrong)"
     ],
@@ -186,11 +222,10 @@
     "Train only on the hash-selected 20% of train dialogues because that is the subset the embedding cache holds; valid and test are used in full.",
     "The identifier baseline is evaluated as a predictor; steer()'s min_samples trust gate does not apply to prediction and is not used.",
     "Examples whose dialogue has no A turn at t+2 are not created; the last A turn of a dialogue is never a target-less input.",
-    "The MLP hyperparameters are fixed in advance and not tuned; early stopping is the only selection, on the valid split.",
     "Headline model: embeddings+scalars at seed 0. Seeds 1 and 2 are reported for stability only.",
     "Macro F1 averages over the classes present in the test targets (rare classes such as fear may have single-digit support).",
     "Pipeline smoke tests on partial caches are allowed before the frozen run but hyperparameters are not changed after this stamp; any change is recorded as an iteration note in the report.",
-    "Embedding dimensionality is reduced by PCA to 256 components fitted on the training utterances (see amendments); the projection matrix is stored in the saved model so a host applies the identical transform."
+    "MLP width, learning rate, batch size, epochs and patience are fixed; the penalty and the number of whitened principal components are selected per feature set on the valid split by the valence head's early-stopped valid MSE (see amendments 4). The selected projection matrix is stored in the saved model so a host applies the identical transform."
   ],
   "limitations": [
     "Observational: predicting the partner's next affect from what the human speaker B said is not the causal effect of an agent's expression; B's turns were chosen by a human in context.",
@@ -223,6 +258,13 @@
       "change": "The 256 projected components are whitened to unit variance per component.",
       "reason": "With the plain projection the leading components have standard deviations near 10 in standardized units; a forward pass of the untrained MLP on the real inputs put 51% of hidden tanh units beyond |.95| at initialization (pre-activation sd 2.8), the vanishing-gradient regime. Whitening restores the unit-variance inputs the Xavier initialization assumes.",
       "what_was_seen": "Only embedding geometry (test-split utterance vectors without any label; the projection in the frozen run is fitted on training utterances). No target, prediction or metric was computed."
+    },
+    {
+      "utc": "2026-10-26T04:01:00Z",
+      "before_any_test_label_use": true,
+      "change": "Replaced the fixed MLP configuration (hidden 64, lr 1e-3, l2 1e-4, 256 components) by a declared selection grid on the valid split (hidden 32, lr 3e-3; l2 in {1e-3, 1e-2, 3e-2, 1e-1} x components in {32, 64, 128}, chosen by the valence head's valid MSE), and added a linear ridge comparator on the same embedding features (ridge_embeddings).",
+      "reason": "Learning-signal pilot on two hash-halves of the VALID split (1,414 fitting, 277 development, 1,527 held-out examples; test untouched). With the frozen configuration the valence head memorized (training MSE .0006, development MSE .106 against .049 for the constant baseline, 80 epochs without early stopping) and the held-out RMSE was .305 versus .221 for the constant and .207 for ridge on scalars; the class head's best development BCE was .227 versus .124 for the scalar MLP. A diagnostic grid showed overfitting, not slow convergence: l2 .1 reached development MSE .051 (a near-constant predictor), l2 .01 .056-.059, l2 .001 .084-.094; 256 components never beat 64 or 128; lr 3e-3 converged in 20-30 epochs where 1e-3 had not converged in 80. Ridge on whitened projected embeddings plus scalars gave held-out RMSE .209-.215 at penalties 1e3-1e4 versus .207 for ridge on scalars alone, so at that data size the embeddings added no linear signal. The real training set is five times larger, which is why the selection is left to the valid split rather than fixed from the pilot.",
+      "what_was_seen": "Only valid-split labels and predictions. No test-split prediction or metric was computed. The pilot numbers above are recorded here and in the report so that the selection grid's origin is visible."
     }
   ]
 }

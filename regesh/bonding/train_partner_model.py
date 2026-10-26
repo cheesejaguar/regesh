@@ -82,14 +82,15 @@ def run(config_path, embeddings_dir, dailydialog_dir, output, log=print):
                                      "texts_needed": {s: len(t) for s, t in needed.items()}, "texts_missing": missing}
     if any(missing.values()):
         raise KeyError(f"embedding cache is missing utterances: {missing}; wait for the embedding job's manifests")
-    sd_floor = cfg["embeddings"].get("sd_floor", 1e-3); components = cfg["embeddings"].get("pca_components")
+    sd_floor = cfg["embeddings"].get("sd_floor", 1e-3); whiten = cfg["embeddings"].get("whiten", True)
     train_vectors = cache.get(needed["train"]); emb_mean, emb_sd = pm.fit_standardizer(train_vectors, sd_floor)
-    projection, explained = (None, None)
-    if components:
-        whiten = cfg["embeddings"].get("whiten", True)
-        projection, explained = pm.fit_projection((train_vectors - emb_mean) / emb_sd, components, whiten)
-        summary["data"]["embeddings"]["projection"] = {"components": int(components), "whitened": bool(whiten), "fitted_on_utterances": int(len(train_vectors)),
-                                                       "explained_variance_fraction": float(explained.sum()), "explained_by_component": [float(v) for v in explained]}
+    z_train = (train_vectors - emb_mean) / emb_sd
+    ks = sorted(set(cfg["models"]["mlp"]["selection"]["grid"]["pca_components"]) | set(cfg["models"]["ridge_embeddings"]["pca_components"]))
+    projections, summary["data"]["embeddings"]["projections"] = {}, {}
+    for k in ks:
+        projections[k], explained = pm.fit_projection(z_train, k, whiten)
+        summary["data"]["embeddings"]["projections"][str(k)] = {"components": int(k), "whitened": bool(whiten), "fitted_on_utterances": int(len(train_vectors)),
+                                                                "explained_variance_fraction": float(explained.sum())}
     parts = {s: pm.embedding_parts(ex, cache) for s, ex in examples.items()}
     scal = {s: pm.scalar_features(ex, vmap) for s, ex in examples.items()}
     tgt = {s: pm.targets(ex, vmap) for s, ex in examples.items()}
@@ -122,34 +123,66 @@ def run(config_path, embeddings_dir, dailydialog_dir, output, log=print):
     summary["timings"]["baselines_seconds"] = time.perf_counter() - t0 - summary["timings"]["data_seconds"]
     log("baselines done")
 
-    # ---- learned models --------------------------------------------------------------------------
-    mcfg = cfg["models"]["mlp"]; models = {}; per_seed = {}
+    # ---- learned models: configuration selected on the valid split, then seeds -------------------
+    mcfg = cfg["models"]["mlp"]; sel = mcfg["selection"]; models = {}; per_seed = {}; onehot = np.eye(len(emotions))
+
+    def inputs(fs, k):
+        proto = pm.LearnedPartnerModel(fs, emb_mean, emb_sd, np.ones(len(emotions)) / len(emotions), vmap, embedding_projection=None if fs == "scalars" else projections[k])
+        return proto, {s: proto.assemble(*parts[s], scal[s][:, :NH], scal[s][:, NH:]) for s in examples}
+
+    def fit(fs, k, l2, seed):
+        proto, x = inputs(fs, k)
+        model, hist = pm.LearnedPartnerModel.train(fs, x["train"], tr_v, tr_c, x["valid"], dv_v, dv_c, embedding_mean=emb_mean, embedding_sd=emb_sd,
+                                                   hidden=tuple(mcfg["hidden"]), activation=mcfg["activation"], lr=mcfg["lr"], l2=l2, batch=mcfg["batch"],
+                                                   epochs=mcfg["epochs"], patience=mcfg["patience"], seed=seed, valence_map=vmap, embedding_projection=proto.embedding_projection,
+                                                   metadata={"embedding_sd_floor": sd_floor, "pca_components": k, "whitened": whiten, "protocol_frozen_utc": cfg["protocol_frozen_utc"]})
+        return model, hist, x
+
     for fs in mcfg["variants"]:
-        proto = pm.LearnedPartnerModel(fs, emb_mean, emb_sd, np.ones(len(emotions)) / len(emotions), vmap, embedding_projection=projection)
-        x = {s: proto.assemble(*parts[s], scal[s][:, :NH], scal[s][:, NH:]) for s in examples}
-        per_seed[fs] = {}
+        grid = [(None, l2) for l2 in sel["grid"]["l2"]] if fs == "scalars" else [(k, l2) for k in sel["grid"]["pca_components"] for l2 in sel["grid"]["l2"]]
+        table, runs = [], {}
+        for k, l2 in grid:
+            t1 = time.perf_counter(); model, hist, _ = fit(fs, k, l2, mcfg["headline_seed"])
+            table.append({"pca_components": k, "l2": l2, "valence_dev_mse": model.valence_head.metadata["best_dev_loss"], "class_dev_bce": model.class_head.metadata["best_dev_loss"],
+                          "valence_epochs": len(hist["valence"]), "class_epochs": len(hist["class"]), "seconds": time.perf_counter() - t1})
+            runs[(k, l2)] = (model, hist)
+            log(f"  select mlp_{fs} k={k} l2={l2}: valence dev MSE {table[-1]['valence_dev_mse']:.5f}, class dev BCE {table[-1]['class_dev_bce']:.5f} ({table[-1]['seconds']:.0f}s)")
+        best = min(table, key=lambda r: (r["valence_dev_mse"], -r["l2"], -(r["pca_components"] or 0)))   # ties -> stronger penalty, fewer components
+        bk, bl2 = best["pca_components"], best["l2"]; name = f"mlp_{fs}"; per_seed[fs] = {}
+        proto, x = inputs(fs, bk)
         for seed in mcfg["seeds"]:
             t1 = time.perf_counter()
-            model, hist = pm.LearnedPartnerModel.train(fs, x["train"], tr_v, tr_c, x["valid"], dv_v, dv_c, embedding_mean=emb_mean, embedding_sd=emb_sd,
-                                                       hidden=tuple(mcfg["hidden"]), activation=mcfg["activation"], lr=mcfg["lr"], l2=mcfg["l2"], batch=mcfg["batch"],
-                                                       epochs=mcfg["epochs"], patience=mcfg["patience"], seed=seed, valence_map=vmap, embedding_projection=projection,
-                                                       metadata={"embedding_sd_floor": sd_floor, "pca_components": components, "protocol_frozen_utc": cfg["protocol_frozen_utc"]})
-            out = model.predict(x["test"]); name = f"mlp_{fs}"
+            model, hist = runs[(bk, bl2)] if seed == mcfg["headline_seed"] else fit(fs, bk, bl2, seed)[:2]
+            out = model.predict(x["test"])
             per_seed[fs][str(seed)] = {"argmax": pm.evaluate(out["valence"], te_v, out["class"], te_c), "balanced": pm.evaluate(out["valence"], te_v, out["class_balanced"], te_c),
                                        "seconds": time.perf_counter() - t1, "valence_head": model.valence_head.metadata, "class_head": model.class_head.metadata}
             summary["training"][f"{name}|seed={seed}"] = {"valence": hist["valence"], "class": hist["class"]}
             if seed == mcfg["headline_seed"]:
                 models[fs] = model; preds[name] = (out["valence"], out["class"]); preds[f"{name}|balanced"] = (out["valence"], out["class_balanced"])
-            log(f"{name} seed {seed}: {per_seed[fs][str(seed)]['seconds']:.0f}s, test MAE {per_seed[fs][str(seed)]['argmax']['mae']:.4f}, acc {per_seed[fs][str(seed)]['argmax']['accuracy']:.4f}, macroF1 {per_seed[fs][str(seed)]['argmax']['macro_f1']:.4f}")
-        summary["models"][f"mlp_{fs}"] = {"feature_set": fs, "input_size": proto.input_size, **{k: mcfg[k] for k in ("hidden", "activation", "lr", "l2", "batch", "epochs", "patience")},
-                                          "headline_seed": mcfg["headline_seed"], "per_seed_test": per_seed[fs],
-                                          "seed_mean": {m: float(np.mean([per_seed[fs][str(s)]["argmax"][m] for s in mcfg["seeds"]])) for m in ("mae", "rmse", "sign_accuracy_nonneutral", "sign_accuracy_balanced", "accuracy", "macro_f1")}}
+            log(f"{name} k={bk} l2={bl2} seed {seed}: test MAE {per_seed[fs][str(seed)]['argmax']['mae']:.4f} RMSE {per_seed[fs][str(seed)]['argmax']['rmse']:.4f} acc {per_seed[fs][str(seed)]['argmax']['accuracy']:.4f} macroF1 {per_seed[fs][str(seed)]['argmax']['macro_f1']:.4f}")
+        summary["models"][name] = {"feature_set": fs, "input_size": proto.input_size, **{k_: mcfg[k_] for k_ in ("hidden", "activation", "lr", "batch", "epochs", "patience")},
+                                   "selection": {"criterion": sel["criterion"], "grid": table, "selected": {"pca_components": bk, "l2": bl2}},
+                                   "headline_seed": mcfg["headline_seed"], "per_seed_test": per_seed[fs],
+                                   "seed_mean": {m: float(np.mean([per_seed[fs][str(s_)]["argmax"][m] for s_ in mcfg["seeds"]])) for m in ("mae", "rmse", "sign_accuracy_nonneutral", "sign_accuracy_balanced", "accuracy", "macro_f1")}}
+    # Linear comparator on the headline feature set: ridge over whitened projected embeddings + scalars (k and lambda by valid MSE).
+    rcfg = cfg["models"]["ridge_embeddings"]; rtable = []; best_r = None
+    for k in rcfg["pca_components"]:
+        proto_r, xr = inputs("embeddings+scalars", k)
+        rv_k, scores, lam_k = pm.RidgeModel.select(xr["train"], tr_v, xr["valid"], dv_v, rcfg["lambda_grid"])
+        rc_k, cscores, lamc_k = pm.RidgeModel.select(xr["train"], onehot[tr_c], xr["valid"], onehot[dv_c], rcfg["lambda_grid"])
+        rtable.append({"pca_components": k, "lambda_valence": lam_k, "valid_mse_valence": scores[str(lam_k)], "lambda_class": lamc_k, "valid_mse_class": cscores[str(lamc_k)]})
+        if best_r is None or scores[str(lam_k)] < best_r[0]:
+            best_r = (scores[str(lam_k)], k, rv_k, rc_k, proto_r, xr)
+    _, rk, ridge_e_v, ridge_e_c, proto_r, xr = best_r
+    preds["ridge_embeddings"] = (np.clip(ridge_e_v.predict(xr["test"])[:, 0], -1, 1), ridge_e_c.predict(xr["test"]).argmax(axis=1))
+    summary["models"]["ridge_embeddings"] = {"description": rcfg["description"], "selection": rtable, "selected_pca_components": rk, "input_size": proto_r.input_size}
+    log(f"ridge_embeddings k={rk}")
     summary["timings"]["training_seconds"] = time.perf_counter() - t0 - summary["timings"]["data_seconds"] - summary["timings"]["baselines_seconds"]
 
     # ---- test evaluation, once -----------------------------------------------------------------
     iv = cfg["metrics"]["intervals"]; headline = f"mlp_{mcfg['headline_variant']}"
     pairs = [(n, "persistence") for n in preds if n != "persistence"] + [(n, "identifier_default") for n in preds if n != "identifier_default"]
-    pairs += [(headline, "mlp_scalars"), (headline, "mlp_embeddings"), (headline, "ridge")]
+    pairs += [(headline, "mlp_scalars"), (headline, "mlp_embeddings"), (headline, "ridge"), (headline, "ridge_embeddings"), ("ridge_embeddings", "ridge"), ("mlp_scalars", "ridge")]
     pairs = [p for p in pairs if p[0] in preds and p[1] in preds]
     summary["test"] = pm.bootstrap_metrics(keys["test"], te_v, te_c, preds, seed=iv["seed"], samples=iv["samples"], pairs=pairs)
     summary["test"]["point_estimates"] = {n: pm.evaluate(v, te_v, c, None if c is None else te_c) for n, (v, c) in preds.items()}
@@ -162,6 +195,7 @@ def run(config_path, embeddings_dir, dailydialog_dir, output, log=print):
     for fs, model in models.items():
         checks[f"mlp_{fs}"] = pm.preference_check(lambda ep, ea, eb, hh, cc, m=model: m.predict(m.assemble(ep, ea, eb, hh, cc))["valence"],
                                                   e_prev, e_a, e_b, h, c, te_v, keys["test"], seed=pc["seed"], samples=pc["bootstrap_samples"])
+    checks["ridge_embeddings"] = pm.preference_check(lambda ep, ea, eb, hh, cc: np.clip(ridge_e_v.predict(proto_r.assemble(ep, ea, eb, hh, cc))[:, 0], -1, 1), e_prev, e_a, e_b, h, c, te_v, keys["test"], seed=pc["seed"], samples=pc["bootstrap_samples"])
     checks["ridge"] = pm.preference_check(lambda ep, ea, eb, hh, cc: np.clip(ridge_v.predict(np.hstack([hh, cc]))[:, 0], -1, 1), e_prev, e_a, e_b, h, c, te_v, keys["test"], seed=pc["seed"], samples=pc["bootstrap_samples"])
     # The identifier ignores embeddings; its per-example parameters are passed in the E_prev slot so the same item/other pairing applies.
     checks["identifier_default"] = pm.preference_check(lambda th, ea, eb, hh, cc: pm.identifier_candidate_valence(th, hh[:, A_VALENCE], cc[:, 0]), thetas_default, e_a, e_b, h, c, te_v, keys["test"], seed=pc["seed"], samples=pc["bootstrap_samples"])

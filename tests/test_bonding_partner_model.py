@@ -228,7 +228,9 @@ class RunnerChecks(unittest.TestCase):
         from regesh.bonding.embeddings import EmbeddingCache
         rng = np.random.default_rng(11); rows, cache = synthetic_dialogues(90, rng)
         cfg = json.loads(Path("configs/bonding_partner_model.json").read_text())
-        cfg["models"]["mlp"].update(epochs=3, seeds=[0, 1], hidden=[8]); cfg["metrics"]["intervals"]["samples"] = 20; cfg["preference_check"]["bootstrap_samples"] = 20
+        cfg["models"]["mlp"].update(epochs=3, seeds=[0, 1], hidden=[8]); cfg["models"]["mlp"]["selection"]["grid"] = {"l2": [0.01, 0.1], "pca_components": [2]}
+        cfg["models"]["ridge_embeddings"].update(pca_components=[2, 3], lambda_grid=[1.0, 10.0])
+        cfg["metrics"]["intervals"]["samples"] = 20; cfg["preference_check"]["bootstrap_samples"] = 20
         cfg["data"]["splits"]["train"]["fraction"] = 1.0
         with tempfile.TemporaryDirectory() as tmp:
             tmp = Path(tmp); (tmp / "dd").mkdir(); (tmp / "emb").mkdir()
@@ -247,6 +249,11 @@ class RunnerChecks(unittest.TestCase):
             self.assertIn("mae", summary["test"]["paired_differences"]["mlp_embeddings+scalars - persistence"])
             self.assertNotIn("accuracy", summary["test"]["estimates"]["identifier_default"])
             self.assertEqual(set(summary["models"]["mlp_scalars"]["per_seed_test"]), {"0", "1"})
+            self.assertEqual(len(summary["models"]["mlp_embeddings"]["selection"]["grid"]), 2); self.assertEqual(len(summary["models"]["mlp_scalars"]["selection"]["grid"]), 2)
+            self.assertIn(summary["models"]["mlp_embeddings+scalars"]["selection"]["selected"]["l2"], (0.01, 0.1))
+            self.assertIn(summary["models"]["ridge_embeddings"]["selected_pca_components"], (2, 3)); self.assertIn("ridge_embeddings", summary["test"]["estimates"])
+            self.assertEqual(set(summary["data"]["embeddings"]["projections"]), {"2", "3"})
+            self.assertIn("preference_accuracy", summary["preference_check"]["ridge_embeddings"])
             self.assertIn("preference_accuracy", summary["preference_check"]["mlp_embeddings"])
             self.assertEqual(summary["preference_check"]["persistence"]["ties_fraction"], 1.)
             model = pm.LearnedPartnerModel.load(out / "partner_model.json.gz")
