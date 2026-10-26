@@ -421,12 +421,17 @@ def macro_f1(target, pred, n_classes=len(EMOTIONS)):
 
 
 def evaluate(pred_valence, target_valence, pred_class=None, target_class=None, n_classes=len(EMOTIONS)):
-    """Valence MAE/RMSE, sign accuracy on non-neutral targets (a zero prediction counts as wrong), and class metrics."""
+    """Valence MAE/RMSE, sign accuracy on non-neutral targets (a zero prediction counts as wrong; also balanced over sign), and class metrics."""
     pv = np.asarray(pred_valence, float); tv = np.asarray(target_valence, float)
-    err = pv - tv; nonneutral = tv != 0
+    err = pv - tv; nonneutral = tv != 0; pos, neg = tv > 0, tv < 0
+    hit = np.sign(pv) == np.sign(tv)
+    acc_pos = float(hit[pos].mean()) if pos.any() else float("nan"); acc_neg = float(hit[neg].mean()) if neg.any() else float("nan")
     out = {"n": int(len(tv)), "mae": float(np.abs(err).mean()) if len(tv) else float("nan"), "rmse": float(np.sqrt((err ** 2).mean())) if len(tv) else float("nan"),
-           "n_nonneutral": int(nonneutral.sum()),
-           "sign_accuracy_nonneutral": float((np.sign(pv[nonneutral]) == np.sign(tv[nonneutral])).mean()) if nonneutral.any() else float("nan")}
+           "n_nonneutral": int(nonneutral.sum()), "n_positive": int(pos.sum()), "n_negative": int(neg.sum()),
+           "sign_accuracy_nonneutral": float(hit[nonneutral].mean()) if nonneutral.any() else float("nan"),
+           "sign_accuracy_positive": acc_pos, "sign_accuracy_negative": acc_neg,
+           # mean of the two one-sided accuracies: a constant positive guess scores .5, not the positive share
+           "sign_accuracy_balanced": float(np.nanmean([acc_pos, acc_neg])) if (pos.any() or neg.any()) else float("nan")}
     if pred_class is not None and target_class is not None:
         pc = np.asarray(pred_class, int); tc = np.asarray(target_class, int)
         f1, per_class = macro_f1(tc, pc, n_classes)
@@ -446,7 +451,8 @@ def _group_offsets(dialogue_keys):
     return np.array(starts, int), np.array(sizes, int)
 
 
-def bootstrap_metrics(dialogue_keys, target_valence, target_class, predictions, *, seed, samples, pairs=(), metrics=("mae", "rmse", "sign_accuracy_nonneutral", "accuracy", "macro_f1")):
+def bootstrap_metrics(dialogue_keys, target_valence, target_class, predictions, *, seed, samples, pairs=(),
+                      metrics=("mae", "rmse", "sign_accuracy_nonneutral", "sign_accuracy_balanced", "accuracy", "macro_f1")):
     """Dialogue-level bootstrap intervals for each prediction set and paired differences.
 
     `predictions`: {name: (valence (n,), class (n,) or None)}; `pairs`: [(name, baseline_name)]

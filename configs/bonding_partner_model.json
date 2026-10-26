@@ -91,7 +91,9 @@
         1.0,
         10.0,
         100.0,
-        1000.0
+        1000.0,
+        10000.0,
+        100000.0
       ],
       "selection": "lowest valid mean squared error, valence and one-hot block separately"
     },
@@ -131,7 +133,8 @@
     "valence": [
       "MAE",
       "RMSE",
-      "sign accuracy on non-neutral targets (a zero prediction counts as wrong)"
+      "sign accuracy on non-neutral targets (a zero prediction counts as wrong)",
+      "balanced sign accuracy: mean of the sign accuracies on positive and on negative targets (a constant positive guess scores .5)"
     ],
     "class": [
       "accuracy",
@@ -205,6 +208,13 @@
       "change": "Added a PCA projection to 256 components per utterance between standardization and the MLP (previously the full 1536 standardized dimensions, 4621 inputs).",
       "reason": "A timing check at full scale with random inputs measured 7.1 s per epoch under CPU contention with the embedding server, a worst case near two hours for 80 epochs x 2 heads x 3 seeds x 2 embedding variants, outside the declared minutes budget. With 256 components one epoch takes 1.8 s (worst case 29 min, less with early stopping). On the 4,096 test-split vectors cached at the time (geometry only, no labels read) 256 components keep .82 of the standardized variance and 128 keep .72.",
       "what_was_not_seen": "No target label, no prediction and no metric of any model on any split had been computed with real embeddings when this change was made."
+    },
+    {
+      "utc": "2026-10-26T03:05:00Z",
+      "before_any_test_data": true,
+      "change": "Added balanced sign accuracy to the valence metrics and extended the ridge penalty grid to 1e5.",
+      "reason": "A code-path check of the scalar baselines on the VALID split (no embeddings, test untouched) showed that the constant baseline reaches .83 plain sign accuracy because most non-neutral targets are happiness, so plain sign accuracy rewards a positive bias; and the ridge penalty selected on valid was the top of the original grid (1000). Train-subset targets: 81.7% no_emotion, 13.6% happiness; valid: 87.7% / 8.7%.",
+      "what_was_not_seen": "No test-split prediction or metric had been computed."
     }
   ]
 }

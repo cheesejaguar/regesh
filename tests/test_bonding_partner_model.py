@@ -139,6 +139,8 @@ class EvaluationChecks(unittest.TestCase):
         ev = pm.evaluate(pv, tv, [0, 4, 1, 0, 0], [0, 4, 1, 0, 6])
         self.assertAlmostEqual(ev["mae"], np.mean([0., .5, .8, .1, .3])); self.assertEqual(ev["n_nonneutral"], 3)
         self.assertAlmostEqual(ev["sign_accuracy_nonneutral"], 1 / 3)      # .2 vs .7 right, .1 vs -.7 wrong, 0 vs .3 wrong
+        self.assertAlmostEqual(ev["sign_accuracy_balanced"], (.5 + 0.) / 2); self.assertEqual((ev["n_positive"], ev["n_negative"]), (2, 1))
+        self.assertAlmostEqual(pm.evaluate(np.full(5, .1), tv)["sign_accuracy_balanced"], .5)   # constant positive guess scores .5
         self.assertAlmostEqual(ev["accuracy"], .8)
         self.assertAlmostEqual(ev["macro_f1"], np.mean([2 * (2 / 3) * 1 / (2 / 3 + 1), 1., 1., 0.]))   # classes present: no_emotion, anger, happiness, surprise
         keys = [("t", 0), ("t", 0), ("t", 1), ("t", 2), ("t", 2)]

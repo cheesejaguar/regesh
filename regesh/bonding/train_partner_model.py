@@ -142,7 +142,7 @@ def run(config_path, embeddings_dir, dailydialog_dir, output, log=print):
             log(f"{name} seed {seed}: {per_seed[fs][str(seed)]['seconds']:.0f}s, test MAE {per_seed[fs][str(seed)]['argmax']['mae']:.4f}, acc {per_seed[fs][str(seed)]['argmax']['accuracy']:.4f}, macroF1 {per_seed[fs][str(seed)]['argmax']['macro_f1']:.4f}")
         summary["models"][f"mlp_{fs}"] = {"feature_set": fs, "input_size": proto.input_size, **{k: mcfg[k] for k in ("hidden", "activation", "lr", "l2", "batch", "epochs", "patience")},
                                           "headline_seed": mcfg["headline_seed"], "per_seed_test": per_seed[fs],
-                                          "seed_mean": {m: float(np.mean([per_seed[fs][str(s)]["argmax"][m] for s in mcfg["seeds"]])) for m in ("mae", "rmse", "sign_accuracy_nonneutral", "accuracy", "macro_f1")}}
+                                          "seed_mean": {m: float(np.mean([per_seed[fs][str(s)]["argmax"][m] for s in mcfg["seeds"]])) for m in ("mae", "rmse", "sign_accuracy_nonneutral", "sign_accuracy_balanced", "accuracy", "macro_f1")}}
     summary["timings"]["training_seconds"] = time.perf_counter() - t0 - summary["timings"]["data_seconds"] - summary["timings"]["baselines_seconds"]
 
     # ---- test evaluation, once -----------------------------------------------------------------
