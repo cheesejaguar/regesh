@@ -72,7 +72,8 @@
     "missing_previous_turn": "zero vector after standardization, with has_prev = 0",
     "sd_floor": 0.001,
     "pca_components": 256,
-    "projection": "after standardization each utterance vector is projected onto the top 256 principal components fitted on the standardized unique training utterances (deterministic eigendecomposition, signs fixed); the explained-variance fraction is recorded in summary.json"
+    "projection": "after standardization each utterance vector is projected onto the top 256 principal components fitted on the standardized unique training utterances (deterministic eigendecomposition, signs fixed) and whitened (each component divided by its training standard deviation, unit variance per component); the explained-variance fraction is recorded in summary.json",
+    "whiten": true
   },
   "models": {
     "persistence": "predicted valence = A's valence at t; predicted class = A's emotion at t",
@@ -215,6 +216,13 @@
       "change": "Added balanced sign accuracy to the valence metrics and extended the ridge penalty grid to 1e5.",
       "reason": "A code-path check of the scalar baselines on the VALID split (no embeddings, test untouched) showed that the constant baseline reaches .83 plain sign accuracy because most non-neutral targets are happiness, so plain sign accuracy rewards a positive bias; and the ridge penalty selected on valid was the top of the original grid (1000). Train-subset targets: 81.7% no_emotion, 13.6% happiness; valid: 87.7% / 8.7%.",
       "what_was_not_seen": "No test-split prediction or metric had been computed."
+    },
+    {
+      "utc": "2026-10-26T03:11:00Z",
+      "before_any_label_use": true,
+      "change": "The 256 projected components are whitened to unit variance per component.",
+      "reason": "With the plain projection the leading components have standard deviations near 10 in standardized units; a forward pass of the untrained MLP on the real inputs put 51% of hidden tanh units beyond |.95| at initialization (pre-activation sd 2.8), the vanishing-gradient regime. Whitening restores the unit-variance inputs the Xavier initialization assumes.",
+      "what_was_seen": "Only embedding geometry (test-split utterance vectors without any label; the projection in the frozen run is fitted on training utterances). No target, prediction or metric was computed."
     }
   ]
 }

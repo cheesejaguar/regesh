@@ -94,8 +94,10 @@ class DatasetChecks(unittest.TestCase):
         z = (cache.get(pm.example_texts(ex)) - mean) / sd
         comps, explained = pm.fit_projection(z, 3)
         np.testing.assert_allclose(comps, pm.fit_projection(z, 3)[0]); self.assertEqual(comps.shape, (8, 3))
-        np.testing.assert_allclose(comps.T @ comps, np.eye(3), atol=1e-10); self.assertTrue(0 < explained.sum() <= 1 + 1e-9)
+        np.testing.assert_allclose((z @ comps).std(axis=0), 1., atol=1e-8)        # whitened: unit variance per component on the fit data
+        np.testing.assert_allclose(np.corrcoef((z @ comps).T), np.eye(3), atol=1e-8); self.assertTrue(0 < explained.sum() <= 1 + 1e-9)
         self.assertTrue((comps[np.abs(comps).argmax(axis=0), np.arange(3)] > 0).all())
+        raw, _ = pm.fit_projection(z, 3, whiten=False); np.testing.assert_allclose(raw.T @ raw, np.eye(3), atol=1e-10)
         proj = pm.LearnedPartnerModel("embeddings+scalars", mean, sd, np.full(7, 1 / 7), valence_head=MLP([22, 1]), class_head=MLP([22, 7], loss="bce"), embedding_projection=comps)
         self.assertEqual((proj.latent, proj.input_size), (3, 22)); self.assertEqual(proj.features(ex, cache).shape, (7, 22))
         np.testing.assert_allclose(proj.features(ex, cache)[:, 3:6], z[[pm.example_texts(ex).index(e["a_text"]) for e in ex]] @ comps)

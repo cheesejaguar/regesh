@@ -86,8 +86,9 @@ def run(config_path, embeddings_dir, dailydialog_dir, output, log=print):
     train_vectors = cache.get(needed["train"]); emb_mean, emb_sd = pm.fit_standardizer(train_vectors, sd_floor)
     projection, explained = (None, None)
     if components:
-        projection, explained = pm.fit_projection((train_vectors - emb_mean) / emb_sd, components)
-        summary["data"]["embeddings"]["projection"] = {"components": int(components), "fitted_on_utterances": int(len(train_vectors)),
+        whiten = cfg["embeddings"].get("whiten", True)
+        projection, explained = pm.fit_projection((train_vectors - emb_mean) / emb_sd, components, whiten)
+        summary["data"]["embeddings"]["projection"] = {"components": int(components), "whitened": bool(whiten), "fitted_on_utterances": int(len(train_vectors)),
                                                        "explained_variance_fraction": float(explained.sum()), "explained_by_component": [float(v) for v in explained]}
     parts = {s: pm.embedding_parts(ex, cache) for s, ex in examples.items()}
     scal = {s: pm.scalar_features(ex, vmap) for s, ex in examples.items()}

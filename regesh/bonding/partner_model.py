@@ -140,17 +140,23 @@ def fit_standardizer(vectors, floor=1e-3):
     return vectors.mean(axis=0), np.maximum(vectors.std(axis=0), floor)
 
 
-def fit_projection(z, components):
-    """Principal components of standardized vectors: (d, k) matrix and the explained-variance fractions.
+def fit_projection(z, components, whiten=True, floor=1e-6):
+    """Principal components of standardized vectors: (d, k) projection matrix and the explained-variance fractions.
 
     Deterministic: eigendecomposition of the covariance, descending order, each component's
-    sign fixed so its largest-magnitude entry is positive.
+    sign fixed so its largest-magnitude entry is positive. With `whiten` each column is divided
+    by the component's standard deviation, so projected fit vectors have unit variance per
+    component (the input scale the MLP initialization assumes; without it the leading
+    components, with standard deviations near 10, saturate tanh units at initialization).
     """
     z = np.asarray(z, float); cov = z.T @ z / max(1, len(z))
     values, vectors = np.linalg.eigh(cov); order = np.argsort(values)[::-1][:components]
     comps = vectors[:, order]; values = np.maximum(values[order], 0.)
     signs = np.sign(comps[np.abs(comps).argmax(axis=0), np.arange(comps.shape[1])]); signs[signs == 0] = 1.
-    return comps * signs, values / max(np.trace(cov), 1e-12)
+    comps = comps * signs
+    if whiten:
+        comps = comps / np.sqrt(np.maximum(values, floor))
+    return comps, values / max(np.trace(cov), 1e-12)
 
 
 def class_distribution(classes, n_classes=len(EMOTIONS)):
