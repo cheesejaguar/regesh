@@ -118,5 +118,5 @@ partner model (slot 2) in parallel.
   start; the identifier now warm-starts from the pooled DailyDialog fit (RMSE
   .244 vs .275), diffuse start selectable; persistence predicts the next
   emotion class best.
-- Full suite 266 tests pass; demo digest unchanged; audit covers nine manifests.
+- Full suite 252 tests pass; demo digest unchanged; audit covers nine manifests.
 
