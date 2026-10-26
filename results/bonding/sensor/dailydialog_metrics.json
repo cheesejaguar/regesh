@@ -1,0 +1,606 @@
+{
+  "models": {
+    "linear": {
+      "accuracy": 0.8426356589147287,
+      "macro_f1": 0.30691929894247194,
+      "samples": 7740,
+      "per_class": [
+        {
+          "label": "no_emotion",
+          "support": 6321,
+          "predicted_count": 6922,
+          "precision": 0.8705576422999133,
+          "recall": 0.9533301692770131,
+          "f1": 0.9100656950841953
+        },
+        {
+          "label": "anger",
+          "support": 118,
+          "predicted_count": 21,
+          "precision": 0.42857142857142855,
+          "recall": 0.07627118644067797,
+          "f1": 0.12949640287769787
+        },
+        {
+          "label": "disgust",
+          "support": 47,
+          "predicted_count": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "fear",
+          "support": 17,
+          "predicted_count": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "happiness",
+          "support": 1019,
+          "predicted_count": 680,
+          "precision": 0.6338235294117647,
+          "recall": 0.422963689892051,
+          "f1": 0.507357268981754
+        },
+        {
+          "label": "sadness",
+          "support": 102,
+          "predicted_count": 28,
+          "precision": 0.32142857142857145,
+          "recall": 0.08823529411764706,
+          "f1": 0.13846153846153847
+        },
+        {
+          "label": "surprise",
+          "support": 116,
+          "predicted_count": 87,
+          "precision": 0.5402298850574713,
+          "recall": 0.4051724137931034,
+          "f1": 0.4630541871921182
+        }
+      ],
+      "confusion": [
+        [
+          6026,
+          10,
+          0,
+          1,
+          238,
+          19,
+          27
+        ],
+        [
+          101,
+          9,
+          1,
+          0,
+          2,
+          0,
+          5
+        ],
+        [
+          46,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          580,
+          0,
+          0,
+          0,
+          431,
+          0,
+          8
+        ],
+        [
+          91,
+          0,
+          0,
+          0,
+          2,
+          9,
+          0
+        ],
+        [
+          61,
+          1,
+          0,
+          0,
+          7,
+          0,
+          47
+        ]
+      ],
+      "valence_mae": 0.1462532299741602,
+      "valence_mae_soft": 0.19598298155856503,
+      "valid_accuracy": 0.8937910521749907
+    },
+    "mlp": {
+      "accuracy": 0.8404392764857881,
+      "macro_f1": 0.30689648092037775,
+      "samples": 7740,
+      "per_class": [
+        {
+          "label": "no_emotion",
+          "support": 6321,
+          "predicted_count": 6795,
+          "precision": 0.8769683590875644,
+          "recall": 0.9427305806043348,
+          "f1": 0.9086611771881672
+        },
+        {
+          "label": "anger",
+          "support": 118,
+          "predicted_count": 21,
+          "precision": 0.38095238095238093,
+          "recall": 0.06779661016949153,
+          "f1": 0.11510791366906475
+        },
+        {
+          "label": "disgust",
+          "support": 47,
+          "predicted_count": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "fear",
+          "support": 17,
+          "predicted_count": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "happiness",
+          "support": 1019,
+          "predicted_count": 788,
+          "precision": 0.6065989847715736,
+          "recall": 0.4690873405299313,
+          "f1": 0.5290536801328167
+        },
+        {
+          "label": "sadness",
+          "support": 102,
+          "predicted_count": 24,
+          "precision": 0.3333333333333333,
+          "recall": 0.0784313725490196,
+          "f1": 0.12698412698412698
+        },
+        {
+          "label": "surprise",
+          "support": 116,
+          "predicted_count": 106,
+          "precision": 0.49056603773584906,
+          "recall": 0.4482758620689655,
+          "f1": 0.46846846846846846
+        }
+      ],
+      "confusion": [
+        [
+          5959,
+          10,
+          2,
+          2,
+          293,
+          15,
+          40
+        ],
+        [
+          101,
+          8,
+          2,
+          0,
+          2,
+          0,
+          5
+        ],
+        [
+          46,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          15,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          531,
+          2,
+          0,
+          0,
+          478,
+          0,
+          8
+        ],
+        [
+          90,
+          0,
+          0,
+          0,
+          3,
+          8,
+          1
+        ],
+        [
+          53,
+          1,
+          0,
+          0,
+          10,
+          0,
+          52
+        ]
+      ],
+      "valence_mae": 0.1483204134366925,
+      "valence_mae_soft": 0.18663985602524852,
+      "valid_accuracy": 0.8924278101375636
+    }
+  },
+  "baselines": {
+    "majority": {
+      "accuracy": 0.8166666666666667,
+      "macro_f1": 0.12844036697247704,
+      "samples": 7740,
+      "per_class": [
+        {
+          "label": "no_emotion",
+          "support": 6321,
+          "predicted_count": 7740,
+          "precision": 0.8166666666666667,
+          "recall": 1.0,
+          "f1": 0.8990825688073394
+        },
+        {
+          "label": "anger",
+          "support": 118,
+          "predicted_count": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "disgust",
+          "support": 47,
+          "predicted_count": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "fear",
+          "support": 17,
+          "predicted_count": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "happiness",
+          "support": 1019,
+          "predicted_count": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "sadness",
+          "support": 102,
+          "predicted_count": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "surprise",
+          "support": 116,
+          "predicted_count": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      ],
+      "confusion": [
+        [
+          6321,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          118,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          47,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1019,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          102,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          116,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "valence_mae": 0.16834625322997415
+    },
+    "bernoulli_20": {
+      "accuracy": 0.819250645994832,
+      "macro_f1": 0.1869264777391966,
+      "samples": 7740,
+      "per_class": [
+        {
+          "label": "no_emotion",
+          "support": 6321,
+          "predicted_count": 7040,
+          "precision": 0.8522727272727273,
+          "recall": 0.9492168960607499,
+          "f1": 0.8981363670383954
+        },
+        {
+          "label": "anger",
+          "support": 118,
+          "predicted_count": 30,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "disgust",
+          "support": 47,
+          "predicted_count": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "fear",
+          "support": 17,
+          "predicted_count": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "happiness",
+          "support": 1019,
+          "predicted_count": 643,
+          "precision": 0.5303265940902022,
+          "recall": 0.33464180569185475,
+          "f1": 0.41034897713598073
+        },
+        {
+          "label": "sadness",
+          "support": 102,
+          "predicted_count": 15,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "surprise",
+          "support": 116,
+          "predicted_count": 12,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      ],
+      "confusion": [
+        [
+          6000,
+          27,
+          0,
+          0,
+          274,
+          12,
+          8
+        ],
+        [
+          113,
+          0,
+          0,
+          0,
+          4,
+          0,
+          1
+        ],
+        [
+          44,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          16,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          671,
+          2,
+          0,
+          0,
+          341,
+          2,
+          3
+        ],
+        [
+          98,
+          1,
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          98,
+          0,
+          0,
+          0,
+          18,
+          0,
+          0
+        ]
+      ],
+      "valence_mae": 0.1686046511627907
+    }
+  },
+  "zero_shot": {
+    "sensor_digest": "c78e4218de10948b1e478963e1811b150b634ae06addcb5c15c6a93098118a3a",
+    "selected_head": "linear",
+    "sign_agreement": {
+      "n": 1303,
+      "agreement": 0.8940905602455871,
+      "positive_fraction": 0.7820414428242517,
+      "bootstrap": {
+        "estimate": 0.8940905602455871,
+        "ci95": [
+          0.8769425167622765,
+          0.91086425448619
+        ],
+        "samples": 1000,
+        "seed": 20261026,
+        "n": 7740
+      }
+    },
+    "baselines": {
+      "chance": 0.5,
+      "majority_sign": 0.7820414428242517
+    },
+    "roc_auc_positive_vs_negative": 0.9337965970504084,
+    "average_precision_positive": 0.9788016846785286,
+    "three_way": {
+      "dead_band": 0.1,
+      "accuracy": 0.4484496124031008,
+      "predict_zero_everywhere": 0.8316537467700258,
+      "confusion_gold_rows_neg_zero_pos": [
+        [
+          171,
+          74,
+          39
+        ],
+        [
+          914,
+          2426,
+          3097
+        ],
+        [
+          24,
+          121,
+          874
+        ]
+      ]
+    },
+    "mean_valence_by_emotion": {
+      "no_emotion": {
+        "n": 6321,
+        "mean": 0.11731431543755722
+      },
+      "anger": {
+        "n": 118,
+        "mean": -0.14325787393481917
+      },
+      "disgust": {
+        "n": 47,
+        "mean": -0.20885467126952859
+      },
+      "fear": {
+        "n": 17,
+        "mean": -0.06051389602879524
+      },
+      "happiness": {
+        "n": 1019,
+        "mean": 0.427451200223958
+      },
+      "sadness": {
+        "n": 102,
+        "mean": -0.1860202472433455
+      },
+      "surprise": {
+        "n": 116,
+        "mean": 0.029813236851322002
+      }
+    },
+    "mean_abs_valence_no_emotion": 0.20050822160202134,
+    "mean_abs_valence_emotional": 0.40096265763273464,
+    "mean_support_proxy": 0.30877788228468434
+  }
+}

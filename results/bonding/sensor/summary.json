@@ -1,0 +1,4450 @@
+{
+  "schema_version": 1,
+  "title": "Partner-state sensor: affect evidence from the reply model's own embeddings",
+  "protocol_frozen_utc": "2026-10-26T03:00:00Z",
+  "started_utc": "2026-10-26T05:37:47.208117+00:00",
+  "goemotions": {
+    "counts": {
+      "official_train": 43410,
+      "selected_35": 15093,
+      "fit": 13599,
+      "development": 1494,
+      "test": 5427,
+      "labels": 28
+    },
+    "dimension": 1536,
+    "source_sha256": {
+      "train": "1c254a142be5c00e80d819b9ae1bbd36d94b2eeb8f4b1271846508d57e57d9c5",
+      "test": "0587b2dd8b27b97352adbfc3fb083d46005c8946657fdc2b1ca8b1cc7f1f8be4",
+      "labels": "45c3ef86782d2a4d7fedcd6d8c111aa0d0e94720689bd164fac94fefb4495a89"
+    },
+    "standardization": {
+      "mean_sha256": "6c57bf84ba6f6c05fe34014da059f724b489062c2242ef3deb7aff0e0aadcf72",
+      "std_sha256": "0b927fe5e281cf69b0599a4c86080516ac6ed615b48155d356c1d310f0dc97af",
+      "std_min": 5.7921990376534624e-05,
+      "std_max": 0.1715805296157774,
+      "raw_norm_mean": 0.9999991655349731
+    },
+    "models": {
+      "linear": {
+        "sizes": [
+          1536,
+          28
+        ],
+        "parameters": 43036,
+        "epochs_run": 60,
+        "best_dev_bce": 0.1151949112041045,
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 0.6749397343009428,
+            "dev_loss": 0.6813463337196654
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.6099113401170706,
+            "dev_loss": 0.6149220160548697
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.5610609731184394,
+            "dev_loss": 0.5655424196019901
+          },
+          {
+            "epoch": 4,
+            "train_loss": 0.5199470498054698,
+            "dev_loss": 0.5263512208680053
+          },
+          {
+            "epoch": 5,
+            "train_loss": 0.48146494051813077,
+            "dev_loss": 0.4903877157217336
+          },
+          {
+            "epoch": 6,
+            "train_loss": 0.4491175880090233,
+            "dev_loss": 0.4563673457436012
+          },
+          {
+            "epoch": 7,
+            "train_loss": 0.4186989113176991,
+            "dev_loss": 0.4283173767968188
+          },
+          {
+            "epoch": 8,
+            "train_loss": 0.3937328326487396,
+            "dev_loss": 0.40420356638041827
+          },
+          {
+            "epoch": 9,
+            "train_loss": 0.3694338831577055,
+            "dev_loss": 0.38334715994374585
+          },
+          {
+            "epoch": 10,
+            "train_loss": 0.3475206042458334,
+            "dev_loss": 0.3602700000253709
+          },
+          {
+            "epoch": 11,
+            "train_loss": 0.32656819880911536,
+            "dev_loss": 0.33863715760294977
+          },
+          {
+            "epoch": 12,
+            "train_loss": 0.3099621800211579,
+            "dev_loss": 0.32188501983971457
+          },
+          {
+            "epoch": 13,
+            "train_loss": 0.2928776603164555,
+            "dev_loss": 0.3067793973083689
+          },
+          {
+            "epoch": 14,
+            "train_loss": 0.2772850433704405,
+            "dev_loss": 0.2897320592211972
+          },
+          {
+            "epoch": 15,
+            "train_loss": 0.2643240627929914,
+            "dev_loss": 0.27643528199521356
+          },
+          {
+            "epoch": 16,
+            "train_loss": 0.2513313199847855,
+            "dev_loss": 0.2638330953744514
+          },
+          {
+            "epoch": 17,
+            "train_loss": 0.23840563818496277,
+            "dev_loss": 0.2521759902125562
+          },
+          {
+            "epoch": 18,
+            "train_loss": 0.22814770341950275,
+            "dev_loss": 0.24141039152013807
+          },
+          {
+            "epoch": 19,
+            "train_loss": 0.21763987724196018,
+            "dev_loss": 0.23238975276449972
+          },
+          {
+            "epoch": 20,
+            "train_loss": 0.2086196593327457,
+            "dev_loss": 0.22268427145300068
+          },
+          {
+            "epoch": 21,
+            "train_loss": 0.20046749059995417,
+            "dev_loss": 0.21545903146667178
+          },
+          {
+            "epoch": 22,
+            "train_loss": 0.19267569555595193,
+            "dev_loss": 0.20737375504087996
+          },
+          {
+            "epoch": 23,
+            "train_loss": 0.1852342576758532,
+            "dev_loss": 0.20173861478111715
+          },
+          {
+            "epoch": 24,
+            "train_loss": 0.17776976092044933,
+            "dev_loss": 0.19323799070863934
+          },
+          {
+            "epoch": 25,
+            "train_loss": 0.1720201487307579,
+            "dev_loss": 0.18810159434175122
+          },
+          {
+            "epoch": 26,
+            "train_loss": 0.16600481221035854,
+            "dev_loss": 0.18377519746195017
+          },
+          {
+            "epoch": 27,
+            "train_loss": 0.1603363494370775,
+            "dev_loss": 0.17816066988263493
+          },
+          {
+            "epoch": 28,
+            "train_loss": 0.15497726836853204,
+            "dev_loss": 0.17318217230992683
+          },
+          {
+            "epoch": 29,
+            "train_loss": 0.15024300691337775,
+            "dev_loss": 0.1687030438818789
+          },
+          {
+            "epoch": 30,
+            "train_loss": 0.14577911864224036,
+            "dev_loss": 0.16456450084210267
+          },
+          {
+            "epoch": 31,
+            "train_loss": 0.14171808651638101,
+            "dev_loss": 0.16099940919371933
+          },
+          {
+            "epoch": 32,
+            "train_loss": 0.1375509138091915,
+            "dev_loss": 0.15741332036375905
+          },
+          {
+            "epoch": 33,
+            "train_loss": 0.1337812960480826,
+            "dev_loss": 0.15325232884523482
+          },
+          {
+            "epoch": 34,
+            "train_loss": 0.13064236249062267,
+            "dev_loss": 0.15085472926799554
+          },
+          {
+            "epoch": 35,
+            "train_loss": 0.1271284291734248,
+            "dev_loss": 0.1481383815744236
+          },
+          {
+            "epoch": 36,
+            "train_loss": 0.12404721233353806,
+            "dev_loss": 0.14532613205310407
+          },
+          {
+            "epoch": 37,
+            "train_loss": 0.12125566258817246,
+            "dev_loss": 0.14315566396921503
+          },
+          {
+            "epoch": 38,
+            "train_loss": 0.1180569557334134,
+            "dev_loss": 0.14057420237858836
+          },
+          {
+            "epoch": 39,
+            "train_loss": 0.11541636571012996,
+            "dev_loss": 0.13809637642609168
+          },
+          {
+            "epoch": 40,
+            "train_loss": 0.11305931148614326,
+            "dev_loss": 0.13630618172277437
+          },
+          {
+            "epoch": 41,
+            "train_loss": 0.11072495116873139,
+            "dev_loss": 0.13473285870291127
+          },
+          {
+            "epoch": 42,
+            "train_loss": 0.10829762765099228,
+            "dev_loss": 0.13266229572742563
+          },
+          {
+            "epoch": 43,
+            "train_loss": 0.10666269999373162,
+            "dev_loss": 0.13130136099817333
+          },
+          {
+            "epoch": 44,
+            "train_loss": 0.10443064809231864,
+            "dev_loss": 0.1295837634869298
+          },
+          {
+            "epoch": 45,
+            "train_loss": 0.10235118546292188,
+            "dev_loss": 0.12807154893630907
+          },
+          {
+            "epoch": 46,
+            "train_loss": 0.10051889673060573,
+            "dev_loss": 0.12693254784704244
+          },
+          {
+            "epoch": 47,
+            "train_loss": 0.09889215568263478,
+            "dev_loss": 0.1257822060938402
+          },
+          {
+            "epoch": 48,
+            "train_loss": 0.0971587452193496,
+            "dev_loss": 0.1243886429955313
+          },
+          {
+            "epoch": 49,
+            "train_loss": 0.09572693650625656,
+            "dev_loss": 0.12348083612779506
+          },
+          {
+            "epoch": 50,
+            "train_loss": 0.09413146194507127,
+            "dev_loss": 0.12223908500816164
+          },
+          {
+            "epoch": 51,
+            "train_loss": 0.09256735172774454,
+            "dev_loss": 0.12164708578595007
+          },
+          {
+            "epoch": 52,
+            "train_loss": 0.09135755752970366,
+            "dev_loss": 0.12012435109962101
+          },
+          {
+            "epoch": 53,
+            "train_loss": 0.09016539396971295,
+            "dev_loss": 0.11943366680378645
+          },
+          {
+            "epoch": 54,
+            "train_loss": 0.08887361280153919,
+            "dev_loss": 0.11854297169290043
+          },
+          {
+            "epoch": 55,
+            "train_loss": 0.08772028566093243,
+            "dev_loss": 0.11847825711111529
+          },
+          {
+            "epoch": 56,
+            "train_loss": 0.08646166112428019,
+            "dev_loss": 0.11701447173590951
+          },
+          {
+            "epoch": 57,
+            "train_loss": 0.08559458569253547,
+            "dev_loss": 0.1174516745203365
+          },
+          {
+            "epoch": 58,
+            "train_loss": 0.08426554663947433,
+            "dev_loss": 0.11689172756212281
+          },
+          {
+            "epoch": 59,
+            "train_loss": 0.08341222105909313,
+            "dev_loss": 0.11567413443422415
+          },
+          {
+            "epoch": 60,
+            "train_loss": 0.08236883711037465,
+            "dev_loss": 0.1151949112041045
+          }
+        ],
+        "threshold": 0.25,
+        "development_micro_f1": 0.4904095386210472,
+        "training_seconds": 15.234177362999617,
+        "head_file": "goemotions_linear.json",
+        "head_digest": "f4d8a4d6a2e8428393c8883588ce9f7f6a8f86e9ff4c02cc307f8e5ea06138ce",
+        "test": {
+          "threshold": 0.25,
+          "samples": 5427,
+          "labels": 28,
+          "micro_precision": 0.4419388284085018,
+          "micro_recall": 0.5387896982145679,
+          "micro_f1": 0.4855820576717693,
+          "macro_f1": 0.348261338797441,
+          "support_weighted_f1": 0.4716023749312271,
+          "hamming_loss": 0.04754665824317566,
+          "exact_set_accuracy": 0.2607333701861065,
+          "mean_sample_jaccard": 0.4139856274184633,
+          "brier": 0.029330935209607167,
+          "micro_ece": 0.018975601526033895,
+          "macro_class_ece": 0.022820206907917532,
+          "micro_roc_auc": 0.8990686681323712,
+          "micro_average_precision": 0.47697900204847055,
+          "macro_roc_auc": 0.8535296736471187,
+          "macro_average_precision": 0.33110181087141444,
+          "mean_gold_labels": 1.1662060070020268,
+          "mean_predicted_labels": 1.421779988944168,
+          "empty_prediction_fraction": 0.09637000184263866,
+          "rare_labels_support_lt_50": [
+            {
+              "label": "embarrassment",
+              "support": 37,
+              "predicted_count": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.00728538157643051,
+              "ece": 0.020882910178836898,
+              "roc_auc": 0.7914456200170487,
+              "average_precision": 0.050066768391213136
+            },
+            {
+              "label": "grief",
+              "support": 6,
+              "predicted_count": 1,
+              "precision": 1.0,
+              "recall": 0.16666666666666666,
+              "f1": 0.2857142857142857,
+              "brier": 0.001524212932844555,
+              "ece": 0.023249496781768072,
+              "roc_auc": 0.7915513742851872,
+              "average_precision": 0.47046516999397237
+            },
+            {
+              "label": "nervousness",
+              "support": 23,
+              "predicted_count": 6,
+              "precision": 0.3333333333333333,
+              "recall": 0.08695652173913043,
+              "f1": 0.13793103448275862,
+              "brier": 0.004717296684985211,
+              "ece": 0.021939155393948567,
+              "roc_auc": 0.8634505841083899,
+              "average_precision": 0.08820768502044822
+            },
+            {
+              "label": "pride",
+              "support": 16,
+              "predicted_count": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0032972752620642055,
+              "ece": 0.02303010784589322,
+              "roc_auc": 0.8342843282202921,
+              "average_precision": 0.2423784104935753
+            },
+            {
+              "label": "relief",
+              "support": 11,
+              "predicted_count": 1,
+              "precision": 1.0,
+              "recall": 0.09090909090909091,
+              "f1": 0.16666666666666669,
+              "brier": 0.0025459453325951905,
+              "ece": 0.023199962767808474,
+              "roc_auc": 0.9139586410635157,
+              "average_precision": 0.13533224868611665
+            }
+          ],
+          "calibration_bins": [
+            {
+              "bin": 0,
+              "count": 133656,
+              "mean_probability": 0.026114721022598743,
+              "positive_frequency": 0.012330161010354942
+            },
+            {
+              "bin": 1,
+              "count": 8754,
+              "mean_probability": 0.1392533555679726,
+              "positive_frequency": 0.10646561571852867
+            },
+            {
+              "bin": 2,
+              "count": 3092,
+              "mean_probability": 0.24354212077859255,
+              "positive_frequency": 0.20504527813712808
+            },
+            {
+              "bin": 3,
+              "count": 1749,
+              "mean_probability": 0.3466839937683412,
+              "positive_frequency": 0.2910234419668382
+            },
+            {
+              "bin": 4,
+              "count": 1166,
+              "mean_probability": 0.4477168455361506,
+              "positive_frequency": 0.3936535162950257
+            },
+            {
+              "bin": 5,
+              "count": 870,
+              "mean_probability": 0.5485307191898439,
+              "positive_frequency": 0.42298850574712643
+            },
+            {
+              "bin": 6,
+              "count": 730,
+              "mean_probability": 0.6485878378299127,
+              "positive_frequency": 0.5383561643835616
+            },
+            {
+              "bin": 7,
+              "count": 603,
+              "mean_probability": 0.7470583484684179,
+              "positive_frequency": 0.6003316749585407
+            },
+            {
+              "bin": 8,
+              "count": 586,
+              "mean_probability": 0.8500142517131232,
+              "positive_frequency": 0.6689419795221843
+            },
+            {
+              "bin": 9,
+              "count": 750,
+              "mean_probability": 0.9631302806223762,
+              "positive_frequency": 0.8426666666666667
+            }
+          ],
+          "per_class": [
+            {
+              "label": "admiration",
+              "support": 504,
+              "predicted_count": 666,
+              "precision": 0.46846846846846846,
+              "recall": 0.6190476190476191,
+              "f1": 0.5333333333333333,
+              "brier": 0.0590778098573472,
+              "ece": 0.015926284123589433,
+              "roc_auc": 0.8913058723387792,
+              "average_precision": 0.54935096560084
+            },
+            {
+              "label": "amusement",
+              "support": 264,
+              "predicted_count": 322,
+              "precision": 0.5248447204968945,
+              "recall": 0.6401515151515151,
+              "f1": 0.5767918088737202,
+              "brier": 0.02958556019528695,
+              "ece": 0.023315590487687096,
+              "roc_auc": 0.9203063464394086,
+              "average_precision": 0.5788960546096845
+            },
+            {
+              "label": "anger",
+              "support": 198,
+              "predicted_count": 225,
+              "precision": 0.3022222222222222,
+              "recall": 0.3434343434343434,
+              "f1": 0.3215130023640662,
+              "brier": 0.032746967381310985,
+              "ece": 0.017485666911891663,
+              "roc_auc": 0.8360290609286594,
+              "average_precision": 0.23494940306385903
+            },
+            {
+              "label": "annoyance",
+              "support": 320,
+              "predicted_count": 346,
+              "precision": 0.2630057803468208,
+              "recall": 0.284375,
+              "f1": 0.2732732732732733,
+              "brier": 0.054064486393221325,
+              "ece": 0.022632624608351432,
+              "roc_auc": 0.7675011014294106,
+              "average_precision": 0.2005260800791973
+            },
+            {
+              "label": "approval",
+              "support": 351,
+              "predicted_count": 423,
+              "precision": 0.2576832151300236,
+              "recall": 0.31054131054131057,
+              "f1": 0.28165374677002586,
+              "brier": 0.05705112387063344,
+              "ece": 0.02011982121864634,
+              "roc_auc": 0.7687155240346729,
+              "average_precision": 0.24659193715475505
+            },
+            {
+              "label": "caring",
+              "support": 135,
+              "predicted_count": 173,
+              "precision": 0.2774566473988439,
+              "recall": 0.35555555555555557,
+              "f1": 0.3116883116883117,
+              "brier": 0.02325121978084069,
+              "ece": 0.02354258702514634,
+              "roc_auc": 0.8463844797178132,
+              "average_precision": 0.24388030809385713
+            },
+            {
+              "label": "confusion",
+              "support": 153,
+              "predicted_count": 178,
+              "precision": 0.25842696629213485,
+              "recall": 0.3006535947712418,
+              "f1": 0.2779456193353474,
+              "brier": 0.026264879074574875,
+              "ece": 0.023062924050427813,
+              "roc_auc": 0.8414431630318668,
+              "average_precision": 0.20840875003989281
+            },
+            {
+              "label": "curiosity",
+              "support": 284,
+              "predicted_count": 379,
+              "precision": 0.40897097625329815,
+              "recall": 0.545774647887324,
+              "f1": 0.4675716440422323,
+              "brier": 0.04087333664611296,
+              "ece": 0.0190841064403156,
+              "roc_auc": 0.9024059777682232,
+              "average_precision": 0.37143587694334074
+            },
+            {
+              "label": "desire",
+              "support": 83,
+              "predicted_count": 67,
+              "precision": 0.373134328358209,
+              "recall": 0.30120481927710846,
+              "f1": 0.33333333333333337,
+              "brier": 0.013281750600555352,
+              "ece": 0.020433929917431565,
+              "roc_auc": 0.8943866784503283,
+              "average_precision": 0.2798376184486607
+            },
+            {
+              "label": "disappointment",
+              "support": 151,
+              "predicted_count": 136,
+              "precision": 0.1323529411764706,
+              "recall": 0.11920529801324503,
+              "f1": 0.1254355400696864,
+              "brier": 0.029033919274967068,
+              "ece": 0.021942441401093575,
+              "roc_auc": 0.7174522641575747,
+              "average_precision": 0.07821220992983317
+            },
+            {
+              "label": "disapproval",
+              "support": 267,
+              "predicted_count": 311,
+              "precision": 0.26688102893890675,
+              "recall": 0.31086142322097376,
+              "f1": 0.28719723183391,
+              "brier": 0.043911206472107875,
+              "ece": 0.015540109557232121,
+              "roc_auc": 0.8219435008564875,
+              "average_precision": 0.23488265777641268
+            },
+            {
+              "label": "disgust",
+              "support": 123,
+              "predicted_count": 73,
+              "precision": 0.3698630136986301,
+              "recall": 0.21951219512195122,
+              "f1": 0.2755102040816326,
+              "brier": 0.01934888735235633,
+              "ece": 0.016097059799039148,
+              "roc_auc": 0.8532293467731058,
+              "average_precision": 0.26969063793940523
+            },
+            {
+              "label": "embarrassment",
+              "support": 37,
+              "predicted_count": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.00728538157643051,
+              "ece": 0.020882910178836898,
+              "roc_auc": 0.7914456200170487,
+              "average_precision": 0.050066768391213136
+            },
+            {
+              "label": "excitement",
+              "support": 103,
+              "predicted_count": 117,
+              "precision": 0.23076923076923078,
+              "recall": 0.2621359223300971,
+              "f1": 0.24545454545454545,
+              "brier": 0.0183540465536502,
+              "ece": 0.02293335314730354,
+              "roc_auc": 0.8496039185078742,
+              "average_precision": 0.18258528722660908
+            },
+            {
+              "label": "fear",
+              "support": 78,
+              "predicted_count": 64,
+              "precision": 0.53125,
+              "recall": 0.4358974358974359,
+              "f1": 0.47887323943661975,
+              "brier": 0.010850300214262707,
+              "ece": 0.02264367843596489,
+              "roc_auc": 0.9231751921039639,
+              "average_precision": 0.4275496289686403
+            },
+            {
+              "label": "gratitude",
+              "support": 352,
+              "predicted_count": 371,
+              "precision": 0.8194070080862533,
+              "recall": 0.8636363636363636,
+              "f1": 0.8409405255878285,
+              "brier": 0.014433814048944506,
+              "ece": 0.01865918413958653,
+              "roc_auc": 0.9700431034482759,
+              "average_precision": 0.9038063779775328
+            },
+            {
+              "label": "grief",
+              "support": 6,
+              "predicted_count": 1,
+              "precision": 1.0,
+              "recall": 0.16666666666666666,
+              "f1": 0.2857142857142857,
+              "brier": 0.001524212932844555,
+              "ece": 0.023249496781768072,
+              "roc_auc": 0.7915513742851872,
+              "average_precision": 0.47046516999397237
+            },
+            {
+              "label": "joy",
+              "support": 161,
+              "predicted_count": 218,
+              "precision": 0.29357798165137616,
+              "recall": 0.39751552795031053,
+              "f1": 0.3377308707124011,
+              "brier": 0.026023714440075046,
+              "ece": 0.024974257653235684,
+              "roc_auc": 0.8696064994468204,
+              "average_precision": 0.28950685473517157
+            },
+            {
+              "label": "love",
+              "support": 238,
+              "predicted_count": 337,
+              "precision": 0.5845697329376854,
+              "recall": 0.8277310924369747,
+              "f1": 0.6852173913043478,
+              "brier": 0.019812258842230774,
+              "ece": 0.02722865322549124,
+              "roc_auc": 0.9718991855751743,
+              "average_precision": 0.7600549806330945
+            },
+            {
+              "label": "nervousness",
+              "support": 23,
+              "predicted_count": 6,
+              "precision": 0.3333333333333333,
+              "recall": 0.08695652173913043,
+              "f1": 0.13793103448275862,
+              "brier": 0.004717296684985211,
+              "ece": 0.021939155393948567,
+              "roc_auc": 0.8634505841083899,
+              "average_precision": 0.08820768502044822
+            },
+            {
+              "label": "optimism",
+              "support": 186,
+              "predicted_count": 174,
+              "precision": 0.4885057471264368,
+              "recall": 0.45698924731182794,
+              "f1": 0.47222222222222227,
+              "brier": 0.025126111589187147,
+              "ece": 0.01805074943435913,
+              "roc_auc": 0.8467941971182549,
+              "average_precision": 0.4364668338026525
+            },
+            {
+              "label": "pride",
+              "support": 16,
+              "predicted_count": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0032972752620642055,
+              "ece": 0.02303010784589322,
+              "roc_auc": 0.8342843282202921,
+              "average_precision": 0.2423784104935753
+            },
+            {
+              "label": "realization",
+              "support": 145,
+              "predicted_count": 55,
+              "precision": 0.2727272727272727,
+              "recall": 0.10344827586206896,
+              "f1": 0.15,
+              "brier": 0.024923616985579107,
+              "ece": 0.016284125405360266,
+              "roc_auc": 0.7491062685242006,
+              "average_precision": 0.15583843347635618
+            },
+            {
+              "label": "relief",
+              "support": 11,
+              "predicted_count": 1,
+              "precision": 1.0,
+              "recall": 0.09090909090909091,
+              "f1": 0.16666666666666669,
+              "brier": 0.0025459453325951905,
+              "ece": 0.023199962767808474,
+              "roc_auc": 0.9139586410635157,
+              "average_precision": 0.13533224868611665
+            },
+            {
+              "label": "remorse",
+              "support": 56,
+              "predicted_count": 51,
+              "precision": 0.5490196078431373,
+              "recall": 0.5,
+              "f1": 0.5233644859813085,
+              "brier": 0.008322909020038046,
+              "ece": 0.024947431057523204,
+              "roc_auc": 0.9374617655664016,
+              "average_precision": 0.3790935850996594
+            },
+            {
+              "label": "sadness",
+              "support": 156,
+              "predicted_count": 189,
+              "precision": 0.3492063492063492,
+              "recall": 0.4230769230769231,
+              "f1": 0.382608695652174,
+              "brier": 0.023731246500274226,
+              "ece": 0.02261888678737792,
+              "roc_auc": 0.8912627876771304,
+              "average_precision": 0.3328462941984253
+            },
+            {
+              "label": "surprise",
+              "support": 141,
+              "predicted_count": 148,
+              "precision": 0.35135135135135137,
+              "recall": 0.36879432624113473,
+              "f1": 0.3598615916955017,
+              "brier": 0.022009729345683675,
+              "ece": 0.020362215888149036,
+              "roc_auc": 0.8500347498946769,
+              "average_precision": 0.3067737303686533
+            },
+            {
+              "label": "neutral",
+              "support": 1787,
+              "predicted_count": 2678,
+              "precision": 0.5164301717699776,
+              "recall": 0.7739227756015669,
+              "f1": 0.619484882418813,
+              "brier": 0.17981717964084054,
+              "ece": 0.0687784797382323,
+              "roc_auc": 0.7840493306357884,
+              "average_precision": 0.6132159156477442
+            }
+          ]
+        }
+      },
+      "mlp": {
+        "sizes": [
+          1536,
+          256,
+          28
+        ],
+        "parameters": 400668,
+        "epochs_run": 13,
+        "best_dev_bce": 0.11266125175990434,
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 0.15862308437344938,
+            "dev_loss": 0.17435014978743674
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.10694954937617997,
+            "dev_loss": 0.12877267800778855
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.09177835149276106,
+            "dev_loss": 0.11923159599667829
+          },
+          {
+            "epoch": 4,
+            "train_loss": 0.082107572317811,
+            "dev_loss": 0.11623730794487747
+          },
+          {
+            "epoch": 5,
+            "train_loss": 0.07471216210004278,
+            "dev_loss": 0.1151869179440865
+          },
+          {
+            "epoch": 6,
+            "train_loss": 0.06785796987043793,
+            "dev_loss": 0.11389389933049218
+          },
+          {
+            "epoch": 7,
+            "train_loss": 0.06187744262595355,
+            "dev_loss": 0.11266125175990434
+          },
+          {
+            "epoch": 8,
+            "train_loss": 0.05715617135565963,
+            "dev_loss": 0.11431983606837026
+          },
+          {
+            "epoch": 9,
+            "train_loss": 0.05255809752429624,
+            "dev_loss": 0.11489638044295143
+          },
+          {
+            "epoch": 10,
+            "train_loss": 0.04798721089674829,
+            "dev_loss": 0.11476654202082856
+          },
+          {
+            "epoch": 11,
+            "train_loss": 0.044311954185214865,
+            "dev_loss": 0.11691511340715055
+          },
+          {
+            "epoch": 12,
+            "train_loss": 0.04034707195410637,
+            "dev_loss": 0.11617120217539711
+          },
+          {
+            "epoch": 13,
+            "train_loss": 0.037684048425054156,
+            "dev_loss": 0.11942404140223577
+          }
+        ],
+        "threshold": 0.3,
+        "development_micro_f1": 0.4844652185867473,
+        "training_seconds": 22.38089404600032,
+        "head_file": "goemotions_mlp.json",
+        "head_digest": "083d6c329414ee2abf1d60b654c45ecd4ee5c73c91b06d9fd2251000271fb121",
+        "test": {
+          "threshold": 0.3,
+          "samples": 5427,
+          "labels": 28,
+          "micro_precision": 0.44982993197278914,
+          "micro_recall": 0.5015010270184863,
+          "micro_f1": 0.4742622338438551,
+          "macro_f1": 0.30064725570585377,
+          "support_weighted_f1": 0.4513344556886149,
+          "hamming_loss": 0.04630945800100029,
+          "exact_set_accuracy": 0.30016583747927034,
+          "mean_sample_jaccard": 0.41444936195245113,
+          "brier": 0.030216906371984632,
+          "micro_ece": 0.009718248474398339,
+          "macro_class_ece": 0.01425633308182434,
+          "micro_roc_auc": 0.9046880997634387,
+          "micro_average_precision": 0.45726608070167957,
+          "macro_roc_auc": 0.8368127988333515,
+          "macro_average_precision": 0.27154445566462215,
+          "mean_gold_labels": 1.1662060070020268,
+          "mean_predicted_labels": 1.3001658374792704,
+          "empty_prediction_fraction": 0.15680854984337572,
+          "rare_labels_support_lt_50": [
+            {
+              "label": "embarrassment",
+              "support": 37,
+              "predicted_count": 13,
+              "precision": 0.07692307692307693,
+              "recall": 0.02702702702702703,
+              "f1": 0.04,
+              "brier": 0.007331530416499911,
+              "ece": 0.0070502456086653665,
+              "roc_auc": 0.7602667602667603,
+              "average_precision": 0.03726233742639254
+            },
+            {
+              "label": "grief",
+              "support": 6,
+              "predicted_count": 6,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0015537518798407245,
+              "ece": 0.007461718797735008,
+              "roc_auc": 0.7961630695443644,
+              "average_precision": 0.016247467991453202
+            },
+            {
+              "label": "nervousness",
+              "support": 23,
+              "predicted_count": 12,
+              "precision": 0.08333333333333333,
+              "recall": 0.043478260869565216,
+              "f1": 0.057142857142857134,
+              "brier": 0.004660871170941748,
+              "ece": 0.006260138604320188,
+              "roc_auc": 0.7981205548225148,
+              "average_precision": 0.03659957084942071
+            },
+            {
+              "label": "pride",
+              "support": 16,
+              "predicted_count": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0035264019858656927,
+              "ece": 0.005849515616200015,
+              "roc_auc": 0.7800776196636481,
+              "average_precision": 0.01845852894956247
+            },
+            {
+              "label": "relief",
+              "support": 11,
+              "predicted_count": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0025440655002096388,
+              "ece": 0.007236626826629168,
+              "roc_auc": 0.73761246139385,
+              "average_precision": 0.011611205782954015
+            }
+          ],
+          "calibration_bins": [
+            {
+              "bin": 0,
+              "count": 135108,
+              "mean_probability": 0.01462864802414944,
+              "positive_frequency": 0.013951801521745567
+            },
+            {
+              "bin": 1,
+              "count": 6839,
+              "mean_probability": 0.14080027871404144,
+              "positive_frequency": 0.10571721011843836
+            },
+            {
+              "bin": 2,
+              "count": 2953,
+              "mean_probability": 0.2456449813667422,
+              "positive_frequency": 0.1852353538774128
+            },
+            {
+              "bin": 3,
+              "count": 1758,
+              "mean_probability": 0.34682735766178163,
+              "positive_frequency": 0.25426621160409557
+            },
+            {
+              "bin": 4,
+              "count": 1239,
+              "mean_probability": 0.44905507489477514,
+              "positive_frequency": 0.33817594834543985
+            },
+            {
+              "bin": 5,
+              "count": 1004,
+              "mean_probability": 0.5490002649105072,
+              "positive_frequency": 0.40836653386454186
+            },
+            {
+              "bin": 6,
+              "count": 818,
+              "mean_probability": 0.6507629375095304,
+              "positive_frequency": 0.4779951100244499
+            },
+            {
+              "bin": 7,
+              "count": 819,
+              "mean_probability": 0.7499731192277794,
+              "positive_frequency": 0.5836385836385837
+            },
+            {
+              "bin": 8,
+              "count": 723,
+              "mean_probability": 0.8473279142710477,
+              "positive_frequency": 0.6168741355463347
+            },
+            {
+              "bin": 9,
+              "count": 695,
+              "mean_probability": 0.9561264802087334,
+              "positive_frequency": 0.8388489208633093
+            }
+          ],
+          "per_class": [
+            {
+              "label": "admiration",
+              "support": 504,
+              "predicted_count": 560,
+              "precision": 0.4928571428571429,
+              "recall": 0.5476190476190477,
+              "f1": 0.518796992481203,
+              "brier": 0.06074467481058225,
+              "ece": 0.01833298801582176,
+              "roc_auc": 0.8887091365762908,
+              "average_precision": 0.5342601132774981
+            },
+            {
+              "label": "amusement",
+              "support": 264,
+              "predicted_count": 309,
+              "precision": 0.5048543689320388,
+              "recall": 0.5909090909090909,
+              "f1": 0.544502617801047,
+              "brier": 0.030944542216210534,
+              "ece": 0.014415942858340601,
+              "roc_auc": 0.9082251920717928,
+              "average_precision": 0.5412819947637336
+            },
+            {
+              "label": "anger",
+              "support": 198,
+              "predicted_count": 218,
+              "precision": 0.27522935779816515,
+              "recall": 0.30303030303030304,
+              "f1": 0.28846153846153844,
+              "brier": 0.03488047839842796,
+              "ece": 0.020773480166436584,
+              "roc_auc": 0.8476368195243696,
+              "average_precision": 0.2132084313576856
+            },
+            {
+              "label": "annoyance",
+              "support": 320,
+              "predicted_count": 225,
+              "precision": 0.24,
+              "recall": 0.16875,
+              "f1": 0.1981651376146789,
+              "brier": 0.055484293377250096,
+              "ece": 0.027841647159500462,
+              "roc_auc": 0.7471356716271784,
+              "average_precision": 0.16826810940393516
+            },
+            {
+              "label": "approval",
+              "support": 351,
+              "predicted_count": 296,
+              "precision": 0.27364864864864863,
+              "recall": 0.23076923076923078,
+              "f1": 0.2503863987635239,
+              "brier": 0.05826508128875472,
+              "ece": 0.02357145986672031,
+              "roc_auc": 0.767289900071618,
+              "average_precision": 0.2299777543303846
+            },
+            {
+              "label": "caring",
+              "support": 135,
+              "predicted_count": 146,
+              "precision": 0.273972602739726,
+              "recall": 0.2962962962962963,
+              "f1": 0.2846975088967972,
+              "brier": 0.023693475535948243,
+              "ece": 0.012240717918268426,
+              "roc_auc": 0.8447691833935219,
+              "average_precision": 0.21013617178388333
+            },
+            {
+              "label": "confusion",
+              "support": 153,
+              "predicted_count": 152,
+              "precision": 0.24342105263157895,
+              "recall": 0.24183006535947713,
+              "f1": 0.24262295081967214,
+              "brier": 0.02757530585955515,
+              "ece": 0.01319051400349364,
+              "roc_auc": 0.8379112231417659,
+              "average_precision": 0.18184760218369958
+            },
+            {
+              "label": "curiosity",
+              "support": 284,
+              "predicted_count": 369,
+              "precision": 0.3956639566395664,
+              "recall": 0.5140845070422535,
+              "f1": 0.44716692189892804,
+              "brier": 0.04289116504165158,
+              "ece": 0.01939865565359918,
+              "roc_auc": 0.8957368555098821,
+              "average_precision": 0.363044420706534
+            },
+            {
+              "label": "desire",
+              "support": 83,
+              "predicted_count": 72,
+              "precision": 0.2777777777777778,
+              "recall": 0.24096385542168675,
+              "f1": 0.25806451612903225,
+              "brier": 0.014375392796951311,
+              "ece": 0.008620111267681332,
+              "roc_auc": 0.8670505374792583,
+              "average_precision": 0.21667959359764513
+            },
+            {
+              "label": "disappointment",
+              "support": 151,
+              "predicted_count": 59,
+              "precision": 0.1694915254237288,
+              "recall": 0.06622516556291391,
+              "f1": 0.09523809523809525,
+              "brier": 0.02805256413739601,
+              "ece": 0.011386352467237376,
+              "roc_auc": 0.7234798086047527,
+              "average_precision": 0.08042543833613514
+            },
+            {
+              "label": "disapproval",
+              "support": 267,
+              "predicted_count": 229,
+              "precision": 0.3318777292576419,
+              "recall": 0.2846441947565543,
+              "f1": 0.3064516129032258,
+              "brier": 0.042932623864370294,
+              "ece": 0.016563371018820425,
+              "roc_auc": 0.8344758005980896,
+              "average_precision": 0.24478635625780212
+            },
+            {
+              "label": "disgust",
+              "support": 123,
+              "predicted_count": 94,
+              "precision": 0.23404255319148937,
+              "recall": 0.17886178861788618,
+              "f1": 0.20276497695852538,
+              "brier": 0.02209853729082207,
+              "ece": 0.010471002716692806,
+              "roc_auc": 0.8070745809268047,
+              "average_precision": 0.16138463456666322
+            },
+            {
+              "label": "embarrassment",
+              "support": 37,
+              "predicted_count": 13,
+              "precision": 0.07692307692307693,
+              "recall": 0.02702702702702703,
+              "f1": 0.04,
+              "brier": 0.007331530416499911,
+              "ece": 0.0070502456086653665,
+              "roc_auc": 0.7602667602667603,
+              "average_precision": 0.03726233742639254
+            },
+            {
+              "label": "excitement",
+              "support": 103,
+              "predicted_count": 111,
+              "precision": 0.25225225225225223,
+              "recall": 0.27184466019417475,
+              "f1": 0.2616822429906542,
+              "brier": 0.019082833446477643,
+              "ece": 0.01318161387930928,
+              "roc_auc": 0.8544947590321899,
+              "average_precision": 0.18275140000364581
+            },
+            {
+              "label": "fear",
+              "support": 78,
+              "predicted_count": 56,
+              "precision": 0.4107142857142857,
+              "recall": 0.2948717948717949,
+              "f1": 0.3432835820895523,
+              "brier": 0.012127711397143,
+              "ece": 0.008229112380027423,
+              "roc_auc": 0.8833522680970802,
+              "average_precision": 0.29794109898551546
+            },
+            {
+              "label": "gratitude",
+              "support": 352,
+              "predicted_count": 398,
+              "precision": 0.7512562814070352,
+              "recall": 0.8494318181818182,
+              "f1": 0.7973333333333332,
+              "brier": 0.016819166213345643,
+              "ece": 0.01012286827128131,
+              "roc_auc": 0.966429131213614,
+              "average_precision": 0.8830326483800325
+            },
+            {
+              "label": "grief",
+              "support": 6,
+              "predicted_count": 6,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0015537518798407245,
+              "ece": 0.007461718797735008,
+              "roc_auc": 0.7961630695443644,
+              "average_precision": 0.016247467991453202
+            },
+            {
+              "label": "joy",
+              "support": 161,
+              "predicted_count": 182,
+              "precision": 0.3131868131868132,
+              "recall": 0.35403726708074534,
+              "f1": 0.3323615160349854,
+              "brier": 0.026545043275310636,
+              "ece": 0.014120449558603549,
+              "roc_auc": 0.8712471662817607,
+              "average_precision": 0.2730155257609188
+            },
+            {
+              "label": "love",
+              "support": 238,
+              "predicted_count": 296,
+              "precision": 0.5912162162162162,
+              "recall": 0.7352941176470589,
+              "f1": 0.6554307116104869,
+              "brier": 0.02150787564276185,
+              "ece": 0.01469700161552814,
+              "roc_auc": 0.9607467963095817,
+              "average_precision": 0.7059960821177805
+            },
+            {
+              "label": "nervousness",
+              "support": 23,
+              "predicted_count": 12,
+              "precision": 0.08333333333333333,
+              "recall": 0.043478260869565216,
+              "f1": 0.057142857142857134,
+              "brier": 0.004660871170941748,
+              "ece": 0.006260138604320188,
+              "roc_auc": 0.7981205548225148,
+              "average_precision": 0.03659957084942071
+            },
+            {
+              "label": "optimism",
+              "support": 186,
+              "predicted_count": 189,
+              "precision": 0.42857142857142855,
+              "recall": 0.43548387096774194,
+              "f1": 0.432,
+              "brier": 0.02700028380923309,
+              "ece": 0.009358307765003036,
+              "roc_auc": 0.8550223321905652,
+              "average_precision": 0.39809980488558017
+            },
+            {
+              "label": "pride",
+              "support": 16,
+              "predicted_count": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0035264019858656927,
+              "ece": 0.005849515616200015,
+              "roc_auc": 0.7800776196636481,
+              "average_precision": 0.01845852894956247
+            },
+            {
+              "label": "realization",
+              "support": 145,
+              "predicted_count": 85,
+              "precision": 0.21176470588235294,
+              "recall": 0.12413793103448276,
+              "f1": 0.1565217391304348,
+              "brier": 0.026465949030149233,
+              "ece": 0.009650954544680606,
+              "roc_auc": 0.7582537962370575,
+              "average_precision": 0.1055654572403246
+            },
+            {
+              "label": "relief",
+              "support": 11,
+              "predicted_count": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0025440655002096388,
+              "ece": 0.007236626826629168,
+              "roc_auc": 0.73761246139385,
+              "average_precision": 0.011611205782954015
+            },
+            {
+              "label": "remorse",
+              "support": 56,
+              "predicted_count": 48,
+              "precision": 0.4375,
+              "recall": 0.375,
+              "f1": 0.40384615384615385,
+              "brier": 0.00836358602521217,
+              "ece": 0.008391260987616883,
+              "roc_auc": 0.9359722850227412,
+              "average_precision": 0.3383061509889518
+            },
+            {
+              "label": "sadness",
+              "support": 156,
+              "predicted_count": 122,
+              "precision": 0.3770491803278688,
+              "recall": 0.2948717948717949,
+              "f1": 0.3309352517985611,
+              "brier": 0.024856025017113783,
+              "ece": 0.007610883548845367,
+              "roc_auc": 0.8667296625463956,
+              "average_precision": 0.271147168122023
+            },
+            {
+              "label": "surprise",
+              "support": 141,
+              "predicted_count": 147,
+              "precision": 0.3333333333333333,
+              "recall": 0.3475177304964539,
+              "f1": 0.3402777777777778,
+              "brier": 0.023329591570492827,
+              "ece": 0.012124571459150399,
+              "roc_auc": 0.8496335831569004,
+              "average_precision": 0.2703497281012071
+            },
+            {
+              "label": "neutral",
+              "support": 1787,
+              "predicted_count": 2648,
+              "precision": 0.5275679758308157,
+              "recall": 0.7817571348628987,
+              "f1": 0.629988726042841,
+              "brier": 0.178420557417052,
+              "ece": 0.06102581371487287,
+              "roc_auc": 0.7871414120294926,
+              "average_precision": 0.6115599624580582
+            }
+          ]
+        }
+      }
+    },
+    "comparators": {
+      "constant_prior": {
+        "threshold": 0.1,
+        "development_micro_f1": 0.3054701905347265,
+        "test": {
+          "threshold": 0.1,
+          "samples": 5427,
+          "labels": 28,
+          "micro_precision": 0.3292795282845034,
+          "micro_recall": 0.28235108231948175,
+          "micro_f1": 0.30401497107859815,
+          "macro_f1": 0.017693770050299023,
+          "support_weighted_f1": 0.1398839434723909,
+          "hamming_loss": 0.05384453394403643,
+          "exact_set_accuracy": 0.29592776856458447,
+          "mean_sample_jaccard": 0.3122658313371414,
+          "brier": 0.03638342936505606,
+          "micro_ece": 0.0007365367755535194,
+          "macro_class_ece": 0.002019446386282158,
+          "micro_roc_auc": 0.7706306726046217,
+          "micro_average_precision": 0.1695680849940482,
+          "macro_roc_auc": 0.5,
+          "macro_average_precision": 0.04165021453578667,
+          "mean_gold_labels": 1.1662060070020268,
+          "mean_predicted_labels": 1.0,
+          "empty_prediction_fraction": 0.0,
+          "rare_labels_support_lt_50": [
+            {
+              "label": "embarrassment",
+              "support": 37,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.006771356289203925,
+              "ece": 0.0002741265393521363,
+              "roc_auc": 0.5,
+              "average_precision": 0.0068177630366685095
+            },
+            {
+              "label": "grief",
+              "support": 6,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0011061051531683873,
+              "ece": 0.0013207089892627716,
+              "roc_auc": 0.5,
+              "average_precision": 0.001105583195135434
+            },
+            {
+              "label": "nervousness",
+              "support": 23,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.004220179388732447,
+              "ece": 0.000267772612943311,
+              "roc_auc": 0.5,
+              "average_precision": 0.00423806891468583
+            },
+            {
+              "label": "pride",
+              "support": 16,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0029400811503496904,
+              "ece": 0.0007425016860597572,
+              "roc_auc": 0.5,
+              "average_precision": 0.0029482218536944905
+            },
+            {
+              "label": "relief",
+              "support": 11,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0020244368883674656,
+              "ece": 0.0012816777270371381,
+              "roc_auc": 0.5,
+              "average_precision": 0.002026902524414962
+            }
+          ],
+          "calibration_bins": [
+            {
+              "bin": 0,
+              "count": 146529,
+              "mean_probability": 0.03168884640835233,
+              "positive_frequency": 0.030997276989537907
+            },
+            {
+              "bin": 1,
+              "count": 0,
+              "mean_probability": null,
+              "positive_frequency": null
+            },
+            {
+              "bin": 2,
+              "count": 0,
+              "mean_probability": null,
+              "positive_frequency": null
+            },
+            {
+              "bin": 3,
+              "count": 5427,
+              "mean_probability": 0.3273288728769943,
+              "positive_frequency": 0.3292795282845034
+            },
+            {
+              "bin": 4,
+              "count": 0,
+              "mean_probability": null,
+              "positive_frequency": null
+            },
+            {
+              "bin": 5,
+              "count": 0,
+              "mean_probability": null,
+              "positive_frequency": null
+            },
+            {
+              "bin": 6,
+              "count": 0,
+              "mean_probability": null,
+              "positive_frequency": null
+            },
+            {
+              "bin": 7,
+              "count": 0,
+              "mean_probability": null,
+              "positive_frequency": null
+            },
+            {
+              "bin": 8,
+              "count": 0,
+              "mean_probability": null,
+              "positive_frequency": null
+            },
+            {
+              "bin": 9,
+              "count": 0,
+              "mean_probability": null,
+              "positive_frequency": null
+            }
+          ],
+          "per_class": [
+            {
+              "label": "admiration",
+              "support": 504,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.08424476650984926,
+              "ece": 0.0006535467163362313,
+              "roc_auc": 0.5,
+              "average_precision": 0.09286898839137644
+            },
+            {
+              "label": "amusement",
+              "support": 264,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.046289428503839124,
+              "ece": 0.003188763353457122,
+              "roc_auc": 0.5,
+              "average_precision": 0.048645660585959094
+            },
+            {
+              "label": "anger",
+              "support": 198,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.035153222423329834,
+              "ece": 0.00027775735444290905,
+              "roc_auc": 0.5,
+              "average_precision": 0.03648424543946932
+            },
+            {
+              "label": "annoyance",
+              "support": 320,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.055491565843219834,
+              "ece": 0.0019833327433258843,
+              "roc_auc": 0.5,
+              "average_precision": 0.05896443707388981
+            },
+            {
+              "label": "approval",
+              "support": 351,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.06052029332919451,
+              "ece": 0.00517118839301034,
+              "roc_auc": 0.5,
+              "average_precision": 0.06467661691542288
+            },
+            {
+              "label": "caring",
+              "support": 135,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.024257988169318456,
+              "ece": 0.0010783520819547601,
+              "roc_auc": 0.5,
+              "average_precision": 0.024875621890547265
+            },
+            {
+              "label": "confusion",
+              "support": 153,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.027413066509636225,
+              "ece": 0.003937618965925708,
+              "roc_auc": 0.5,
+              "average_precision": 0.028192371475953566
+            },
+            {
+              "label": "curiosity",
+              "support": 284,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.04959672404845905,
+              "ece": 0.002076826231912854,
+              "roc_auc": 0.5,
+              "average_precision": 0.052330937903077204
+            },
+            {
+              "label": "desire",
+              "support": 83,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.01506001935323349,
+              "ece": 0.0001479557149483366,
+              "roc_auc": 0.5,
+              "average_precision": 0.01529390086604017
+            },
+            {
+              "label": "disappointment",
+              "support": 151,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.02705040084514606,
+              "ece": 0.0008505184350097554,
+              "roc_auc": 0.5,
+              "average_precision": 0.027823843744241756
+            },
+            {
+              "label": "disapproval",
+              "support": 267,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.04678061623981899,
+              "ece": 0.0016284205682043987,
+              "roc_auc": 0.5,
+              "average_precision": 0.04919845218352681
+            },
+            {
+              "label": "disgust",
+              "support": 123,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.02217670864299016,
+              "ece": 0.005092218164786357,
+              "roc_auc": 0.5,
+              "average_precision": 0.022664455500276397
+            },
+            {
+              "label": "embarrassment",
+              "support": 37,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.006771356289203925,
+              "ece": 0.0002741265393521363,
+              "roc_auc": 0.5,
+              "average_precision": 0.0068177630366685095
+            },
+            {
+              "label": "excitement",
+              "support": 103,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.018622310984559326,
+              "ece": 0.00182811539819603,
+              "roc_auc": 0.5,
+              "average_precision": 0.018979178183158283
+            },
+            {
+              "label": "fear",
+              "support": 78,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.014167478858492809,
+              "ece": 0.001211784536540068,
+              "roc_auc": 0.5,
+              "average_precision": 0.014372581536760642
+            },
+            {
+              "label": "gratitude",
+              "support": 352,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.06066141673962634,
+              "ece": 0.0027330960595671402,
+              "roc_auc": 0.5,
+              "average_precision": 0.06486088078127879
+            },
+            {
+              "label": "grief",
+              "support": 6,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0011061051531683873,
+              "ece": 0.0013207089892627716,
+              "roc_auc": 0.5,
+              "average_precision": 0.001105583195135434
+            },
+            {
+              "label": "joy",
+              "support": 161,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.028808875923192413,
+              "ece": 0.0047427522123010095,
+              "roc_auc": 0.5,
+              "average_precision": 0.02966648240280081
+            },
+            {
+              "label": "love",
+              "support": 238,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.04196321808912206,
+              "ece": 0.005626855686900273,
+              "roc_auc": 0.5,
+              "average_precision": 0.04385480007370555
+            },
+            {
+              "label": "nervousness",
+              "support": 23,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.004220179388732447,
+              "ece": 0.000267772612943311,
+              "roc_auc": 0.5,
+              "average_precision": 0.00423806891468583
+            },
+            {
+              "label": "optimism",
+              "support": 186,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.03310659494401092,
+              "ece": 0.0028565437726528822,
+              "roc_auc": 0.5,
+              "average_precision": 0.03427307904919845
+            },
+            {
+              "label": "pride",
+              "support": 16,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0029400811503496904,
+              "ece": 0.0007425016860597572,
+              "roc_auc": 0.5,
+              "average_precision": 0.0029482218536944905
+            },
+            {
+              "label": "realization",
+              "support": 145,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.026008753671611467,
+              "ece": 0.0020877186771851367,
+              "roc_auc": 0.5,
+              "average_precision": 0.02671826054910632
+            },
+            {
+              "label": "relief",
+              "support": 11,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0020244368883674656,
+              "ece": 0.0012816777270371381,
+              "roc_auc": 0.5,
+              "average_precision": 0.002026902524414962
+            },
+            {
+              "label": "remorse",
+              "support": 56,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.010213033569966605,
+              "ece": 0.0008568723614185945,
+              "roc_auc": 0.5,
+              "average_precision": 0.010318776487930717
+            },
+            {
+              "label": "sadness",
+              "support": 156,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0279196619181838,
+              "ece": 0.0008850111783719576,
+              "roc_auc": 0.5,
+              "average_precision": 0.028745163073521283
+            },
+            {
+              "label": "surprise",
+              "support": 141,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.025309392641189827,
+              "ece": 0.00179180724728846,
+              "roc_auc": 0.5,
+              "average_precision": 0.025981205085682697
+            },
+            {
+              "label": "neutral",
+              "support": 1787,
+              "predicted_count": 5427,
+              "precision": 0.3292795282845034,
+              "recall": 1.0,
+              "f1": 0.49542556140837263,
+              "brier": 0.22085832559375718,
+              "ece": 0.0019506554075091054,
+              "roc_auc": 0.5,
+              "average_precision": 0.3292795282845034
+            }
+          ]
+        }
+      },
+      "bernoulli_35": {
+        "tuning": {
+          "criterion": "development Brier temperature, then development micro-F1 global threshold",
+          "temperature_candidates": [
+            0.5,
+            1.0,
+            2.0,
+            4.0,
+            8.0
+          ],
+          "temperature_brier": [
+            0.0400538295507431,
+            0.037275753915309906,
+            0.03586742654442787,
+            0.04232817888259888,
+            0.0683700293302536
+          ],
+          "temperature": 2.0,
+          "threshold_candidates": [
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2,
+            0.25,
+            0.3,
+            0.35000000000000003,
+            0.4,
+            0.45,
+            0.5,
+            0.55,
+            0.6000000000000001,
+            0.6500000000000001,
+            0.7000000000000001,
+            0.7500000000000001,
+            0.8
+          ],
+          "threshold": 0.25,
+          "development_micro_f1": 0.3803022915650902,
+          "development_brier": 0.03586742654442787
+        },
+        "training_seconds": 0.361700055998881,
+        "model_file": "goemotions_bernoulli_35.npz",
+        "test": {
+          "threshold": 0.25,
+          "samples": 5427,
+          "labels": 28,
+          "micro_precision": 0.32405093419017017,
+          "micro_recall": 0.43024174435139834,
+          "micro_f1": 0.369671463480858,
+          "macro_f1": 0.14056864828931284,
+          "support_weighted_f1": 0.31658782979366523,
+          "hamming_loss": 0.06110979494064071,
+          "exact_set_accuracy": 0.2638658559056569,
+          "mean_sample_jaccard": 0.35003655388545374,
+          "brier": 0.03553706035017967,
+          "micro_ece": 0.01703300851645265,
+          "macro_class_ece": 0.02215593338964834,
+          "micro_roc_auc": 0.8356155860275707,
+          "micro_average_precision": 0.2708576820198512,
+          "macro_roc_auc": 0.7104000024259659,
+          "macro_average_precision": 0.12983742953226912,
+          "mean_gold_labels": 1.1662060070020268,
+          "mean_predicted_labels": 1.5483692647871752,
+          "empty_prediction_fraction": 0.1273263313064308,
+          "rare_labels_support_lt_50": [
+            {
+              "label": "embarrassment",
+              "support": 37,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.006817767396569252,
+              "ece": 0.006815937241288737,
+              "roc_auc": 0.5991726420297849,
+              "average_precision": 0.009359891001388643
+            },
+            {
+              "label": "grief",
+              "support": 6,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0011055831564590335,
+              "ece": 0.0011055831951354259,
+              "roc_auc": 0.4996310643792658,
+              "average_precision": 0.001105583195135434
+            },
+            {
+              "label": "nervousness",
+              "support": 23,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0042380690574646,
+              "ece": 0.004238068687874371,
+              "roc_auc": 0.6674685418208735,
+              "average_precision": 0.009455935121198852
+            },
+            {
+              "label": "pride",
+              "support": 16,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0029482217505574226,
+              "ece": 0.002948221853694486,
+              "roc_auc": 0.4999075956385141,
+              "average_precision": 0.0029482218536944905
+            },
+            {
+              "label": "relief",
+              "support": 11,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.002026902511715889,
+              "ece": 0.002026902524008691,
+              "roc_auc": 0.521812474822076,
+              "average_precision": 0.0023756130113890676
+            }
+          ],
+          "calibration_bins": [
+            {
+              "bin": 0,
+              "count": 133865,
+              "mean_probability": 0.012401129119098186,
+              "positive_frequency": 0.019624248309864416
+            },
+            {
+              "bin": 1,
+              "count": 7666,
+              "mean_probability": 0.14139236509799957,
+              "positive_frequency": 0.08948604226454475
+            },
+            {
+              "bin": 2,
+              "count": 3534,
+              "mean_probability": 0.24510879814624786,
+              "positive_frequency": 0.16468590831918506
+            },
+            {
+              "bin": 3,
+              "count": 2419,
+              "mean_probability": 0.34706225991249084,
+              "positive_frequency": 0.25010334849111204
+            },
+            {
+              "bin": 4,
+              "count": 1776,
+              "mean_probability": 0.4465469419956207,
+              "positive_frequency": 0.3530405405405405
+            },
+            {
+              "bin": 5,
+              "count": 1220,
+              "mean_probability": 0.5472086668014526,
+              "positive_frequency": 0.4336065573770492
+            },
+            {
+              "bin": 6,
+              "count": 718,
+              "mean_probability": 0.6471549272537231,
+              "positive_frequency": 0.415041782729805
+            },
+            {
+              "bin": 7,
+              "count": 412,
+              "mean_probability": 0.7441529035568237,
+              "positive_frequency": 0.4854368932038835
+            },
+            {
+              "bin": 8,
+              "count": 244,
+              "mean_probability": 0.8450328707695007,
+              "positive_frequency": 0.5040983606557377
+            },
+            {
+              "bin": 9,
+              "count": 102,
+              "mean_probability": 0.9370080828666687,
+              "positive_frequency": 0.5098039215686274
+            }
+          ],
+          "per_class": [
+            {
+              "label": "admiration",
+              "support": 504,
+              "predicted_count": 798,
+              "precision": 0.32957393483709274,
+              "recall": 0.5218253968253969,
+              "f1": 0.4039938556067588,
+              "brier": 0.07447468489408493,
+              "ece": 0.047519578278388715,
+              "roc_auc": 0.8159952958094334,
+              "average_precision": 0.3446294871444262
+            },
+            {
+              "label": "amusement",
+              "support": 264,
+              "predicted_count": 258,
+              "precision": 0.2868217054263566,
+              "recall": 0.2803030303030303,
+              "f1": 0.2835249042145594,
+              "brier": 0.04229713976383209,
+              "ece": 0.015097162570452217,
+              "roc_auc": 0.8567722547966592,
+              "average_precision": 0.23760181204132386
+            },
+            {
+              "label": "anger",
+              "support": 198,
+              "predicted_count": 143,
+              "precision": 0.14685314685314685,
+              "recall": 0.10606060606060606,
+              "f1": 0.12316715542521994,
+              "brier": 0.03739692643284798,
+              "ece": 0.02045838569428395,
+              "roc_auc": 0.7617082084953571,
+              "average_precision": 0.10322749968998422
+            },
+            {
+              "label": "annoyance",
+              "support": 320,
+              "predicted_count": 412,
+              "precision": 0.13349514563106796,
+              "recall": 0.171875,
+              "f1": 0.15027322404371585,
+              "brier": 0.06449570506811142,
+              "ece": 0.04139192826992375,
+              "roc_auc": 0.6926216467593499,
+              "average_precision": 0.10635798179387342
+            },
+            {
+              "label": "approval",
+              "support": 351,
+              "predicted_count": 632,
+              "precision": 0.08544303797468354,
+              "recall": 0.15384615384615385,
+              "f1": 0.10986775178026449,
+              "brier": 0.0762525126338005,
+              "ece": 0.05651554260461265,
+              "roc_auc": 0.6263299275513617,
+              "average_precision": 0.09390316752611454
+            },
+            {
+              "label": "caring",
+              "support": 135,
+              "predicted_count": 73,
+              "precision": 0.0547945205479452,
+              "recall": 0.02962962962962963,
+              "f1": 0.038461538461538464,
+              "brier": 0.027242306619882584,
+              "ece": 0.023035585682071036,
+              "roc_auc": 0.6864771422972481,
+              "average_precision": 0.046902281380428554
+            },
+            {
+              "label": "confusion",
+              "support": 153,
+              "predicted_count": 163,
+              "precision": 0.09815950920245399,
+              "recall": 0.10457516339869281,
+              "f1": 0.10126582278481013,
+              "brier": 0.031596485525369644,
+              "ece": 0.02312302095937382,
+              "roc_auc": 0.714810105561628,
+              "average_precision": 0.06985831118326391
+            },
+            {
+              "label": "curiosity",
+              "support": 284,
+              "predicted_count": 344,
+              "precision": 0.12209302325581395,
+              "recall": 0.14788732394366197,
+              "f1": 0.1337579617834395,
+              "brier": 0.05707298964262009,
+              "ece": 0.036496887313346514,
+              "roc_auc": 0.6665103395015239,
+              "average_precision": 0.09693463206993491
+            },
+            {
+              "label": "desire",
+              "support": 83,
+              "predicted_count": 6,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.01577676460146904,
+              "ece": 0.014911049269486415,
+              "roc_auc": 0.7587498196378328,
+              "average_precision": 0.036780495072522304
+            },
+            {
+              "label": "disappointment",
+              "support": 151,
+              "predicted_count": 109,
+              "precision": 0.06422018348623854,
+              "recall": 0.046357615894039736,
+              "f1": 0.05384615384615385,
+              "brier": 0.0307107325643301,
+              "ece": 0.025349859857524335,
+              "roc_auc": 0.6384251565253628,
+              "average_precision": 0.04488351328522916
+            },
+            {
+              "label": "disapproval",
+              "support": 267,
+              "predicted_count": 334,
+              "precision": 0.10479041916167664,
+              "recall": 0.13108614232209737,
+              "f1": 0.11647254575707153,
+              "brier": 0.05532270669937134,
+              "ece": 0.040660400982511634,
+              "roc_auc": 0.6942891153499986,
+              "average_precision": 0.09056187761006575
+            },
+            {
+              "label": "disgust",
+              "support": 123,
+              "predicted_count": 16,
+              "precision": 0.0625,
+              "recall": 0.008130081300813009,
+              "f1": 0.014388489208633094,
+              "brier": 0.02293524518609047,
+              "ece": 0.02085840704197708,
+              "roc_auc": 0.7397247360482655,
+              "average_precision": 0.06148686693853527
+            },
+            {
+              "label": "embarrassment",
+              "support": 37,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.006817767396569252,
+              "ece": 0.006815937241288737,
+              "roc_auc": 0.5991726420297849,
+              "average_precision": 0.009359891001388643
+            },
+            {
+              "label": "excitement",
+              "support": 103,
+              "predicted_count": 20,
+              "precision": 0.05,
+              "recall": 0.009708737864077669,
+              "f1": 0.016260162601626015,
+              "brier": 0.019312869757413864,
+              "ece": 0.014758343646439763,
+              "roc_auc": 0.7022887747733291,
+              "average_precision": 0.054017510240349474
+            },
+            {
+              "label": "fear",
+              "support": 78,
+              "predicted_count": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.014632830396294594,
+              "ece": 0.014279734228955766,
+              "roc_auc": 0.7039873256923173,
+              "average_precision": 0.035784496256476304
+            },
+            {
+              "label": "gratitude",
+              "support": 352,
+              "predicted_count": 471,
+              "precision": 0.6242038216560509,
+              "recall": 0.8352272727272727,
+              "f1": 0.7144592952612393,
+              "brier": 0.027523385360836983,
+              "ece": 0.0381315080351168,
+              "roc_auc": 0.9615942678011643,
+              "average_precision": 0.7803205863109837
+            },
+            {
+              "label": "grief",
+              "support": 6,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0011055831564590335,
+              "ece": 0.0011055831951354259,
+              "roc_auc": 0.4996310643792658,
+              "average_precision": 0.001105583195135434
+            },
+            {
+              "label": "joy",
+              "support": 161,
+              "predicted_count": 125,
+              "precision": 0.2,
+              "recall": 0.15527950310559005,
+              "f1": 0.17482517482517482,
+              "brier": 0.029217606410384178,
+              "ece": 0.014117828061485323,
+              "roc_auc": 0.7843850035266671,
+              "average_precision": 0.12337341534204556
+            },
+            {
+              "label": "love",
+              "support": 238,
+              "predicted_count": 268,
+              "precision": 0.47761194029850745,
+              "recall": 0.5378151260504201,
+              "f1": 0.5059288537549407,
+              "brier": 0.0315064936876297,
+              "ece": 0.01755403517380766,
+              "roc_auc": 0.9173753139721874,
+              "average_precision": 0.40228703269442095
+            },
+            {
+              "label": "nervousness",
+              "support": 23,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0042380690574646,
+              "ece": 0.004238068687874371,
+              "roc_auc": 0.6674685418208735,
+              "average_precision": 0.009455935121198852
+            },
+            {
+              "label": "optimism",
+              "support": 186,
+              "predicted_count": 185,
+              "precision": 0.22702702702702704,
+              "recall": 0.22580645161290322,
+              "f1": 0.22641509433962262,
+              "brier": 0.03376823663711548,
+              "ece": 0.01869130861999164,
+              "roc_auc": 0.7884299351884336,
+              "average_precision": 0.1437830495607884
+            },
+            {
+              "label": "pride",
+              "support": 16,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.0029482217505574226,
+              "ece": 0.002948221853694486,
+              "roc_auc": 0.4999075956385141,
+              "average_precision": 0.0029482218536944905
+            },
+            {
+              "label": "realization",
+              "support": 145,
+              "predicted_count": 76,
+              "precision": 0.09210526315789473,
+              "recall": 0.04827586206896552,
+              "f1": 0.06334841628959276,
+              "brier": 0.028341563418507576,
+              "ece": 0.023304606858048516,
+              "roc_auc": 0.6733799892935016,
+              "average_precision": 0.05334569585261678
+            },
+            {
+              "label": "relief",
+              "support": 11,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.002026902511715889,
+              "ece": 0.002026902524008691,
+              "roc_auc": 0.521812474822076,
+              "average_precision": 0.0023756130113890676
+            },
+            {
+              "label": "remorse",
+              "support": 56,
+              "predicted_count": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "brier": 0.010342813096940517,
+              "ece": 0.010315720607162446,
+              "roc_auc": 0.7594189695986382,
+              "average_precision": 0.03090207165701065
+            },
+            {
+              "label": "sadness",
+              "support": 156,
+              "predicted_count": 91,
+              "precision": 0.12087912087912088,
+              "recall": 0.07051282051282051,
+              "f1": 0.08906882591093118,
+              "brier": 0.029989393427968025,
+              "ece": 0.021640826153951784,
+              "roc_auc": 0.6990584669867539,
+              "average_precision": 0.0698706422456899
+            },
+            {
+              "label": "surprise",
+              "support": 141,
+              "predicted_count": 41,
+              "precision": 0.07317073170731707,
+              "recall": 0.02127659574468085,
+              "f1": 0.03296703296703296,
+              "brier": 0.026750639081001282,
+              "ece": 0.02168605172457848,
+              "roc_auc": 0.7234243807407765,
+              "average_precision": 0.05802760813798978
+            },
+            {
+              "label": "neutral",
+              "support": 1787,
+              "predicted_count": 3833,
+              "precision": 0.42786329246021393,
+              "recall": 0.9177392277560157,
+              "f1": 0.5836298932384342,
+              "brier": 0.19094114005565643,
+              "ece": 0.04333364977466154,
+              "roc_auc": 0.7374515733287418,
+              "average_precision": 0.5253627486866557
+            }
+          ]
+        }
+      },
+      "archived_reference": {
+        "file": "results/goemotions_baseline/metrics.json",
+        "micro_f1": 0.41412268188302426,
+        "macro_f1": 0.2231033942082261,
+        "support_weighted_f1": 0.3939205649036281,
+        "threshold": 0.25,
+        "samples": 5427,
+        "constant_prior_micro_f1": 0.30401497107859815,
+        "training_rows": "39,013 fit rows (100% of official train minus development)"
+      }
+    },
+    "bootstrap": {
+      "linear": {
+        "micro_f1": {
+          "estimate": 0.4855820576717693,
+          "ci95": [
+            0.47597633569305525,
+            0.4951420218822935
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        },
+        "macro_f1": {
+          "estimate": 0.34826133879744087,
+          "ci95": [
+            0.3242129448227991,
+            0.3683668601352707
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        }
+      },
+      "mlp": {
+        "micro_f1": {
+          "estimate": 0.4742622338438551,
+          "ci95": [
+            0.4635811683286357,
+            0.48453392254071653
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        },
+        "macro_f1": {
+          "estimate": 0.30064725570585377,
+          "ci95": [
+            0.2872549159562515,
+            0.3121201873364439
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        }
+      },
+      "constant_prior": {
+        "micro_f1": {
+          "estimate": 0.30401497107859815,
+          "ci95": [
+            0.29276024700510006,
+            0.3156104773711255
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        },
+        "macro_f1": {
+          "estimate": 0.017693770050299023,
+          "ci95": [
+            0.01720501387972544,
+            0.018195733403294216
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        }
+      },
+      "bernoulli_35": {
+        "micro_f1": {
+          "estimate": 0.369671463480858,
+          "ci95": [
+            0.35912307396442866,
+            0.3803750958025889
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        },
+        "macro_f1": {
+          "estimate": 0.14056864828931284,
+          "ci95": [
+            0.13454476804082652,
+            0.14693531223776995
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        }
+      }
+    },
+    "paired_differences": {
+      "linear-bernoulli_35": {
+        "micro_f1": {
+          "estimate": 0.11591059419091132,
+          "ci95": [
+            0.10550146349517929,
+            0.12657802384081338
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        },
+        "macro_f1": {
+          "estimate": 0.20769269050812803,
+          "ci95": [
+            0.18345190530434155,
+            0.23005738741785273
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        }
+      },
+      "linear-constant_prior": {
+        "micro_f1": {
+          "estimate": 0.18156708659317117,
+          "ci95": [
+            0.16940061149309396,
+            0.1944657502720898
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        },
+        "macro_f1": {
+          "estimate": 0.3305675687471418,
+          "ci95": [
+            0.3063369418191711,
+            0.35100243086530153
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        }
+      },
+      "mlp-bernoulli_35": {
+        "micro_f1": {
+          "estimate": 0.10459077036299708,
+          "ci95": [
+            0.09403585150666101,
+            0.11592554838239592
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        },
+        "macro_f1": {
+          "estimate": 0.16007860741654092,
+          "ci95": [
+            0.14547987667794463,
+            0.172972469084474
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        }
+      },
+      "mlp-constant_prior": {
+        "micro_f1": {
+          "estimate": 0.17024726276525692,
+          "ci95": [
+            0.158003078080547,
+            0.18218769643678498
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        },
+        "macro_f1": {
+          "estimate": 0.2829534856555547,
+          "ci95": [
+            0.2695846204160932,
+            0.2945071934372312
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        }
+      },
+      "mlp-linear": {
+        "micro_f1": {
+          "estimate": -0.011319823827914244,
+          "ci95": [
+            -0.019566347519738268,
+            -0.0030216284638697427
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        },
+        "macro_f1": {
+          "estimate": -0.0476140830915871,
+          "ci95": [
+            -0.06938171334947456,
+            -0.025455591486893123
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 5427
+        }
+      }
+    },
+    "deployed_sensor": {
+      "file": "sensor.json",
+      "selected_head": "linear",
+      "digest": "c78e4218de10948b1e478963e1811b150b634ae06addcb5c15c6a93098118a3a",
+      "dimension": 1536
+    }
+  },
+  "dailydialog": {
+    "counts": {
+      "train_dialogues_total": 11118,
+      "train_dialogues_selected": 2258,
+      "train_turns": 17568,
+      "valid_turns": 8069,
+      "test_turns": 7740,
+      "classes": 7
+    },
+    "dimension": 1536,
+    "source_sha256": {
+      "train": "8142b924bc9e382c54f172b0a8fddf5698f2c9d47479219ed11b6463aedab0b8",
+      "valid": "0a7678ca703f5aa716519a65087a0a0757508f77e2335c823852a1298eb436b5",
+      "test": "9fae2df356dda7ddb12f388cc38e47befc7b24c0e554b81e55068a6d1429884f"
+    },
+    "class_distribution": {
+      "train": {
+        "no_emotion": 14390,
+        "anger": 189,
+        "disgust": 77,
+        "fear": 31,
+        "happiness": 2327,
+        "sadness": 208,
+        "surprise": 346
+      },
+      "test": {
+        "no_emotion": 6321,
+        "anger": 118,
+        "disgust": 47,
+        "fear": 17,
+        "happiness": 1019,
+        "sadness": 102,
+        "surprise": 116
+      }
+    },
+    "models": {
+      "linear": {
+        "sizes": [
+          1536,
+          7
+        ],
+        "parameters": 10759,
+        "epochs_run": 60,
+        "best_valid_bce": 0.09184866916957515,
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 0.6453922718637698,
+            "dev_loss": 0.6430032854293036
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.5793265949877249,
+            "dev_loss": 0.5771337848630087
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.5240809015753132,
+            "dev_loss": 0.527285242508176
+          },
+          {
+            "epoch": 4,
+            "train_loss": 0.47579997631271514,
+            "dev_loss": 0.47060903817165567
+          },
+          {
+            "epoch": 5,
+            "train_loss": 0.4358465065380067,
+            "dev_loss": 0.43396956557764116
+          },
+          {
+            "epoch": 6,
+            "train_loss": 0.40126381224682056,
+            "dev_loss": 0.3913411171536486
+          },
+          {
+            "epoch": 7,
+            "train_loss": 0.3700550223554362,
+            "dev_loss": 0.3670020893129058
+          },
+          {
+            "epoch": 8,
+            "train_loss": 0.34656683144794287,
+            "dev_loss": 0.3410868577908598
+          },
+          {
+            "epoch": 9,
+            "train_loss": 0.32135788254743003,
+            "dev_loss": 0.31985212985248856
+          },
+          {
+            "epoch": 10,
+            "train_loss": 0.29906030194717176,
+            "dev_loss": 0.29282436419301194
+          },
+          {
+            "epoch": 11,
+            "train_loss": 0.27957200566714535,
+            "dev_loss": 0.27473328940365377
+          },
+          {
+            "epoch": 12,
+            "train_loss": 0.2634443590001815,
+            "dev_loss": 0.2514505404248297
+          },
+          {
+            "epoch": 13,
+            "train_loss": 0.2493463227640675,
+            "dev_loss": 0.24420280204172568
+          },
+          {
+            "epoch": 14,
+            "train_loss": 0.23488746614255587,
+            "dev_loss": 0.22809347483163486
+          },
+          {
+            "epoch": 15,
+            "train_loss": 0.22301666904323447,
+            "dev_loss": 0.21286357516605417
+          },
+          {
+            "epoch": 16,
+            "train_loss": 0.21151788956292983,
+            "dev_loss": 0.20351665285237328
+          },
+          {
+            "epoch": 17,
+            "train_loss": 0.20338811057448813,
+            "dev_loss": 0.19150835436722627
+          },
+          {
+            "epoch": 18,
+            "train_loss": 0.19203405226719616,
+            "dev_loss": 0.18579000683101493
+          },
+          {
+            "epoch": 19,
+            "train_loss": 0.18493819089393343,
+            "dev_loss": 0.17817725651512217
+          },
+          {
+            "epoch": 20,
+            "train_loss": 0.1769473168933908,
+            "dev_loss": 0.16890479716638027
+          },
+          {
+            "epoch": 21,
+            "train_loss": 0.1703385082343588,
+            "dev_loss": 0.16424273863736308
+          },
+          {
+            "epoch": 22,
+            "train_loss": 0.16372119988027306,
+            "dev_loss": 0.15575675175616463
+          },
+          {
+            "epoch": 23,
+            "train_loss": 0.1578266887497523,
+            "dev_loss": 0.15076243073576914
+          },
+          {
+            "epoch": 24,
+            "train_loss": 0.15301108910795858,
+            "dev_loss": 0.14488095639975415
+          },
+          {
+            "epoch": 25,
+            "train_loss": 0.14846641571312774,
+            "dev_loss": 0.14064740321887767
+          },
+          {
+            "epoch": 26,
+            "train_loss": 0.14440627416669755,
+            "dev_loss": 0.1383101662132971
+          },
+          {
+            "epoch": 27,
+            "train_loss": 0.14053886754329062,
+            "dev_loss": 0.13406879736038899
+          },
+          {
+            "epoch": 28,
+            "train_loss": 0.13605801931457628,
+            "dev_loss": 0.1286279451269827
+          },
+          {
+            "epoch": 29,
+            "train_loss": 0.13305256065380583,
+            "dev_loss": 0.12877253038375164
+          },
+          {
+            "epoch": 30,
+            "train_loss": 0.12974025543336634,
+            "dev_loss": 0.12327486195733622
+          },
+          {
+            "epoch": 31,
+            "train_loss": 0.12648510840550953,
+            "dev_loss": 0.11961782029482491
+          },
+          {
+            "epoch": 32,
+            "train_loss": 0.12520363182915176,
+            "dev_loss": 0.12080006609031153
+          },
+          {
+            "epoch": 33,
+            "train_loss": 0.12159801006366285,
+            "dev_loss": 0.11615966590550217
+          },
+          {
+            "epoch": 34,
+            "train_loss": 0.11941387569101493,
+            "dev_loss": 0.11423920753695035
+          },
+          {
+            "epoch": 35,
+            "train_loss": 0.11668308136572213,
+            "dev_loss": 0.11126761734755615
+          },
+          {
+            "epoch": 36,
+            "train_loss": 0.11548724898487855,
+            "dev_loss": 0.11124348322698564
+          },
+          {
+            "epoch": 37,
+            "train_loss": 0.11280674590800616,
+            "dev_loss": 0.10839888142421315
+          },
+          {
+            "epoch": 38,
+            "train_loss": 0.11085304146117979,
+            "dev_loss": 0.10696148598146217
+          },
+          {
+            "epoch": 39,
+            "train_loss": 0.10898570417885045,
+            "dev_loss": 0.10447163358633561
+          },
+          {
+            "epoch": 40,
+            "train_loss": 0.10762172409811639,
+            "dev_loss": 0.10386795862942864
+          },
+          {
+            "epoch": 41,
+            "train_loss": 0.10647552791342763,
+            "dev_loss": 0.10319342244775995
+          },
+          {
+            "epoch": 42,
+            "train_loss": 0.10502677282470413,
+            "dev_loss": 0.10248241788932295
+          },
+          {
+            "epoch": 43,
+            "train_loss": 0.10368953909108161,
+            "dev_loss": 0.102294966883817
+          },
+          {
+            "epoch": 44,
+            "train_loss": 0.10254036862121363,
+            "dev_loss": 0.10107080698936102
+          },
+          {
+            "epoch": 45,
+            "train_loss": 0.10057604951907415,
+            "dev_loss": 0.09903856079587949
+          },
+          {
+            "epoch": 46,
+            "train_loss": 0.09987337064943445,
+            "dev_loss": 0.09786678247130311
+          },
+          {
+            "epoch": 47,
+            "train_loss": 0.09874125905404406,
+            "dev_loss": 0.09737878520137604
+          },
+          {
+            "epoch": 48,
+            "train_loss": 0.09765262887884565,
+            "dev_loss": 0.09792422957401359
+          },
+          {
+            "epoch": 49,
+            "train_loss": 0.09678830195732264,
+            "dev_loss": 0.09743892815796565
+          },
+          {
+            "epoch": 50,
+            "train_loss": 0.09599084894710361,
+            "dev_loss": 0.09564555941579818
+          },
+          {
+            "epoch": 51,
+            "train_loss": 0.09481915297861397,
+            "dev_loss": 0.09439832513890381
+          },
+          {
+            "epoch": 52,
+            "train_loss": 0.09430370486206271,
+            "dev_loss": 0.09474110481126789
+          },
+          {
+            "epoch": 53,
+            "train_loss": 0.09309105456811671,
+            "dev_loss": 0.09386885026296675
+          },
+          {
+            "epoch": 54,
+            "train_loss": 0.09295158769141317,
+            "dev_loss": 0.0941982454516256
+          },
+          {
+            "epoch": 55,
+            "train_loss": 0.09147136337426044,
+            "dev_loss": 0.09363008795915378
+          },
+          {
+            "epoch": 56,
+            "train_loss": 0.09166983225649387,
+            "dev_loss": 0.09475337882331272
+          },
+          {
+            "epoch": 57,
+            "train_loss": 0.09101407850230446,
+            "dev_loss": 0.09327953772307179
+          },
+          {
+            "epoch": 58,
+            "train_loss": 0.08955629597189176,
+            "dev_loss": 0.0919649858292097
+          },
+          {
+            "epoch": 59,
+            "train_loss": 0.08913647437709611,
+            "dev_loss": 0.09184866916957515
+          },
+          {
+            "epoch": 60,
+            "train_loss": 0.08926935018661622,
+            "dev_loss": 0.09189574551067056
+          }
+        ],
+        "training_seconds": 11.33177896199959,
+        "head_file": "dailydialog_linear.json",
+        "head_digest": "97b1a13faf26125e73db54e9d52fa10527418731f649ad297be419cc4c824d36",
+        "test": {
+          "accuracy": 0.8426356589147287,
+          "macro_f1": 0.30691929894247194,
+          "samples": 7740,
+          "per_class": [
+            {
+              "label": "no_emotion",
+              "support": 6321,
+              "predicted_count": 6922,
+              "precision": 0.8705576422999133,
+              "recall": 0.9533301692770131,
+              "f1": 0.9100656950841953
+            },
+            {
+              "label": "anger",
+              "support": 118,
+              "predicted_count": 21,
+              "precision": 0.42857142857142855,
+              "recall": 0.07627118644067797,
+              "f1": 0.12949640287769787
+            },
+            {
+              "label": "disgust",
+              "support": 47,
+              "predicted_count": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "fear",
+              "support": 17,
+              "predicted_count": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "happiness",
+              "support": 1019,
+              "predicted_count": 680,
+              "precision": 0.6338235294117647,
+              "recall": 0.422963689892051,
+              "f1": 0.507357268981754
+            },
+            {
+              "label": "sadness",
+              "support": 102,
+              "predicted_count": 28,
+              "precision": 0.32142857142857145,
+              "recall": 0.08823529411764706,
+              "f1": 0.13846153846153847
+            },
+            {
+              "label": "surprise",
+              "support": 116,
+              "predicted_count": 87,
+              "precision": 0.5402298850574713,
+              "recall": 0.4051724137931034,
+              "f1": 0.4630541871921182
+            }
+          ],
+          "confusion": [
+            [
+              6026,
+              10,
+              0,
+              1,
+              238,
+              19,
+              27
+            ],
+            [
+              101,
+              9,
+              1,
+              0,
+              2,
+              0,
+              5
+            ],
+            [
+              46,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              17,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              580,
+              0,
+              0,
+              0,
+              431,
+              0,
+              8
+            ],
+            [
+              91,
+              0,
+              0,
+              0,
+              2,
+              9,
+              0
+            ],
+            [
+              61,
+              1,
+              0,
+              0,
+              7,
+              0,
+              47
+            ]
+          ],
+          "valence_mae": 0.1462532299741602,
+          "valence_mae_soft": 0.19598298155856503,
+          "valid_accuracy": 0.8937910521749907
+        }
+      },
+      "mlp": {
+        "sizes": [
+          1536,
+          256,
+          7
+        ],
+        "parameters": 395271,
+        "epochs_run": 9,
+        "best_valid_bce": 0.0915371212891902,
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 0.12591349290291912,
+            "dev_loss": 0.11989314433259915
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.09041690390877238,
+            "dev_loss": 0.09668522572132467
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.07507039107417286,
+            "dev_loss": 0.0915371212891902
+          },
+          {
+            "epoch": 4,
+            "train_loss": 0.06328603766416006,
+            "dev_loss": 0.09263885475732514
+          },
+          {
+            "epoch": 5,
+            "train_loss": 0.055424282929672136,
+            "dev_loss": 0.09499524202022347
+          },
+          {
+            "epoch": 6,
+            "train_loss": 0.04525084167505179,
+            "dev_loss": 0.09388485283573317
+          },
+          {
+            "epoch": 7,
+            "train_loss": 0.03886725044740517,
+            "dev_loss": 0.09536399409105316
+          },
+          {
+            "epoch": 8,
+            "train_loss": 0.03487472295124343,
+            "dev_loss": 0.09865035539392218
+          },
+          {
+            "epoch": 9,
+            "train_loss": 0.029597608784835017,
+            "dev_loss": 0.09636362468136653
+          }
+        ],
+        "training_seconds": 22.13379181900018,
+        "head_file": "dailydialog_mlp.json",
+        "head_digest": "9419aaf9808beb848f57067717bcb2d6ca51c61fc7c4dc0b41e89e99d7aa96d1",
+        "test": {
+          "accuracy": 0.8404392764857881,
+          "macro_f1": 0.30689648092037775,
+          "samples": 7740,
+          "per_class": [
+            {
+              "label": "no_emotion",
+              "support": 6321,
+              "predicted_count": 6795,
+              "precision": 0.8769683590875644,
+              "recall": 0.9427305806043348,
+              "f1": 0.9086611771881672
+            },
+            {
+              "label": "anger",
+              "support": 118,
+              "predicted_count": 21,
+              "precision": 0.38095238095238093,
+              "recall": 0.06779661016949153,
+              "f1": 0.11510791366906475
+            },
+            {
+              "label": "disgust",
+              "support": 47,
+              "predicted_count": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "fear",
+              "support": 17,
+              "predicted_count": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "happiness",
+              "support": 1019,
+              "predicted_count": 788,
+              "precision": 0.6065989847715736,
+              "recall": 0.4690873405299313,
+              "f1": 0.5290536801328167
+            },
+            {
+              "label": "sadness",
+              "support": 102,
+              "predicted_count": 24,
+              "precision": 0.3333333333333333,
+              "recall": 0.0784313725490196,
+              "f1": 0.12698412698412698
+            },
+            {
+              "label": "surprise",
+              "support": 116,
+              "predicted_count": 106,
+              "precision": 0.49056603773584906,
+              "recall": 0.4482758620689655,
+              "f1": 0.46846846846846846
+            }
+          ],
+          "confusion": [
+            [
+              5959,
+              10,
+              2,
+              2,
+              293,
+              15,
+              40
+            ],
+            [
+              101,
+              8,
+              2,
+              0,
+              2,
+              0,
+              5
+            ],
+            [
+              46,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              15,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              531,
+              2,
+              0,
+              0,
+              478,
+              0,
+              8
+            ],
+            [
+              90,
+              0,
+              0,
+              0,
+              3,
+              8,
+              1
+            ],
+            [
+              53,
+              1,
+              0,
+              0,
+              10,
+              0,
+              52
+            ]
+          ],
+          "valence_mae": 0.1483204134366925,
+          "valence_mae_soft": 0.18663985602524852,
+          "valid_accuracy": 0.8924278101375636
+        }
+      }
+    },
+    "baselines": {
+      "majority": {
+        "class": "no_emotion",
+        "test": {
+          "accuracy": 0.8166666666666667,
+          "macro_f1": 0.12844036697247704,
+          "samples": 7740,
+          "per_class": [
+            {
+              "label": "no_emotion",
+              "support": 6321,
+              "predicted_count": 7740,
+              "precision": 0.8166666666666667,
+              "recall": 1.0,
+              "f1": 0.8990825688073394
+            },
+            {
+              "label": "anger",
+              "support": 118,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "disgust",
+              "support": 47,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "fear",
+              "support": 17,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "happiness",
+              "support": 1019,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "sadness",
+              "support": 102,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "surprise",
+              "support": 116,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          ],
+          "confusion": [
+            [
+              6321,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              118,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              47,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              17,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1019,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              102,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              116,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "valence_mae": 0.16834625322997415
+        }
+      },
+      "bernoulli_20": {
+        "model_file": "dailydialog_bernoulli_20.npz",
+        "decoding": "argmax",
+        "training_seconds": 0.3581323380003596,
+        "test": {
+          "accuracy": 0.819250645994832,
+          "macro_f1": 0.1869264777391966,
+          "samples": 7740,
+          "per_class": [
+            {
+              "label": "no_emotion",
+              "support": 6321,
+              "predicted_count": 7040,
+              "precision": 0.8522727272727273,
+              "recall": 0.9492168960607499,
+              "f1": 0.8981363670383954
+            },
+            {
+              "label": "anger",
+              "support": 118,
+              "predicted_count": 30,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "disgust",
+              "support": 47,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "fear",
+              "support": 17,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "happiness",
+              "support": 1019,
+              "predicted_count": 643,
+              "precision": 0.5303265940902022,
+              "recall": 0.33464180569185475,
+              "f1": 0.41034897713598073
+            },
+            {
+              "label": "sadness",
+              "support": 102,
+              "predicted_count": 15,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "label": "surprise",
+              "support": 116,
+              "predicted_count": 12,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          ],
+          "confusion": [
+            [
+              6000,
+              27,
+              0,
+              0,
+              274,
+              12,
+              8
+            ],
+            [
+              113,
+              0,
+              0,
+              0,
+              4,
+              0,
+              1
+            ],
+            [
+              44,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              671,
+              2,
+              0,
+              0,
+              341,
+              2,
+              3
+            ],
+            [
+              98,
+              1,
+              0,
+              0,
+              3,
+              0,
+              0
+            ],
+            [
+              98,
+              0,
+              0,
+              0,
+              18,
+              0,
+              0
+            ]
+          ],
+          "valence_mae": 0.1686046511627907
+        }
+      }
+    },
+    "bootstrap": {
+      "linear": {
+        "accuracy": {
+          "estimate": 0.8426356589147287,
+          "ci95": [
+            0.8344928940568475,
+            0.8509043927648579
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "macro_f1": {
+          "estimate": 0.306919298942472,
+          "ci95": [
+            0.28512345948159157,
+            0.3269823882090289
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "valence_mae": {
+          "estimate": 0.1462532299741602,
+          "ci95": [
+            0.13811046511627906,
+            0.1545219638242894
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      },
+      "mlp": {
+        "accuracy": {
+          "estimate": 0.8404392764857881,
+          "ci95": [
+            0.8328165374677002,
+            0.8485788113695091
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "macro_f1": {
+          "estimate": 0.30689648092037775,
+          "ci95": [
+            0.286013854607082,
+            0.3267004509474155
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "valence_mae": {
+          "estimate": 0.1483204134366925,
+          "ci95": [
+            0.1404392764857881,
+            0.1558139534883721
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      },
+      "majority": {
+        "accuracy": {
+          "estimate": 0.8166666666666667,
+          "ci95": [
+            0.8082687338501292,
+            0.8245478036175711
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "macro_f1": {
+          "estimate": 0.12844036697247707,
+          "ci95": [
+            0.12770995794716858,
+            0.12911971189835517
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "valence_mae": {
+          "estimate": 0.16834625322997415,
+          "ci95": [
+            0.16046511627906976,
+            0.17635981912144702
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      },
+      "bernoulli_20": {
+        "accuracy": {
+          "estimate": 0.819250645994832,
+          "ci95": [
+            0.810594315245478,
+            0.8276518087855298
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "macro_f1": {
+          "estimate": 0.18692647773919657,
+          "ci95": [
+            0.18242195247426227,
+            0.19169698217266803
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "valence_mae": {
+          "estimate": 0.1686046511627907,
+          "ci95": [
+            0.16046188630490954,
+            0.17675387596899222
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      }
+    },
+    "paired_differences": {
+      "linear-bernoulli_20": {
+        "accuracy": {
+          "estimate": 0.023385012919896697,
+          "ci95": [
+            0.01653746770025843,
+            0.030490956072351416
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "macro_f1": {
+          "estimate": 0.11999282120327542,
+          "ci95": [
+            0.09770992672050965,
+            0.1408327963235607
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "valence_mae": {
+          "estimate": -0.022351421188630483,
+          "ci95": [
+            -0.0290762273901809,
+            -0.015633074935400504
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      },
+      "linear-majority": {
+        "accuracy": {
+          "estimate": 0.02596899224806204,
+          "ci95": [
+            0.019247416020671853,
+            0.032945736434108475
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "macro_f1": {
+          "estimate": 0.17847893196999493,
+          "ci95": [
+            0.1566622958985464,
+            0.19860221635685138
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "valence_mae": {
+          "estimate": -0.022093023255813943,
+          "ci95": [
+            -0.028940568475452177,
+            -0.015245478036175708
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      },
+      "mlp-bernoulli_20": {
+        "accuracy": {
+          "estimate": 0.021188630490956095,
+          "ci95": [
+            0.013821059431524603,
+            0.028427002583979302
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "macro_f1": {
+          "estimate": 0.11997000318118117,
+          "ci95": [
+            0.09849419847991243,
+            0.1392765740615508
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "valence_mae": {
+          "estimate": -0.020284237726098192,
+          "ci95": [
+            -0.02726098191214471,
+            -0.013559431524547806
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      },
+      "mlp-majority": {
+        "accuracy": {
+          "estimate": 0.023772609819121437,
+          "ci95": [
+            0.016146640826873376,
+            0.03178294573643403
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "macro_f1": {
+          "estimate": 0.17845611394790067,
+          "ci95": [
+            0.1574526933164612,
+            0.19851748557813387
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "valence_mae": {
+          "estimate": -0.020025839793281652,
+          "ci95": [
+            -0.026876614987080095,
+            -0.012919896640826878
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      },
+      "mlp-linear": {
+        "accuracy": {
+          "estimate": -0.002196382428940602,
+          "ci95": [
+            -0.00723837209302321,
+            0.003229974160206761
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "macro_f1": {
+          "estimate": -2.2818022094250878e-05,
+          "ci95": [
+            -0.018999374279226877,
+            0.019625657261175197
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        },
+        "valence_mae": {
+          "estimate": 0.0020671834625322905,
+          "ci95": [
+            -0.0029748062015503996,
+            0.0071059431524547745
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      }
+    },
+    "zero_shot": {
+      "sensor_digest": "c78e4218de10948b1e478963e1811b150b634ae06addcb5c15c6a93098118a3a",
+      "selected_head": "linear",
+      "sign_agreement": {
+        "n": 1303,
+        "agreement": 0.8940905602455871,
+        "positive_fraction": 0.7820414428242517,
+        "bootstrap": {
+          "estimate": 0.8940905602455871,
+          "ci95": [
+            0.8769425167622765,
+            0.91086425448619
+          ],
+          "samples": 1000,
+          "seed": 20261026,
+          "n": 7740
+        }
+      },
+      "baselines": {
+        "chance": 0.5,
+        "majority_sign": 0.7820414428242517
+      },
+      "roc_auc_positive_vs_negative": 0.9337965970504084,
+      "average_precision_positive": 0.9788016846785286,
+      "three_way": {
+        "dead_band": 0.1,
+        "accuracy": 0.4484496124031008,
+        "predict_zero_everywhere": 0.8316537467700258,
+        "confusion_gold_rows_neg_zero_pos": [
+          [
+            171,
+            74,
+            39
+          ],
+          [
+            914,
+            2426,
+            3097
+          ],
+          [
+            24,
+            121,
+            874
+          ]
+        ]
+      },
+      "mean_valence_by_emotion": {
+        "no_emotion": {
+          "n": 6321,
+          "mean": 0.11731431543755722
+        },
+        "anger": {
+          "n": 118,
+          "mean": -0.14325787393481917
+        },
+        "disgust": {
+          "n": 47,
+          "mean": -0.20885467126952859
+        },
+        "fear": {
+          "n": 17,
+          "mean": -0.06051389602879524
+        },
+        "happiness": {
+          "n": 1019,
+          "mean": 0.427451200223958
+        },
+        "sadness": {
+          "n": 102,
+          "mean": -0.1860202472433455
+        },
+        "surprise": {
+          "n": 116,
+          "mean": 0.029813236851322002
+        }
+      },
+      "mean_abs_valence_no_emotion": 0.20050822160202134,
+      "mean_abs_valence_emotional": 0.40096265763273464,
+      "mean_support_proxy": 0.30877788228468434
+    }
+  },
+  "embedding_manifests": {
+    "goemotions_train": {
+      "schema_version": 1,
+      "dataset": "goemotions",
+      "split": "train",
+      "fraction": 0.35,
+      "selection": "salted SHA-256 of id below fraction",
+      "source_file": ".cache/regesh-data/goemotions-train-train.tsv",
+      "source_sha256": "1c254a142be5c00e80d819b9ae1bbd36d94b2eeb8f4b1271846508d57e57d9c5",
+      "selected_units": 15093,
+      "texts": 15093,
+      "unique_texts_newly_embedded": 15041,
+      "model": "regesh-qwen-coder",
+      "endpoint": "http://127.0.0.1:8080/v1/embeddings",
+      "pooling": "mean (server flag)",
+      "dimension": 1536,
+      "started_utc": "2026-10-26T04:42:56.076097+00:00",
+      "finished_utc": "2026-10-26T05:36:21.347407+00:00",
+      "elapsed_seconds": 3205.271359087,
+      "prompt_tokens": 249506,
+      "calls": 471,
+      "cache_file": ".cache/embeddings/goemotions-regesh-qwen-coder.npz",
+      "selected_ids_sha256": "e52e116b3df7d7d5ac35fbdeb9fbc8f38b78480cf237bccd25c12fc636d906d7"
+    },
+    "goemotions_test": {
+      "schema_version": 1,
+      "dataset": "goemotions",
+      "split": "test",
+      "fraction": 1.0,
+      "selection": "salted SHA-256 of id below fraction",
+      "source_file": ".cache/regesh-data/goemotions-test-test.tsv",
+      "source_sha256": "0587b2dd8b27b97352adbfc3fb083d46005c8946657fdc2b1ca8b1cc7f1f8be4",
+      "selected_units": 5427,
+      "texts": 5427,
+      "unique_texts_newly_embedded": 5421,
+      "model": "regesh-qwen-coder",
+      "endpoint": "http://127.0.0.1:8080/v1/embeddings",
+      "pooling": "mean (server flag)",
+      "dimension": 1536,
+      "started_utc": "2026-10-26T03:08:14.552083+00:00",
+      "finished_utc": "2026-10-26T03:26:30.417564+00:00",
+      "elapsed_seconds": 1095.865541146,
+      "prompt_tokens": 89759,
+      "calls": 170,
+      "cache_file": ".cache/embeddings/goemotions-regesh-qwen-coder.npz",
+      "selected_ids_sha256": "65094c231f2bf7fd1805c29f9768a2f3d8e4b7cc6414b2ce8409c0013bb9bc1b"
+    },
+    "dailydialog_train": {
+      "schema_version": 1,
+      "dataset": "dailydialog",
+      "split": "train",
+      "fraction": 0.2,
+      "selection": "salted SHA-256 of id below fraction",
+      "source_file": ".cache/dailydialog/parlai/train.json",
+      "source_sha256": "8142b924bc9e382c54f172b0a8fddf5698f2c9d47479219ed11b6463aedab0b8",
+      "selected_units": 2258,
+      "texts": 17568,
+      "unique_texts_newly_embedded": 15272,
+      "model": "regesh-qwen-coder",
+      "endpoint": "http://127.0.0.1:8080/v1/embeddings",
+      "pooling": "mean (server flag)",
+      "dimension": 1536,
+      "started_utc": "2026-10-26T03:48:55.799270+00:00",
+      "finished_utc": "2026-10-26T04:42:55.676456+00:00",
+      "elapsed_seconds": 3239.8771913339997,
+      "prompt_tokens": 234548,
+      "calls": 478,
+      "cache_file": ".cache/embeddings/dailydialog-regesh-qwen-coder.npz",
+      "selected_ids_sha256": "5029fdd33c1c5e79880de5b703911f924edabff8e727833d1e333029dc87ab40"
+    },
+    "dailydialog_valid": {
+      "schema_version": 1,
+      "dataset": "dailydialog",
+      "split": "valid",
+      "fraction": 1.0,
+      "selection": "salted SHA-256 of id below fraction",
+      "source_file": ".cache/dailydialog/parlai/valid.json",
+      "source_sha256": "0a7678ca703f5aa716519a65087a0a0757508f77e2335c823852a1298eb436b5",
+      "selected_units": 1000,
+      "texts": 8069,
+      "unique_texts_newly_embedded": 7384,
+      "model": "regesh-qwen-coder",
+      "endpoint": "http://127.0.0.1:8080/v1/embeddings",
+      "pooling": "mean (server flag)",
+      "dimension": 1536,
+      "started_utc": "2026-10-26T03:26:30.662927+00:00",
+      "finished_utc": "2026-10-26T03:48:55.249463+00:00",
+      "elapsed_seconds": 1344.5865029380002,
+      "prompt_tokens": 111141,
+      "calls": 231,
+      "cache_file": ".cache/embeddings/dailydialog-regesh-qwen-coder.npz",
+      "selected_ids_sha256": "136c4967c77c96726fc53b5e886d41478dc461082738f92a082a14f42f64c070"
+    },
+    "dailydialog_test": {
+      "schema_version": 1,
+      "dataset": "dailydialog",
+      "split": "test",
+      "fraction": 1.0,
+      "selection": "salted SHA-256 of id below fraction",
+      "source_file": ".cache/dailydialog/parlai/test.json",
+      "source_sha256": "9fae2df356dda7ddb12f388cc38e47befc7b24c0e554b81e55068a6d1429884f",
+      "selected_units": 1000,
+      "texts": 7740,
+      "unique_texts_newly_embedded": 7452,
+      "model": "regesh-qwen-coder",
+      "endpoint": "http://127.0.0.1:8080/v1/embeddings",
+      "pooling": "mean (server flag)",
+      "dimension": 1536,
+      "started_utc": "2026-10-26T02:43:01.992972+00:00",
+      "finished_utc": "2026-10-26T03:08:14.355690+00:00",
+      "elapsed_seconds": 1512.362729273,
+      "prompt_tokens": 111692,
+      "calls": 233,
+      "cache_file": ".cache/embeddings/dailydialog-regesh-qwen-coder.npz",
+      "selected_ids_sha256": "9b6c3d2d26770ea1ddddaaeedf63b5b5ca5650f5b93b4aaa6435af81429921a3"
+    }
+  },
+  "headline": {
+    "goemotions": {
+      "linear": {
+        "micro_f1": 0.4855820576717693,
+        "micro_f1_ci95": [
+          0.47597633569305525,
+          0.4951420218822935
+        ],
+        "macro_f1": 0.34826133879744087,
+        "macro_f1_ci95": [
+          0.3242129448227991,
+          0.3683668601352707
+        ]
+      },
+      "mlp": {
+        "micro_f1": 0.4742622338438551,
+        "micro_f1_ci95": [
+          0.4635811683286357,
+          0.48453392254071653
+        ],
+        "macro_f1": 0.30064725570585377,
+        "macro_f1_ci95": [
+          0.2872549159562515,
+          0.3121201873364439
+        ]
+      },
+      "constant_prior": {
+        "micro_f1": 0.30401497107859815,
+        "micro_f1_ci95": [
+          0.29276024700510006,
+          0.3156104773711255
+        ],
+        "macro_f1": 0.017693770050299023,
+        "macro_f1_ci95": [
+          0.01720501387972544,
+          0.018195733403294216
+        ]
+      },
+      "bernoulli_35": {
+        "micro_f1": 0.369671463480858,
+        "micro_f1_ci95": [
+          0.35912307396442866,
+          0.3803750958025889
+        ],
+        "macro_f1": 0.14056864828931284,
+        "macro_f1_ci95": [
+          0.13454476804082652,
+          0.14693531223776995
+        ]
+      }
+    },
+    "goemotions_archived_reference": {
+      "file": "results/goemotions_baseline/metrics.json",
+      "micro_f1": 0.41412268188302426,
+      "macro_f1": 0.2231033942082261,
+      "support_weighted_f1": 0.3939205649036281,
+      "threshold": 0.25,
+      "samples": 5427,
+      "constant_prior_micro_f1": 0.30401497107859815,
+      "training_rows": "39,013 fit rows (100% of official train minus development)"
+    },
+    "goemotions_differences": {
+      "linear-bernoulli_35": {
+        "micro_f1": [
+          0.11591059419091132,
+          [
+            0.10550146349517929,
+            0.12657802384081338
+          ]
+        ],
+        "macro_f1": [
+          0.20769269050812803,
+          [
+            0.18345190530434155,
+            0.23005738741785273
+          ]
+        ]
+      },
+      "linear-constant_prior": {
+        "micro_f1": [
+          0.18156708659317117,
+          [
+            0.16940061149309396,
+            0.1944657502720898
+          ]
+        ],
+        "macro_f1": [
+          0.3305675687471418,
+          [
+            0.3063369418191711,
+            0.35100243086530153
+          ]
+        ]
+      },
+      "mlp-bernoulli_35": {
+        "micro_f1": [
+          0.10459077036299708,
+          [
+            0.09403585150666101,
+            0.11592554838239592
+          ]
+        ],
+        "macro_f1": [
+          0.16007860741654092,
+          [
+            0.14547987667794463,
+            0.172972469084474
+          ]
+        ]
+      },
+      "mlp-constant_prior": {
+        "micro_f1": [
+          0.17024726276525692,
+          [
+            0.158003078080547,
+            0.18218769643678498
+          ]
+        ],
+        "macro_f1": [
+          0.2829534856555547,
+          [
+            0.2695846204160932,
+            0.2945071934372312
+          ]
+        ]
+      },
+      "mlp-linear": {
+        "micro_f1": [
+          -0.011319823827914244,
+          [
+            -0.019566347519738268,
+            -0.0030216284638697427
+          ]
+        ],
+        "macro_f1": [
+          -0.0476140830915871,
+          [
+            -0.06938171334947456,
+            -0.025455591486893123
+          ]
+        ]
+      }
+    },
+    "dailydialog": {
+      "linear": {
+        "accuracy": [
+          0.8426356589147287,
+          [
+            0.8344928940568475,
+            0.8509043927648579
+          ]
+        ],
+        "macro_f1": [
+          0.306919298942472,
+          [
+            0.28512345948159157,
+            0.3269823882090289
+          ]
+        ],
+        "valence_mae": [
+          0.1462532299741602,
+          [
+            0.13811046511627906,
+            0.1545219638242894
+          ]
+        ]
+      },
+      "mlp": {
+        "accuracy": [
+          0.8404392764857881,
+          [
+            0.8328165374677002,
+            0.8485788113695091
+          ]
+        ],
+        "macro_f1": [
+          0.30689648092037775,
+          [
+            0.286013854607082,
+            0.3267004509474155
+          ]
+        ],
+        "valence_mae": [
+          0.1483204134366925,
+          [
+            0.1404392764857881,
+            0.1558139534883721
+          ]
+        ]
+      },
+      "majority": {
+        "accuracy": [
+          0.8166666666666667,
+          [
+            0.8082687338501292,
+            0.8245478036175711
+          ]
+        ],
+        "macro_f1": [
+          0.12844036697247707,
+          [
+            0.12770995794716858,
+            0.12911971189835517
+          ]
+        ],
+        "valence_mae": [
+          0.16834625322997415,
+          [
+            0.16046511627906976,
+            0.17635981912144702
+          ]
+        ]
+      },
+      "bernoulli_20": {
+        "accuracy": [
+          0.819250645994832,
+          [
+            0.810594315245478,
+            0.8276518087855298
+          ]
+        ],
+        "macro_f1": [
+          0.18692647773919657,
+          [
+            0.18242195247426227,
+            0.19169698217266803
+          ]
+        ],
+        "valence_mae": [
+          0.1686046511627907,
+          [
+            0.16046188630490954,
+            0.17675387596899222
+          ]
+        ]
+      }
+    },
+    "dailydialog_differences": {
+      "linear-bernoulli_20": {
+        "accuracy": [
+          0.023385012919896697,
+          [
+            0.01653746770025843,
+            0.030490956072351416
+          ]
+        ],
+        "macro_f1": [
+          0.11999282120327542,
+          [
+            0.09770992672050965,
+            0.1408327963235607
+          ]
+        ],
+        "valence_mae": [
+          -0.022351421188630483,
+          [
+            -0.0290762273901809,
+            -0.015633074935400504
+          ]
+        ]
+      },
+      "linear-majority": {
+        "accuracy": [
+          0.02596899224806204,
+          [
+            0.019247416020671853,
+            0.032945736434108475
+          ]
+        ],
+        "macro_f1": [
+          0.17847893196999493,
+          [
+            0.1566622958985464,
+            0.19860221635685138
+          ]
+        ],
+        "valence_mae": [
+          -0.022093023255813943,
+          [
+            -0.028940568475452177,
+            -0.015245478036175708
+          ]
+        ]
+      },
+      "mlp-bernoulli_20": {
+        "accuracy": [
+          0.021188630490956095,
+          [
+            0.013821059431524603,
+            0.028427002583979302
+          ]
+        ],
+        "macro_f1": [
+          0.11997000318118117,
+          [
+            0.09849419847991243,
+            0.1392765740615508
+          ]
+        ],
+        "valence_mae": [
+          -0.020284237726098192,
+          [
+            -0.02726098191214471,
+            -0.013559431524547806
+          ]
+        ]
+      },
+      "mlp-majority": {
+        "accuracy": [
+          0.023772609819121437,
+          [
+            0.016146640826873376,
+            0.03178294573643403
+          ]
+        ],
+        "macro_f1": [
+          0.17845611394790067,
+          [
+            0.1574526933164612,
+            0.19851748557813387
+          ]
+        ],
+        "valence_mae": [
+          -0.020025839793281652,
+          [
+            -0.026876614987080095,
+            -0.012919896640826878
+          ]
+        ]
+      },
+      "mlp-linear": {
+        "accuracy": [
+          -0.002196382428940602,
+          [
+            -0.00723837209302321,
+            0.003229974160206761
+          ]
+        ],
+        "macro_f1": [
+          -2.2818022094250878e-05,
+          [
+            -0.018999374279226877,
+            0.019625657261175197
+          ]
+        ],
+        "valence_mae": [
+          0.0020671834625322905,
+          [
+            -0.0029748062015503996,
+            0.0071059431524547745
+          ]
+        ]
+      }
+    },
+    "zero_shot_sign_agreement": {
+      "n": 1303,
+      "agreement": 0.8940905602455871,
+      "positive_fraction": 0.7820414428242517,
+      "bootstrap": {
+        "estimate": 0.8940905602455871,
+        "ci95": [
+          0.8769425167622765,
+          0.91086425448619
+        ],
+        "samples": 1000,
+        "seed": 20261026,
+        "n": 7740
+      }
+    },
+    "zero_shot_baselines": {
+      "chance": 0.5,
+      "majority_sign": 0.7820414428242517
+    },
+    "zero_shot_roc_auc": 0.9337965970504084,
+    "deployed_sensor": {
+      "file": "sensor.json",
+      "selected_head": "linear",
+      "digest": "c78e4218de10948b1e478963e1811b150b634ae06addcb5c15c6a93098118a3a",
+      "dimension": 1536
+    }
+  },
+  "interpretation": "Recognition quality of a frozen-embedding head against hashed-token references on labelled corpora. The 35% / 20% training subsets, the fixed valence map and the proxy nature of support are declared in config.json. Nothing here measures benefit to users; sensor outputs are machine interpretations that fill affect evidence only and never establish facts, authority or permissions.",
+  "runtime_seconds": 134.71894782900017
+}

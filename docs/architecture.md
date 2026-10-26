@@ -97,7 +97,10 @@ budget). `neutral_updates_arousal` chooses whether goal-irrelevant,
 unthreatening occurrences pull arousal down (Eq. 3 with zero stimulation) or
 leave it to elapsed-time decay. `express()`
 journals the agent's own expression as an action, not as evidence. All new
-operations replay exactly. See [bonding report](bonding.md) and
+operations replay exactly. An optional learned sensor
+(`regesh/bonding/sensor.py`) can estimate `partner_affect` from the user's text
+through embeddings of the generating model, run by the host before `observe`
+and recorded with its digest; see [bonding report](bonding.md) and
 [disclosure and safeguards](bonding_disclosure.md).
 
 ## Persistence, time, replay and isolation

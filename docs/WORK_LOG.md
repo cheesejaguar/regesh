@@ -96,3 +96,27 @@ changes grounded in published papers, reproduce their findings, iterate.
 - Local model server used for 400 calls plus smoke tests; stopped after the
   study. DailyDialog (ParlAI mirror) and ConvoKit term files cached outside git.
 - PR #3 on `research/pair-bonding`.
+
+## Learned components checkpoint (2026-10-26)
+
+User asked how heuristic versus learned the bond is, and to pursue a small
+network paired with the LLM (slot 1: partner-state sensor) and a learned
+partner model (slot 2) in parallel.
+
+- Shared: `regesh/bonding/mlp.py` (NumPy MLP, finite-difference-checked) and
+  `regesh/bonding/embeddings.py` (content-addressed cache of the generating
+  model's mean-pooled embeddings; GoEmotions and DailyDialog subsets, ~53k texts,
+  about 3 h on CPU). Server stopped afterwards.
+- Slot 1: logistic head reaches micro-F1 .486 / macro-F1 .348 on the official
+  GoEmotions test (hashed reference .414 / .223 at 100% rows; .370 / .141 like
+  for like at 35%); DailyDialog 7-class accuracy .843 vs majority .817; zero-shot
+  valence sign .894 on emotional turns but a positive bias on neutral turns;
+  post hoc neutral gate selected on validation (tau .3, dead band .4) is the
+  `annotate_event` default. Non-deployed MLP heads gzipped in results.
+- Slot 2: windowed MLP over embeddings adds nothing to next-affect prediction
+  (RMSE +.007 vs scalar features); its gain over the online identifier was cold
+  start; the identifier now warm-starts from the pooled DailyDialog fit (RMSE
+  .244 vs .275), diffuse start selectable; persistence predicts the next
+  emotion class best.
+- Full suite 266 tests pass; demo digest unchanged; audit covers nine manifests.
+

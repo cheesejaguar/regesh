@@ -36,6 +36,24 @@
       "status": "ok",
       "checked": 6,
       "mismatches": []
+    },
+    {
+      "directory": "results/bonding/sensor",
+      "status": "ok",
+      "checked": 17,
+      "mismatches": []
+    },
+    {
+      "directory": "results/bonding/partner_model",
+      "status": "ok",
+      "checked": 7,
+      "mismatches": []
+    },
+    {
+      "directory": "results/bonding/sensor_gate",
+      "status": "ok",
+      "checked": 2,
+      "mismatches": []
     }
   ],
   "platform_recomputation": {

@@ -38,3 +38,20 @@ is answered by the partner's next occurrence with `support > .1`, otherwise it
 counts as unanswered on that occurrence or after `request_window` elapsed time.
 The `express` and `request` operations replay exactly; `intervene` accepts
 `bonds` and `attachment`.
+
+## Learned sensor (optional evidence provider)
+
+```python
+from regesh.bonding.embeddings import EmbeddingClient
+from regesh.bonding.sensor import Sensor, annotate_event
+sensor = Sensor.load('results/bonding/sensor/sensor.json')        # logistic head, digest-verified
+client = EmbeddingClient('http://127.0.0.1:8080/v1', 'regesh-qwen-coder')   # server started with --embedding --pooling mean
+text = 'I am not sure this is working, honestly.'
+event = Event('m1', 'chat', 'user', 'agent', 'conversation', '2026-10-26T00:00:00Z', data={'text': text})
+agent.observe(annotate_event(event, sensor, client.embed([text])[0]))   # fills partner_affect after the neutral gate
+```
+
+The agent never calls the network; the host embeds and annotates. `data['sensor']`
+records the model digest, emotion probabilities, the valence map, the gate and
+whether it fired. Pass `gate=None` to disable the neutral gate or
+`fill_support=True` to also fill `support` from the declared proxy.

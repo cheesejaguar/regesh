@@ -82,7 +82,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--platform', nargs='*', default=['results/bonding/platform', 'results/bonding/platform_v2'])
     parser.add_argument('--papers', nargs='*', default=['results/papers/attachment_robot', 'results/papers/marital_dynamics',
-                                                        'results/papers/coordination_power', 'results/papers/llm_convergence/live'])
+                                                        'results/papers/coordination_power', 'results/papers/llm_convergence/live',
+                                                        'results/bonding/sensor', 'results/bonding/partner_model', 'results/bonding/sensor_gate'])
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
     result = {'schema_version': 1, 'manifests': [verify_manifest(d) for d in [*args.platform, *args.papers]]}

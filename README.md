@@ -167,7 +167,11 @@ requests). Identifier-based steering equals fixed positivity for cooperative
 simulated partners and avoids a -.25 affect loss against a reactant one. Of the
 published findings, Hiolle's profile contrasts and two of four Supreme Court
 coordination asymmetries reproduce; the robot's adaptive rule, the damping
-claim and LLM over-convergence (with the 1.5B model) do not. See the
+claim and LLM over-convergence (with the 1.5B model) do not. A logistic head on
+the generating model's embeddings estimates user emotion at micro-F1 .486 on the
+official GoEmotions test (hashed-token reference .414), while a learned partner
+model over the same embeddings added nothing to next-affect prediction; its
+evaluation fixed the identifier's cold start instead. See the
 [bonding report](docs/bonding.md), the [novelty statement and
 safeguards](docs/bonding_disclosure.md) and the per-paper reports under
 `docs/reproductions/`. No result establishes benefit to users.

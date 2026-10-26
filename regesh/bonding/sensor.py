@@ -237,20 +237,39 @@ class Sensor:
         return sensor
 
 
-def annotate_event(event, sensor, embedding, *, fill_support=False):
+# Neutral gate selected post hoc on the DailyDialog validation split by three-way macro-F1
+# (scripts/sensor_neutral_gate.py; results/bonding/sensor_gate/gate.json). Ungated, every
+# neutral turn received a non-zero, mildly positive valence; with the gate 13% of neutral test
+# turns stay non-zero while 51% of emotional turns are zeroed (sign agreement .48 instead of .89).
+# A host that only wants the sign on clearly emotional turns can pass a looser gate or None.
+DEFAULT_NEUTRAL_GATE = {"label": "neutral", "tau": .3, "dead_band": .4, "source": "results/bonding/sensor_gate/gate.json"}
+
+
+def apply_gate(estimate, gate):
+    """Zero the mapped valence when the neutral probability or the dead band says the turn is not emotional."""
+    if gate is None:
+        return estimate["partner_affect"], False
+    p_neutral = estimate["emotion_probabilities"].get(gate["label"], 0.)
+    gated = p_neutral >= gate["tau"] or abs(estimate["partner_affect"]) < gate["dead_band"]
+    return (0. if gated else estimate["partner_affect"]), gated
+
+
+def annotate_event(event, sensor, embedding, *, fill_support=False, gate=DEFAULT_NEUTRAL_GATE):
     """Return a NEW Event whose data carries sensor-estimated evidence where the host left it absent.
 
-    `partner_affect` is filled when absent. `support` is filled only when absent and the host passes
-    `fill_support=True` (the value is a declared proxy). Hand-supplied fields are never overwritten.
-    `data["sensor"]` records the model digest, probabilities and the valence map used.
+    `partner_affect` is filled when absent, after the neutral gate (pass `gate=None` to disable).
+    `support` is filled only when absent and the host passes `fill_support=True` (the value is a
+    declared proxy). Hand-supplied fields are never overwritten. `data["sensor"]` records the model
+    digest, probabilities, the valence map, the gate and whether it fired.
     """
     estimate = sensor.estimate(embedding)
+    affect, gated = apply_gate(estimate, gate)
     data = deepcopy(event.data); filled = []
     if "partner_affect" not in data:
-        data["partner_affect"] = estimate["partner_affect"]; filled.append("partner_affect")
+        data["partner_affect"] = affect; filled.append("partner_affect")
     if fill_support and "support" not in data:
         data["support"] = estimate["support_proxy"]; filled.append("support")
     data["sensor"] = {"model_digest": sensor.digest, "emotion_probabilities": estimate["emotion_probabilities"], "valence_map": sensor.valence_map,
-                      "partner_affect": estimate["partner_affect"], "support_proxy": estimate["support_proxy"], "support_rule": sensor.support_rule,
-                      "filled": filled}
+                      "partner_affect": estimate["partner_affect"], "gated_partner_affect": affect, "gate": gate, "gate_fired": gated,
+                      "support_proxy": estimate["support_proxy"], "support_rule": sensor.support_rule, "filled": filled}
     return replace(event, data=data)

@@ -97,7 +97,7 @@ class AnnotateEvent(unittest.TestCase):
     def test_fills_only_missing_fields_and_records_provenance(self):
         sensor = synthetic_sensor(); x = np.linspace(-1, 1, 8); est = sensor.estimate(x)
         original = self.event(text="thanks, that helped")
-        new = S.annotate_event(original, sensor, x)
+        new = S.annotate_event(original, sensor, x, gate=None)
         self.assertIsNot(new, original); self.assertNotIn("partner_affect", original.data); self.assertNotIn("sensor", original.data)
         self.assertEqual(new.data["partner_affect"], est["partner_affect"]); self.assertNotIn("support", new.data)
         prov = new.data["sensor"]
@@ -105,9 +105,9 @@ class AnnotateEvent(unittest.TestCase):
         self.assertEqual(prov["emotion_probabilities"], est["emotion_probabilities"]); self.assertEqual(prov["filled"], ["partner_affect"])
         self.assertEqual(new.data["text"], "thanks, that helped"); self.assertEqual(new.id, original.id)
         # Hand-supplied evidence is never overwritten; support only with the opt-in flag.
-        kept = S.annotate_event(self.event(partner_affect=.3, support=.9), sensor, x, fill_support=True)
+        kept = S.annotate_event(self.event(partner_affect=.3, support=.9), sensor, x, fill_support=True, gate=None)
         self.assertEqual(kept.data["partner_affect"], .3); self.assertEqual(kept.data["support"], .9); self.assertEqual(kept.data["sensor"]["filled"], [])
-        with_support = S.annotate_event(self.event(), sensor, x, fill_support=True)
+        with_support = S.annotate_event(self.event(), sensor, x, fill_support=True, gate=None)
         self.assertEqual(with_support.data["support"], est["support_proxy"]); self.assertEqual(with_support.data["sensor"]["filled"], ["partner_affect", "support"])
 
     def test_annotated_event_is_observed_by_a_bonded_agent(self):
@@ -116,7 +116,7 @@ class AnnotateEvent(unittest.TestCase):
         try:
             for i in range(2):
                 e = Event(f"u-{i}", "chat", "user", "agent", "conversation", "2026-10-25T00:00:00Z", data={"text": f"hello {i}"})
-                agent.observe(S.annotate_event(e, sensor, x + i * .1))
+                agent.observe(S.annotate_event(e, sensor, x + i * .1, gate=None))
             state = agent.get_state()
             last = state["bonds"]["user"]["dyad"]["last_partner_affect"]
             self.assertAlmostEqual(last, sensor.estimate(x + .1)["partner_affect"])
@@ -238,6 +238,17 @@ class EndToEnd(unittest.TestCase):
             self.assertIn("agreement", d["zero_shot"]["sign_agreement"]); self.assertEqual(d["zero_shot"]["sensor_digest"], sensor.digest)
             with self.assertRaises(ValueError):
                 train_sensor.run(config, emb, data, dd, out, log=logged.append)
+
+
+class NeutralGateChecks(unittest.TestCase):
+    def test_gate_zeroes_neutral_or_weak_valence_and_records_provenance(self):
+        from regesh.bonding import sensor as sm
+        estimate = {"emotion_probabilities": {"neutral": .6, "joy": .4}, "partner_affect": .5, "support_proxy": .1}
+        self.assertEqual(sm.apply_gate(estimate, {"label": "neutral", "tau": .5, "dead_band": .1}), (0., True))
+        self.assertEqual(sm.apply_gate(estimate, {"label": "neutral", "tau": .7, "dead_band": .1}), (.5, False))
+        self.assertEqual(sm.apply_gate({**estimate, "partner_affect": .05}, {"label": "neutral", "tau": .7, "dead_band": .1}), (0., True))
+        self.assertEqual(sm.apply_gate(estimate, None), (.5, False))
+        self.assertEqual(sm.DEFAULT_NEUTRAL_GATE["label"], "neutral")
 
 
 if __name__ == "__main__":

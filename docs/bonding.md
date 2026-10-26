@@ -339,7 +339,44 @@ reports for marital conflict; it is a property of this scripted everyday
 corpus, not a general law. The learned model is retained as an evaluated
 alternative, not deployed.
 
-LEARNED_SENSOR_SECTION
+### Embedding-based partner-state sensor
+
+Task: estimate the evidence fields the bond consumes (`partner_affect`, and a
+support proxy) from the user's text, using mean-pooled embeddings from the same
+local model that generates replies, with a frozen protocol and single
+evaluations on official test sets ([report](bonding_sensor.md)). Heads are a
+logistic layer and a 256-unit MLP on standardized 1536-dimensional vectors.
+
+| Evaluation | Head on embeddings | Hashed-token reference | Notes |
+|---|---:|---:|---|
+| GoEmotions official test, micro-F1 / macro-F1 | **.486 [.476, .495] / .348 [.324, .368]** (linear, 35% of training rows) | .370 / .141 refit on the same 35%; .414 / .223 archived at 100% | +.116 / +.208 like for like; the head beats the reference that saw 2.9 times more rows (post hoc interval +.072 [+.061, +.082]) |
+| DailyDialog test, 7-class accuracy / macro-F1 / valence MAE | **.843 / .307 / .146** (linear, 20% of training dialogues) | .819 / .187 / .169; majority .817 / .128 / .168 | all paired intervals exclude zero; heads never predict disgust or fear |
+| Zero-shot valence sign on emotional DailyDialog turns (n 1,303) | **.894 [.877, .911]**, AUC .934 | majority sign .782 | mean +.12 valence on neutral turns, 49% of them above +.1 |
+
+The MLP head was not better than the logistic head (micro-F1 -.011 [-.020,
+-.003]) and over-fitted; the linear heads had not converged under the frozen
+60-epoch budget, so the numbers are lower bounds. The hazard for the bond is the
+positive bias on neutral small talk: fed into the dyad identifier unfiltered,
+every turn carries a small positive "partner affect". A post hoc neutral gate
+(zero the valence when the GoEmotions neutral probability is at least .3 or the
+magnitude is below .4), selected on the validation split by three-way
+macro-F1 and evaluated once on test
+(`scripts/sensor_neutral_gate.py`, `results/bonding/sensor_gate/`):
+
+| Operating point | Three-way accuracy | Three-way macro-F1 | Emotional-turn sign agreement | Neutral turns left non-zero |
+|---|---:|---:|---:|---:|
+| Always neutral | .832 | .303 | 0 | 0% |
+| Ungated sensor | .151 | .153 | .894 | 100% |
+| Gated sensor (default) | .806 | **.542** | .482 | 12.8% |
+
+The gate is a trade-off, not a free improvement: it removes most spurious
+valences at the cost of zeroing half of the emotional turns. It is the default
+in `annotate_event` and fully configurable; hosts that only need the sign on
+clearly emotional turns can loosen or disable it. The sensor never calls the
+network from inside the agent: the host embeds the text, annotates the event,
+and the journal records the model digest, probabilities, the gate and whether
+it fired. The support proxy (mass on caring, gratitude, approval, love,
+admiration) is off by default and unvalidated.
 
 ## Claim ledger
 
@@ -348,7 +385,7 @@ LEARNED_SENSOR_SECTION
 | Established precedent | Arousal regulation by a caregiver, adaptive attachment profiles, coupled dyadic affect equations with attractors and repair, mid-range contingency, linguistic coordination and style matching, the intimacy process model, relational agents and chatbot attachment. None is claimed as new. |
 | Engineering synthesis | One replayable, hash-journaled bond state per partner that combines these mechanisms inside the cognitive-control loop, with shared pure-function modules used by both the platform and the reproductions, an attention budget, a responsiveness floor and a trust firewall. |
 | Measured result | Default agents unchanged (demo digest identical). Reproductions: Hiolle profile contrasts and the complex-environment traversal ratio reproduce, absolute pace and the literal adaptive rule do not; the step ojive admits at most three fixed points, the published counts are null-cline crossings or smooth-form roots, the published estimator is imprecise at 150 points, damping never created a positive attractor; two of four Supreme Court coordination asymmetries reproduce; LLM over-convergence does not reproduce with the 1.5B model and the bounded instruction is a null. Platform: a paired cumulative threat reduction of 10-15% that depends on partner responsiveness only under the evidence-count estimator; identifier-based steering equals fixed positivity for cooperative partners and avoids its harm for a reactant one; repair untested. |
-| Measured result (learned components) | On DailyDialog, embeddings from the generating model add nothing to next-affect prediction beyond scalar affect features; the identifier's deficit was cold start and is fixed by a pooled warm start, now the default; persistence predicts the next emotion class best. SENSOR_LEDGER |
+| Measured result (learned components) | On DailyDialog, embeddings from the generating model add nothing to next-affect prediction beyond scalar affect features; the identifier's deficit was cold start and is fixed by a pooled warm start, now the default; persistence predicts the next emotion class best. A logistic head on the generating model's embeddings estimates user emotion better than the hashed-token reference on GoEmotions and transfers its valence sign to conversation turns, with a positive bias on neutral turns that a validation-selected gate trades against recall. |
 | Speculative hypothesis | That these mechanisms improve collaboration, trust calibration or wellbeing with real users. No human study was run; the simulated partners follow declared equations; benefit to users is unestablished. |
 
 What would change the ledger: a matched study with real users and an ordinary

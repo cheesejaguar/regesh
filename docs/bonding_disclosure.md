@@ -25,6 +25,19 @@ establishes subjective experience, biological fidelity or benefit to users.
 | Relational agents maintain long-term human-computer relationships; social chatbots become attachment objects | Bickmore & Picard (2005); Xie & Pentina (2022); Pentina, Hancock & Xie (2023); De Freitas (2026, arXiv:2606.20589) | Prior art for the application; source of the disengagement safeguard |
 | Persistent affect platforms with relationships, needs and emotion | Humanoid Agents (Wang et al. 2023); Sentipolis (Fu et al. 2026); FAtiMA; WASABI; see `research_matrix.md` | Baseline architectures; none evaluated against the bonding literature above |
 
+## Learned components (evaluated, mostly engineering)
+
+Emotion classification from language-model embeddings and sequence models of
+dialogue affect are abundant prior art and are not claimed. What was measured
+here: a logistic head on the generating model's embeddings beats the
+repository's hashed-token reference on GoEmotions and transfers its valence
+sign to conversation turns; a learned partner model adds nothing beyond
+scalar affect features; the online identifier's cold start, exposed by that
+comparison, is fixed with a corpus-derived warm start. The only mechanism-level
+elements are the neutral gate with recorded provenance and the rule that the
+sensor is a host-side evidence provider whose outputs are journaled as
+interpretations, never as facts.
+
 ## Engineering synthesis (ours, not asserted as novel in isolation)
 
 A replayable, hash-journaled bond state per partner that combines the three
