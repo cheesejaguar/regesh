@@ -154,6 +154,14 @@ class LLMConvergenceTests(unittest.TestCase):
         rng = np.random.default_rng(0)
         boot = resample_aggregates(a, b, rng.integers(0, 4, (25, 4)))
         self.assertEqual(boot['x'].shape, (25,))
+        # Shuffled baseline keeps targets fixed: a permutation of both would preserve every pairing.
+        perms = np.array([rng.permutation(4) for _ in range(30)])
+        paired = resample_aggregates(a, b, perms)
+        self.assertTrue(np.allclose(paired['x'], aggregated_3(convergence_from_flags(a, b['x']))))
+        shuffled = resample_aggregates(a, b, perms, permute_targets=False)
+        self.assertGreater(shuffled['x'].std(), 0)
+        reversed_pairing = resample_aggregates(a, b, np.array([[3, 2, 1, 0]]), permute_targets=False)['x'][0]
+        self.assertAlmostEqual(reversed_pairing, aggregated_3(convergence_from_flags(a, b['x'][:, [3, 2, 1, 0]])))
         self.assertEqual(content_vocabulary(['apple banana the apple', 'cherry banana'], 2, 4), ['apple', 'banana'])
         self.assertEqual(content_vocabulary(['the and with'], 5, 4), [])
 
@@ -178,7 +186,11 @@ class LLMConvergenceTests(unittest.TestCase):
         ci = result['bootstrap']['markers']['plain_minus_human']['ci95']
         self.assertEqual(len(ci), 2); self.assertLessEqual(ci[0], ci[1])
         self.assertEqual(result['shuffled_baseline']['permutations'], 20)
-        self.assertIn('shuffled_95_band', result['shuffled_baseline']['markers']['human'])
+        human_shuffle = result['shuffled_baseline']['markers']['human']
+        self.assertEqual(human_shuffle['true'], .5)
+        self.assertLess(human_shuffle['shuffled_mean'], .5)             # random re-pairing destroys the +.5
+        self.assertLess(human_shuffle['shuffled_95_band'][0], human_shuffle['shuffled_95_band'][1])
+        self.assertLessEqual(human_shuffle['shuffled_95_band'][1], .5)   # identity permutation is the ceiling
         self.assertFalse(result['comparison']['same_direction_as_published'])
         self.assertAlmostEqual(result['comparison']['published_eight_marker_llm_minus_user_derived'], .02)
         self.assertEqual(result['content_vocabulary'], ['cats', 'dogs'])

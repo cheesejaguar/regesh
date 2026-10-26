@@ -159,10 +159,18 @@ python -m regesh.bonding.experiment --config configs/bonding_platform.json --out
 python -m unittest tests.test_bonding tests.test_bonding_experiment -v
 ```
 
-See the [bonding report](docs/bonding.md), the [novelty statement and
+**Measured so far:** in simulation, the bond removes 10-15% of cumulative
+affect threat against a reference agent with common random numbers, and this
+depends on partner responsiveness only with the evidence-count estimator
+(measured responsiveness .78/.49/.23 for partners answering 100/50/0% of
+requests). Identifier-based steering equals fixed positivity for cooperative
+simulated partners and avoids a -.25 affect loss against a reactant one. Of the
+published findings, Hiolle's profile contrasts and two of four Supreme Court
+coordination asymmetries reproduce; the robot's adaptive rule, the damping
+claim and LLM over-convergence (with the 1.5B model) do not. See the
+[bonding report](docs/bonding.md), the [novelty statement and
 safeguards](docs/bonding_disclosure.md) and the per-paper reports under
-`docs/reproductions/`. No result establishes benefit to users; see the report
-for measured outcomes and their limits.
+`docs/reproductions/`. No result establishes benefit to users.
 
 ## Research and results
 

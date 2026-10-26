@@ -51,8 +51,9 @@ def recompute_platform(directory):
     with gzip.open(directory / 'attachment_runs.jsonl.gz', 'rt') as f:
         att = [json.loads(line) for line in f]
     for key, block in summary['attachment']['conditions'].items():
-        q, kind = key.split('|'); q = float(q[2:]); bonded = kind == 'bonded'
-        rows = [r for r in att if r['responsiveness'] == q and r['bonded'] == bonded]
+        q, kind = key.split('|'); q = float(q[2:]); bonded = kind != 'reference'
+        variant = kind.split(':', 1)[1] if ':' in kind else None
+        rows = [r for r in att if r['responsiveness'] == q and r['bonded'] == bonded and (not bonded or r.get('variant') == variant)]
         for endpoint, stats in block.items():
             if stats is None:
                 continue
@@ -79,19 +80,18 @@ def recompute_platform(directory):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--platform', default='results/bonding/platform')
+    parser.add_argument('--platform', nargs='*', default=['results/bonding/platform', 'results/bonding/platform_v2'])
     parser.add_argument('--papers', nargs='*', default=['results/papers/attachment_robot', 'results/papers/marital_dynamics',
                                                         'results/papers/coordination_power', 'results/papers/llm_convergence/live'])
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
-    result = {'schema_version': 1, 'manifests': [verify_manifest(d) for d in [args.platform, *args.papers]]}
-    if Path(args.platform, 'summary.json').exists():
-        result['platform_recomputation'] = recompute_platform(args.platform)
+    result = {'schema_version': 1, 'manifests': [verify_manifest(d) for d in [*args.platform, *args.papers]]}
+    result['platform_recomputation'] = {d: recompute_platform(d) for d in args.platform if Path(d, 'summary.json').exists()}
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     Path(args.output).write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps({m['directory']: m['status'] for m in result['manifests']}, indent=2))
-    if 'platform_recomputation' in result:
-        print('platform means agree:', result['platform_recomputation']['agree_within_1e-9'])
+    for d, rec in result['platform_recomputation'].items():
+        print(d, 'means agree:', rec['agree_within_1e-9'])
 
 
 if __name__ == '__main__':

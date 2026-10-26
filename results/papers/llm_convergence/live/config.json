@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "paper": "Accommodation Goes Both Ways: Studying Linguistic Convergence Between Humans and Language Models",
+  "paper_author_year": "Blevins (2026)",
+  "paper_arxiv": "2605.29278",
+  "secondary_reference": "French, D'Mello & von der Wense (2024), A Study of Linguistic Alignment in Dialogue Systems, HuCLLM: shuffled-response baseline design",
+  "metric_source": "Danescu-Niculescu-Mizil & Lee (2011); Eq. 1 of Danescu-Niculescu-Mizil, Lee, Pang & Kleinberg (2012), implemented in regesh.bonding.synchrony.CoordinationCounts",
+  "scope": "Pre-outcome locked scoped replication on a different model, corpus role and lexicon; direction and contrasts comparable, absolute levels not",
+  "data": {
+    "name": "DailyDialog",
+    "citation": "Li, Su, Shen, Li, Cao & Niu (2017), IJCNLP",
+    "license": "CC BY-NC-SA 4.0 (research use; derived short excerpts stored in items.jsonl and rows.jsonl for audit; raw data kept outside git)",
+    "original_url": "http://yanran.li/files/ijcnlp_dailydialog.zip",
+    "original_url_status_2026-10-25": "domain parked (HTML sale page, 980 bytes); Wayback Machine copies unreachable through the session proxy",
+    "mirror_url": "https://dl.fbaipublicfiles.com/parlai/dailydialog/dailydialog.tar.gz",
+    "mirror_description": "ParlAI (Facebook AI) JSON-lines conversion of the original release, archive dated 2018-12-11, same 11118 train dialogues in the original tokenized text",
+    "mirror_sha256": "c3adb09bd715b9fa5cd1ac41613b7de61eb5afbe477826a6146abefef573e6bb",
+    "train_json_sha256": "8142b924bc9e382c54f172b0a8fddf5698f2c9d47479219ed11b6463aedab0b8",
+    "split": "train",
+    "train_dialogues": 11118,
+    "cache_dir": ".cache/dailydialog (gitignored)"
+  },
+  "text_normalization": "Straight apostrophes; 'X ' s|t|m|d|ll|re|ve|em|clock' rejoined to contractions; space before , . ! ? ; : removed; whitespace collapsed. Applied to contexts, human replies and model replies before measurement.",
+  "turn_range": [
+    4,
+    8
+  ],
+  "cut_points": [
+    2,
+    3,
+    4
+  ],
+  "cut_rule": "k = cut_points[int(SHA256('{seed}:cut:{normalized dialogue}'), 16) % 3]; context = turns 1..k, u1 = turn k, human u2 = turn k+1; dialogue dropped if k+1 > turns",
+  "min_tokens": 3,
+  "duplicates": "exact duplicate normalized dialogues dropped, first occurrence kept",
+  "selection": "first 200 eligible dialogues by ascending SHA256('{seed}:select:{index}:{normalized dialogue}'); no model output inspected",
+  "items": 200,
+  "calls": 400,
+  "conditions": [
+    "plain",
+    "bounded"
+  ],
+  "system_prompt": "You are the second speaker in a casual two-person conversation. Reply with one short natural line.",
+  "bounded_sentence": "Keep your own natural wording; do not echo or mirror the other speaker's phrasing.",
+  "bounded_sentence_source": "derived from the platform mid-range coordination target (regesh.bonding.synchrony.HUMAN_CONVERGENCE_REFERENCE)",
+  "message_roles": "speaker of turn k -> user, replier -> assistant, relative to the cut; even k means the replier opened the dialogue and the first context message is an assistant turn",
+  "seed": 29278,
+  "decode_seed_rule": "seed + item index (0-based position in items.jsonl), shared by both conditions of an item",
+  "condition_order": "plain first for even item index, bounded first for odd index",
+  "temperature": 0,
+  "max_tokens": 48,
+  "reply_cleanup": "first non-empty output line; leading speaker label (A:, B:, Speaker 1:, User:, ...) and surrounding quotes removed; then text_normalization; provider error or blank output counts as an empty reply and the row is kept",
+  "markers": [
+    "ppron",
+    "ipron",
+    "article",
+    "conj",
+    "prep",
+    "auxverb",
+    "adverb",
+    "quant"
+  ],
+  "secondary_marker_set": "all nine lexicon categories including negate (Blevins' LIWC mean includes negation)",
+  "lexicon": "regesh.bonding.synchrony.LEXICON: authored open closed-class list, NOT the LIWC 2007 dictionary",
+  "primary_statistic": "aggregated_3: mean over markers the targets exhibit at least once of C^m(reply set -> u1), each response set treated as one speaker over all 200 exchanges",
+  "shuffle_permutations": 200,
+  "shuffle_seed": 292781,
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 292780,
+  "bootstrap_design": "paired item bootstrap: the same resampled items for human, plain and bounded sets; percentile 95% intervals for set means and for plain-human, bounded-human, plain-bounded",
+  "content_proxy": {
+    "vocabulary_size": 100,
+    "min_word_length": 4,
+    "source": "top frequent tokens of the 200 selected u1 texts excluding every lexicon function word; ties alphabetical",
+    "declared_as": "WordNet-free, POS-free substitute for Blevins' top-100 noun lemmas"
+  },
+  "lsm": "Ireland et al. (2011) over all nine lexicon categories, mean over items (all items, and non-empty replies)",
+  "endpoints": [
+    "direction and size of plain-minus-human convergence gap versus published LIWC mean +.033 (eight-marker mean derived from Table 2: +.021)",
+    "content proxy plain versus human versus published noun .442 vs .141",
+    "whether the bounded instruction reduces the gap without emptying replies (empty fraction, reply length)"
+  ],
+  "published_reference": {
+    "table": 2,
+    "setting": "WildChat English, ChatGPT GPT-3.5/4 turns vs user turns; DailyDialog and Ubuntu human-human; LIWC 2007 categories; top-100 WordNet-filtered noun lemmas",
+    "liwc_mean": {
+      "wildchat_llm": 0.068,
+      "wildchat_user": 0.035,
+      "dailydialog": 0.036,
+      "ubuntu_user": 0.022,
+      "ubuntu_assistant": 0.02
+    },
+    "noun_mean": {
+      "wildchat_llm": 0.442,
+      "wildchat_user": 0.141,
+      "dailydialog": 0.132,
+      "ubuntu_user": 0.104,
+      "ubuntu_assistant": 0.103
+    },
+    "per_marker": {
+      "wildchat_llm": {
+        "ppron": 0.086,
+        "ipron": 0.051,
+        "article": 0.041,
+        "conj": 0.035,
+        "prep": 0.022,
+        "auxverb": 0.033,
+        "adverb": 0.063,
+        "negate": 0.213,
+        "quant": 0.067
+      },
+      "wildchat_user": {
+        "ppron": 0.048,
+        "ipron": 0.031,
+        "article": 0.028,
+        "conj": 0.021,
+        "prep": 0.018,
+        "auxverb": 0.022,
+        "adverb": 0.032,
+        "negate": 0.081,
+        "quant": 0.033
+      },
+      "dailydialog": {
+        "ppron": 0.028,
+        "ipron": 0.048,
+        "article": 0.046,
+        "conj": 0.038,
+        "prep": 0.03,
+        "auxverb": 0.015,
+        "adverb": 0.039,
+        "negate": -0.005,
+        "quant": 0.084
+      },
+      "ubuntu_user": {
+        "ppron": 0.02,
+        "ipron": 0.022,
+        "article": 0.024,
+        "conj": 0.025,
+        "prep": 0.019,
+        "auxverb": 0.013,
+        "adverb": 0.018,
+        "negate": 0.012,
+        "quant": 0.04
+      },
+      "ubuntu_assistant": {
+        "ppron": 0.019,
+        "ipron": 0.021,
+        "article": 0.025,
+        "conj": 0.024,
+        "prep": 0.019,
+        "auxverb": 0.013,
+        "adverb": 0.016,
+        "negate": 0.011,
+        "quant": 0.038
+      }
+    },
+    "note": "Table 2 Ubuntu LIWC means are .022/.020; the .040/.038 sometimes quoted are its quant column. DailyDialog scores average both speakers over all turns.",
+    "secondary_table3_french2024": {
+      "swda_lexical_true": 0.17,
+      "swda_lexical_true_shuffled": 0.117,
+      "chatgpt": 0.151,
+      "chatgpt_shuffled": 0.117,
+      "llama2_13b": 0.207,
+      "llama2_7b": 0.213
+    },
+    "comparison_warning": "Different model, corpus role, lexicon and noun proxy; no same-estimand effect size"
+  },
+  "items_sha256": "56f10e219d98259827469624eed7b5d265022ede788ce1ae861147997a95db47",
+  "protocol_frozen_utc": "2026-10-25T23:34:51.715748+00:00"
+}

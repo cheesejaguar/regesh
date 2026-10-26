@@ -238,12 +238,18 @@ def aggregated_3(conv):
         return np.nanmean(conv, axis=0)
 
 
-def resample_aggregates(a, b_sets, index_matrix, chunk=1000):
-    """aggregated_3 for every row of index_matrix (R, n) and every response set."""
+def resample_aggregates(a, b_sets, index_matrix, chunk=1000, permute_targets=True):
+    """aggregated_3 for every row of index_matrix (R, n) and every response set.
+
+    permute_targets=True re-indexes targets and replies together (paired bootstrap).
+    permute_targets=False keeps the targets in place and re-indexes only the replies,
+    which is the shuffled-pair baseline: a permutation applied to both would preserve
+    every pairing and reproduce the true value exactly.
+    """
     out = {name: [] for name in b_sets}
     for start in range(0, len(index_matrix), chunk):
         idx = index_matrix[start:start + chunk]
-        a_s = a[:, idx]
+        a_s = a[:, idx] if permute_targets else a[:, np.newaxis, :]
         for name, b in b_sets.items():
             out[name].append(aggregated_3(convergence_from_flags(a_s, b[:, idx])))
     return {name: np.concatenate(parts) for name, parts in out.items()}
@@ -331,7 +337,7 @@ def analyze(rows, config):
     result['shuffled_baseline'] = {'permutations': int(len(perms)), 'seed': config['shuffle_seed'],
                                    'markers': {}, 'content_proxy': {}}
     for name, key in (('markers', 'markers'), ('content_proxy', 'content')):
-        shuffled = resample_aggregates(a[key], b[key], perms)
+        shuffled = resample_aggregates(a[key], b[key], perms, permute_targets=False)
         for s in RESPONSE_SETS:
             true_value = float(aggregated_3(convergence_from_flags(a[key], b[key][s])))
             band = _interval(shuffled[s])

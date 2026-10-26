@@ -156,7 +156,31 @@ steering recommendation is therefore capped and labelled by `model_trusted`, and
 the closed-loop fixed point it reports is a model prediction, not an observed
 attractor.
 
-RESULTS_REPRODUCTIONS_REMAINING
+### Blevins (2026) and French et al. (2024): do language models over-converge?
+
+Scoped replication with the pinned Qwen2.5-Coder-1.5B-Instruct model on 200
+locked DailyDialog contexts, 400 recorded calls, zero provider errors
+([report](reproductions/llm_convergence.md)). Eight-marker convergence toward the
+target utterance (Eq. 1, aggregated 3), paired item bootstrap:
+
+| Response set | Convergence [95% CI] | Shuffled-pair baseline | Content-word proxy | Mean tokens |
+|---|---:|---:|---:|---:|
+| Human next turn | +.034 [+.007, +.061] | +.001 | .062 | 11.9 |
+| Model, plain prompt | +.025 [+.002, +.050] | +.001 | .081 | 8.4 |
+| Model, bounded-coordination instruction | +.032 [+.009, +.056] | +.000 | .081 | 8.5 |
+
+| Published statement | Measured | Status |
+|---|---|---|
+| LLMs converge about twice as much as users on function words (+.033 LIWC mean; +.021 on these eight markers) | plain minus human **-.009 [-.041, +.025]** | **Not reproduced**; a gap of +.025 or more is excluded on this lexicon, the published eight-marker gap is barely inside the interval |
+| Noun convergence .442 vs .141 | content proxy .081 vs .062, +.019 [-.017, +.063] | Same sign, about a tenth of the size, interval includes zero; proxy is not noun-lemma convergence |
+| Human-human DailyDialog convergence .036 | +.034 (eight markers), +.041 (nine) | Means agree; per-marker pattern differs |
+| Platform mechanism: bounded-coordination instruction reduces over-accommodation | bounded minus plain **+.007 [-.009, +.023]**; replies not emptied | Null: there was no excess to remove with this model |
+
+The platform's coordination control therefore has no demonstrated effect on
+this model, which did not show the published excess; all three sets fall
+`within` the published human band by `accommodation_assessment`. A shuffled
+baseline bug in the first analysis (permuting pairs together) was corrected
+after the run and is recorded in the manifest; no estimate changed.
 
 ## Platform-level simulation checks
 
@@ -209,11 +233,74 @@ The online identifier's inertia error was about -.04 under steering and -.20 to
 +.13 under mirroring, where the agent's expression is collinear with the
 partner's state.
 
-RESULTS_PLATFORM_V2
+### Second protocol (post hoc, declared in `configs/bonding_platform_v2.json`)
+
+Two changes motivated by the first run: the Beta evidence-count responsiveness
+estimator, `(answered + 1) / (answered + unanswered + 2)`, as the bond's
+estimator (with a variant that also holds arousal on goal-irrelevant events),
+and a reactant partner whose affect falls when the agent is positive, plus a
+fixed-positive comparator policy. The first protocol's results are retained.
+
+**Attachment loop**, bonded minus reference by seed, and measured
+responsiveness:
+
+| q | Variant | Requests | Final responsiveness | Final tau_h | Mean threat buffer | Cumulative threat, bonded minus reference |
+|---:|---|---:|---:|---:|---:|---:|
+| 1.0 | beta | 3.1 | **.78** | 4.5 | .282 | **-12.12 [-12.37, -11.88]** |
+| 0.5 | beta | 3.2 | .49 | 6.6 | .253 | -10.87 [-11.14, -10.64] |
+| 0.0 | beta | 3.1 | **.23** | 8.4 | .240 | -10.34 [-10.46, -10.23] |
+| 1.0 | beta, hold arousal on neutral events | 16.7 | .95 | 3.4 | .338 | -14.53 [-14.75, -14.31] |
+| 0.5 | beta, hold | **32.1** | .51 | 6.5 | .253 | -10.99 [-11.28, -10.73] |
+| 0.0 | beta, hold | 9.0 (then stops at the floor) | .09 | 9.4 | .240 | -10.36 [-10.48, -10.25] |
+
+With the evidence-count estimator, measured responsiveness tracks partner
+behaviour within a few resolved requests, the profile moves toward "needy"
+under a responsive partner and toward "independent" under an unresponsive one,
+and the threat reduction now depends on partner behaviour (-12.1 vs -10.3 of
+71.9). The estimator is therefore the platform default. Holding arousal on
+neutral events increases help-seeking strongly, and under intermittent
+responsiveness (q = .5) it produces 32 requests in 240 turns, the
+anxious-resistant pattern of intermittent reinforcement; that option stays off
+by default, and the new responsiveness floor stops requests to an unresponsive
+partner after nine unanswered ones rather than at the attention budget.
+
+**Dyadic steering**, final partner affect (mean of the last 40 turns):
+
+| Partner | Own mood | Mirror | Fixed positive | Steer (cap .5) | Steer minus own mood | Fixed positive minus own mood |
+|---|---:|---:|---:|---:|---:|---:|
+| Stable husband | +.029 | +.048 | +.286 | +.286 | +.257 | +.257 |
+| Divorced husband | -.082 | -.281 | +.136 | +.136 | +.218 | +.218 |
+| Step-ojive mismatch | -.051 | -.051 | +.282 | +.282 | +.333 | +.333 |
+| **Reactant mismatch** (positivity lowers affect) | -.052 | -.306 | **-.297** | **-.053** | -.001 [-.002, -.000] | **-.245 [-.245, -.244]** |
+
+Against the three partners who respond to positivity, the identifier-based
+recommendation and fixed positivity are indistinguishable (both saturate at the
+cap). Against the reactant partner, fixed positivity and mirroring each cost
+about .25 of partner affect while the identifier-based recommendation learned to
+stay neutral (agent valence .002) and caused no harm. That is the measured value
+of the online model: it does not add positivity when positivity works, it
+withholds it when positivity backfires. The repair trigger again never fired
+and remains untested; a tighter cap of .2 cannot cross the ojive partner's
+threshold and has no effect there.
+
+Figures: `results/bonding/figures/platform.png` and `platform_v2.png`. The
+record-only audit (`results/bonding/audit.json`) recomputes every summary mean
+from the raw runs and verifies all six manifests.
 
 ## Claim ledger
 
-CLAIM_LEDGER
+| Label | Scope |
+|---|---|
+| Established precedent | Arousal regulation by a caregiver, adaptive attachment profiles, coupled dyadic affect equations with attractors and repair, mid-range contingency, linguistic coordination and style matching, the intimacy process model, relational agents and chatbot attachment. None is claimed as new. |
+| Engineering synthesis | One replayable, hash-journaled bond state per partner that combines these mechanisms inside the cognitive-control loop, with shared pure-function modules used by both the platform and the reproductions, an attention budget, a responsiveness floor and a trust firewall. |
+| Measured result | Default agents unchanged (demo digest identical). Reproductions: Hiolle profile contrasts and the complex-environment traversal ratio reproduce, absolute pace and the literal adaptive rule do not; the step ojive admits at most three fixed points, the published counts are null-cline crossings or smooth-form roots, the published estimator is imprecise at 150 points, damping never created a positive attractor; two of four Supreme Court coordination asymmetries reproduce; LLM over-convergence does not reproduce with the 1.5B model and the bounded instruction is a null. Platform: a paired cumulative threat reduction of 10-15% that depends on partner responsiveness only under the evidence-count estimator; identifier-based steering equals fixed positivity for cooperative partners and avoids its harm for a reactant one; repair untested. |
+| Speculative hypothesis | That these mechanisms improve collaboration, trust calibration or wellbeing with real users. No human study was run; the simulated partners follow declared equations; benefit to users is unestablished. |
+
+What would change the ledger: a matched study with real users and an ordinary
+non-affective adaptive controller as comparator, a model that does show the
+published over-convergence (to test the coordination control), partners whose
+affect falls below the repair threshold (to test repair), and a longitudinal
+measurement of help-seeking rates against user-reported burden.
 
 ## Reproduce
 

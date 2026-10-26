@@ -41,10 +41,11 @@ BOND_CONFIG = {
     "attention_cost": .1, "attention_recovery": .05, "request_window": 2.,
     "coordination_cap": .5, "target_partner_affect": .5,
     "repair_threshold": -.4, "repair_amplitude": .3, "steer_min_samples": 6,
-    # Responsiveness estimator: "ema" is the published per-resolution Eq. 5 update; "beta" is the
-    # posterior mean of a Beta(prior_strength*resp0, prior_strength*(1-resp0)) response probability,
-    # the evidence-count estimator appropriate for sparse event-level resolutions.
-    "responsiveness_rule": "ema", "responsiveness_prior_strength": 2.,
+    # Responsiveness estimator: "beta" (default) is the posterior mean of a
+    # Beta(prior_strength*resp0, prior_strength*(1-resp0)) response probability, the evidence-count
+    # estimator appropriate for sparse event-level resolutions; "ema" is the published per-resolution
+    # Eq. 5 update, which the platform simulation showed barely moves within hundreds of turns.
+    "responsiveness_rule": "beta", "responsiveness_prior_strength": 2.,
     # Whether goal-irrelevant, unthreatening occurrences (stimulation 0) update arousal (Eq. 3) or leave it.
     "neutral_updates_arousal": True,
     # Avoidant adaptation: once measured responsiveness falls below this floor the agent stops

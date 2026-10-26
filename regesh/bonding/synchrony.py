@@ -176,8 +176,8 @@ def group_coordination(speaker_summaries, markers=COORDINATION_MARKERS):
 
 
 # Human-human reference band for mean function-word convergence, from Blevins (2026,
-# arXiv:2605.29278, Table 2): DailyDialog .036, Ubuntu .040/.038, WildChat users .035;
-# the LLM in the same corpus reached .068. Mid-range coordination is the target, following
+# arXiv:2605.29278, Table 2, LIWC mean column): DailyDialog .036, Ubuntu .022/.020,
+# WildChat users .035; the LLM in the same corpus reached .068. Mid-range coordination is the target, following
 # Jaffe et al. (2001) and Beebe et al. (2010): more contingency is not necessarily better.
 HUMAN_CONVERGENCE_REFERENCE = {"center": .036, "band": .03, "llm_overconvergence": .068}
 

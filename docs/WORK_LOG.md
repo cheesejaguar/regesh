@@ -72,3 +72,27 @@ All173Python tests, independent raw-result audits and compileall pass. New hashe
 are in `results/papers/provenance.json`; all prior provenance/evidence/weights are
 preserved. Draft PR1 now includes runnable papers, quantitative figures and the
 independent review. It remains unmerged.
+
+## Pair-bonding extension checkpoint (2026-10-25/26)
+
+User request: expand the affect system to pairing/bonding with its user using
+biomimicry and cognitive-science methodology, implement three high-impact
+changes grounded in published papers, reproduce their findings, iterate.
+
+- Mechanisms: `regesh/bonding/` (attachment, dyad, synchrony, platform bridge,
+  experiment). Opt-in via `bonding: True`; default agents unchanged (demo digest
+  identical); 221 tests pass.
+- Reproductions: Hiolle 2014 (direction reproduced, absolute pace and literal
+  adaptive rule not), Gottman 1999/2003 (steady-state structure clarified, the
+  estimator imprecise at 150 points, damping claim 0/360), Echoes of Power
+  (2 of 4 Supreme Court claims), Blevins 2026 (over-convergence not reproduced
+  with the 1.5B model; bounded instruction a null).
+- Platform iteration: first protocol showed prior-dominated security and
+  cap-saturated steering; second protocol adopted the Beta evidence-count
+  estimator (now default), a responsiveness floor on requests, and a reactant
+  partner that separates identifier-based steering from fixed positivity.
+- Safeguards: trust firewall, attention budget, responsiveness floor, no
+  distress or guilt at disengagement; documented in `docs/bonding_disclosure.md`.
+- Local model server used for 400 calls plus smoke tests; stopped after the
+  study. DailyDialog (ParlAI mirror) and ConvoKit term files cached outside git.
+- PR #3 on `research/pair-bonding`.
