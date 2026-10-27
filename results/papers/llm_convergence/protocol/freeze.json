@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "frozen_utc": "2026-10-25T23:35:25.726611+00:00",
+  "note": "Frozen before any model call on the selected items. Selection, cut points, prompts, decoding, call ceiling (400) and the prespecified analysis are fixed in config.json; one post-freeze smoke call with a toy prompt (not an item) verified server acceptance of assistant-first contexts and is recorded in the report, not in live/.",
+  "config_sha256": "363d78f28968f2a27c4ed3b3ada3a4fbea7c0548da04e14eb14df5621eddb473",
+  "items_sha256": "56f10e219d98259827469624eed7b5d265022ede788ce1ae861147997a95db47",
+  "runner_sha256": "71fe29b96b1ceca2251a57aa80f72836ff21bab7a6d0acdbda8886adaa174e40",
+  "protocol_frozen_utc_in_config": "2026-10-25T23:34:51.715748+00:00",
+  "test_result": "11 unit tests pass offline (tests/test_llm_convergence_reproduction.py)",
+  "data_source": "ParlAI mirror of DailyDialog train split; original host parked; see config data block and protocol/source.json",
+  "runner_update_before_first_item_call": {
+    "utc": "2026-10-25T23:39:57.591356+00:00",
+    "previous_runner_sha256": "1e2479e8e5f862bd770d510f5c8abd7b6955fea62494a776f23ef03fca739af6",
+    "runner_sha256": "71fe29b96b1ceca2251a57aa80f72836ff21bab7a6d0acdbda8886adaa174e40",
+    "reason": "Two post-freeze smoke calls measured 0.16 generated tokens/s under concurrent CPU experiments, so the 400 sequential calls may exceed any single tool session; --resume (continue an interrupted run with identical config/items, no duplicate calls) was added. Selection, prompts, decoding, ceiling and analysis are unchanged.",
+    "test_result": "12 unit tests pass offline"
+  }
+}

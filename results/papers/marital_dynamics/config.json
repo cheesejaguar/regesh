@@ -1,0 +1,360 @@
+{
+  "schema_version": 1,
+  "papers": [
+    {
+      "citation": "Gottman, Swanson & Murray (1999). The mathematics of marital conflict: Dynamic mathematical nonlinear modeling of newlywed marital interaction. Journal of Family Psychology 13(1):3-19",
+      "doi": "10.1037/0893-3200.13.1.3"
+    },
+    {
+      "citation": "Gottman, Levenson, Swanson, Swanson, Tyson & Yoshimoto (2003). Observing gay, lesbian and heterosexual couples' relationships: Mathematical modeling of conflict interaction. Journal of Homosexuality 45(1):65-91",
+      "doi": "10.1300/J082v45n01_04"
+    }
+  ],
+  "protocol_frozen_utc": "2026-10-25T23:43:23Z",
+  "experiment": "Computational reproduction of the dyadic affect model: structural steady-state counts (E1), published-parameter consistency (E2), estimation-method recovery (E3), repair/damping (E4). No couple data; the model is imported from regesh/bonding/dyad.py and not re-implemented.",
+  "model_module": "regesh/bonding/dyad.py",
+  "spaff_range": [
+    -24,
+    24
+  ],
+  "series_length": 150,
+  "threshold_mapping": "A spouse's published thresholds are those of the partner's response to that spouse: the husband's thresholds parameterize I_hw(H) in the wife's equation, the wife's thresholds parameterize I_wh(W) in the husband's equation (1999 Results: the husband's negative threshold is how negative he must become before his wife responds).",
+  "autoregressive_constant": "a = u (1 - r) from the published inertia r and uninfluenced steady state u = a/(1 - r)",
+  "published_1999": {
+    "stable": {
+      "wife": {
+        "inertia": 0.39,
+        "uninfluenced": 0.51,
+        "pos_threshold": 8.25,
+        "neg_threshold": -6.23,
+        "influenced": -0.65
+      },
+      "husband": {
+        "inertia": 0.4,
+        "uninfluenced": 0.72,
+        "pos_threshold": 8.45,
+        "neg_threshold": -5.36,
+        "influenced": 0.71
+      }
+    },
+    "divorced": {
+      "wife": {
+        "inertia": 0.42,
+        "uninfluenced": -2.26,
+        "pos_threshold": 7.24,
+        "neg_threshold": -6.06,
+        "influenced": -1.95
+      },
+      "husband": {
+        "inertia": 0.3,
+        "uninfluenced": -1.89,
+        "pos_threshold": 6.65,
+        "neg_threshold": -7.71,
+        "influenced": -1.49
+      }
+    },
+    "happy_stable": {
+      "wife": {
+        "inertia": 0.37,
+        "uninfluenced": 1.07,
+        "pos_threshold": 9.12,
+        "neg_threshold": -5.76,
+        "influenced": -0.05
+      },
+      "husband": {
+        "inertia": 0.38,
+        "uninfluenced": 1.06,
+        "pos_threshold": 7.94,
+        "neg_threshold": -5.94,
+        "influenced": -0.33
+      }
+    },
+    "unhappy_stable": {
+      "wife": {
+        "inertia": 0.41,
+        "uninfluenced": -0.03,
+        "pos_threshold": 8.53,
+        "neg_threshold": -6.76,
+        "influenced": -1.88
+      },
+      "husband": {
+        "inertia": 0.35,
+        "uninfluenced": -0.41,
+        "pos_threshold": 7.94,
+        "neg_threshold": -5.29,
+        "influenced": 0.31
+      }
+    }
+  },
+  "published_2003": {
+    "repair_effectiveness_means": {
+      "gay": 2.78,
+      "man_to_woman": 3.98,
+      "woman_to_man": 3.99,
+      "lesbian": 3.65
+    },
+    "repair_threshold_means": {
+      "man_initiates": -4.64,
+      "woman_initiates": -6.04
+    },
+    "damping_effectiveness_means": {
+      "initiator_homosexual": -4.85,
+      "initiator_heterosexual": -3.11,
+      "partner_homosexual": -5.03,
+      "partner_heterosexual": -3.37
+    },
+    "positive_positive_stable_states_mean": {
+      "homosexual": 0.86,
+      "heterosexual": 0.32,
+      "lesbian": 1.14,
+      "gay": 0.57,
+      "man_to_woman": 0.5,
+      "woman_to_man": 0.19
+    },
+    "claim": "damping may create a positive-positive stable steady state (attractor) where none existed before"
+  },
+  "e1_structural": {
+    "claim": "for the sigmoidal influence function, we can have one, three, or five steady states; in most of our data there was only one influenced steady state per couple",
+    "inertia_grid": [
+      0.3,
+      0.4,
+      0.5
+    ],
+    "uninfluenced_grid": [
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3
+    ],
+    "plateau_magnitudes": [
+      1,
+      3,
+      5,
+      8
+    ],
+    "plateau_convention": "same (negative magnitude, positive magnitude) pair for both spouses; negative plateau is minus the magnitude; the subset with negative magnitude >= positive magnitude is tabulated separately",
+    "thresholds": {
+      "I_hw": {
+        "neg": -5.36,
+        "pos": 8.45
+      },
+      "I_wh": {
+        "neg": -6.23,
+        "pos": 8.25
+      }
+    },
+    "thresholds_source": "Table 1 stable-group means (husband's thresholds for I_hw, wife's for I_wh); non-integer values avoid fixed points landing exactly on a jump of the step map",
+    "step_form": "inertia crossed between spouses (9 pairs) x 49 uninfluenced pairs x 16 plateau pairs = 7056 couples; strict fixed points from steady_states() plus jump crossings of the completed null clines",
+    "smooth_primary_width": 1.0,
+    "smooth_uninfluenced_grid": [
+      -3,
+      -1.5,
+      0,
+      1.5,
+      3
+    ],
+    "smooth_form": "sigmoid_ojive with shared inertia (3 values) x 25 uninfluenced pairs x 16 plateau pairs at width 1.0 (1200 couples); widths 0.5 and 2.0 at inertia 0.4 on the coarse uninfluenced grid {-3, 0, 3} (288 couples)",
+    "smooth_sensitivity_widths": [
+      0.5,
+      2.0
+    ],
+    "smooth_sensitivity_inertia": 0.4,
+    "smooth_sensitivity_uninfluenced_grid": [
+      -3,
+      0,
+      3
+    ],
+    "numeric_fixed_points": {
+      "seed_grids": [
+        {
+          "box": [
+            -24,
+            24
+          ],
+          "seeds": 9
+        },
+        {
+          "box": [
+            -21,
+            21
+          ],
+          "seeds": 8
+        }
+      ],
+      "reference_seeds": 25,
+      "reference_sample": 60,
+      "reference_seed": 4101,
+      "rationale": "fixed_points_numeric with a 25x25 seed grid costs ~0.3 s per couple unloaded; the union of two offset coarse grids agreed with it on 150/150 pilot couples while a single 9x9 grid disagreed on 4/150. A declared random subsample is rechecked against the dense grid."
+    }
+  },
+  "e2_published": {
+    "groups": [
+      "stable",
+      "divorced",
+      "happy_stable",
+      "unhappy_stable"
+    ],
+    "influence_form": "ojive (step), thresholds from the group means, plateau pair shared by both spouses",
+    "plateau_sweep": {
+      "start": 0.5,
+      "stop": 10.0,
+      "step": 0.5
+    },
+    "match_tolerance": 0.5,
+    "match_norm": "max over the two coordinates of the absolute difference between a model fixed point and the published (wife, husband) influenced steady-state means",
+    "basin_plateau_pairs": [
+      [
+        3,
+        3
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        8
+      ]
+    ],
+    "initial_grid": {
+      "min": -24,
+      "max": 24,
+      "step": 2
+    },
+    "steps": 150,
+    "clip": null,
+    "basin_classification": "final state after 150 iterations: negative if both coordinates < 0, positive if both > 0, otherwise mixed; nearest fixed point also recorded"
+  },
+  "e3_recovery": {
+    "groups": [
+      "stable",
+      "divorced",
+      "happy_stable",
+      "unhappy_stable"
+    ],
+    "plateau": [
+      3,
+      3
+    ],
+    "noise_sd": [
+      1,
+      3,
+      5
+    ],
+    "primary_noise_sd": 3,
+    "replications": 1000,
+    "initial_range": [
+      -6,
+      6
+    ],
+    "noise_model": "independent Gaussian process noise added to both equations at every step; the sum is rounded to the nearest integer (Python round, half to even) and clipped to the SPAFF range; the rounded clipped value is the state that propagates",
+    "threshold_grid": {
+      "start": 1,
+      "stop": 24,
+      "step": 1
+    },
+    "threshold_grid_rationale": "for integer-valued series, a half-integer threshold selects the same subset as the adjacent integer under the <= / >= comparisons, so the module's default 0.5 grid adds only duplicates",
+    "zero_tol_primary": 0,
+    "zero_tol_sensitivity": 1,
+    "zero_tol_sensitivity_noise_sd": [
+      3
+    ],
+    "rls": {
+      "lam": 0.98,
+      "prior": 100,
+      "noise_sd": [
+        3
+      ]
+    },
+    "comparison_estimators": "fit_joint_bilinear on all points (all noise levels); RecursiveIdentifier run online over the same series (primary noise level); both fit a bilinear partner equation, so only inertia and uninfluenced steady state are compared",
+    "bootstrap": {
+      "samples": 2000,
+      "seed": 4303
+    },
+    "base_seed": 4300
+  },
+  "e4_repair_damping": {
+    "groups": [
+      "stable",
+      "divorced",
+      "happy_stable",
+      "unhappy_stable"
+    ],
+    "influence_form": "bilinear (2003 preferred form), slopes shared by both spouses",
+    "slopes": [
+      [
+        0.5,
+        0.3
+      ],
+      [
+        0.3,
+        0.2
+      ],
+      [
+        0.7,
+        0.4
+      ]
+    ],
+    "primary_slopes": [
+      0.5,
+      0.3
+    ],
+    "repair_effectiveness": [
+      2.78,
+      3.99
+    ],
+    "repair_thresholds": [
+      -4.64,
+      -6.04
+    ],
+    "damping_effectiveness": [
+      -3.11,
+      -5.03
+    ],
+    "damping_thresholds": [
+      4,
+      6,
+      8
+    ],
+    "primary_damping_threshold": 6,
+    "same_terms_both_spouses": true,
+    "conditions": [
+      "none",
+      "repair",
+      "damping",
+      "both"
+    ],
+    "quadrant_rule": "sign of (wife, husband) coordinates of each stable fixed point; a coordinate equal to zero counts as negative",
+    "cycle_check": {
+      "burn_in": 500,
+      "window": 100,
+      "max_period": 50
+    }
+  },
+  "workers": 3,
+  "workers_note": "process pool size only; every task derives its seeds from indices and results are ordered, so outputs do not depend on the pool size",
+  "declared_ambiguities": [
+    "The ojive plateau values (the fixed influence outside the thresholds) are not published for any group; they are swept (E2) or declared (E1, E3).",
+    "Threshold mapping: the husband's published thresholds are taken to parameterize the husband's influence on the wife, I_hw(H), following the 1999 Results text; the opposite mapping is not run.",
+    "Published Table 1 and Table 2 values are group means of per-couple estimates. A couple built from mean parameters need not have the mean influenced steady state, so an exact match in E2 is not expected and is not a reproduction criterion.",
+    "Within-paper inconsistency: the 1999 Results prose gives husbands' influenced steady states as -1.89 (divorced) and 0.72 (stable), which equal the uninfluenced means in Table 1; Table 1 lists -1.49 and 0.71. Table values are used.",
+    "The 1999 paper calls its form 'O-Jive or sigmoidal' and draws it as a step (Figure 1A). Both readings are run: the step map (exact piecewise-linear solver) and a logistic ramp of declared width centred on the thresholds (numeric solver). The ramp shape and widths are not from the paper.",
+    "For the step map the paper's graphical unstable steady states are crossings at the jumps of the null clines; they are not fixed points of the map. They are counted separately as jump crossings of the completed null clines.",
+    "Repair and damping are implemented as constant triggers (a jump of amplitude E once the partner's score crosses K), following the 2003 verbal description; the algorithmic details are in Gottman, Murray, Swanson, Tyson & Swanson (2002), which was not consulted. A reading of damping as a slope reduction is not implemented.",
+    "The damping threshold is not published; +6 is declared with sensitivities +4 and +8. Repair and damping terms are applied identically to both spouses because only group means are available.",
+    "Bilinear slopes are not published numerically in 2003 (only slope differences); 0.5/0.3 is declared with sensitivities.",
+    "E3's noise model, initial conditions, rounding and clipping are declared simulation choices; the papers analyse observed series and do not specify a generative noise model.",
+    "E3's integer threshold grid for the ojive fit is a declared choice; the papers do not state the grid used by the original program.",
+    "E2 theoretical conversations iterate the equations without clipping, as the papers describe; clipping would change basins.",
+    "The 2003 claim about damping refers to per-couple fitted models that are not available; E4 tests it on 1999 group-mean couples with 2003 group-mean repair/damping terms.",
+    "The smooth-form grid is coarser than the step-form grid (uninfluenced steps of 1.5 at width 1.0; {-3, 0, 3} for the width sensitivities at inertia 0.4) because the numeric fixed-point finder is about 400 times slower than the exact solver on the shared CPU.",
+    "Fixed points lying exactly on a jump of the step map are excluded by the module; non-integer published thresholds avoid such coincidences on the integer grids, and any remaining coincidence is flagged."
+  ]
+}

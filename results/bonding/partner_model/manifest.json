@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "finished_utc": "2026-10-26T04:47:46.525282+00:00",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "command": "python -m regesh.bonding.train_partner_model --config configs/bonding_partner_model.json --embeddings .cache/embeddings --dailydialog .cache/dailydialog/parlai --output results/bonding/partner_model",
+  "files": {
+    "config.json": "df451a24236d28a630243c37f0f511e8ab714d7a37cba944c4339c58494163c4",
+    "partner_model.json.gz": "c69daf7e959d47302e582a5b7da105bdbaa787f674d19ca970cb2e9cb7a344cd",
+    "partner_model_scalars.json.gz": "82f6f6bdb086465cd6ee97a4a675eb59641e5bd9b0b13c6e871c20f40d7f939a",
+    "predictions.jsonl.gz": "d3cb2f273d9608af66eeb8b692d6e2417dbce7f39ab932394e068327d24a6c8e",
+    "source_partner_model.py": "65ddd57a1e24f5c7bafbc6ba49e76a64c2047606644d8b862cc8a30edf2352fe",
+    "source_train_partner_model.py": "0136973b91659ec82d14ec5b55ae7717dcb8164276645810ad230a65d78c7253",
+    "summary.json": "4856e1424c4e2aa72eb1dde60606c748cba4e0178bfe46351229e91689a7d226"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "sources": [
+    "results/bonding/platform/summary.json",
+    "results/bonding/platform_v2/summary.json"
+  ],
+  "files": [
+    "platform.png",
+    "platform.svg",
+    "platform_v2.png",
+    "platform_v2.svg"
+  ]
+}

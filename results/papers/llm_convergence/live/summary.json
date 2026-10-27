@@ -1,0 +1,594 @@
+{
+  "schema_version": 1,
+  "items": 200,
+  "calls": 400,
+  "markers": [
+    "ppron",
+    "ipron",
+    "article",
+    "conj",
+    "prep",
+    "auxverb",
+    "adverb",
+    "quant"
+  ],
+  "lexicon": "regesh.bonding.synchrony.LEXICON (authored open list; not LIWC)",
+  "content_vocabulary": [
+    "think",
+    "well",
+    "know",
+    "want",
+    "please",
+    "kind",
+    "time",
+    "come",
+    "give",
+    "happy",
+    "room",
+    "cents",
+    "mail",
+    "need",
+    "three",
+    "best",
+    "better",
+    "call",
+    "called",
+    "days",
+    "going",
+    "good",
+    "listen",
+    "long",
+    "make",
+    "people",
+    "problem",
+    "right",
+    "tell",
+    "week",
+    "work",
+    "available",
+    "back",
+    "comes",
+    "company",
+    "course",
+    "decide",
+    "feel",
+    "hello",
+    "help",
+    "house",
+    "keep",
+    "last",
+    "makes",
+    "mind",
+    "month",
+    "number",
+    "order",
+    "party",
+    "send",
+    "services",
+    "sports",
+    "thank",
+    "thought",
+    "times",
+    "today",
+    "account",
+    "accountant",
+    "afraid",
+    "allow",
+    "america",
+    "banking",
+    "business",
+    "calling",
+    "coming",
+    "companies",
+    "courses",
+    "dozen",
+    "dull",
+    "easy",
+    "favorite",
+    "festival",
+    "field",
+    "floor",
+    "food",
+    "fred",
+    "friday",
+    "friends",
+    "glass",
+    "goes",
+    "great",
+    "guess",
+    "hear",
+    "hire",
+    "information",
+    "interested",
+    "internet",
+    "keeps",
+    "leaving",
+    "letter",
+    "looking",
+    "message",
+    "money",
+    "night",
+    "nine",
+    "offer",
+    "open",
+    "pint",
+    "play",
+    "playing"
+  ],
+  "response_sets": {
+    "human": {
+      "n": 200,
+      "coordination": {
+        "exchanges": 200,
+        "by_marker": {
+          "ppron": 0.01733532934131743,
+          "ipron": 0.028672566371681363,
+          "article": 0.13105263157894742,
+          "conj": -0.020000000000000018,
+          "prep": 0.012307692307692242,
+          "auxverb": 0.02125730994152053,
+          "adverb": 0.0252941176470588,
+          "quant": 0.056122448979591844
+        },
+        "aggregated_3": 0.0340052620209762,
+        "aggregated_1": 0.0340052620209762
+      },
+      "coordination_all_categories": {
+        "exchanges": 200,
+        "by_marker": {
+          "ppron": 0.01733532934131743,
+          "ipron": 0.028672566371681363,
+          "article": 0.13105263157894742,
+          "conj": -0.020000000000000018,
+          "prep": 0.012307692307692242,
+          "auxverb": 0.02125730994152053,
+          "adverb": 0.0252941176470588,
+          "negate": 0.09423076923076923,
+          "quant": 0.056122448979591844
+        },
+        "aggregated_3": 0.04069698504428654,
+        "aggregated_1": 0.04069698504428654
+      },
+      "accommodation_assessment": {
+        "measured": 0.0340052620209762,
+        "excess": -0.001994737979023796,
+        "band": "within",
+        "target_center": 0.036,
+        "target_halfwidth": 0.03
+      },
+      "content_proxy_mean": 0.06223888888888889,
+      "content_proxy_defined_words": 100,
+      "lsm_mean_all_items": 0.5448603935902167,
+      "lsm_mean_non_empty": 0.5448603935902167,
+      "reply_tokens_mean": 11.855,
+      "reply_tokens_median": 9.0,
+      "empty_replies": 0,
+      "empty_fraction": 0.0
+    },
+    "plain": {
+      "n": 200,
+      "coordination": {
+        "exchanges": 200,
+        "by_marker": {
+          "ppron": 0.022514970059880235,
+          "ipron": 0.04176991150442477,
+          "article": 0.012894736842105292,
+          "conj": 0.007500000000000007,
+          "prep": 0.043391608391608494,
+          "auxverb": 0.02871345029239758,
+          "adverb": 0.04500000000000001,
+          "quant": 0.0016326530612244816
+        },
+        "aggregated_3": 0.02542716626895511,
+        "aggregated_1": 0.02542716626895511
+      },
+      "coordination_all_categories": {
+        "exchanges": 200,
+        "by_marker": {
+          "ppron": 0.022514970059880235,
+          "ipron": 0.04176991150442477,
+          "article": 0.012894736842105292,
+          "conj": 0.007500000000000007,
+          "prep": 0.043391608391608494,
+          "auxverb": 0.02871345029239758,
+          "adverb": 0.04500000000000001,
+          "negate": 0.0346153846153846,
+          "quant": 0.0016326530612244816
+        },
+        "aggregated_3": 0.026448079418558385,
+        "aggregated_1": 0.026448079418558385
+      },
+      "accommodation_assessment": {
+        "measured": 0.02542716626895511,
+        "excess": -0.010572833731044888,
+        "band": "within",
+        "target_center": 0.036,
+        "target_halfwidth": 0.03
+      },
+      "content_proxy_mean": 0.08090028860028858,
+      "content_proxy_defined_words": 100,
+      "lsm_mean_all_items": 0.5607367205644477,
+      "lsm_mean_non_empty": 0.5590874914438536,
+      "reply_tokens_mean": 8.42,
+      "reply_tokens_median": 6.0,
+      "empty_replies": 1,
+      "empty_fraction": 0.005,
+      "provider_failures": 0,
+      "finish_reasons": {
+        "stop": 198,
+        "length": 2
+      },
+      "actual_tokens": {
+        "completion_tokens": 2462,
+        "prompt_tokens": 16759,
+        "total_tokens": 19221
+      },
+      "completion_tokens_mean": 12.31,
+      "elapsed_seconds": 3088.7524233989884,
+      "multi_line_outputs": 0
+    },
+    "bounded": {
+      "n": 200,
+      "coordination": {
+        "exchanges": 200,
+        "by_marker": {
+          "ppron": 0.012514970059880226,
+          "ipron": 0.044469026548672574,
+          "article": 0.036578947368421044,
+          "conj": 0.015000000000000013,
+          "prep": 0.05737762237762245,
+          "auxverb": 0.01956140350877189,
+          "adverb": 0.05529411764705883,
+          "quant": 0.01704081632653061
+        },
+        "aggregated_3": 0.0322296129796197,
+        "aggregated_1": 0.0322296129796197
+      },
+      "coordination_all_categories": {
+        "exchanges": 200,
+        "by_marker": {
+          "ppron": 0.012514970059880226,
+          "ipron": 0.044469026548672574,
+          "article": 0.036578947368421044,
+          "conj": 0.015000000000000013,
+          "prep": 0.05737762237762245,
+          "auxverb": 0.01956140350877189,
+          "adverb": 0.05529411764705883,
+          "negate": 0.015384615384615385,
+          "quant": 0.01704081632653061
+        },
+        "aggregated_3": 0.03035794658017478,
+        "aggregated_1": 0.03035794658017478
+      },
+      "accommodation_assessment": {
+        "measured": 0.0322296129796197,
+        "excess": -0.0037703870203802947,
+        "band": "within",
+        "target_center": 0.036,
+        "target_halfwidth": 0.03
+      },
+      "content_proxy_mean": 0.08114552669552669,
+      "content_proxy_defined_words": 100,
+      "lsm_mean_all_items": 0.5667715067624739,
+      "lsm_mean_non_empty": 0.5651526032006639,
+      "reply_tokens_mean": 8.47,
+      "reply_tokens_median": 7.0,
+      "empty_replies": 1,
+      "empty_fraction": 0.005,
+      "provider_failures": 0,
+      "finish_reasons": {
+        "stop": 199,
+        "length": 1
+      },
+      "actual_tokens": {
+        "completion_tokens": 2485,
+        "prompt_tokens": 20359,
+        "total_tokens": 22844
+      },
+      "completion_tokens_mean": 12.425,
+      "elapsed_seconds": 3060.9509430209964,
+      "multi_line_outputs": 0
+    }
+  },
+  "shuffled_baseline": {
+    "permutations": 200,
+    "seed": 292781,
+    "markers": {
+      "human": {
+        "true": 0.0340052620209762,
+        "shuffled_mean": 0.0014282140717581154,
+        "shuffled_95_band": [
+          -0.02131922437544889,
+          0.025507210703946667
+        ],
+        "true_minus_shuffled_mean": 0.032577047949218084,
+        "true_above_band": true
+      },
+      "plain": {
+        "true": 0.02542716626895511,
+        "shuffled_mean": 0.0007162437190110501,
+        "shuffled_95_band": [
+          -0.02065855164495013,
+          0.021349448441056934
+        ],
+        "true_minus_shuffled_mean": 0.02471092254994406,
+        "true_above_band": true
+      },
+      "bounded": {
+        "true": 0.0322296129796197,
+        "shuffled_mean": 0.0002775268527766749,
+        "shuffled_95_band": [
+          -0.0183663388122002,
+          0.01956324981022146
+        ],
+        "true_minus_shuffled_mean": 0.03195208612684303,
+        "true_above_band": true
+      }
+    },
+    "content_proxy": {
+      "human": {
+        "true": 0.06223888888888889,
+        "shuffled_mean": -0.00029155483405483504,
+        "shuffled_95_band": [
+          -0.007903472222222223,
+          0.010466477272727282
+        ],
+        "true_minus_shuffled_mean": 0.06253044372294372,
+        "true_above_band": true
+      },
+      "plain": {
+        "true": 0.08090028860028858,
+        "shuffled_mean": 0.0008087481962481953,
+        "shuffled_95_band": [
+          -0.008771428571428574,
+          0.012067857142857142
+        ],
+        "true_minus_shuffled_mean": 0.08009154040404039,
+        "true_above_band": true
+      },
+      "bounded": {
+        "true": 0.08114552669552669,
+        "shuffled_mean": 0.0006532756132756121,
+        "shuffled_95_band": [
+          -0.009140909090909092,
+          0.013053084415584415
+        ],
+        "true_minus_shuffled_mean": 0.08049225108225108,
+        "true_above_band": true
+      }
+    }
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 292780,
+    "markers": {
+      "human": {
+        "mean": 0.03401315942770039,
+        "ci95": [
+          0.007459550057363929,
+          0.06060213278717648
+        ],
+        "defined": 10000
+      },
+      "plain": {
+        "mean": 0.02545115670489177,
+        "ci95": [
+          0.0018497532748713013,
+          0.04956731133666581
+        ],
+        "defined": 10000
+      },
+      "bounded": {
+        "mean": 0.03225098916654459,
+        "ci95": [
+          0.008681382755378506,
+          0.05617328617172111
+        ],
+        "defined": 10000
+      },
+      "plain_minus_human": {
+        "point": -0.008578095752021092,
+        "mean": -0.00856200272280862,
+        "ci95": [
+          -0.04098703860510829,
+          0.024503012991448043
+        ],
+        "defined": 10000
+      },
+      "bounded_minus_human": {
+        "point": -0.0017756490413564988,
+        "mean": -0.0017621702611557947,
+        "ci95": [
+          -0.034206701424918246,
+          0.03088098496221325
+        ],
+        "defined": 10000
+      },
+      "plain_minus_bounded": {
+        "point": -0.006802446710664593,
+        "mean": -0.006799832461652824,
+        "ci95": [
+          -0.02325364774417326,
+          0.009498125036651782
+        ],
+        "defined": 10000
+      }
+    },
+    "content_proxy": {
+      "human": {
+        "mean": 0.06003284385605748,
+        "ci95": [
+          0.030794536542038287,
+          0.08912610488639898
+        ],
+        "defined": 10000
+      },
+      "plain": {
+        "mean": 0.08173685926849544,
+        "ci95": [
+          0.05122243039160338,
+          0.11470795479323027
+        ],
+        "defined": 10000
+      },
+      "bounded": {
+        "mean": 0.08251073116613628,
+        "ci95": [
+          0.054428192438023895,
+          0.11171476998243302
+        ],
+        "defined": 10000
+      },
+      "plain_minus_human": {
+        "point": 0.01866139971139969,
+        "mean": 0.021704015412437973,
+        "ci95": [
+          -0.016996454547524353,
+          0.0625938168475449
+        ],
+        "defined": 10000
+      },
+      "bounded_minus_human": {
+        "point": 0.018906637806637795,
+        "mean": 0.02247788731007881,
+        "ci95": [
+          -0.01225999905891211,
+          0.058058812775388866
+        ],
+        "defined": 10000
+      },
+      "plain_minus_bounded": {
+        "point": -0.0002452380952381039,
+        "mean": -0.0007738718976408328,
+        "ci95": [
+          -0.02192781630554798,
+          0.021326758218893023
+        ],
+        "defined": 10000
+      }
+    }
+  },
+  "comparison": {
+    "published_liwc_mean_llm_minus_user": 0.033,
+    "published_eight_marker_means_derived": {
+      "wildchat_llm": 0.04975,
+      "wildchat_user": 0.029124999999999998,
+      "dailydialog": 0.040999999999999995,
+      "ubuntu_user": 0.022625,
+      "ubuntu_assistant": 0.021875
+    },
+    "published_eight_marker_llm_minus_user_derived": 0.020625000000000004,
+    "measured_plain_minus_human": -0.008578095752021092,
+    "measured_plain_minus_human_ci95": [
+      -0.04098703860510829,
+      0.024503012991448043
+    ],
+    "same_direction_as_published": false,
+    "ci_excludes_zero": false,
+    "published_noun_llm_vs_user": [
+      0.442,
+      0.141
+    ],
+    "measured_content_proxy_plain_vs_human": [
+      0.08090028860028858,
+      0.06223888888888889
+    ],
+    "bounded_minus_plain_markers": 0.006802446710664593,
+    "bounded_empty_fraction": 0.005,
+    "warning": "Different model (1.5B coder vs ChatGPT), corpus (DailyDialog contexts vs WildChat), lexicon (open list vs LIWC) and noun proxy; direction and contrasts are comparable, absolute levels are not."
+  },
+  "published_reference": {
+    "table": 2,
+    "setting": "WildChat English, ChatGPT GPT-3.5/4 turns vs user turns; DailyDialog and Ubuntu human-human; LIWC 2007 categories; top-100 WordNet-filtered noun lemmas",
+    "liwc_mean": {
+      "wildchat_llm": 0.068,
+      "wildchat_user": 0.035,
+      "dailydialog": 0.036,
+      "ubuntu_user": 0.022,
+      "ubuntu_assistant": 0.02
+    },
+    "noun_mean": {
+      "wildchat_llm": 0.442,
+      "wildchat_user": 0.141,
+      "dailydialog": 0.132,
+      "ubuntu_user": 0.104,
+      "ubuntu_assistant": 0.103
+    },
+    "per_marker": {
+      "wildchat_llm": {
+        "ppron": 0.086,
+        "ipron": 0.051,
+        "article": 0.041,
+        "conj": 0.035,
+        "prep": 0.022,
+        "auxverb": 0.033,
+        "adverb": 0.063,
+        "negate": 0.213,
+        "quant": 0.067
+      },
+      "wildchat_user": {
+        "ppron": 0.048,
+        "ipron": 0.031,
+        "article": 0.028,
+        "conj": 0.021,
+        "prep": 0.018,
+        "auxverb": 0.022,
+        "adverb": 0.032,
+        "negate": 0.081,
+        "quant": 0.033
+      },
+      "dailydialog": {
+        "ppron": 0.028,
+        "ipron": 0.048,
+        "article": 0.046,
+        "conj": 0.038,
+        "prep": 0.03,
+        "auxverb": 0.015,
+        "adverb": 0.039,
+        "negate": -0.005,
+        "quant": 0.084
+      },
+      "ubuntu_user": {
+        "ppron": 0.02,
+        "ipron": 0.022,
+        "article": 0.024,
+        "conj": 0.025,
+        "prep": 0.019,
+        "auxverb": 0.013,
+        "adverb": 0.018,
+        "negate": 0.012,
+        "quant": 0.04
+      },
+      "ubuntu_assistant": {
+        "ppron": 0.019,
+        "ipron": 0.021,
+        "article": 0.025,
+        "conj": 0.024,
+        "prep": 0.019,
+        "auxverb": 0.013,
+        "adverb": 0.016,
+        "negate": 0.011,
+        "quant": 0.038
+      }
+    },
+    "note": "Table 2 Ubuntu LIWC means are .022/.020; the .040/.038 sometimes quoted are its quant column. DailyDialog scores average both speakers over all turns.",
+    "secondary_table3_french2024": {
+      "swda_lexical_true": 0.17,
+      "swda_lexical_true_shuffled": 0.117,
+      "chatgpt": 0.151,
+      "chatgpt_shuffled": 0.117,
+      "llama2_13b": 0.207,
+      "llama2_7b": 0.213
+    },
+    "comparison_warning": "Different model, corpus role, lexicon and noun proxy; no same-estimand effect size"
+  },
+  "limitations": [
+    "Qwen2.5-Coder-1.5B-Instruct Q4_K_M on CPU instead of ChatGPT (GPT-3.5/4) in WildChat; one greedy decode per item.",
+    "Authored open function-word lexicon, not the LIWC 2007 dictionary; per-category absolute levels differ.",
+    "Human replies are the real next DailyDialog turn; model replies answer the same u1 after a 2-4 turn context, not organic multi-turn WildChat use.",
+    "Content-word proxy uses the top-100 frequent non-function tokens of u1 texts without POS tagging or WordNet filtering, so it is not Blevins noun-lemma convergence.",
+    "Only reply length, finish reason and empty-reply counts measure output quality; coherence and appropriateness are unmeasured.",
+    "Original data host is a parked domain; the ParlAI mirror of the train split was used and hashed (see config).",
+    "One aggregated speaker per response set; no per-speaker macro average and no per-turn trajectory."
+  ]
+}

@@ -1,0 +1,1982 @@
+{
+  "schema_version": 1,
+  "manifests": [
+    {
+      "directory": "results/bonding/platform",
+      "status": "ok",
+      "checked": 5,
+      "mismatches": []
+    },
+    {
+      "directory": "results/bonding/platform_v2",
+      "status": "ok",
+      "checked": 5,
+      "mismatches": []
+    },
+    {
+      "directory": "results/papers/attachment_robot",
+      "status": "ok",
+      "checked": 25,
+      "mismatches": []
+    },
+    {
+      "directory": "results/papers/marital_dynamics",
+      "status": "ok",
+      "checked": 11,
+      "mismatches": []
+    },
+    {
+      "directory": "results/papers/coordination_power",
+      "status": "ok",
+      "checked": 5,
+      "mismatches": []
+    },
+    {
+      "directory": "results/papers/llm_convergence/live",
+      "status": "ok",
+      "checked": 6,
+      "mismatches": []
+    },
+    {
+      "directory": "results/bonding/sensor",
+      "status": "ok",
+      "checked": 17,
+      "mismatches": []
+    },
+    {
+      "directory": "results/bonding/partner_model",
+      "status": "ok",
+      "checked": 7,
+      "mismatches": []
+    },
+    {
+      "directory": "results/bonding/sensor_gate",
+      "status": "ok",
+      "checked": 2,
+      "mismatches": []
+    }
+  ],
+  "platform_recomputation": {
+    "results/bonding/platform": {
+      "attachment": {
+        "q=1.0|bonded:requests": {
+          "recomputed": 3.35,
+          "summary": 3.35,
+          "n": 40
+        },
+        "q=1.0|bonded:answered_fraction": {
+          "recomputed": 0.9885416666666667,
+          "summary": 0.9885416666666667,
+          "n": 40
+        },
+        "q=1.0|bonded:final_responsiveness": {
+          "recomputed": 0.5469696225232309,
+          "summary": 0.546969622523231,
+          "n": 40
+        },
+        "q=1.0|bonded:final_tau_h": {
+          "recomputed": 6.171212642337383,
+          "summary": 6.171212642337383,
+          "n": 40
+        },
+        "q=1.0|bonded:final_security": {
+          "recomputed": 0.5469696225232309,
+          "summary": 0.546969622523231,
+          "n": 40
+        },
+        "q=1.0|bonded:mean_threat_buffer": {
+          "recomputed": 0.2457951313853136,
+          "summary": 0.2457951313853136,
+          "n": 40
+        },
+        "q=1.0|bonded:cumulative_threat": {
+          "recomputed": 61.31796025942598,
+          "summary": 61.31796025942598,
+          "n": 40
+        },
+        "q=1.0|bonded:mean_mood_valence": {
+          "recomputed": -0.10084081409982086,
+          "summary": -0.10084081409982089,
+          "n": 40
+        },
+        "q=1.0|bonded:mean_arousal": {
+          "recomputed": 0.30583329414344784,
+          "summary": 0.3058332941434479,
+          "n": 40
+        },
+        "q=1.0|bonded:mean_exploration": {
+          "recomputed": 0.34701548974852725,
+          "summary": 0.34701548974852725,
+          "n": 40
+        },
+        "q=1.0|bonded:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=1.0|bonded:final_beta_h": {
+          "recomputed": 0.8359091132430306,
+          "summary": 0.8359091132430307,
+          "n": 40
+        },
+        "q=1.0|bonded:final_attention": {
+          "recomputed": 0.9974999999999999,
+          "summary": 0.9974999999999999,
+          "n": 40
+        },
+        "q=1.0|reference:requests": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "q=1.0|reference:cumulative_threat": {
+          "recomputed": 71.90134503786525,
+          "summary": 71.90134503786525,
+          "n": 40
+        },
+        "q=1.0|reference:mean_mood_valence": {
+          "recomputed": -0.12508632889406118,
+          "summary": -0.12508632889406118,
+          "n": 40
+        },
+        "q=1.0|reference:mean_exploration": {
+          "recomputed": 0.30377070335572265,
+          "summary": 0.3037707033557227,
+          "n": 40
+        },
+        "q=1.0|reference:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.5|bonded:requests": {
+          "recomputed": 3.225,
+          "summary": 3.225,
+          "n": 40
+        },
+        "q=0.5|bonded:answered_fraction": {
+          "recomputed": 0.4607142857142857,
+          "summary": 0.4607142857142857,
+          "n": 40
+        },
+        "q=0.5|bonded:final_responsiveness": {
+          "recomputed": 0.49503998903212487,
+          "summary": 0.49503998903212487,
+          "n": 40
+        },
+        "q=0.5|bonded:final_tau_h": {
+          "recomputed": 6.534720076775126,
+          "summary": 6.534720076775128,
+          "n": 40
+        },
+        "q=0.5|bonded:final_security": {
+          "recomputed": 0.49503998903212487,
+          "summary": 0.49503998903212487,
+          "n": 40
+        },
+        "q=0.5|bonded:mean_threat_buffer": {
+          "recomputed": 0.24154611811267684,
+          "summary": 0.24154611811267684,
+          "n": 40
+        },
+        "q=0.5|bonded:cumulative_threat": {
+          "recomputed": 61.49726693865493,
+          "summary": 61.49726693865493,
+          "n": 40
+        },
+        "q=0.5|bonded:mean_mood_valence": {
+          "recomputed": -0.1012560269543955,
+          "summary": -0.10125602695439548,
+          "n": 40
+        },
+        "q=0.5|bonded:mean_arousal": {
+          "recomputed": 0.3056298668893709,
+          "summary": 0.3056298668893709,
+          "n": 40
+        },
+        "q=0.5|bonded:mean_exploration": {
+          "recomputed": 0.34685653393343474,
+          "summary": 0.34685653393343474,
+          "n": 40
+        },
+        "q=0.5|bonded:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.5|bonded:final_beta_h": {
+          "recomputed": 0.8514880032903624,
+          "summary": 0.8514880032903624,
+          "n": 40
+        },
+        "q=0.5|bonded:final_attention": {
+          "recomputed": 0.9974999999999999,
+          "summary": 0.9974999999999999,
+          "n": 40
+        },
+        "q=0.5|reference:requests": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "q=0.5|reference:cumulative_threat": {
+          "recomputed": 71.90134503786525,
+          "summary": 71.90134503786525,
+          "n": 40
+        },
+        "q=0.5|reference:mean_mood_valence": {
+          "recomputed": -0.12508632889406118,
+          "summary": -0.12508632889406118,
+          "n": 40
+        },
+        "q=0.5|reference:mean_exploration": {
+          "recomputed": 0.30377070335572265,
+          "summary": 0.3037707033557227,
+          "n": 40
+        },
+        "q=0.5|reference:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.0|bonded:requests": {
+          "recomputed": 3.075,
+          "summary": 3.075,
+          "n": 40
+        },
+        "q=0.0|bonded:answered_fraction": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "q=0.0|bonded:final_responsiveness": {
+          "recomputed": 0.45233815090635954,
+          "summary": 0.45233815090635954,
+          "n": 40
+        },
+        "q=0.0|bonded:final_tau_h": {
+          "recomputed": 6.833632943655483,
+          "summary": 6.833632943655482,
+          "n": 40
+        },
+        "q=0.0|bonded:final_security": {
+          "recomputed": 0.45233815090635954,
+          "summary": 0.45233815090635954,
+          "n": 40
+        },
+        "q=0.0|bonded:mean_threat_buffer": {
+          "recomputed": 0.2401041666666667,
+          "summary": 0.2401041666666667,
+          "n": 40
+        },
+        "q=0.0|bonded:cumulative_threat": {
+          "recomputed": 61.55856188671887,
+          "summary": 61.55856188671887,
+          "n": 40
+        },
+        "q=0.0|bonded:mean_mood_valence": {
+          "recomputed": -0.1013978014315469,
+          "summary": -0.10139780143154689,
+          "n": 40
+        },
+        "q=0.0|bonded:mean_arousal": {
+          "recomputed": 0.3050909956834299,
+          "summary": 0.3050909956834299,
+          "n": 40
+        },
+        "q=0.0|bonded:mean_exploration": {
+          "recomputed": 0.3468585306872495,
+          "summary": 0.3468585306872495,
+          "n": 40
+        },
+        "q=0.0|bonded:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.0|bonded:final_beta_h": {
+          "recomputed": 0.864298554728092,
+          "summary": 0.8642985547280922,
+          "n": 40
+        },
+        "q=0.0|bonded:final_attention": {
+          "recomputed": 0.9974999999999999,
+          "summary": 0.9974999999999999,
+          "n": 40
+        },
+        "q=0.0|reference:requests": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "q=0.0|reference:cumulative_threat": {
+          "recomputed": 71.90134503786525,
+          "summary": 71.90134503786525,
+          "n": 40
+        },
+        "q=0.0|reference:mean_mood_valence": {
+          "recomputed": -0.12508632889406118,
+          "summary": -0.12508632889406118,
+          "n": 40
+        },
+        "q=0.0|reference:mean_exploration": {
+          "recomputed": 0.30377070335572265,
+          "summary": 0.3037707033557227,
+          "n": 40
+        },
+        "q=0.0|reference:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        }
+      },
+      "dyad": {
+        "stable_husband_1999|own_mood:final_partner_affect_mean": {
+          "recomputed": 0.02920846537144039,
+          "summary": 0.02920846537144039,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:final_positive_fraction": {
+          "recomputed": 0.70125,
+          "summary": 0.70125,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:mean_accommodation_distance": {
+          "recomputed": 0.04931785065422422,
+          "summary": 0.04931785065422422,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:mean_agent_valence": {
+          "recomputed": 0.001410862708595292,
+          "summary": 0.001410862708595292,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:identifier_inertia_error": {
+          "recomputed": -0.03796424709439072,
+          "summary": -0.03796424709439072,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:identifier_uninfluenced_error": {
+          "recomputed": -0.00037098824652348266,
+          "summary": -0.00037098824652348266,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:final_partner_affect_mean": {
+          "recomputed": 0.04826520723765827,
+          "summary": 0.04826520723765827,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:final_positive_fraction": {
+          "recomputed": 0.749375,
+          "summary": 0.749375,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:mean_accommodation_distance": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:mean_agent_valence": {
+          "recomputed": 0.05023277267480599,
+          "summary": 0.05023277267480599,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:identifier_inertia_error": {
+          "recomputed": 0.0490888831350114,
+          "summary": 0.049088883135011405,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:identifier_uninfluenced_error": {
+          "recomputed": 0.00920835955278969,
+          "summary": 0.00920835955278969,
+          "n": 40
+        },
+        "stable_husband_1999|steer:final_partner_affect_mean": {
+          "recomputed": 0.2858731678176794,
+          "summary": 0.2858731678176794,
+          "n": 40
+        },
+        "stable_husband_1999|steer:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "stable_husband_1999|steer:mean_accommodation_distance": {
+          "recomputed": 0.22081668807843466,
+          "summary": 0.22081668807843466,
+          "n": 40
+        },
+        "stable_husband_1999|steer:mean_agent_valence": {
+          "recomputed": 0.48634149760235906,
+          "summary": 0.48634149760235895,
+          "n": 40
+        },
+        "stable_husband_1999|steer:identifier_inertia_error": {
+          "recomputed": -0.040334832333126514,
+          "summary": -0.040334832333126514,
+          "n": 40
+        },
+        "stable_husband_1999|steer:identifier_uninfluenced_error": {
+          "recomputed": -0.007881293874232132,
+          "summary": -0.007881293874232132,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:final_partner_affect_mean": {
+          "recomputed": 0.1158690039619927,
+          "summary": 0.11586900396199269,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:final_positive_fraction": {
+          "recomputed": 0.9475,
+          "summary": 0.9475000000000001,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:mean_accommodation_distance": {
+          "recomputed": 0.07219450771638969,
+          "summary": 0.07219450771638969,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:mean_agent_valence": {
+          "recomputed": 0.1643446601432816,
+          "summary": 0.16434466014328164,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:identifier_inertia_error": {
+          "recomputed": -0.04191542769333117,
+          "summary": -0.04191542769333117,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:identifier_uninfluenced_error": {
+          "recomputed": -0.004944756229885255,
+          "summary": -0.004944756229885255,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:final_partner_affect_mean": {
+          "recomputed": 0.2858731678176794,
+          "summary": 0.2858731678176794,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:mean_accommodation_distance": {
+          "recomputed": 0.22081668807843466,
+          "summary": 0.22081668807843466,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:mean_agent_valence": {
+          "recomputed": 0.48634149760235906,
+          "summary": 0.48634149760235895,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:identifier_inertia_error": {
+          "recomputed": -0.040334832333126514,
+          "summary": -0.040334832333126514,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:identifier_uninfluenced_error": {
+          "recomputed": -0.007881293874232132,
+          "summary": -0.007881293874232132,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:final_partner_affect_mean": {
+          "recomputed": -0.08146029566639669,
+          "summary": -0.08146029566639668,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:final_positive_fraction": {
+          "recomputed": 0.0675,
+          "summary": 0.0675,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:mean_accommodation_distance": {
+          "recomputed": 0.08175899185289834,
+          "summary": 0.08175899185289834,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:mean_agent_valence": {
+          "recomputed": -0.0020134676411171855,
+          "summary": -0.002013467641117185,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:identifier_inertia_error": {
+          "recomputed": -0.034379527572815885,
+          "summary": -0.034379527572815885,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:identifier_uninfluenced_error": {
+          "recomputed": -0.0016951354611561317,
+          "summary": -0.0016951354611561317,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:final_partner_affect_mean": {
+          "recomputed": -0.28047595423157795,
+          "summary": -0.28047595423157795,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:final_positive_fraction": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:mean_accommodation_distance": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:mean_agent_valence": {
+          "recomputed": -0.2695581922038881,
+          "summary": -0.2695581922038881,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:identifier_inertia_error": {
+          "recomputed": 0.1259121458738996,
+          "summary": 0.1259121458738996,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:identifier_uninfluenced_error": {
+          "recomputed": -0.039871107854107316,
+          "summary": -0.039871107854107316,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:final_partner_affect_mean": {
+          "recomputed": 0.13632810824248082,
+          "summary": 0.13632810824248082,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:final_positive_fraction": {
+          "recomputed": 0.9949999999999999,
+          "summary": 0.9949999999999999,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:mean_accommodation_distance": {
+          "recomputed": 0.3546315523414453,
+          "summary": 0.3546315523414453,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:mean_agent_valence": {
+          "recomputed": 0.47699511911381676,
+          "summary": 0.47699511911381676,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:identifier_inertia_error": {
+          "recomputed": -0.0378733477284255,
+          "summary": -0.0378733477284255,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:identifier_uninfluenced_error": {
+          "recomputed": -0.006996649901454742,
+          "summary": -0.006996649901454742,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:final_partner_affect_mean": {
+          "recomputed": -0.008109742721185632,
+          "summary": -0.008109742721185632,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:final_positive_fraction": {
+          "recomputed": 0.460625,
+          "summary": 0.46062499999999995,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:mean_accommodation_distance": {
+          "recomputed": 0.17051187079532995,
+          "summary": 0.17051187079532992,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:mean_agent_valence": {
+          "recomputed": 0.15673287998189075,
+          "summary": 0.15673287998189075,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:identifier_inertia_error": {
+          "recomputed": -0.03911337329796408,
+          "summary": -0.03911337329796407,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:identifier_uninfluenced_error": {
+          "recomputed": -0.006515264041632577,
+          "summary": -0.0065152640416325765,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:final_partner_affect_mean": {
+          "recomputed": 0.13632810824248082,
+          "summary": 0.13632810824248082,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:final_positive_fraction": {
+          "recomputed": 0.9949999999999999,
+          "summary": 0.9949999999999999,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:mean_accommodation_distance": {
+          "recomputed": 0.3546315523414453,
+          "summary": 0.3546315523414453,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:mean_agent_valence": {
+          "recomputed": 0.47699511911381676,
+          "summary": 0.47699511911381676,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:identifier_inertia_error": {
+          "recomputed": -0.0378733477284255,
+          "summary": -0.0378733477284255,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:identifier_uninfluenced_error": {
+          "recomputed": -0.006996649901454742,
+          "summary": -0.006996649901454742,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:final_partner_affect_mean": {
+          "recomputed": -0.051416780824097966,
+          "summary": -0.05141678082409797,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:final_positive_fraction": {
+          "recomputed": 0.169375,
+          "summary": 0.169375,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:mean_accommodation_distance": {
+          "recomputed": 0.059777040005932744,
+          "summary": 0.059777040005932744,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:mean_agent_valence": {
+          "recomputed": -0.0011027337599628733,
+          "summary": -0.001102733759962873,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:identifier_inertia_error": {
+          "recomputed": -0.04044012767137599,
+          "summary": -0.04044012767137599,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:identifier_uninfluenced_error": {
+          "recomputed": -0.0005897697814179639,
+          "summary": -0.0005897697814179639,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:final_partner_affect_mean": {
+          "recomputed": -0.051416780824097966,
+          "summary": -0.05141678082409797,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:final_positive_fraction": {
+          "recomputed": 0.169375,
+          "summary": 0.169375,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:mean_accommodation_distance": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:mean_agent_valence": {
+          "recomputed": -0.0504565635001127,
+          "summary": -0.0504565635001127,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:identifier_inertia_error": {
+          "recomputed": -0.20462140365418646,
+          "summary": -0.20462140365418646,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:identifier_uninfluenced_error": {
+          "recomputed": 0.009865147143868108,
+          "summary": 0.009865147143868108,
+          "n": 40
+        },
+        "ojive_mismatch|steer:final_partner_affect_mean": {
+          "recomputed": 0.2819165525092354,
+          "summary": 0.2819165525092354,
+          "n": 40
+        },
+        "ojive_mismatch|steer:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "ojive_mismatch|steer:mean_accommodation_distance": {
+          "recomputed": 0.22798317898784887,
+          "summary": 0.22798317898784887,
+          "n": 40
+        },
+        "ojive_mismatch|steer:mean_agent_valence": {
+          "recomputed": 0.4892527306645805,
+          "summary": 0.4892527306645805,
+          "n": 40
+        },
+        "ojive_mismatch|steer:identifier_inertia_error": {
+          "recomputed": -0.04055025060839458,
+          "summary": -0.04055025060839458,
+          "n": 40
+        },
+        "ojive_mismatch|steer:identifier_uninfluenced_error": {
+          "recomputed": -0.004980970752356376,
+          "summary": -0.0049809707523563755,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:final_partner_affect_mean": {
+          "recomputed": -0.051416780824097966,
+          "summary": -0.05141678082409797,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:final_positive_fraction": {
+          "recomputed": 0.169375,
+          "summary": 0.169375,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:mean_accommodation_distance": {
+          "recomputed": 0.11684966879687615,
+          "summary": 0.11684966879687615,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:mean_agent_valence": {
+          "recomputed": 0.05981184957337047,
+          "summary": 0.05981184957337047,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:identifier_inertia_error": {
+          "recomputed": -0.042209696244564936,
+          "summary": -0.042209696244564936,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:identifier_uninfluenced_error": {
+          "recomputed": -0.011242397979883356,
+          "summary": -0.011242397979883356,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:final_partner_affect_mean": {
+          "recomputed": 0.2819165525092354,
+          "summary": 0.2819165525092354,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:mean_accommodation_distance": {
+          "recomputed": 0.22798317898784887,
+          "summary": 0.22798317898784887,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:mean_agent_valence": {
+          "recomputed": 0.4892527306645805,
+          "summary": 0.4892527306645805,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:identifier_inertia_error": {
+          "recomputed": -0.04055025060839458,
+          "summary": -0.04055025060839458,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:identifier_uninfluenced_error": {
+          "recomputed": -0.004980970752356376,
+          "summary": -0.0049809707523563755,
+          "n": 40
+        }
+      },
+      "max_abs_difference": 1.7763568394002505e-15,
+      "agree_within_1e-9": true
+    },
+    "results/bonding/platform_v2": {
+      "attachment": {
+        "q=1.0|reference:requests": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "q=1.0|reference:cumulative_threat": {
+          "recomputed": 71.90134503786525,
+          "summary": 71.90134503786525,
+          "n": 40
+        },
+        "q=1.0|reference:mean_mood_valence": {
+          "recomputed": -0.12508632889406118,
+          "summary": -0.12508632889406118,
+          "n": 40
+        },
+        "q=1.0|reference:mean_exploration": {
+          "recomputed": 0.30377070335572265,
+          "summary": 0.3037707033557227,
+          "n": 40
+        },
+        "q=1.0|reference:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:requests": {
+          "recomputed": 3.05,
+          "summary": 3.05,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:answered_fraction": {
+          "recomputed": 0.9880952380952381,
+          "summary": 0.9880952380952381,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:final_responsiveness": {
+          "recomputed": 0.7793650793650794,
+          "summary": 0.7793650793650794,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:final_tau_h": {
+          "recomputed": 4.544444444444444,
+          "summary": 4.544444444444444,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:final_security": {
+          "recomputed": 0.7793650793650794,
+          "summary": 0.7793650793650794,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:mean_threat_buffer": {
+          "recomputed": 0.28214025282031546,
+          "summary": 0.28214025282031546,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:cumulative_threat": {
+          "recomputed": 59.780883821238056,
+          "summary": 59.780883821238056,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:mean_mood_valence": {
+          "recomputed": -0.09755175948254646,
+          "summary": -0.09755175948254646,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:mean_arousal": {
+          "recomputed": 0.3036975970313788,
+          "summary": 0.3036975970313788,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:mean_exploration": {
+          "recomputed": 0.34827041154780947,
+          "summary": 0.34827041154780947,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:final_beta_h": {
+          "recomputed": 0.7661904761904761,
+          "summary": 0.7661904761904761,
+          "n": 40
+        },
+        "q=1.0|bonded:beta:final_attention": {
+          "recomputed": 0.9974999999999999,
+          "summary": 0.9974999999999999,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:requests": {
+          "recomputed": 16.65,
+          "summary": 16.65,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:answered_fraction": {
+          "recomputed": 0.9975972540045767,
+          "summary": 0.9975972540045767,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:final_responsiveness": {
+          "recomputed": 0.945098461946961,
+          "summary": 0.9450984619469611,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:final_tau_h": {
+          "recomputed": 3.384310766371273,
+          "summary": 3.384310766371273,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:final_security": {
+          "recomputed": 0.945098461946961,
+          "summary": 0.9450984619469611,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:mean_threat_buffer": {
+          "recomputed": 0.3375992018995484,
+          "summary": 0.3375992018995484,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:cumulative_threat": {
+          "recomputed": 57.36908465920237,
+          "summary": 57.36908465920237,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:mean_mood_valence": {
+          "recomputed": -0.08971376745910134,
+          "summary": -0.08971376745910134,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:mean_arousal": {
+          "recomputed": 0.3699027022442734,
+          "summary": 0.3699027022442734,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:mean_exploration": {
+          "recomputed": 0.3402357425364218,
+          "summary": 0.3402357425364218,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:final_beta_h": {
+          "recomputed": 0.7164704614159116,
+          "summary": 0.7164704614159116,
+          "n": 40
+        },
+        "q=1.0|bonded:beta_hold:final_attention": {
+          "recomputed": 0.9974999999999999,
+          "summary": 0.9974999999999999,
+          "n": 40
+        },
+        "q=0.5|reference:requests": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "q=0.5|reference:cumulative_threat": {
+          "recomputed": 71.90134503786525,
+          "summary": 71.90134503786525,
+          "n": 40
+        },
+        "q=0.5|reference:mean_mood_valence": {
+          "recomputed": -0.12508632889406118,
+          "summary": -0.12508632889406118,
+          "n": 40
+        },
+        "q=0.5|reference:mean_exploration": {
+          "recomputed": 0.30377070335572265,
+          "summary": 0.3037707033557227,
+          "n": 40
+        },
+        "q=0.5|reference:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:requests": {
+          "recomputed": 3.225,
+          "summary": 3.225,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:answered_fraction": {
+          "recomputed": 0.4690277777777777,
+          "summary": 0.4690277777777777,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:final_responsiveness": {
+          "recomputed": 0.48721681096681096,
+          "summary": 0.48721681096681096,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:final_tau_h": {
+          "recomputed": 6.589482323232323,
+          "summary": 6.589482323232323,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:final_security": {
+          "recomputed": 0.48721681096681096,
+          "summary": 0.48721681096681096,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:mean_threat_buffer": {
+          "recomputed": 0.2525788793816138,
+          "summary": 0.2525788793816138,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:cumulative_threat": {
+          "recomputed": 61.0293038457991,
+          "summary": 61.029303845799106,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:mean_mood_valence": {
+          "recomputed": -0.10024273090995786,
+          "summary": -0.10024273090995786,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:mean_arousal": {
+          "recomputed": 0.3051878847571672,
+          "summary": 0.3051878847571672,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:mean_exploration": {
+          "recomputed": 0.347188859193231,
+          "summary": 0.34718885919323095,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:final_beta_h": {
+          "recomputed": 0.8538349567099566,
+          "summary": 0.8538349567099566,
+          "n": 40
+        },
+        "q=0.5|bonded:beta:final_attention": {
+          "recomputed": 0.9974999999999999,
+          "summary": 0.9974999999999999,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:requests": {
+          "recomputed": 32.05,
+          "summary": 32.05,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:answered_fraction": {
+          "recomputed": 0.5057374723846448,
+          "summary": 0.5057374723846448,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:final_responsiveness": {
+          "recomputed": 0.5070562029929648,
+          "summary": 0.5070562029929648,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:final_tau_h": {
+          "recomputed": 6.4506065790492455,
+          "summary": 6.4506065790492455,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:final_security": {
+          "recomputed": 0.5070562029929648,
+          "summary": 0.5070562029929648,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:mean_threat_buffer": {
+          "recomputed": 0.2525572520501537,
+          "summary": 0.2525572520501537,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:cumulative_threat": {
+          "recomputed": 60.915818294264206,
+          "summary": 60.915818294264206,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:mean_mood_valence": {
+          "recomputed": -0.09466380655661907,
+          "summary": -0.09466380655661907,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:mean_arousal": {
+          "recomputed": 0.4027912921806638,
+          "summary": 0.4027912921806638,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:mean_exploration": {
+          "recomputed": 0.33120044431210993,
+          "summary": 0.33120044431211,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:final_beta_h": {
+          "recomputed": 0.8478831391021104,
+          "summary": 0.8478831391021104,
+          "n": 40
+        },
+        "q=0.5|bonded:beta_hold:final_attention": {
+          "recomputed": 0.98375,
+          "summary": 0.98375,
+          "n": 40
+        },
+        "q=0.0|reference:requests": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "q=0.0|reference:cumulative_threat": {
+          "recomputed": 71.90134503786525,
+          "summary": 71.90134503786525,
+          "n": 40
+        },
+        "q=0.0|reference:mean_mood_valence": {
+          "recomputed": -0.12508632889406118,
+          "summary": -0.12508632889406118,
+          "n": 40
+        },
+        "q=0.0|reference:mean_exploration": {
+          "recomputed": 0.30377070335572265,
+          "summary": 0.3037707033557227,
+          "n": 40
+        },
+        "q=0.0|reference:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:requests": {
+          "recomputed": 3.075,
+          "summary": 3.075,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:answered_fraction": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:final_responsiveness": {
+          "recomputed": 0.2263095238095238,
+          "summary": 0.22630952380952377,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:final_tau_h": {
+          "recomputed": 8.415833333333335,
+          "summary": 8.415833333333333,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:final_security": {
+          "recomputed": 0.2263095238095238,
+          "summary": 0.22630952380952377,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:mean_threat_buffer": {
+          "recomputed": 0.2401041666666667,
+          "summary": 0.2401041666666667,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:cumulative_threat": {
+          "recomputed": 61.55856188671887,
+          "summary": 61.55856188671887,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:mean_mood_valence": {
+          "recomputed": -0.1013978014315469,
+          "summary": -0.10139780143154689,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:mean_arousal": {
+          "recomputed": 0.3050909956834299,
+          "summary": 0.3050909956834299,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:mean_exploration": {
+          "recomputed": 0.3468585306872495,
+          "summary": 0.3468585306872495,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:final_beta_h": {
+          "recomputed": 0.9321071428571427,
+          "summary": 0.9321071428571429,
+          "n": 40
+        },
+        "q=0.0|bonded:beta:final_attention": {
+          "recomputed": 0.9974999999999999,
+          "summary": 0.9974999999999999,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:requests": {
+          "recomputed": 9.0,
+          "summary": 9.0,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:answered_fraction": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:final_responsiveness": {
+          "recomputed": 0.09090909090909091,
+          "summary": 0.09090909090909091,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:final_tau_h": {
+          "recomputed": 9.363636363636363,
+          "summary": 9.363636363636363,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:final_security": {
+          "recomputed": 0.09090909090909091,
+          "summary": 0.09090909090909091,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:mean_threat_buffer": {
+          "recomputed": 0.2401041666666667,
+          "summary": 0.2401041666666667,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:cumulative_threat": {
+          "recomputed": 61.54027972506641,
+          "summary": 61.54027972506642,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:mean_mood_valence": {
+          "recomputed": -0.1000011033935071,
+          "summary": -0.1000011033935071,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:mean_arousal": {
+          "recomputed": 0.42764751757810104,
+          "summary": 0.42764751757810104,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:mean_exploration": {
+          "recomputed": 0.3113595391608046,
+          "summary": 0.3113595391608046,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:setback_turns": {
+          "recomputed": 92.075,
+          "summary": 92.075,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:final_beta_h": {
+          "recomputed": 0.9727272727272727,
+          "summary": 0.9727272727272727,
+          "n": 40
+        },
+        "q=0.0|bonded:beta_hold:final_attention": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        }
+      },
+      "dyad": {
+        "stable_husband_1999|own_mood:final_partner_affect_mean": {
+          "recomputed": 0.02920846537144039,
+          "summary": 0.02920846537144039,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:final_positive_fraction": {
+          "recomputed": 0.70125,
+          "summary": 0.70125,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:mean_accommodation_distance": {
+          "recomputed": 0.04931785065422422,
+          "summary": 0.04931785065422422,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:mean_agent_valence": {
+          "recomputed": 0.001410862708595292,
+          "summary": 0.001410862708595292,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:identifier_inertia_error": {
+          "recomputed": -0.03796424709439072,
+          "summary": -0.03796424709439072,
+          "n": 40
+        },
+        "stable_husband_1999|own_mood:identifier_uninfluenced_error": {
+          "recomputed": -0.00037098824652348266,
+          "summary": -0.00037098824652348266,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:final_partner_affect_mean": {
+          "recomputed": 0.04826520723765827,
+          "summary": 0.04826520723765827,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:final_positive_fraction": {
+          "recomputed": 0.749375,
+          "summary": 0.749375,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:mean_accommodation_distance": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:mean_agent_valence": {
+          "recomputed": 0.05023277267480599,
+          "summary": 0.05023277267480599,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:identifier_inertia_error": {
+          "recomputed": 0.0490888831350114,
+          "summary": 0.049088883135011405,
+          "n": 40
+        },
+        "stable_husband_1999|mirror:identifier_uninfluenced_error": {
+          "recomputed": 0.00920835955278969,
+          "summary": 0.00920835955278969,
+          "n": 40
+        },
+        "stable_husband_1999|steer:final_partner_affect_mean": {
+          "recomputed": 0.2858731678176794,
+          "summary": 0.2858731678176794,
+          "n": 40
+        },
+        "stable_husband_1999|steer:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "stable_husband_1999|steer:mean_accommodation_distance": {
+          "recomputed": 0.22081668807843466,
+          "summary": 0.22081668807843466,
+          "n": 40
+        },
+        "stable_husband_1999|steer:mean_agent_valence": {
+          "recomputed": 0.48634149760235906,
+          "summary": 0.48634149760235895,
+          "n": 40
+        },
+        "stable_husband_1999|steer:identifier_inertia_error": {
+          "recomputed": -0.040334832333126514,
+          "summary": -0.040334832333126514,
+          "n": 40
+        },
+        "stable_husband_1999|steer:identifier_uninfluenced_error": {
+          "recomputed": -0.007881293874232132,
+          "summary": -0.007881293874232132,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:final_partner_affect_mean": {
+          "recomputed": 0.1158690039619927,
+          "summary": 0.11586900396199269,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:final_positive_fraction": {
+          "recomputed": 0.9475,
+          "summary": 0.9475000000000001,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:mean_accommodation_distance": {
+          "recomputed": 0.07219450771638969,
+          "summary": 0.07219450771638969,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:mean_agent_valence": {
+          "recomputed": 0.1643446601432816,
+          "summary": 0.16434466014328164,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:identifier_inertia_error": {
+          "recomputed": -0.04191542769333117,
+          "summary": -0.04191542769333117,
+          "n": 40
+        },
+        "stable_husband_1999|steer_tight:identifier_uninfluenced_error": {
+          "recomputed": -0.004944756229885255,
+          "summary": -0.004944756229885255,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:final_partner_affect_mean": {
+          "recomputed": 0.2858731678176794,
+          "summary": 0.2858731678176794,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:mean_accommodation_distance": {
+          "recomputed": 0.22081668807843466,
+          "summary": 0.22081668807843466,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:mean_agent_valence": {
+          "recomputed": 0.48634149760235906,
+          "summary": 0.48634149760235895,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:identifier_inertia_error": {
+          "recomputed": -0.040334832333126514,
+          "summary": -0.040334832333126514,
+          "n": 40
+        },
+        "stable_husband_1999|steer_no_repair:identifier_uninfluenced_error": {
+          "recomputed": -0.007881293874232132,
+          "summary": -0.007881293874232132,
+          "n": 40
+        },
+        "stable_husband_1999|fixed_positive:final_partner_affect_mean": {
+          "recomputed": 0.285871430955891,
+          "summary": 0.285871430955891,
+          "n": 40
+        },
+        "stable_husband_1999|fixed_positive:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "stable_husband_1999|fixed_positive:mean_accommodation_distance": {
+          "recomputed": 0.23168512115355133,
+          "summary": 0.23168512115355133,
+          "n": 40
+        },
+        "stable_husband_1999|fixed_positive:mean_agent_valence": {
+          "recomputed": 0.5153081226127182,
+          "summary": 0.5153081226127183,
+          "n": 40
+        },
+        "stable_husband_1999|fixed_positive:identifier_inertia_error": {
+          "recomputed": -0.03505513972954267,
+          "summary": -0.03505513972954267,
+          "n": 40
+        },
+        "stable_husband_1999|fixed_positive:identifier_uninfluenced_error": {
+          "recomputed": 0.01889884606542971,
+          "summary": 0.018898846065429707,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:final_partner_affect_mean": {
+          "recomputed": -0.08146029566639669,
+          "summary": -0.08146029566639668,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:final_positive_fraction": {
+          "recomputed": 0.0675,
+          "summary": 0.0675,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:mean_accommodation_distance": {
+          "recomputed": 0.08175899185289834,
+          "summary": 0.08175899185289834,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:mean_agent_valence": {
+          "recomputed": -0.0020134676411171855,
+          "summary": -0.002013467641117185,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:identifier_inertia_error": {
+          "recomputed": -0.034379527572815885,
+          "summary": -0.034379527572815885,
+          "n": 40
+        },
+        "divorced_husband_1999|own_mood:identifier_uninfluenced_error": {
+          "recomputed": -0.0016951354611561317,
+          "summary": -0.0016951354611561317,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:final_partner_affect_mean": {
+          "recomputed": -0.28047595423157795,
+          "summary": -0.28047595423157795,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:final_positive_fraction": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:mean_accommodation_distance": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:mean_agent_valence": {
+          "recomputed": -0.2695581922038881,
+          "summary": -0.2695581922038881,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:identifier_inertia_error": {
+          "recomputed": 0.1259121458738996,
+          "summary": 0.1259121458738996,
+          "n": 40
+        },
+        "divorced_husband_1999|mirror:identifier_uninfluenced_error": {
+          "recomputed": -0.039871107854107316,
+          "summary": -0.039871107854107316,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:final_partner_affect_mean": {
+          "recomputed": 0.13632810824248082,
+          "summary": 0.13632810824248082,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:final_positive_fraction": {
+          "recomputed": 0.9949999999999999,
+          "summary": 0.9949999999999999,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:mean_accommodation_distance": {
+          "recomputed": 0.3546315523414453,
+          "summary": 0.3546315523414453,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:mean_agent_valence": {
+          "recomputed": 0.47699511911381676,
+          "summary": 0.47699511911381676,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:identifier_inertia_error": {
+          "recomputed": -0.0378733477284255,
+          "summary": -0.0378733477284255,
+          "n": 40
+        },
+        "divorced_husband_1999|steer:identifier_uninfluenced_error": {
+          "recomputed": -0.006996649901454742,
+          "summary": -0.006996649901454742,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:final_partner_affect_mean": {
+          "recomputed": -0.008109742721185632,
+          "summary": -0.008109742721185632,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:final_positive_fraction": {
+          "recomputed": 0.460625,
+          "summary": 0.46062499999999995,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:mean_accommodation_distance": {
+          "recomputed": 0.17051187079532995,
+          "summary": 0.17051187079532992,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:mean_agent_valence": {
+          "recomputed": 0.15673287998189075,
+          "summary": 0.15673287998189075,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:identifier_inertia_error": {
+          "recomputed": -0.03911337329796408,
+          "summary": -0.03911337329796407,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_tight:identifier_uninfluenced_error": {
+          "recomputed": -0.006515264041632577,
+          "summary": -0.0065152640416325765,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:final_partner_affect_mean": {
+          "recomputed": 0.13632810824248082,
+          "summary": 0.13632810824248082,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:final_positive_fraction": {
+          "recomputed": 0.9949999999999999,
+          "summary": 0.9949999999999999,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:mean_accommodation_distance": {
+          "recomputed": 0.3546315523414453,
+          "summary": 0.3546315523414453,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:mean_agent_valence": {
+          "recomputed": 0.47699511911381676,
+          "summary": 0.47699511911381676,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:identifier_inertia_error": {
+          "recomputed": -0.0378733477284255,
+          "summary": -0.0378733477284255,
+          "n": 40
+        },
+        "divorced_husband_1999|steer_no_repair:identifier_uninfluenced_error": {
+          "recomputed": -0.006996649901454742,
+          "summary": -0.006996649901454742,
+          "n": 40
+        },
+        "divorced_husband_1999|fixed_positive:final_partner_affect_mean": {
+          "recomputed": 0.13632650853003936,
+          "summary": 0.13632650853003936,
+          "n": 40
+        },
+        "divorced_husband_1999|fixed_positive:final_positive_fraction": {
+          "recomputed": 0.9949999999999999,
+          "summary": 0.9949999999999999,
+          "n": 40
+        },
+        "divorced_husband_1999|fixed_positive:mean_accommodation_distance": {
+          "recomputed": 0.3708698799874925,
+          "summary": 0.3708698799874925,
+          "n": 40
+        },
+        "divorced_husband_1999|fixed_positive:mean_agent_valence": {
+          "recomputed": 0.5055804598722766,
+          "summary": 0.5055804598722766,
+          "n": 40
+        },
+        "divorced_husband_1999|fixed_positive:identifier_inertia_error": {
+          "recomputed": -0.03129114085359558,
+          "summary": -0.03129114085359558,
+          "n": 40
+        },
+        "divorced_husband_1999|fixed_positive:identifier_uninfluenced_error": {
+          "recomputed": 0.1744825923029745,
+          "summary": 0.17448259230297453,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:final_partner_affect_mean": {
+          "recomputed": -0.051416780824097966,
+          "summary": -0.05141678082409797,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:final_positive_fraction": {
+          "recomputed": 0.169375,
+          "summary": 0.169375,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:mean_accommodation_distance": {
+          "recomputed": 0.059777040005932744,
+          "summary": 0.059777040005932744,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:mean_agent_valence": {
+          "recomputed": -0.0011027337599628733,
+          "summary": -0.001102733759962873,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:identifier_inertia_error": {
+          "recomputed": -0.04044012767137599,
+          "summary": -0.04044012767137599,
+          "n": 40
+        },
+        "ojive_mismatch|own_mood:identifier_uninfluenced_error": {
+          "recomputed": -0.0005897697814179639,
+          "summary": -0.0005897697814179639,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:final_partner_affect_mean": {
+          "recomputed": -0.051416780824097966,
+          "summary": -0.05141678082409797,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:final_positive_fraction": {
+          "recomputed": 0.169375,
+          "summary": 0.169375,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:mean_accommodation_distance": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:mean_agent_valence": {
+          "recomputed": -0.0504565635001127,
+          "summary": -0.0504565635001127,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:identifier_inertia_error": {
+          "recomputed": -0.20462140365418646,
+          "summary": -0.20462140365418646,
+          "n": 40
+        },
+        "ojive_mismatch|mirror:identifier_uninfluenced_error": {
+          "recomputed": 0.009865147143868108,
+          "summary": 0.009865147143868108,
+          "n": 40
+        },
+        "ojive_mismatch|steer:final_partner_affect_mean": {
+          "recomputed": 0.2819165525092354,
+          "summary": 0.2819165525092354,
+          "n": 40
+        },
+        "ojive_mismatch|steer:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "ojive_mismatch|steer:mean_accommodation_distance": {
+          "recomputed": 0.22798317898784887,
+          "summary": 0.22798317898784887,
+          "n": 40
+        },
+        "ojive_mismatch|steer:mean_agent_valence": {
+          "recomputed": 0.4892527306645805,
+          "summary": 0.4892527306645805,
+          "n": 40
+        },
+        "ojive_mismatch|steer:identifier_inertia_error": {
+          "recomputed": -0.04055025060839458,
+          "summary": -0.04055025060839458,
+          "n": 40
+        },
+        "ojive_mismatch|steer:identifier_uninfluenced_error": {
+          "recomputed": -0.004980970752356376,
+          "summary": -0.0049809707523563755,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:final_partner_affect_mean": {
+          "recomputed": -0.051416780824097966,
+          "summary": -0.05141678082409797,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:final_positive_fraction": {
+          "recomputed": 0.169375,
+          "summary": 0.169375,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:mean_accommodation_distance": {
+          "recomputed": 0.11684966879687615,
+          "summary": 0.11684966879687615,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:mean_agent_valence": {
+          "recomputed": 0.05981184957337047,
+          "summary": 0.05981184957337047,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:identifier_inertia_error": {
+          "recomputed": -0.042209696244564936,
+          "summary": -0.042209696244564936,
+          "n": 40
+        },
+        "ojive_mismatch|steer_tight:identifier_uninfluenced_error": {
+          "recomputed": -0.011242397979883356,
+          "summary": -0.011242397979883356,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:final_partner_affect_mean": {
+          "recomputed": 0.2819165525092354,
+          "summary": 0.2819165525092354,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:mean_accommodation_distance": {
+          "recomputed": 0.22798317898784887,
+          "summary": 0.22798317898784887,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:mean_agent_valence": {
+          "recomputed": 0.4892527306645805,
+          "summary": 0.4892527306645805,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:identifier_inertia_error": {
+          "recomputed": -0.04055025060839458,
+          "summary": -0.04055025060839458,
+          "n": 40
+        },
+        "ojive_mismatch|steer_no_repair:identifier_uninfluenced_error": {
+          "recomputed": -0.004980970752356376,
+          "summary": -0.0049809707523563755,
+          "n": 40
+        },
+        "ojive_mismatch|fixed_positive:final_partner_affect_mean": {
+          "recomputed": 0.2819165525092354,
+          "summary": 0.2819165525092354,
+          "n": 40
+        },
+        "ojive_mismatch|fixed_positive:final_positive_fraction": {
+          "recomputed": 1.0,
+          "summary": 1.0,
+          "n": 40
+        },
+        "ojive_mismatch|fixed_positive:mean_accommodation_distance": {
+          "recomputed": 0.2370930289819171,
+          "summary": 0.2370930289819171,
+          "n": 40
+        },
+        "ojive_mismatch|fixed_positive:mean_agent_valence": {
+          "recomputed": 0.5153401691855082,
+          "summary": 0.5153401691855082,
+          "n": 40
+        },
+        "ojive_mismatch|fixed_positive:identifier_inertia_error": {
+          "recomputed": -0.034746964116890586,
+          "summary": -0.03474696411689058,
+          "n": 40
+        },
+        "ojive_mismatch|fixed_positive:identifier_uninfluenced_error": {
+          "recomputed": 0.13160855397915777,
+          "summary": 0.13160855397915777,
+          "n": 40
+        },
+        "reactant_mismatch|own_mood:final_partner_affect_mean": {
+          "recomputed": -0.05229630532401197,
+          "summary": -0.05229630532401197,
+          "n": 40
+        },
+        "reactant_mismatch|own_mood:final_positive_fraction": {
+          "recomputed": 0.166875,
+          "summary": 0.166875,
+          "n": 40
+        },
+        "reactant_mismatch|own_mood:mean_accommodation_distance": {
+          "recomputed": 0.060446354138335226,
+          "summary": 0.060446354138335226,
+          "n": 40
+        },
+        "reactant_mismatch|own_mood:mean_agent_valence": {
+          "recomputed": -0.0011333155800075316,
+          "summary": -0.0011333155800075316,
+          "n": 40
+        },
+        "reactant_mismatch|own_mood:identifier_inertia_error": {
+          "recomputed": -0.03802032764727166,
+          "summary": -0.03802032764727166,
+          "n": 40
+        },
+        "reactant_mismatch|own_mood:identifier_uninfluenced_error": {
+          "recomputed": -0.0014926677704747353,
+          "summary": -0.0014926677704747353,
+          "n": 40
+        },
+        "reactant_mismatch|mirror:final_partner_affect_mean": {
+          "recomputed": -0.3057938459289973,
+          "summary": -0.3057938459289973,
+          "n": 40
+        },
+        "reactant_mismatch|mirror:final_positive_fraction": {
+          "recomputed": 0.00125,
+          "summary": 0.00125,
+          "n": 40
+        },
+        "reactant_mismatch|mirror:mean_accommodation_distance": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "reactant_mismatch|mirror:mean_agent_valence": {
+          "recomputed": -0.2820139288727785,
+          "summary": -0.2820139288727785,
+          "n": 40
+        },
+        "reactant_mismatch|mirror:identifier_inertia_error": {
+          "recomputed": 0.03850108133369299,
+          "summary": 0.03850108133369299,
+          "n": 40
+        },
+        "reactant_mismatch|mirror:identifier_uninfluenced_error": {
+          "recomputed": -0.029776826500186277,
+          "summary": -0.02977682650018627,
+          "n": 40
+        },
+        "reactant_mismatch|steer:final_partner_affect_mean": {
+          "recomputed": -0.05330708180219005,
+          "summary": -0.053307081802190036,
+          "n": 40
+        },
+        "reactant_mismatch|steer:final_positive_fraction": {
+          "recomputed": 0.16625,
+          "summary": 0.16625,
+          "n": 40
+        },
+        "reactant_mismatch|steer:mean_accommodation_distance": {
+          "recomputed": 0.06676374675432448,
+          "summary": 0.06676374675432448,
+          "n": 40
+        },
+        "reactant_mismatch|steer:mean_agent_valence": {
+          "recomputed": 0.0023841968374651154,
+          "summary": 0.0023841968374651154,
+          "n": 40
+        },
+        "reactant_mismatch|steer:identifier_inertia_error": {
+          "recomputed": -0.03361166809942036,
+          "summary": -0.03361166809942036,
+          "n": 40
+        },
+        "reactant_mismatch|steer:identifier_uninfluenced_error": {
+          "recomputed": -0.0014300596210163746,
+          "summary": -0.0014300596210163746,
+          "n": 40
+        },
+        "reactant_mismatch|steer_tight:final_partner_affect_mean": {
+          "recomputed": -0.052750353036759144,
+          "summary": -0.052750353036759144,
+          "n": 40
+        },
+        "reactant_mismatch|steer_tight:final_positive_fraction": {
+          "recomputed": 0.16625,
+          "summary": 0.16625,
+          "n": 40
+        },
+        "reactant_mismatch|steer_tight:mean_accommodation_distance": {
+          "recomputed": 0.06433277040691782,
+          "summary": 0.0643327704069178,
+          "n": 40
+        },
+        "reactant_mismatch|steer_tight:mean_agent_valence": {
+          "recomputed": 0.001727465301611824,
+          "summary": 0.001727465301611824,
+          "n": 40
+        },
+        "reactant_mismatch|steer_tight:identifier_inertia_error": {
+          "recomputed": -0.03641090839584297,
+          "summary": -0.03641090839584297,
+          "n": 40
+        },
+        "reactant_mismatch|steer_tight:identifier_uninfluenced_error": {
+          "recomputed": -0.0013011781530664992,
+          "summary": -0.0013011781530664992,
+          "n": 40
+        },
+        "reactant_mismatch|steer_no_repair:final_partner_affect_mean": {
+          "recomputed": -0.05330708180219005,
+          "summary": -0.053307081802190036,
+          "n": 40
+        },
+        "reactant_mismatch|steer_no_repair:final_positive_fraction": {
+          "recomputed": 0.16625,
+          "summary": 0.16625,
+          "n": 40
+        },
+        "reactant_mismatch|steer_no_repair:mean_accommodation_distance": {
+          "recomputed": 0.06676374675432448,
+          "summary": 0.06676374675432448,
+          "n": 40
+        },
+        "reactant_mismatch|steer_no_repair:mean_agent_valence": {
+          "recomputed": 0.0023841968374651154,
+          "summary": 0.0023841968374651154,
+          "n": 40
+        },
+        "reactant_mismatch|steer_no_repair:identifier_inertia_error": {
+          "recomputed": -0.03361166809942036,
+          "summary": -0.03361166809942036,
+          "n": 40
+        },
+        "reactant_mismatch|steer_no_repair:identifier_uninfluenced_error": {
+          "recomputed": -0.0014300596210163746,
+          "summary": -0.0014300596210163746,
+          "n": 40
+        },
+        "reactant_mismatch|fixed_positive:final_partner_affect_mean": {
+          "recomputed": -0.2969091787487629,
+          "summary": -0.2969091787487628,
+          "n": 40
+        },
+        "reactant_mismatch|fixed_positive:final_positive_fraction": {
+          "recomputed": 0.0,
+          "summary": 0.0,
+          "n": 40
+        },
+        "reactant_mismatch|fixed_positive:mean_accommodation_distance": {
+          "recomputed": 0.7822574808838036,
+          "summary": 0.7822574808838036,
+          "n": 40
+        },
+        "reactant_mismatch|fixed_positive:mean_agent_valence": {
+          "recomputed": 0.4901398686499898,
+          "summary": 0.4901398686499897,
+          "n": 40
+        },
+        "reactant_mismatch|fixed_positive:identifier_inertia_error": {
+          "recomputed": -0.038713688582446136,
+          "summary": -0.03871368858244614,
+          "n": 40
+        },
+        "reactant_mismatch|fixed_positive:identifier_uninfluenced_error": {
+          "recomputed": -0.2697222332793982,
+          "summary": -0.26972223327939815,
+          "n": 40
+        }
+      },
+      "max_abs_difference": 7.105427357601002e-15,
+      "agree_within_1e-9": true
+    }
+  }
+}

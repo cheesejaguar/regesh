@@ -72,3 +72,72 @@ All173Python tests, independent raw-result audits and compileall pass. New hashe
 are in `results/papers/provenance.json`; all prior provenance/evidence/weights are
 preserved. Draft PR1 now includes runnable papers, quantitative figures and the
 independent review. It remains unmerged.
+
+## Pair-bonding extension checkpoint (2026-10-25/26)
+
+User request: expand the affect system to pairing/bonding with its user using
+biomimicry and cognitive-science methodology, implement three high-impact
+changes grounded in published papers, reproduce their findings, iterate.
+
+- Mechanisms: `regesh/bonding/` (attachment, dyad, synchrony, platform bridge,
+  experiment). Opt-in via `bonding: True`; default agents unchanged (demo digest
+  identical); 221 tests pass.
+- Reproductions: Hiolle 2014 (direction reproduced, absolute pace and literal
+  adaptive rule not), Gottman 1999/2003 (steady-state structure clarified, the
+  estimator imprecise at 150 points, damping claim 0/360), Echoes of Power
+  (2 of 4 Supreme Court claims), Blevins 2026 (over-convergence not reproduced
+  with the 1.5B model; bounded instruction a null).
+- Platform iteration: first protocol showed prior-dominated security and
+  cap-saturated steering; second protocol adopted the Beta evidence-count
+  estimator (now default), a responsiveness floor on requests, and a reactant
+  partner that separates identifier-based steering from fixed positivity.
+- Safeguards: trust firewall, attention budget, responsiveness floor, no
+  distress or guilt at disengagement; documented in `docs/bonding_disclosure.md`.
+- Local model server used for 400 calls plus smoke tests; stopped after the
+  study. DailyDialog (ParlAI mirror) and ConvoKit term files cached outside git.
+- PR #3 on `research/pair-bonding`.
+
+## Learned components checkpoint (2026-10-26)
+
+User asked how heuristic versus learned the bond is, and to pursue a small
+network paired with the LLM (slot 1: partner-state sensor) and a learned
+partner model (slot 2) in parallel.
+
+- Shared: `regesh/bonding/mlp.py` (NumPy MLP, finite-difference-checked) and
+  `regesh/bonding/embeddings.py` (content-addressed cache of the generating
+  model's mean-pooled embeddings; GoEmotions and DailyDialog subsets, ~53k texts,
+  about 3 h on CPU). Server stopped afterwards.
+- Slot 1: logistic head reaches micro-F1 .486 / macro-F1 .348 on the official
+  GoEmotions test (hashed reference .414 / .223 at 100% rows; .370 / .141 like
+  for like at 35%); DailyDialog 7-class accuracy .843 vs majority .817; zero-shot
+  valence sign .894 on emotional turns but a positive bias on neutral turns;
+  post hoc neutral gate selected on validation (tau .3, dead band .4) is the
+  `annotate_event` default. Non-deployed MLP heads gzipped in results.
+- Slot 2: windowed MLP over embeddings adds nothing to next-affect prediction
+  (RMSE +.007 vs scalar features); its gain over the online identifier was cold
+  start; the identifier now warm-starts from the pooled DailyDialog fit (RMSE
+  .244 vs .275), diffuse start selectable; persistence predicts the next
+  emotion class best.
+- Full suite 252 tests pass; demo digest unchanged; audit covers nine manifests.
+
+## Harness installer checkpoint (2026-10-26)
+
+User asked for a one-line install that detects the main agent harnesses and
+hooks the affect layer into them.
+
+- `install.sh` (curl | sh): venv at `~/.regesh/venv`, `pip install git+...`,
+  reattaches `/dev/tty` for the interface, `REGESH_INSTALL_ARGS` for scripts.
+- `regesh/integrations/`: `bridge.py` (harness events -> bonded Agent, declared
+  tool-result heuristic, context line), `mcp_server.py` (stdio JSON-RPC, six
+  tools, one resource), `hooks.py` (per-harness stdin/stdout schemas verified
+  against each harness's hook docs; fail open), `detect.py`, `install.py`
+  (idempotent writers with backups, manifest and hash-exact restore),
+  `tui.py` (curses checklist, plain fallback), `cli.py`, templates for the
+  Hermes plugin, OpenCode plugin and instruction block.
+- `text_affect.py`: embedding sensor when the local server and bundle exist,
+  otherwise packaged hashed-token GoEmotions reference (251 KB) with a gate
+  calibrated on DailyDialog valid (tau .2, band .6; test macro-F1 .446 vs
+  .303 all-zero; it keeps 39% of emotional turns and signs .375 of all of them correctly).
+- Verified: install/idempotence/uninstall byte-exact against a seeded home with
+  all six harnesses; surgical removal after user edits; curses interface driven
+  through a pty; MCP round trip over a subprocess. Suite 282 tests pass.

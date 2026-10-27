@@ -13,3 +13,54 @@ Run `python -m regesh demo --db demo.sqlite`, then `python -m regesh inspect --d
 `examples/agent_loop.py` shows observation, controls, evidence retrieval, generation, allocation, independently labeled fixture check, outcome, and snapshot integration. Its fixture check is not a creativity benchmark.
 
 `python -m regesh train --output results/training` trains the small simulator predictor. `python -m regesh benchmark --output results/benchmark` runs the declared procedural comparisons. These commands do not call a language model. `python -m regesh core-eval --output results/core` runs the fixed core history/intervention measurements. Default replay recomputes transitions from recorded observations/appraisals without calling providers and checks poststates. Live provider re-execution is a separate experiment.
+
+
+## Bonding SDK additions (opt-in)
+
+```python
+agent = Agent('agent.sqlite', 'companion', config={'bonding': True, 'partner': 'user'})
+agent.observe(Event('m1', 'chat', 'user', 'agent', 'conversation', '2026-10-25T00:00:00Z',
+    data={'goal_delta': {'quality': -.4}, 'control': .3, 'partner_affect': -.3,
+          'text': 'I am not sure this is working', 'disclosure': {'depth': .4, 'emotional': True}}))
+bond = agent.actuation_context()['bond']      # arousal, mode, request_support, security, dyad, coordination, reciprocity
+if bond['request_support']:
+    agent.act('request', reason={'partner': 'user'})   # budgeted by the partner's attention
+agent.express('user', valence=bond['dyad']['expressed_valence'],
+              text='Let us look at what is not working together', disclosure={'depth': .3})
+agent.intervene({'bonds': {'user': {'responsiveness': 1.}}}, 'causal test of the threat buffer')
+```
+
+Event data fields read by the bond: `support` (0..1, comfort provided by the
+actor), `partner_affect` (-1..1, falls back to `approval`), `disclosure`
+(`{'depth': 0..1, 'emotional': bool}`), `responsiveness` (0..1, perceived
+responsiveness to the agent's disclosures) and `text`. A pending support request
+is answered by the partner's next occurrence with `support > .1`, otherwise it
+counts as unanswered on that occurrence or after `request_window` elapsed time.
+The `express` and `request` operations replay exactly; `intervene` accepts
+`bonds` and `attachment`.
+
+## Learned sensor (optional evidence provider)
+
+```python
+from regesh.bonding.embeddings import EmbeddingClient
+from regesh.bonding.sensor import Sensor, annotate_event
+sensor = Sensor.load('results/bonding/sensor/sensor.json')        # logistic head, digest-verified
+client = EmbeddingClient('http://127.0.0.1:8080/v1', 'regesh-qwen-coder')   # server started with --embedding --pooling mean
+text = 'I am not sure this is working, honestly.'
+event = Event('m1', 'chat', 'user', 'agent', 'conversation', '2026-10-26T00:00:00Z', data={'text': text})
+agent.observe(annotate_event(event, sensor, client.embed([text])[0]))   # fills partner_affect after the neutral gate
+```
+
+The agent never calls the network; the host embeds and annotates. `data['sensor']`
+records the model digest, emotion probabilities, the valence map, the gate and
+whether it fired. Pass `gate=None` to disable the neutral gate or
+`fill_support=True` to also fill `support` from the declared proxy.
+
+## Harness integrations
+
+`regesh-install` (terminal checklist), `regesh-mcp --harness <id>` (stdio MCP server)
+and `regesh-hook <harness> <event>` (hook adapter; fails open) connect a
+persistent bonded agent at `~/.regesh/agents/<harness>.sqlite` to Claude Code,
+Codex CLI, Gemini CLI, Hermes Agent, OpenCode and Cursor. The text-affect
+estimator falls back from the embedding sensor to a packaged hashed-token
+GoEmotions reference. See [install.md](install.md).

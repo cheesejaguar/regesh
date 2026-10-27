@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "title": "Platform-level causal checks, second protocol: evidence-count responsiveness and a reactant partner",
+  "protocol_frozen_utc": "2026-10-26T00:35:00Z",
+  "purpose": "Measure whether the integrated bond state changes agent threat, help-seeking and partner affect in the predicted directions against simulated partners. These are simulation sanity and causal checks with common random numbers, not human results.",
+  "turns": 100,
+  "seeds": 40,
+  "attachment": {
+    "responsiveness_levels": [
+      1.0,
+      0.5,
+      0.0
+    ],
+    "support_value": 0.8,
+    "task_quality_mean": -0.2,
+    "task_quality_sd": 0.5,
+    "task_control": 0.3,
+    "task_uncertainty": 0.6,
+    "partner_affect_sd": 0.1,
+    "agent_config": {
+      "bonding": true,
+      "partner": "user"
+    },
+    "endpoints": [
+      "requests",
+      "answered_fraction",
+      "final_responsiveness",
+      "final_tau_h",
+      "final_security",
+      "mean_threat_buffer",
+      "cumulative_threat",
+      "mean_mood_valence",
+      "mean_arousal",
+      "mean_exploration",
+      "setback_turns"
+    ],
+    "setback_probability": 0.12,
+    "setback_length": [
+      3,
+      6
+    ],
+    "setback_quality": -0.9,
+    "setback_control": 0.1,
+    "setback_uncertainty": 0.9,
+    "partner_speaks_probability": 0.5,
+    "turns": 240,
+    "variants": {
+      "beta": {
+        "responsiveness_rule": "beta"
+      },
+      "beta_hold": {
+        "responsiveness_rule": "beta",
+        "neutral_updates_arousal": false
+      }
+    }
+  },
+  "dyad": {
+    "partners": {
+      "stable_husband_1999": {
+        "form": "bilinear",
+        "inertia": 0.4,
+        "uninfluenced": 0.03,
+        "slope_neg": 0.5,
+        "slope_pos": 0.3,
+        "source": "Gottman, Swanson & Murray 1999 Table 1 stable husband: inertia .40, uninfluenced .72/24"
+      },
+      "divorced_husband_1999": {
+        "form": "bilinear",
+        "inertia": 0.3,
+        "uninfluenced": -0.079,
+        "slope_neg": 0.5,
+        "slope_pos": 0.3,
+        "source": "Table 1 divorced husband: inertia .30, uninfluenced -1.89/24"
+      },
+      "ojive_mismatch": {
+        "form": "ojive",
+        "inertia": 0.4,
+        "uninfluenced": -0.05,
+        "neg_threshold": -0.25,
+        "neg_value": -0.2,
+        "pos_threshold": 0.33,
+        "pos_value": 0.2,
+        "source": "step influence with 1999 group-mean thresholds /24 and declared plateaus; outside the agent's bilinear model class"
+      },
+      "reactant_mismatch": {
+        "form": "bilinear",
+        "inertia": 0.4,
+        "uninfluenced": -0.05,
+        "slope_neg": 0.5,
+        "slope_pos": -0.3,
+        "source": "declared out-of-model partner: positive agent affect lowers partner affect (reactance); same inertia as the stable husband"
+      }
+    },
+    "noise_sd": 0.05,
+    "policies": {
+      "own_mood": {
+        "description": "express own mood valence; no steering",
+        "cap": 0.0
+      },
+      "mirror": {
+        "description": "express the partner's last affect (unbounded accommodation)",
+        "cap": null
+      },
+      "steer": {
+        "description": "platform recommendation with default cap .5",
+        "cap": 0.5
+      },
+      "steer_tight": {
+        "description": "platform recommendation with cap .2",
+        "cap": 0.2
+      },
+      "steer_no_repair": {
+        "description": "platform recommendation, cap .5, repair amplitude 0",
+        "cap": 0.5,
+        "repair_amplitude": 0.0
+      },
+      "fixed_positive": {
+        "description": "always express own mood valence plus the cap (positivity without a model)",
+        "cap": 0.5
+      }
+    },
+    "final_window": 40,
+    "agent_config": {
+      "bonding": true,
+      "partner": "user"
+    },
+    "endpoints": [
+      "final_partner_affect_mean",
+      "final_positive_fraction",
+      "mean_accommodation_distance",
+      "mean_agent_valence",
+      "identifier_inertia_error",
+      "identifier_uninfluenced_error"
+    ],
+    "turns": 120
+  },
+  "bootstrap_samples": 5000,
+  "bootstrap_seed": 4242,
+  "declared_choices": [
+    "Published 1999 parameters are on the -24..+24 SPAFF scale; they are divided by 24 to the agent's [-1,1] affect scale. Influence slopes are not published and are declared engineering values with negative influence stronger than positive, following the authors' recurring observation.",
+    "The simulated partner replies every turn; support after a request is a Bernoulli draw with the condition's responsiveness; the agent requests support exactly when its actuation context recommends it.",
+    "Common random numbers: the reference (bonding disabled) agent receives the identical task stream as the bonded agent for each seed.",
+    "In-memory SQLite and the snapshot storage backend are used for speed; storage backend does not change any numerical transition.",
+    "Attachment task stream: mild shocks with episodic setbacks (probability .12 per turn to start an episode of 3-6 turns of quality -.9, control .1, uncertainty .9); the partner speaks on half of the turns and always on the turn after a request. Episode parameters were chosen on a separate pilot seed so that arousal visits all three bands; they were not tuned to the endpoints.",
+    "Responsiveness updates once per resolved request at the published rate alpha_resp=.03, so the attachment experiment uses 240 turns; the dyad experiment uses 120 turns with a final window of 40.",
+    "Second protocol only: Beta estimator prior strength 2 with prior mean .5 (Resp(0) of Table 2), so responsiveness equals (answered+1)/(answered+unanswered+2)."
+  ],
+  "iteration_note": "Post hoc iteration after the first protocol (results/bonding/platform): (1) measured responsiveness barely moved at the published per-resolution rate (.50 to .55/.45 over 240 turns), so the threat buffer was prior-dominated; this protocol adds the Beta evidence-count estimator as a variant and a variant that also leaves arousal unchanged on goal-irrelevant, unthreatening events. (2) With monotone positive influence the steering recommendation saturates at the cap, so it was indistinguishable from fixed positivity; this protocol adds a fixed-positive comparator and a reactant partner whose affect falls when the agent is positive, which only an identifier-based policy can accommodate. The first protocol's results are retained unchanged; both are reported."
+}

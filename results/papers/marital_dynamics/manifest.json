@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "papers": [
+    {
+      "doi": "10.1037/0893-3200.13.1.3",
+      "url": "https://doi.org/10.1037/0893-3200.13.1.3"
+    },
+    {
+      "doi": "10.1300/J082v45n01_04",
+      "url": "https://doi.org/10.1300/J082v45n01_04"
+    }
+  ],
+  "fidelity": "computational reproduction of model properties and estimation procedure from published group-mean parameters; no couple data; model code imported from regesh.bonding.dyad",
+  "author_code_executed": false,
+  "author_code_copied": false,
+  "couple_data_used": false,
+  "model_module": "regesh/bonding/dyad.py",
+  "model_module_sha256": "3cfa35c6bc58f08e7767ea2ca40724fbc309443d0072d85ab1fb3c48415eb2dd",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "workers": 3,
+  "command": "python -m regesh.reproductions.marital_dynamics --config configs/reproductions/marital_dynamics.json --output results/papers/marital_dynamics",
+  "files": {
+    "config.json": "67bf2cd751b3109f86a462c86d2718517483c01cd502ef8cce1a55caf762e1bf",
+    "dyad_source.py": "3cfa35c6bc58f08e7767ea2ca40724fbc309443d0072d85ab1fb3c48415eb2dd",
+    "e1_reference_check.jsonl.gz": "d5121409592ab4578847967f7599c75ead97afda73c4543aba27250b05bbb800",
+    "e1_structural.jsonl.gz": "96313b958a5dd5e04fdee043f84bf7efb4abf8aac66ec997c03cf472f9c1fa90",
+    "e2_basins.npz": "08ef44b34c61b498113bf55c57c5ab7136ee53c6d04b32b76566ccdb115b41e5",
+    "e2_plateau_sweep.jsonl.gz": "25139daa9609b618c6bbc0d91a6dc7722f34f99f7b625f1be63ece02c7df085c",
+    "e3_recovery.jsonl.gz": "f86374fccd1da5c0aefa37800456ae2fac550b0816dadae02c1838c4b65f077d",
+    "e3_series.npz": "c19ce3b92785b7e24dec11b0c1ad859a041714016da1699816033134e0371f26",
+    "e4_repair_damping.jsonl.gz": "3135701898b3a4ddda500c900ffe98ff3dd07207677767a5b68037cab314dfb4",
+    "source.py": "b23abdcbfc1eeb82e75f04fd34dc6869c7e70378d8898d1da58087342ec06446",
+    "summary.json": "9a3b71a4cae09e509d7ee47c1cec3c3ffc832e8ce1327736236e97c5d4167e9e"
+  }
+}

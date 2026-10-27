@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "finished_utc": "2026-10-26T05:40:01.929107+00:00",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "command": "python -m regesh.bonding.train_sensor --config configs/bonding_sensor.json --embeddings .cache/embeddings --data .cache/regesh-data --dailydialog .cache/dailydialog/parlai --output results/bonding/sensor",
+  "config_sha256": "8fe254adada516b48c58dc8f189e87c924fe7b8513d971f1910b98edc3345889",
+  "source_sha256": {
+    "train_sensor.py": "1ba035af5639f5ae12c2ccd65216638f685b9402772396124286219caeaddf4f",
+    "sensor.py": "363919d492f71cb81fbe0ddbf1e115292315e2203836eaee7a1dc31937fcfcd2",
+    "mlp.py": "015b5ec9395d8e24dacabe93e2ce5b9907e58ba48a6e5b078a4f75d7fd10b9fb",
+    "embeddings.py": "4bba4c24e9836eee0626c30f75f157117af7ef92a162da1355d47d2727363198",
+    "dataset_baseline.py": "ee235baca48ab00fe282abb4d5b4c02602bd1284d1c15b7d8d228f863b011b30"
+  },
+  "thread_variables": {
+    "OPENBLAS_NUM_THREADS": "2",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": null
+  },
+  "cpu_count": 4,
+  "live_model_calls": 0,
+  "embedding_cache_files": {
+    "goemotions": "c0ab2393aab4ed5f6d0c5bf831c1801178cefc404b03d68c16ab1f5e9191c1db",
+    "dailydialog": "3afa1c825c8a160097e8e7cd97c0182c49a654e3621aa1224ab8717a82677b32"
+  },
+  "files": {
+    "config.json": "8fe254adada516b48c58dc8f189e87c924fe7b8513d971f1910b98edc3345889",
+    "dailydialog_bernoulli_20.npz": "4a1a9cbb78d5010a7b017fc5ff9e3973515f2fa4b33db6aca03d03bb14beb483",
+    "dailydialog_linear.json": "7d676dfd8ef049a53ba9e6e473447d515dbd4f49a324d08e8bbd1381d0c49353",
+    "dailydialog_metrics.json": "00f1d38b69cb7eafaeaf6ea8a269be35ebb77cfd005a6955d15e4b65363dea48",
+    "dailydialog_predictions.jsonl.gz": "ea7387a9ccc8c891443f7db64463c816720bb9b6962fa709e4affbab0c0458f9",
+    "goemotions_bernoulli_35.npz": "ce705aa17901482eac043799853e9e1fbfb0c7c6b08127313fd3dbf6626ec8c8",
+    "goemotions_linear.json": "6ac00dde7d7d1215a7666fb0c1f58ead2aa390c9587d5394568f4021e4f6585e",
+    "goemotions_metrics.json": "bcef02054ad54fc7b7356e837ff267a57b277352c6e260088098531f1e82a904",
+    "goemotions_predictions.jsonl.gz": "55bc782a593eb66de0cc95d0e3e049bd2792b43f6c31f4754021e6a194260fe0",
+    "report.md": "ddbb22dca5605bdeb44f4e58ffbbc72018d4bc2ece70cf4ba29342f10d8eff1e",
+    "sensor.json": "d35f853538efcc2f2f18df7d67a2d01a3b4e05f602acdc867a70a3e98a382ca6",
+    "source_sensor.py": "363919d492f71cb81fbe0ddbf1e115292315e2203836eaee7a1dc31937fcfcd2",
+    "source_train_sensor.py": "1ba035af5639f5ae12c2ccd65216638f685b9402772396124286219caeaddf4f",
+    "split_ids.json": "13997156255b859c629f1b0f90775f19ecd1ba2816713f86571d4a5d59f242b2",
+    "summary.json": "ddb1304c80dbb6106339a79bf4b431b4a26dc9e7bfcc21059e00f8f5a098fa62",
+    "goemotions_mlp.json.gz": "c0fd31adfa34c061aa8588153e9137010f1fd4c69e512649436a6eb770dde851",
+    "dailydialog_mlp.json.gz": "2e8c268e5b0cb3eea49372ab05abe9ad2d93560dfd852a3c2d34a09ea47a9820"
+  },
+  "packaging": {
+    "goemotions_mlp.json": {
+      "compressed_to": "goemotions_mlp.json.gz",
+      "sha256_of_original_json": "50526f1d47412c3cb1ce5610d5ea86b4f4ea8a5bc18006512122ef40562295a0",
+      "note": "gzip applied after the run to reduce repository size; gunzip restores the byte-identical file"
+    },
+    "dailydialog_mlp.json": {
+      "compressed_to": "dailydialog_mlp.json.gz",
+      "sha256_of_original_json": "4b3b0a6da02b22c1e20655e82d77068b843a8e075dbffe5e549d8849778995a3",
+      "note": "gzip applied after the run to reduce repository size; gunzip restores the byte-identical file"
+    }
+  }
+}

@@ -1,0 +1,653 @@
+{
+  "schema_version": 1,
+  "paper": "Hiolle, Lewis & Ca\u00f1amero (2014), Arousal regulation and affective adaptation to human responsiveness by a robot that explores and learns a novel environment, Frontiers in Neurorobotics 8:17",
+  "doi": "10.3389/fnbot.2014.00017",
+  "license": "CC BY 3.0 (Frontiers); equations and parameters transcribed, no author code located or used",
+  "protocol_frozen_utc": "2026-10-25T23:35:55Z",
+  "experiments": "Experiment 1 (simple environment, section 3.1, Fig. 6), Experiment 2 (complex environment, section 3.2, Fig. 8), Experiment 3 (adaptive regulation, section 3.3, Fig. 9)",
+  "fidelity": "independent simulation; equations (1), (3)-(7) imported unchanged from regesh.bonding.attachment; stimulation (Eq. 2), robot movement and caregiver are declared substitutes",
+  "published_parameters": {
+    "table_1": {
+      "needy": {
+        "alpha_ar": 0.6,
+        "tau_ar": 5,
+        "tau_h": 3,
+        "beta_h": 0.7,
+        "high_thresh": 0.6,
+        "low_thresh": 0.4
+      },
+      "independent": {
+        "alpha_ar": 0.6,
+        "tau_ar": 5,
+        "tau_h": 8,
+        "beta_h": 0.95,
+        "high_thresh": 0.6,
+        "low_thresh": 0.4
+      }
+    },
+    "table_2": {
+      "alpha_ar": 0.8,
+      "tau_ar": 3,
+      "tau_h_initial": 3,
+      "beta_h_initial": 0.7,
+      "alpha_resp": 0.03,
+      "resp_0": 0.5,
+      "r_tau_h": 7,
+      "r_beta_h": 0.3,
+      "high_thresh": 0.6,
+      "low_thresh": 0.4
+    },
+    "comfort_no_signal_floor": 0.1,
+    "caregiver_latency_s": 1.0,
+    "perception_action_loop_period_s_reported": 0.3,
+    "positions": 7,
+    "runs_per_profile_published": 10,
+    "adaptive_runs_published": 5,
+    "source_of_values": "regesh.bonding.attachment.PROFILES and ADAPTIVE (transcribed from Tables 1 and 2); the runner imports them rather than this block"
+  },
+  "simulation": {
+    "steps_per_second": 3,
+    "dt_s_note": "Paper reports a 300 ms loop and its temperature plots give step 160 ~ 50 s, step 250 ~ 83 s (3.0-3.2 steps/s); 3 steps/s is used so 1 s = 3 steps exactly",
+    "positions": 7,
+    "move_steps": 6,
+    "move_duration_note": "One Nao lateral step to the next view occupies move_steps timesteps (2 s). Chosen for physical plausibility before any outcome run; the paper gives no step duration. Once started a step completes; progress is not interrupted by arousal.",
+    "transit_view": "destination",
+    "transit_note": "While stepping, the perceived (unlearned) view is the destination's; familiarity is not incremented in transit.",
+    "environments": {
+      "simple": {
+        "n_objects_range": [
+          2,
+          3
+        ],
+        "s_env": 0.85
+      },
+      "complex": {
+        "n_objects_range": [
+          6,
+          8
+        ],
+        "s_env": 1.0
+      }
+    },
+    "lambda": 2.0,
+    "stimulation_rule": "Stim(t) = s_env * exp(-f_p / (lambda * n_objects_p)) + N(0, sd^2), clipped to stimulation_clip; f_p counts attending steps (learn or request) at position p and persists across revisits",
+    "stimulation_noise_sd": 0.02,
+    "stimulation_clip": [
+      0.0,
+      1.0
+    ],
+    "noise_horizon_s": 600,
+    "alpha_sensor": 0.9,
+    "latency_steps": 3,
+    "intervention_steps": 3,
+    "intervention_note": "Responsive caregiver sets face and head-contact sensors to 1 for intervention_steps timesteps beginning latency_steps after a request onset; a request onset while a response is pending or active schedules nothing further",
+    "comfort_condition": "sensor",
+    "comfort_condition_note": "Eq. 4's intervention branch is taken while a sensor is active (then Ch=Fh=1 by Eq. 1); otherwise the beta_h trace branch. Literal use of the never-zero Eq. 1 traces in the condition is the 'trace' sensitivity",
+    "regulatory_semantics": "literal",
+    "regulatory_semantics_note": "'literal': Eq. 5 evaluated on steps whose selected behaviour is Find-Human (arousal >= HighThresh). 'episode' sensitivity: also on steps while the caregiver intervenes (gaze-at-human consummatory phase)",
+    "arousal_floor": 0.0,
+    "initial_arousal": 0.0,
+    "learning_states": [
+      "learn",
+      "request"
+    ],
+    "request_counting": "A comfort request is counted when the selected behaviour switches into Find-Human from another behaviour",
+    "comfort_duration": "Contiguous spans with Comf > 0.1, in seconds; per-run mean and maximum of completed spans",
+    "profile_experiments": {
+      "max_duration_s": 600,
+      "stop_after_two_traversals": true,
+      "two_traversals": "position 7 reached, then position 1 reached again"
+    },
+    "adaptive_experiment": {
+      "duration_s": 350,
+      "responsive_until_s": 150,
+      "schedule": "requests beginning before 150 s are answered after the 1 s latency; later requests are never answered"
+    }
+  },
+  "seeds": {
+    "pilot": 29000,
+    "published_count": [
+      30000,
+      30001,
+      30002,
+      30003,
+      30004,
+      30005,
+      30006,
+      30007,
+      30008,
+      30009
+    ],
+    "adaptive_published_count": [
+      30100,
+      30101,
+      30102,
+      30103,
+      30104
+    ],
+    "bootstrap": [
+      31000,
+      31001,
+      31002,
+      31003,
+      31004,
+      31005,
+      31006,
+      31007,
+      31008,
+      31009,
+      31010,
+      31011,
+      31012,
+      31013,
+      31014,
+      31015,
+      31016,
+      31017,
+      31018,
+      31019,
+      31020,
+      31021,
+      31022,
+      31023,
+      31024,
+      31025,
+      31026,
+      31027,
+      31028,
+      31029,
+      31030,
+      31031,
+      31032,
+      31033,
+      31034,
+      31035,
+      31036,
+      31037,
+      31038,
+      31039,
+      31040,
+      31041,
+      31042,
+      31043,
+      31044,
+      31045,
+      31046,
+      31047,
+      31048,
+      31049,
+      31050,
+      31051,
+      31052,
+      31053,
+      31054,
+      31055,
+      31056,
+      31057,
+      31058,
+      31059,
+      31060,
+      31061,
+      31062,
+      31063,
+      31064,
+      31065,
+      31066,
+      31067,
+      31068,
+      31069,
+      31070,
+      31071,
+      31072,
+      31073,
+      31074,
+      31075,
+      31076,
+      31077,
+      31078,
+      31079,
+      31080,
+      31081,
+      31082,
+      31083,
+      31084,
+      31085,
+      31086,
+      31087,
+      31088,
+      31089,
+      31090,
+      31091,
+      31092,
+      31093,
+      31094,
+      31095,
+      31096,
+      31097,
+      31098,
+      31099
+    ],
+    "bootstrap_resampling": 32000,
+    "stream": "NumPy PCG64 from SeedSequence([seed, environment_index]); the object layout and the whole noise vector are drawn first, so cells sharing seed and environment share them (common random numbers)"
+  },
+  "bootstrap_samples": 10000,
+  "pilot": {
+    "criterion": "independent profile's arousal visits all three bands (explore, learn, request) in both environments with the responsive caregiver on the pilot seed; stimulation within [0,1]",
+    "note": "Constants were fixed from this criterion alone on seed 29000 before any comparison seed was run; published endpoints were not used",
+    "candidates_tried": [
+      {
+        "s_env_simple": 0.85,
+        "s_env_complex": 1.0,
+        "lambda": 2.0,
+        "move_steps": 6,
+        "result": "criterion met on first candidate; independent band fractions simple .825/.100/.075, complex .821/.090/.090 (explore/learn/request); no further candidate tried"
+      }
+    ]
+  },
+  "cells": [
+    {
+      "name": "simple_needy_responsive",
+      "experiment": "simple",
+      "environment": "simple",
+      "profile": "needy",
+      "caregiver": "responsive",
+      "role": "primary",
+      "seed_sets": [
+        "published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "simple_needy_nonresponsive",
+      "experiment": "simple",
+      "environment": "simple",
+      "profile": "needy",
+      "caregiver": "nonresponsive",
+      "role": "control",
+      "seed_sets": [
+        "published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "simple_independent_responsive",
+      "experiment": "simple",
+      "environment": "simple",
+      "profile": "independent",
+      "caregiver": "responsive",
+      "role": "primary",
+      "seed_sets": [
+        "published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "simple_independent_nonresponsive",
+      "experiment": "simple",
+      "environment": "simple",
+      "profile": "independent",
+      "caregiver": "nonresponsive",
+      "role": "control",
+      "seed_sets": [
+        "published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "complex_needy_responsive",
+      "experiment": "complex",
+      "environment": "complex",
+      "profile": "needy",
+      "caregiver": "responsive",
+      "role": "primary",
+      "seed_sets": [
+        "published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "complex_needy_nonresponsive",
+      "experiment": "complex",
+      "environment": "complex",
+      "profile": "needy",
+      "caregiver": "nonresponsive",
+      "role": "control",
+      "seed_sets": [
+        "published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "complex_independent_responsive",
+      "experiment": "complex",
+      "environment": "complex",
+      "profile": "independent",
+      "caregiver": "responsive",
+      "role": "primary",
+      "seed_sets": [
+        "published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "complex_independent_nonresponsive",
+      "experiment": "complex",
+      "environment": "complex",
+      "profile": "independent",
+      "caregiver": "nonresponsive",
+      "role": "control",
+      "seed_sets": [
+        "published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "simple_needy_responsive_move1s",
+      "experiment": "simple",
+      "environment": "simple",
+      "profile": "needy",
+      "caregiver": "responsive",
+      "role": "sensitivity",
+      "overrides": {
+        "move_steps": 3
+      },
+      "seed_sets": [
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "simple_needy_responsive_tracecondition",
+      "experiment": "simple",
+      "environment": "simple",
+      "profile": "needy",
+      "caregiver": "responsive",
+      "role": "sensitivity",
+      "overrides": {
+        "comfort_condition": "trace"
+      },
+      "seed_sets": [
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "simple_independent_responsive_move1s",
+      "experiment": "simple",
+      "environment": "simple",
+      "profile": "independent",
+      "caregiver": "responsive",
+      "role": "sensitivity",
+      "overrides": {
+        "move_steps": 3
+      },
+      "seed_sets": [
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "simple_independent_responsive_tracecondition",
+      "experiment": "simple",
+      "environment": "simple",
+      "profile": "independent",
+      "caregiver": "responsive",
+      "role": "sensitivity",
+      "overrides": {
+        "comfort_condition": "trace"
+      },
+      "seed_sets": [
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "complex_needy_responsive_move1s",
+      "experiment": "complex",
+      "environment": "complex",
+      "profile": "needy",
+      "caregiver": "responsive",
+      "role": "sensitivity",
+      "overrides": {
+        "move_steps": 3
+      },
+      "seed_sets": [
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "complex_needy_responsive_tracecondition",
+      "experiment": "complex",
+      "environment": "complex",
+      "profile": "needy",
+      "caregiver": "responsive",
+      "role": "sensitivity",
+      "overrides": {
+        "comfort_condition": "trace"
+      },
+      "seed_sets": [
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "complex_independent_responsive_move1s",
+      "experiment": "complex",
+      "environment": "complex",
+      "profile": "independent",
+      "caregiver": "responsive",
+      "role": "sensitivity",
+      "overrides": {
+        "move_steps": 3
+      },
+      "seed_sets": [
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "complex_independent_responsive_tracecondition",
+      "experiment": "complex",
+      "environment": "complex",
+      "profile": "independent",
+      "caregiver": "responsive",
+      "role": "sensitivity",
+      "overrides": {
+        "comfort_condition": "trace"
+      },
+      "seed_sets": [
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "adaptive_literal_intervention3",
+      "experiment": "adaptive",
+      "environment": "complex",
+      "profile": "adaptive",
+      "caregiver": "schedule",
+      "role": "primary",
+      "overrides": {
+        "regulatory_semantics": "literal",
+        "intervention_steps": 3
+      },
+      "seed_sets": [
+        "adaptive_published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "adaptive_literal_intervention9",
+      "experiment": "adaptive",
+      "environment": "complex",
+      "profile": "adaptive",
+      "caregiver": "schedule",
+      "role": "sensitivity",
+      "overrides": {
+        "regulatory_semantics": "literal",
+        "intervention_steps": 9
+      },
+      "seed_sets": [
+        "adaptive_published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "adaptive_episode_intervention3",
+      "experiment": "adaptive",
+      "environment": "complex",
+      "profile": "adaptive",
+      "caregiver": "schedule",
+      "role": "sensitivity",
+      "overrides": {
+        "regulatory_semantics": "episode",
+        "intervention_steps": 3
+      },
+      "seed_sets": [
+        "adaptive_published_count",
+        "bootstrap"
+      ]
+    },
+    {
+      "name": "adaptive_episode_intervention9",
+      "experiment": "adaptive",
+      "environment": "complex",
+      "profile": "adaptive",
+      "caregiver": "schedule",
+      "role": "sensitivity",
+      "overrides": {
+        "regulatory_semantics": "episode",
+        "intervention_steps": 9
+      },
+      "seed_sets": [
+        "adaptive_published_count",
+        "bootstrap"
+      ]
+    }
+  ],
+  "contrasts": [
+    {
+      "name": "simple_needy_minus_independent_responsive",
+      "a": "simple_needy_responsive",
+      "b": "simple_independent_responsive",
+      "paired": true
+    },
+    {
+      "name": "simple_needy_minus_independent_nonresponsive",
+      "a": "simple_needy_nonresponsive",
+      "b": "simple_independent_nonresponsive",
+      "paired": true
+    },
+    {
+      "name": "simple_needy_responsive_minus_nonresponsive",
+      "a": "simple_needy_responsive",
+      "b": "simple_needy_nonresponsive",
+      "paired": true
+    },
+    {
+      "name": "simple_independent_responsive_minus_nonresponsive",
+      "a": "simple_independent_responsive",
+      "b": "simple_independent_nonresponsive",
+      "paired": true
+    },
+    {
+      "name": "simple_needy_minus_independent_responsive_move1s",
+      "a": "simple_needy_responsive_move1s",
+      "b": "simple_independent_responsive_move1s",
+      "paired": true
+    },
+    {
+      "name": "simple_needy_minus_independent_responsive_tracecondition",
+      "a": "simple_needy_responsive_tracecondition",
+      "b": "simple_independent_responsive_tracecondition",
+      "paired": true
+    },
+    {
+      "name": "complex_needy_minus_independent_responsive",
+      "a": "complex_needy_responsive",
+      "b": "complex_independent_responsive",
+      "paired": true
+    },
+    {
+      "name": "complex_needy_minus_independent_nonresponsive",
+      "a": "complex_needy_nonresponsive",
+      "b": "complex_independent_nonresponsive",
+      "paired": true
+    },
+    {
+      "name": "complex_needy_responsive_minus_nonresponsive",
+      "a": "complex_needy_responsive",
+      "b": "complex_needy_nonresponsive",
+      "paired": true
+    },
+    {
+      "name": "complex_independent_responsive_minus_nonresponsive",
+      "a": "complex_independent_responsive",
+      "b": "complex_independent_nonresponsive",
+      "paired": true
+    },
+    {
+      "name": "complex_needy_minus_independent_responsive_move1s",
+      "a": "complex_needy_responsive_move1s",
+      "b": "complex_independent_responsive_move1s",
+      "paired": true
+    },
+    {
+      "name": "complex_needy_minus_independent_responsive_tracecondition",
+      "a": "complex_needy_responsive_tracecondition",
+      "b": "complex_independent_responsive_tracecondition",
+      "paired": true
+    },
+    {
+      "name": "needy_complex_minus_simple_responsive",
+      "a": "complex_needy_responsive",
+      "b": "simple_needy_responsive",
+      "paired": false
+    },
+    {
+      "name": "independent_complex_minus_simple_responsive",
+      "a": "complex_independent_responsive",
+      "b": "simple_independent_responsive",
+      "paired": false
+    }
+  ],
+  "published_targets": {
+    "requests": {
+      "quote": "needy requested comfort much more often than independent (Fig. 6A,B; section 3.2.2)",
+      "rule": "paired needy-minus-independent requests interval above zero"
+    },
+    "comfort_trace_independent": {
+      "quote": "a trace lasting up to 10 s (section 3.1)",
+      "rule": "mean per-run maximum Comf>0.1 span within 5-15 s counts as order-of-magnitude consistent"
+    },
+    "simple_pace": {
+      "quote": "both profiles go through the setup at a similar pace; end around step 160 (~50 s), back by step 250 (~83 s)",
+      "rule": "needy/independent ratio of mean two-traversal times closer to 1 in the simple than in the complex environment; absolute seconds not comparable"
+    },
+    "complex_pace": {
+      "quote": "the independent robot took 140 s to walk through the setup twice, the needy took 170 s",
+      "ratio": 1.2143,
+      "rule": "paired needy-minus-independent two-traversal interval above zero; absolute seconds not comparable"
+    },
+    "needy_learns_independent_explores": {
+      "quote": "while the independent robot explored more, the needy robot learned more; needy shows more frequent episodes of medium arousal",
+      "rule": "frac_learn and total_learning intervals above zero, frac_explore interval below zero"
+    },
+    "complex_vs_simple": {
+      "quote": "the independent profile did not solicit the attention of the caregiver more often than in the simpler environment; the needy produced more regulatory behaviors",
+      "rule": "independent requests interval includes zero or is negative; needy interval above zero"
+    },
+    "adaptive": {
+      "quote": "responsiveness steadily increased (approximately from second 5-140); after 150 s the responsiveness decreased",
+      "rule": "Resp(150 s) - 0.5 interval above zero; Resp(end) - Resp(150 s) interval below zero"
+    }
+  },
+  "declared_ambiguities": [
+    "Stimulation: the Hopfield recall error and Kohonen weight-change signal (Eq. 2) over camera contours is replaced by a per-position familiarity decay with declared s_env, lambda, object counts and Gaussian noise; absolute pace, request counts and learning totals are therefore not comparable with the paper.",
+    "Timestep: dt = 1/3 s (paper: ~300 ms loop; figure axes imply 3.0-3.2 steps/s); the 1 s caregiver latency is exactly 3 steps.",
+    "Movement: a lateral step occupies 6 timesteps (2 s) and completes once started; the paper does not state its duration. With one position per timestep the independent profile would cross the table several times within one comfort window, which the paper's temperature plots exclude. A 1 s step is a declared sensitivity.",
+    "Caregiver response duration: the automated caregiver's intervention length is unspecified; 1 s (3 steps) of simultaneous face and head contact is used; 3 s is a declared sensitivity for the adaptive experiment only.",
+    "Eq. 4 condition: Eq. 1 traces never reach exactly zero, so a literal 'Ch(t) > 0 or Fh(t) > 0' test would keep the window-average branch forever after the first intervention and make beta_h inert, contradicting the paper's description of the profiles. The condition is therefore evaluated on the raw sensors, with the literal reading retained as a sensitivity. Under the primary reading alpha_sensor does not influence comfort; traces are recorded.",
+    "Eq. 3 floor: the paper states no arousal floor; the imported module floors arousal at zero (negative arousal has no behavioural meaning in Fig. 4).",
+    "Eq. 5 timing: 'when the behavior Find-Human is active' is read literally as arousal >= HighThresh at the current step, using the current step's Comf. Because comfort drops arousal below HighThresh almost immediately, the number of increase steps per answered request is at most about one; an 'episode' semantics in which Find-Human persists during the intervention is a declared sensitivity. The published (1 - Resp) decrease term is kept verbatim.",
+    "Adaptive initial parameters: Table 2 lists beta_h = 0.7 and tau_h = 3 as 'initial' values but Eqs. 6-7 give 0.85 and 6.5 at Resp(0) = 0.5; the equations are applied from the start and 0.7/3 are treated as their offsets.",
+    "Learning: familiarity (the learning proxy) increments only while the robot attends (learn or request behaviour), as the networks of the paper learned every step but the moving camera view changes while stepping; the request state counts as attending the same scene.",
+    "Starting state: position 1, direction toward 7, arousal 0, comfort 0, all familiarity 0; with arousal 0 the robot steps immediately and learns position 1 only on the return.",
+    "Real human in Experiment 3 replaced by an automated schedule (responsive until 150 s, then non-responsive until 350 s), following the paper's description of when the experimenter stopped responding.",
+    "Run termination: Experiments 1-2 stop when the second traversal completes or at 600 s (censored); Experiment 3 runs a fixed 350 s.",
+    "Random numbers: NumPy PCG64 streams; the paper's robot had no seed. Per-step order of the architecture (Algorithm 1 figure not available in the text extraction) is declared in the runner docstring."
+  ]
+}

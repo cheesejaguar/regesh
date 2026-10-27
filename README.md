@@ -193,6 +193,66 @@ separately rechecks the executable outcomes. [Expanded measurements](docs/measur
 and [frozen secondary analysis](docs/extended_analysis.md) keep correctness,
 robustness, repair, cost, calibration, coverage and diversity proxies separate.
 
+## Turn any agent into an emotional agent
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/cheesejaguar/regesh/main/install.sh | sh
+```
+
+A terminal installer detects Claude Code, Codex CLI, Gemini CLI, Hermes Agent,
+OpenCode and Cursor and hooks the bonded affect loop into the ones you choose:
+an MCP server (`affect_*` tools), the harness's own lifecycle hooks (user
+prompts, tool results and turn ends feed the loop; one factual context line is
+injected per turn) and a marked instruction block. State lives in `~/.regesh`,
+every edited file is backed up, and `regesh-install --uninstall` reverses it.
+See [docs/install.md](docs/install.md).
+
+## Pair bonding with a user (opt-in)
+
+The affect loop can keep a per-partner **bond**: attachment-style arousal
+regulation with budgeted help-seeking (Hiolle et al. 2014), secure-base threat
+buffering (Coan et al. 2006), an online-identified dyadic affect model with
+bounded steering and repair (Gottman et al. 1999/2003), a mid-range style
+coordination control (Danescu-Niculescu-Mizil et al. 2012; Jaffe et al. 2001)
+and reciprocity-weighted intimacy (Laurenceau et al. 1998). Default agents are
+unchanged; the committed demo digest is identical.
+
+```python
+agent = Agent('agent.sqlite', 'companion', config={'bonding': True, 'partner': 'user'})
+bond = agent.actuation_context()['bond']   # request_support, security, dyad steering, coordination excess
+agent.express('user', valence=bond['dyad']['expressed_valence'], text='...')
+```
+
+The bond never alters factual reliability, authority or permissions, and
+requests are bounded by the partner's attention budget. Four new published-paper
+experiments and a platform-level simulation accompany the mechanisms:
+
+```bash
+python -m regesh.reproductions.attachment_robot --output results-new/attachment-robot
+python -m regesh.reproductions.marital_dynamics --output results-new/marital-dynamics
+python -m regesh.reproductions.coordination_power --cache .cache/convokit/supreme --output results-new/coordination
+python -m regesh.reproductions.llm_convergence --base-url http://127.0.0.1:8080/v1 --model regesh-qwen-coder --output results-new/llm-convergence
+python -m regesh.bonding.experiment --config configs/bonding_platform.json --output results-new/bonding-platform
+python -m unittest tests.test_bonding tests.test_bonding_experiment -v
+```
+
+**Measured so far:** in simulation, the bond removes 10-15% of cumulative
+affect threat against a reference agent with common random numbers, and this
+depends on partner responsiveness only with the evidence-count estimator
+(measured responsiveness .78/.49/.23 for partners answering 100/50/0% of
+requests). Identifier-based steering equals fixed positivity for cooperative
+simulated partners and avoids a -.25 affect loss against a reactant one. Of the
+published findings, Hiolle's profile contrasts and two of four Supreme Court
+coordination asymmetries reproduce; the robot's adaptive rule, the damping
+claim and LLM over-convergence (with the 1.5B model) do not. A logistic head on
+the generating model's embeddings estimates user emotion at micro-F1 .486 on the
+official GoEmotions test (hashed-token reference .414), while a learned partner
+model over the same embeddings added nothing to next-affect prediction; its
+evaluation fixed the identifier's cold start instead. See the
+[bonding report](docs/bonding.md), the [novelty statement and
+safeguards](docs/bonding_disclosure.md) and the per-paper reports under
+`docs/reproductions/`. No result establishes benefit to users.
+
 ## Research and results
 
 - [Published-paper reproductions, quantitative comparisons and run commands](docs/paper_reproductions.md)

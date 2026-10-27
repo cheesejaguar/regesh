@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "search_date": "2026-10-25",
+  "paper": "https://arxiv.org/abs/1112.3670",
+  "inputs": {
+    "supreme-2004.zip": {
+      "path": "/home/user/regesh/.cache/convokit/supreme/supreme-2004.zip",
+      "bytes": 8620569,
+      "sha256": "f856375d3337da327a82c217adcf4c6dc054c91dc04d1d093c346fad55bbc4a0",
+      "used": true
+    },
+    "supreme-2005.zip": {
+      "path": "/home/user/regesh/.cache/convokit/supreme/supreme-2005.zip",
+      "bytes": 9369609,
+      "sha256": "af2ac33504fb79ffa860f12a4ab0e9be56cd37180a571fc54b25bf742696b193",
+      "used": true
+    },
+    "supreme-2006.zip": {
+      "path": "/home/user/regesh/.cache/convokit/supreme/supreme-2006.zip",
+      "bytes": 7970646,
+      "sha256": "914cbf97a59112048e214495c7bf572ad2ae868228ec8b241b0c728959631c11",
+      "used": true
+    },
+    "cases.jsonl": {
+      "path": "/home/user/regesh/.cache/convokit/supreme/cases.jsonl",
+      "bytes": 13337468,
+      "sha256": "c6d4ec1a59e0e7dc06cee0f14386d316edcddf84e49ab88188e3f7cec826fb69",
+      "used": "cross-check of votes_side and advocate sides against conversations.json only"
+    },
+    "scdb_vote_info.tsv": {
+      "path": "/home/user/regesh/.cache/convokit/supreme/scdb_vote_info.tsv",
+      "bytes": 7955530,
+      "sha256": "41feaaba7c3f768e96e64f19a0578a93e0ef185e4ef57a7c0be8576499e11253",
+      "used": false
+    }
+  },
+  "case_set_source": {
+    "url": "https://raw.githubusercontent.com/CornellNLP/ConvoKit/master/examples/coordination/examples.ipynb",
+    "sha256": "9783bbef94a539140db08ffbd356a56820e49542a1b9ee24fe66deaa3697c3d2",
+    "bytes": 173311,
+    "fetched": "2026-10-25",
+    "repository_master_head_at_fetch": "91a1df0143668d8e0017f932f97ac878e53b91fa",
+    "file_commit": "not obtainable: GitHub API access to CornellNLP/ConvoKit is disabled in this session; the master HEAD above pins the fetched content",
+    "notebook_warning": "The notebook states that its code and data are not identical with the ones originally used in the paper.",
+    "convokit_coordination_py_sha256": "2a1175277c8347979600d6ecee08f5a452ddf6e1f01801631f85a1708bd80909",
+    "convokit_coordination_score_py_sha256": "01ac65c411c9eba684a61e613b61be854c81a5dbeb082d80b2b794ba7181b36f",
+    "convokit_code_role": "read only to determine the threshold and aggregation semantics; ConvoKit is not installed or executed"
+  },
+  "config_path": "/home/user/regesh/configs/reproductions/coordination_power.json",
+  "config_sha256": "9745eed03b6336a64b6a6fe87d42069b7d610507ee23690738b81656b51f6934",
+  "source_code_sha256": "bf4ae22af6c7972596f56de70539d8cde8d2d8bc3e11fa4a8496bcd919f313e3",
+  "synchrony_source_sha256": "5d2b0f5b39daf0c7e28d04dc9946c643033dcb08fa69f6eb0d282116920d806c",
+  "seed": 20261025,
+  "bootstrap_samples": 10000,
+  "elapsed_seconds": 16.32071576999988,
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "entity_records": 12579,
+  "raw_text_written": false,
+  "model_calls": 0,
+  "unreproduced": [
+    "LIWC dictionary (proprietary): replaced by an authored lexicon",
+    "The authors' original transcript preprocessing [24] and exact exchange set",
+    "Wikipedia results (Sections 5.1, 5.3 second half, 6)"
+  ],
+  "artifacts": {
+    "summary.json": "e1e85f0a132edad0287c1c137f2d687969dabd11218c70b7b908c25c7f8fd579",
+    "config.json": "9745eed03b6336a64b6a6fe87d42069b7d610507ee23690738b81656b51f6934",
+    "runner.py": "bf4ae22af6c7972596f56de70539d8cde8d2d8bc3e11fa4a8496bcd919f313e3",
+    "report.md": "a407b5c038442707f77534af6cdd60c9bf570a14ef8ff5431c9f8bcada4bf335",
+    "entities.jsonl.gz": "7f0e6d53fa554a62e7efc92aa730d8e2e14e2514714eef1a7156ed497e95911e"
+  }
+}

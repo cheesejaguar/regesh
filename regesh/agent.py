@@ -80,6 +80,9 @@ class Agent:
                 finite(a[k],0,1)
         for v in state["dispositions"].values():
             finite(v,-1,1)
+        if state["config"].get("bonding") and "bonds" in state:
+            from .bonding import platform as bonding
+            bonding.validate(state)
 
     def appraise(self,event):
         return validate_appraisal(self.provider.appraise(event,self.get_state()))
@@ -132,6 +135,12 @@ class Agent:
 
     def _controls(self, state):
         reference=controls(state)
+        if state["config"].get("bonding") and "bonds" in state:
+            from .bonding import platform as bonding
+            bond=bonding.controls(state)
+            # Arousal-band regulation (Hiolle et al. 2014): seek support instead of exploring when
+            # arousal is high; explore more when it is low. Verification is unchanged.
+            reference={**reference,"exploration":clip(reference["exploration"]*bond["exploration_multiplier"],0,1),"bond":bond}
         model=state["config"].get("regulator")
         if model is None: return reference
         from .learning import CounterfactualRegulator, RidgePredictor
@@ -149,7 +158,7 @@ class Agent:
 
     def act(self,action,reason=None):
         """Execute a cognitive allocation, with real resource costs in this profile."""
-        costs={"diverge":.12,"refine":.08,"combine":.1,"explore":.12,"verify":.08,"plan":.1,"retrieve":.03,"recover":0.,"resolve":.04,"commit":.02}
+        costs={"diverge":.12,"refine":.08,"combine":.1,"explore":.12,"verify":.08,"plan":.1,"retrieve":.03,"recover":0.,"resolve":.04,"commit":.02,"request":.02}
         if action=="auto":
             action=self.actuation_context().get("strategy","explore")
         if action not in costs:
@@ -171,11 +180,42 @@ class Agent:
                 if i["commitments"]>=64:
                     raise ValueError("commitment capacity exhausted")
                 i["commitments"]+=1.
+            elif action=="request":
+                # Bounded help-seeking toward a bonded partner; the partner's attention is the budget.
+                if not (s["config"].get("bonding") and "bonds" in s):
+                    raise ValueError("support requests require bonding to be enabled")
+                partner=(reason or {}).get("partner") if isinstance(reason,dict) else None
+                from .bonding import platform as bonding
+                partner=partner or bonding.focal_partner(s)
+                if not partner: raise ValueError("request needs a partner")
+                bonding.request(s,partner)
             context=self._controls(s)
             item={"action":action,"cost":costs[action],"time":s["time"],"reason":reason or context["reason"],"control":context}
             s["actions"].append(item)
             return item,item,True
         return self._mutate("act",fn)
+
+    def express(self,partner,*,valence,text=None,disclosure=None):
+        """Journal the agent's own expression toward a partner (affect, optional text/disclosure).
+
+        An expression is the agent's action, not evidence about the partner. It feeds the
+        dyadic model, style-coordination measurement and reciprocity tracking only.
+        """
+        if not isinstance(partner,str) or not partner: raise ValueError("partner required")
+        finite(valence,-1,1)
+        if text is not None and not isinstance(text,str): raise ValueError("text must be a string")
+        if disclosure is not None:
+            if not isinstance(disclosure,dict): raise ValueError("disclosure must be a mapping")
+            finite(disclosure.get("depth"),0,1)
+            if not isinstance(disclosure.get("emotional",True),bool): raise ValueError("emotional must be boolean")
+        def fn(s):
+            if not (s["config"].get("bonding") and "bonds" in s):
+                raise ValueError("express requires bonding to be enabled")
+            from .bonding import platform as bonding
+            item=bonding.express(s,partner,valence,text,disclosure)
+            payload={"partner":partner,"valence":valence,"text":text,"disclosure":disclosure}
+            return payload,item,True
+        return self._mutate("express",fn)
 
     def record_outcome(self,event_id,quality,*,outcome_id=None,approval=0.,partner_correct=None,control=None,provenance="environment"):
         finite(quality,-1,1); finite(approval,-1,1)
@@ -262,12 +302,21 @@ class Agent:
 
     def intervene(self,changes,reason):
         """Explicit researcher intervention, never disguised as observed evidence."""
-        allowed={"mood","internal","goals","dispositions"}
+        allowed={"mood","internal","goals","dispositions","bonds","attachment"}
         if not reason or not isinstance(changes,dict) or set(changes)-allowed:
             raise ValueError("interventions need reason and known state fields")
         def fn(s):
             for key,value in changes.items():
                 if not isinstance(value,dict): raise ValueError("intervention values must be mappings")
+                if key not in s: raise ValueError("state field unavailable in this configuration")
+                if key=="bonds":
+                    for actor,fields in value.items():
+                        if not isinstance(fields,dict): raise ValueError("bond interventions must be mappings")
+                        from .bonding import platform as bonding
+                        bond=bonding.ensure_bond(s,actor)
+                        if set(fields)-set(bond): raise ValueError("unknown bond field")
+                        bond.update(deepcopy(fields))
+                    continue
                 if key!="goals" and set(value)-set(s[key]): raise ValueError("unknown state field")
                 s[key].update(value)
             return {"changes":changes,"reason":reason},s,True
@@ -359,6 +408,7 @@ class Agent:
             elif op=="reset": child.reset(p["config"])
             elif op=="artifact": child.record_artifact(p["kind"],p["artifact"])
             elif op=="set_task_context": child.set_task_context(p["context"])
+            elif op=="express": child.express(p["partner"],valence=p["valence"],text=p["text"],disclosure=p["disclosure"])
             elif op=="set_regulator":
                 from .learning import RidgePredictor
                 m=p["model"];child.set_regulator(RidgePredictor(m["weights"],m["ridge"],m["metadata"]))

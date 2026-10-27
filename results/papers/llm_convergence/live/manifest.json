@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-25T23:39:57.755472+00:00",
+  "config_sha256": "363d78f28968f2a27c4ed3b3ada3a4fbea7c0548da04e14eb14df5621eddb473",
+  "items_sha256": "56f10e219d98259827469624eed7b5d265022ede788ce1ae861147997a95db47",
+  "runner_sha256": "71fe29b96b1ceca2251a57aa80f72836ff21bab7a6d0acdbda8886adaa174e40",
+  "model_reference": "results/runtime/model.json (historical pinned download/server identity, not this run accounting)",
+  "model": "regesh-qwen-coder",
+  "max_calls": 400,
+  "max_completion_tokens": 19200,
+  "model_calls_completed": 400,
+  "complete": true,
+  "finished_utc": "2026-10-26T01:22:30.610851+00:00",
+  "artifact_sha256": {
+    "calls.jsonl": "a952659d33d601e098cfc0377290817f8a912363e82ce3835cf46daee889789c",
+    "config.json": "363d78f28968f2a27c4ed3b3ada3a4fbea7c0548da04e14eb14df5621eddb473",
+    "items.jsonl": "56f10e219d98259827469624eed7b5d265022ede788ce1ae861147997a95db47",
+    "rows.jsonl": "dd60621abaf53e07d7f7622cce38ca089ada6fee8493743e6988e0278a99d979",
+    "runner.py": "71fe29b96b1ceca2251a57aa80f72836ff21bab7a6d0acdbda8886adaa174e40",
+    "summary.json": "02c3bb72386c06de7e1245a8185a31bea2be7c747dce3dcdb9f1c0cb733ca231"
+  },
+  "analysis_correction": {
+    "utc": "2026-10-26T01:24:40.860922+00:00",
+    "reason": "The first summary.json applied each shuffled-baseline permutation to targets and replies together, which preserves every pairing, so the shuffled mean equalled the true value with a zero-width band. The shuffle now permutes replies only, as prespecified (French et al. 2024). No other statistic changed; calls.jsonl and rows.jsonl are untouched.",
+    "superseded_summary_sha256": "51e9c9e8462973baaa407d126a1b8b8fa7745f0694134ecb80b4a03336dd441d",
+    "runner_py_in_this_directory": "the version that made the 400 calls (runner_sha256 above); its analyze() carried the shuffle bug",
+    "analysis_module_sha256": "753175aa29b4ba0089f9aff7f06fbf063bc7e81a84e3d155b7f58c7d0818d817",
+    "recomputed_with": "python -m regesh.reproductions.llm_convergence analyze --run results/papers/llm_convergence/live --output results/papers/llm_convergence/live/summary.json"
+  }
+}

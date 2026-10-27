@@ -11,12 +11,15 @@ dependencies = ["numpy>=1.24"]
 
 [project.scripts]
 regesh = "regesh.cli:main"
+regesh-install = "regesh.integrations.cli:main"
+regesh-mcp = "regesh.integrations.mcp_server:main"
+regesh-hook = "regesh.integrations.hooks:main"
 
 [tool.setuptools.packages.find]
 include = ["regesh*"]
 
 [tool.setuptools.package-data]
-regesh = ["data/*.json"]
+regesh = ["data/*.json", "data/*.npz", "integrations/templates/*"]
 
 [project.optional-dependencies]
 analysis = ["matplotlib>=3.7"]
