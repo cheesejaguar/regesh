@@ -46,7 +46,7 @@ class MeasurementAdversarialTests(unittest.TestCase):
         self.assertEqual(result['answer_coverage'],0.)
         self.assertEqual(result['probability_coverage'],1.)
         self.assertIsNone(result['expected_calibration_error'])
-        self.assertIsNotNone(result['multiclass_brier'])
+        self.assertAlmostEqual(result['multiclass_brier'],.06) # (1-.8)^2+.1^2+.1^2: probabilities still score
 
     def test_duplicate_semantic_choices_are_rejected_before_permutation(self):
         with self.assertRaises(ValueError):

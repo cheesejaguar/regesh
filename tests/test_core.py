@@ -22,11 +22,21 @@ class CoreChecks(unittest.TestCase):
         observed=json.loads(subprocess.check_output([sys.executable,'-c',code,str(self.path)]))
         self.assertEqual(expected,observed)
     def test_recompute_detects_wrong_transition_poststate(self):
+        from regesh.schema import canonical
+        from regesh.storage import digest
         self.agent.advance_time(1.)
-        from unittest.mock import patch
-        with patch('regesh.agent.advance',lambda s,dt:s.update(time=7.)):
-            with self.assertRaisesRegex(ValueError,'recomputed state mismatch'):
-                self.agent.replay('incorrect')
+        # Re-seal the journal with a different recorded dt: the hash chain stays valid, but the
+        # stored poststate no longer follows from the payload, so only recomputation can notice.
+        entry=list(self.agent.iter_trace())[-1]
+        self.assertEqual(entry['operation'],'advance_time')
+        payload={**entry['payload'],'dt':6.}
+        check={'seq':entry['seq'],'operation':entry['operation'],'payload':payload,'state':entry['state'],'previous':entry['previous']}
+        self.agent.store.db.execute('UPDATE journal SET payload=?,hash=? WHERE agent=? AND seq=?',
+            (canonical(payload),digest(check),'a',entry['seq']))
+        self.assertEqual(list(self.agent.iter_trace())[-1]['payload']['dt'],6.) # integrity check still passes
+        self.agent.replay('playback-ok',mode='playback').close()
+        with self.assertRaisesRegex(ValueError,f"recomputed state mismatch at sequence {entry['seq']}"):
+            self.agent.replay('incorrect')
     def test_learned_adapter_is_persistent_and_replayable(self):
         weights=np.zeros((72,4));weights[54,0]=1. # select verify in this integration fixture
         self.agent.set_regulator(RidgePredictor(weights,metadata={'fixture':True}))

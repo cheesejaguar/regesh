@@ -59,7 +59,7 @@ class BenchmarkTests(unittest.TestCase):
         for _ in range(6): env.step('diverge')
         context = env.context()
         self.assertEqual(context[10], 1.0)
-        self.assertIsNotNone(env.pre_revision)
+        self.assertEqual(env.pre_revision, env.task.adjudicate(env.state.incumbent))
         self.assertEqual(len(env.state.estimates), 0)
 
     def test_counterfactual_adapter(self):
