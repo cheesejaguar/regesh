@@ -208,7 +208,7 @@ class LLMConvergenceTests(unittest.TestCase):
         self.assertEqual(result['response_sets']['plain']['provider_failures'], 1)
         self.assertEqual(result['response_sets']['plain']['finish_reasons']['provider_error'], 1)
         self.assertEqual(result['response_sets']['plain']['n'], 4)
-        self.assertIsNotNone(result['response_sets']['plain']['lsm_mean_non_empty'])
+        self.assertTrue(0. <= result['response_sets']['plain']['lsm_mean_non_empty'] <= 1.)
 
     def test_locked_items_and_no_overwrite(self):
         with tempfile.TemporaryDirectory() as directory:

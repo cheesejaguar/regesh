@@ -103,7 +103,7 @@ class SynchronyMeasures(unittest.TestCase):
         c1 = synchrony.CoordinationCounts().add('the cat and a dog', 'the dog or a cat').add('plainly', 'the end').summary()
         c2 = synchrony.CoordinationCounts().add('a book', 'a pen').summary()
         g = synchrony.group_coordination([c1, c2])
-        self.assertEqual(g['speakers'], 2); self.assertIsNone(g['aggregated_1']); self.assertIsNotNone(g['aggregated_3'])
+        self.assertEqual(g['speakers'], 2); self.assertIsNone(g['aggregated_1']); self.assertTrue(0. <= g['aggregated_3'] <= 1.)
         self.assertEqual(synchrony.accommodation_assessment(.1)['band'], 'over')
         self.assertEqual(synchrony.accommodation_assessment(.03)['band'], 'within')
 
@@ -176,7 +176,7 @@ class BondedAgent(unittest.TestCase):
                 agent.observe(ev(i, goal_delta={'quality': .1}, partner_affect=-.3 + .2 * i, text=t, disclosure={'depth': .5, 'emotional': True}))
                 agent.express('user', valence=.1 * i, text='I think that the plan is fine and we can look at it', disclosure={'depth': .2})
             bond = agent.actuation_context()['bond']
-            self.assertEqual(bond['coordination']['exchanges'], 4); self.assertIsNotNone(bond['coordination']['lsm_mean'])
+            self.assertEqual(bond['coordination']['exchanges'], 4); self.assertTrue(0. <= bond['coordination']['lsm_mean'] <= 1.)
             self.assertEqual(bond['dyad']['updates'], 3); self.assertEqual(agent.get_state()['bonds']['user']['dyad']['expressed_source'], 'express')
             self.assertGreater(bond['reciprocity']['debt'], 0.); self.assertGreater(bond['intimacy'], 0.)
             self.assertIn(bond['coordination']['band'], {'within', 'over', 'under'})

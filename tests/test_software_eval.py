@@ -1,6 +1,8 @@
 """Protocol fixtures, not model-performance evidence."""
 import json
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 from regesh.providers import ModelResult
@@ -66,23 +68,39 @@ SOLUTIONS={
 '''}
 
 
+def _sandbox_supported():
+ """The candidate worker caps address space with RLIMIT_AS; macOS refuses to lower it, so every worker exits before running a case."""
+ probe='import resource;resource.setrlimit(resource.RLIMIT_AS,(128<<20,128<<20))'
+ return subprocess.run([sys.executable,'-I','-S','-c',probe],capture_output=True).returncode==0
+
+
+requires_sandbox=unittest.skipUnless(_sandbox_supported(),'candidate sandbox needs a lowerable RLIMIT_AS (unsupported on this platform, e.g. macOS)')
+
+
 class CodeChecks(unittest.TestCase):
+ @requires_sandbox
  def test_reference_fixtures_pass_all_independent_suites(self):
   for task,source in SOLUTIONS.items():
    with self.subTest(task=task):
     grade=evaluate_candidate(source,task)
     self.assertTrue(grade['all_passed'],grade)
     self.assertTrue(grade['resource_limit_compliant'])
+ @requires_sandbox
  def test_incorrect_shortcut_fails_hidden_cases(self):
   result=evaluate_candidate('def solve(data):\n return []','batching')
+  self.assertTrue(result['execution_valid'],result)
   self.assertLess(result['pass_rate'],1)
   self.assertFalse(result['efficiency_eligible'])
  def test_external_access_and_dunder_rejected(self):
   for source in ['import os\ndef solve(data):return []','def solve(data):\n return data.__class__','def solve(data):\n return open("/etc/passwd").read()']:
    with self.assertRaises(ValueError):parse_source(source)
+ @requires_sandbox
  def test_nontermination_has_resource_failure(self):
   result=run_source('def solve(data):\n while True: pass',[{}],{'line_event_limit':100})
-  self.assertIsNotNone(result['cases'][0]['error'])
+  self.assertNotIn('setup_error',result)
+  self.assertEqual(result['cases'][0]['error'],'RuntimeError') # line_budget tracer abort
+  self.assertGreater(result['cases'][0]['line_events'],100)
+  self.assertIsNone(result['cases'][0]['output'])
  def test_confidence_and_code_fence(self):
   source,metrics=parse_source('```python\n# confidence: 0.75\ndef solve(data):\n return []\n```')
   self.assertEqual(metrics['confidence'],.75)
@@ -105,6 +123,7 @@ class ConstantModel:
 
 
 class RunnerChecks(unittest.TestCase):
+ @requires_sandbox
  def test_frozen_paired_runner_budget_logging_and_no_hidden_leak(self):
   config={**DEFAULT_CONFIG,'tasks':['batching'],'seeds':[910],'bootstrap_samples':10}
   with tempfile.TemporaryDirectory() as tmp:

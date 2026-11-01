@@ -38,16 +38,16 @@ class ChainEmotionReproductionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory)/'experiment_1_STEU.csv'
             path.write_text('corrupt')
-            with self.assertRaises(ValueError):
+            with self.assertRaisesRegex(ValueError, 'pinned OSF hash'):
                 ce.source_files(Path(directory), fetch=False)
             self.assertEqual(path.read_text(), 'corrupt')
 
     def test_incomplete_user_pairing_rejected(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaisesRegex(ValueError, 'complete 30-participant'):
             ce.analyse_users([], np.random.default_rng(1), 100)
 
     def test_duplicate_steu_items_rejected(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaisesRegex(ValueError, '42 distinct'):
             ce.analyse_steu([{'STEU': '1'}]*42, np.random.default_rng(1), 100)
 
     def test_existing_output_preserved(self):
@@ -55,7 +55,7 @@ class ChainEmotionReproductionTests(unittest.TestCase):
             output = Path(directory)/'results'
             output.mkdir()
             (output/'precious').write_text('existing')
-            with self.assertRaises(ValueError):
+            with self.assertRaisesRegex(ValueError, 'preserve previous evidence'):
                 ce.run(output, Path(directory)/'cache')
             self.assertEqual((output/'precious').read_text(), 'existing')
 
